@@ -1,0 +1,33 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "bushwhacker"
+# Version is the single source of truth in Cargo.toml.
+dynamic = ["version"]
+description = "BUSHWHACKER: Minimum Description Length (MDL) engine for phylogenetic graph induction"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Sergei L. Kosakovsky Pond", email = "spond@temple.edu" },
+]
+keywords = ["phylogenetics", "phylogeny", "mdl", "newick", "evolution"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.urls]
+Homepage = "https://github.com/veg/bushwacker"
+Repository = "https://github.com/veg/bushwacker"
+"Web App" = "https://veg.github.io/bushwacker/"
+
+[tool.maturin]
+# Ship the compiled Rust `bushwhacker` binary inside the wheel, plus the
+# pure-Python shim package under python/bushwhacker/.
+bindings = "bin"
+python-source = "python"

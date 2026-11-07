@@ -1,0 +1,90 @@
+name: Build & Publish Python wheels
+
+on:
+  push:
+    # Tag scheme: buswhacker-v<semver>, e.g. buswhacker-v0.1.0
+    tags: ["bushwhacker-v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Fail early if the tag does not match the Cargo.toml version (maturin
+  # pulls the package version from Cargo.toml).
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert tag matches Cargo.toml version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          cargo_ver=$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)
+          tag_ver="${TAG#bushwhacker-v}"
+          if [ "$cargo_ver" != "$tag_ver" ]; then
+            echo "Cargo.toml version '$cargo_ver' does not match tag version '$tag_ver'"
+            exit 1
+          fi
+          echo "version $cargo_ver OK"
+
+  wheels:
+    needs: version-check
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: x86_64 }
+          - { os: macos-latest, target: x86_64 }
+          - { os: macos-latest, target: aarch64 }
+          - { os: windows-latest, target: x64 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist
+          sccache: "true"
+          manylinux: auto
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.os }}-${{ matrix.target }}
+          path: dist/
+
+  sdist:
+    needs: version-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build sdist
+        uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+      - name: Upload sdist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-sdist
+          path: dist/
+
+  pypi-publish:
+    needs: [wheels, sdist]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # OIDC trusted publishing to PyPI
+    steps:
+      - name: Download all distributions
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          path: dist
+          merge-multiple: true
+      - name: List distributions
+        run: ls -l dist/
+        # NOTE: requires a trusted publisher registered on the
+        # `bushwhacker` PyPI project for this repo/workflow file.
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

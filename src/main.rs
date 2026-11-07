@@ -22,7 +22,9 @@ fn print_usage(prog: &str) {
            --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting\n  \
            --no-shunts                  Disable Stage 4 reticulate shunt peeling\n  \
            --min-shunt-sites <N>        Minimum parallel mutations to evaluate a shunt (default: 2)\n  \
-           -h, --help                   Print this help message"
+           -h, --help                   Print this help message
+  \
+           -V, --version                Print version information"
     );
 }
 
@@ -145,6 +147,10 @@ fn main() {
         match args[i].as_str() {
             "-h" | "--help" => {
                 print_usage(prog);
+                process::exit(0);
+            }
+            "-V" | "--version" => {
+                println!("bushwhacker {}", env!("CARGO_PKG_VERSION"));
                 process::exit(0);
             }
             "-o" | "--out-newick" => {
