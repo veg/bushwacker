@@ -149,7 +149,14 @@ def main() -> None:
 
     plt.rcParams.update({
         "font.family": "sans-serif",
-        "font.sans-serif": ["DejaVu Sans", "Arial", "Helvetica"],
+        "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+        "mathtext.fontset": "custom",
+        "mathtext.rm": "sans",
+        "mathtext.it": "sans:italic",
+        "mathtext.bf": "sans:bold",
+        "mathtext.default": "it",
         "font.size": 8.2,
         "axes.titlesize": 9.4,
         "axes.titleweight": "bold",
@@ -258,17 +265,33 @@ def main() -> None:
     x_v, y_v = all_coords[id(node_rhino)]
 
     ax_tree.scatter([x_u, x_v], [y_u, y_v], s=58, color="#c51b7d", edgecolor="white", linewidth=1.2, zorder=6)
-    ax_tree.text(x_u - 0.015, y_u + 0.75, f"{shunt['label_u']} (Delphinidae)\nP = 1.00", fontsize=6.6, fontweight="bold", color="#00587a", ha="right")
-    ax_tree.text(x_v - 0.015, y_v + 0.85, f"{shunt['label_v']} (Rhinolophoidea)\nP = 1.00", fontsize=6.6, fontweight="bold", color="#99000d", ha="right")
+    ax_tree.text(
+        x_u - 0.015, y_u + 0.75, f"{shunt['label_u']} (Delphinidae)\n$P_{{\\mathrm{{local}}}}$ = 1.00",
+        fontsize=6.6, fontweight="bold", color="#00587a", ha="right", zorder=7,
+        bbox=dict(boxstyle="square,pad=0.04", fc="white", ec="none", alpha=0.86),
+    )
+    ax_tree.text(
+        x_v + 0.025, y_v + 0.85, f"{shunt['label_v']} (Rhinolophoidea)\n$P_{{\\mathrm{{local}}}}$ = 1.00",
+        fontsize=6.6, fontweight="bold", color="#99000d", ha="left", zorder=7,
+        bbox=dict(boxstyle="square,pad=0.04", fc="white", ec="none", alpha=0.86),
+    )
 
     node_cetacea = mrca_cet.common_ancestor(list(ECHOLOCATING_WHALES | BALEEN_WHALES))
     xc, yc = all_coords[id(node_cetacea)]
     ax_tree.scatter([xc], [yc], s=36, color="#00688b", zorder=5)
-    ax_tree.text(xc - 0.015, yc + 0.45, "Monophyletic\nCetacea (P=1.00)", fontsize=6.5, fontweight="bold", color="#00688b", ha="right")
+    ax_tree.text(
+        xc - 0.015, yc + 0.45, "Monophyletic\nCetacea\n($P_{\\mathrm{local}}$ = 1.00)",
+        fontsize=6.3, fontweight="bold", color="#00688b", ha="right", zorder=7,
+        bbox=dict(boxstyle="square,pad=0.05", fc="white", ec="none", alpha=0.86),
+    )
 
     xb, yb = all_coords[id(mrca_bat)]
     ax_tree.scatter([xb], [yb], s=36, color="#b2182b", zorder=5)
-    ax_tree.text(xb - 0.015, yb + 0.45, "Monophyletic\nChiroptera (P=1.00)", fontsize=6.6, fontweight="bold", color="#b2182b", ha="right")
+    ax_tree.text(
+        xb - 0.015, yb - 0.45, "Monophyletic\nChiroptera\n($P_{\\mathrm{local}}$ = 1.00)",
+        fontsize=6.3, fontweight="bold", color="#b2182b", ha="right", va="top", zorder=7,
+        bbox=dict(boxstyle="square,pad=0.05", fc="white", ec="none", alpha=0.86),
+    )
 
     ctrl_x = 0.05
     verts = [
@@ -292,7 +315,7 @@ def main() -> None:
     shunt_mid_y = 0.5 * (y_u + y_v)
     ax_tree.annotate(
         "Inferred SPARSE Shunt\n"
-        f"+{shunt['net_mdl_gain_nats']:.2f} nats (P = {shunt['posterior_prob']*100:.2f}%)\n"
+        f"+{shunt['net_mdl_gain_nats']:.2f} nats ($P_{{\\mathrm{{local}}}}$ = {shunt['posterior_prob']*100:.2f}%)\n"
         f"{shunt['shared_mutations']} Convergent Codons:\n"
         "N7T, I384T, S392A, G601A",
         xy=(shunt_mid_x, shunt_mid_y),

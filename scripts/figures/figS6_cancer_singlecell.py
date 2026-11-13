@@ -69,10 +69,10 @@ def add_panel_letter(ax: plt.Axes, letter: str, x: float = -0.14, y: float = 1.1
 
 def format_sci_p(p_val: float) -> str:
     if p_val <= 0.0:
-        return "< 1e-300"
+        return r"< $10^{-300}$"
     exp = int(np.floor(np.log10(p_val)))
     mant = p_val / (10.0 ** exp)
-    return f"{mant:.1f}e{exp}"
+    return rf"{mant:.1f} × $10^{{{exp}}}$"
 
 
 def main() -> None:
@@ -85,10 +85,15 @@ def main() -> None:
     plt.rcParams.update(
         {
             "font.family": "sans-serif",
-            "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+            "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
             "axes.edgecolor": "#334155",
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
+            "mathtext.fontset": "custom",
+            "mathtext.rm": "sans",
+            "mathtext.it": "sans:italic",
+            "mathtext.bf": "sans:bold",
+            "mathtext.default": "it",
         }
     )
 
@@ -323,7 +328,7 @@ def main() -> None:
     ax_b2.set_yticklabels([s[1] for s in top_shunts], fontsize=7.0)
     ax_b2.set_xlim(0, 152)
     ax_b2.set_xlabel("Inferred INTERVAL shunt gain (nats)", fontsize=8.3, fontweight="bold", color=DARK)
-    ax_b2.set_title("Stage 4 chromosomal-arm\nCNA / LOH shunts (P = 1.000)", fontsize=8.8, fontweight="bold", color=DARK, pad=7)
+    ax_b2.set_title("Stage 4 chromosomal-arm\nCNA / LOH shunts ($P_{\\mathrm{local}}$ = 1.000)", fontsize=8.8, fontweight="bold", color=DARK, pad=7)
 
     # =========================================================================
     # PANEL C: 123-Patient Single-Cell AML: Polytomy Burst Hubs & CN-LOH

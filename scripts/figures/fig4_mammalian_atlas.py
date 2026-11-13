@@ -1,26 +1,23 @@
 #!/usr/bin/env python3
 """
-Generate Science-standard Figure 4 (`paper/fig_science_mammalian_atlas.pdf` and
-`results/fig_science_mammalian_atlas.png`):
+Generate Science-caliber Figure 4 (`paper/fig_science_mammalian_atlas.pdf` and
+`results/fig_science_mammalian_atlas.png`) at native 3-column print width (7.25 in):
   - Panel A: Grounding empirical network specimen — Mammalian Prestin (SLC26A5,
-             116 mammals, 2,235 bp), retaining monophyletic Chiroptera (P = 1.00)
-             and Cetartiodactyla / Cetacea (P = 1.00) while inferring a lateral
-             convergence link (+3.91 nats, P = 98.0%) between echolocating
-             horseshoe/roundleaf bats and dolphins across 4 shared codons.
-  - Panel B: Organismal species-tree compression preference (85.9% overall;
-             97.9% >1,500 aa) and protein-resolved incomplete lineage sorting
-             compared against coding-DNA polymorphism on matched candidate-split denominators.
-  - Panel C: Spatial and taxonomic separation of local paralog gene conversion
-             (6.0% of genes, median 85 aa, 68.9% within families, 3.0-5.4x in
-             tandem clusters) from parallel amino-acid sites (11.9% of genes,
-             38.0% cross-order).
-  - Panel D: Ecological guild enrichment after length/multicopy audit (12.6x raw,
-             1.35x length-adjusted in myrmecophagous mammals; neutral elsewhere)
-             paired with focal convergence in the cochlear hair-cell
-             mechanotransduction complex (10/27 species-tree AA; 19/27 free AA).
+             116 mammals, 2,235 bp), retaining monophyletic bats (P_local = 1.00)
+             and Cetartiodactyla / whales (P_local = 1.00) while isolating a lateral
+             convergence link (+3.9 nats, P_local = 0.98) between echolocating
+             horseshoe/roundleaf bats and dolphins across 4 motor-domain codons.
+  - Panel B: Organismal species-tree compression preference and protein-resolved
+             incomplete lineage sorting compared against coding DNA across 19,953
+             TOGA2 proteins in 882 mammals.
+  - Panel C: Spatial and taxonomic separation of local paralog gene conversion from
+             parallel amino-acid sites, and enrichment across tandem gene families.
+  - Panel D: Whole-proteome guild neutrality (showing length-adjustment collapse of
+             ant-eaters from raw to length-adjusted excess) paired with an anatomical
+             vector map of convergent sweeps across the cochlear hair-cell bundle.
 
-100% of plotted topologies and statistics are loaded directly from executed
-Bushwhacker outputs and JSON ledgers on disk. Zero bar charts, zero bordered boxes.
+100% of plotted topologies, counts, fold enrichments, and compression gains are read
+directly from executed Bushwhacker outputs and JSON ledgers on disk.
 """
 
 import json
@@ -37,15 +34,14 @@ from Bio import Phylo
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 R4_DIR = REPO_ROOT / "results" / "mammalian_toga2"
-SCRATCH_DIR = REPO_ROOT / "results" / "mammalian_toga2"
 SPEC_DIR = REPO_ROOT / "data" / "specimens"
 OUT_PDF = REPO_ROOT / "paper" / "fig_science_mammalian_atlas.pdf"
 OUT_PNG = REPO_ROOT / "results" / "fig_science_mammalian_atlas.png"
 
 
 def draw_panel_header(fig, x_fig, y_fig, letter, title, ink="#0F172A"):
-    fig.text(x_fig, y_fig, letter, fontsize=14, fontweight="bold", color=ink, ha="left", va="center")
-    fig.text(x_fig + 0.023, y_fig, title, fontsize=10.8, fontweight="bold", color=ink, ha="left", va="center")
+    fig.text(x_fig, y_fig, letter, fontsize=9.5, fontweight="bold", color=ink, ha="left", va="center")
+    fig.text(x_fig + 0.022, y_fig, title, fontsize=7.2, fontweight="bold", color="#1E293B", ha="left", va="center")
 
 
 def ensure_prestin_specimen():
@@ -89,18 +85,18 @@ def draw_prestin_network(ax, tree, pj, colors):
     ]
 
     tip_labels = {
-        "HLhipArm1": ("H. armiger (Roundleaf bat)", ROSE, True),
-        "HLrhiSin1": ("R. sinicus (Horseshoe bat)", ROSE, True),
-        "HLpteVam2": ("P. vampyrus (Flying fox)", TEAL, False),
-        "pteAle1": ("P. alecto (Black flying fox)", TEAL, False),
-        "HLorcOrc1": ("O. orca (Killer whale)", BLUE, True),
-        "HLturTru3": ("T. truncatus (Dolphin)", BLUE, True),
-        "HLdelLeu1": ("D. leucas (Beluga)", BLUE, False),
-        "lipVex1": ("L. vexillifer (Baiji)", BLUE, False),
-        "phyCat1": ("P. catodon (Sperm whale)", BLUE, False),
-        "HLbalMys1": ("B. mysticetus (Bowhead)", "#0284C7", False),
-        "balAcu1": ("B. acutorostrata (Minke)", "#0284C7", False),
-        "susScr11": ("S. scrofa (Wild boar)", SLATE, False),
+        "HLhipArm1": (r"$\it{H.\ armiger}$ (roundleaf bat)", ROSE, True),
+        "HLrhiSin1": (r"$\it{R.\ sinicus}$ (horseshoe bat)", ROSE, True),
+        "HLpteVam2": (r"$\it{P.\ vampyrus}$ (flying fox)", TEAL, False),
+        "pteAle1": (r"$\it{P.\ alecto}$ (black flying fox)", TEAL, False),
+        "HLorcOrc1": (r"$\it{O.\ orca}$ (killer whale)", BLUE, True),
+        "HLturTru3": (r"$\it{T.\ truncatus}$ (dolphin)", BLUE, True),
+        "HLdelLeu1": (r"$\it{D.\ leucas}$ (beluga)", BLUE, False),
+        "lipVex1": (r"$\it{L.\ vexillifer}$ (baiji)", BLUE, False),
+        "phyCat1": (r"$\it{P.\ catodon}$ (sperm whale)", BLUE, False),
+        "HLbalMys1": (r"$\it{B.\ mysticetus}$ (bowhead)", "#0284C7", False),
+        "balAcu1": (r"$\it{B.\ acutorostrata}$ (minke)", "#0284C7", False),
+        "susScr11": (r"$\it{S.\ scrofa}$ (wild boar)", SLATE, False),
     }
 
     mrca_bat = tree.common_ancestor(list(fm_bats | fruit_bats | cf_bats))
@@ -152,11 +148,9 @@ def draw_prestin_network(ax, tree, pj, colors):
             leaf_rows.append((node, depth, y, lbl, col, bold, False))
             return y
 
-        # Order children cleanly so focal echolocating clades face across the middle gap
         ch_list = list(node.clades)
         node_lvs = {t.name for t in node.get_terminals()}
         if node_lvs <= (fm_bats | fruit_bats | cf_bats):
-            # In Chiroptera (top block): put Rhinolophoidea at lowest y (facing Cetacea across gap)
             def bat_sort(c):
                 lvs = {t.name for t in c.get_terminals()}
                 if lvs & cf_bats:
@@ -166,7 +160,6 @@ def draw_prestin_network(ax, tree, pj, colors):
                 return 2
             ch_list.sort(key=bat_sort)
         else:
-            # In Cetartiodactyla (bottom block): put Odontoceti &Delphinidae at highest y (facing bats across gap!)
             def cet_sort(c):
                 lvs = {t.name for t in c.get_terminals()}
                 if lvs & {"HLorcOrc1", "HLturTru3"}:
@@ -183,115 +176,249 @@ def draw_prestin_network(ax, tree, pj, colors):
         ys = []
         for ch in ch_list:
             bl = float(ch.branch_length or 0.002)
-            step = 0.085 + np.sqrt(max(0.001, bl)) * 0.95
+            step = 0.068 + np.sqrt(max(0.001, bl)) * 0.72
             ys.append(layout_sub(ch, depth + step))
         ym = 0.5 * (min(ys) + max(ys))
         coords[id(node)] = (depth, ym)
         return ym
 
-    # Layout Cetartiodactyla on bottom (y = 0..9), generous gap, Chiroptera on top
-    layout_sub(mrca_cetart, 0.14)
-    y_cursor[0] += 1.95
-    layout_sub(mrca_bat, 0.14)
+    stem_x = 0.25
+    root_x = 0.05
+    layout_sub(mrca_cetart, stem_x)
+    y_cursor[0] += 2.65
+    layout_sub(mrca_bat, stem_x)
 
-    # Draw backbone connecting Chiroptera and Cetartiodactyla (116 mammals)
     _, y_bat = coords[id(mrca_bat)]
     _, y_cetart = coords[id(mrca_cetart)]
-    ax.plot([0.04, 0.04], [y_cetart, y_bat], color="#475569", lw=1.6, zorder=2)
-    ax.plot([0.04, 0.14], [y_bat, y_bat], color="#475569", lw=1.6, zorder=2)
-    ax.plot([0.04, 0.14], [y_cetart, y_cetart], color="#475569", lw=1.6, zorder=2)
+    ax.plot([root_x, root_x], [y_cetart, y_bat], color="#475569", lw=1.15, zorder=2)
+    ax.plot([root_x, stem_x], [y_bat, y_bat], color="#475569", lw=1.15, zorder=2)
+    ax.plot([root_x, stem_x], [y_cetart, y_cetart], color="#475569", lw=1.15, zorder=2)
     ym_root = 0.5 * (y_bat + y_cetart)
-    ax.plot([0.00, 0.04], [ym_root, ym_root], color="#475569", lw=1.8, zorder=2)
+    ax.plot([0.00, root_x], [ym_root, ym_root], color="#475569", lw=1.25, zorder=2)
 
     def render_edges(node):
         if match_collapsed(node) is not None or node.is_terminal():
             return
         x0, y0 = coords[id(node)]
         cys = [coords[id(c)][1] for c in node.clades]
-        ax.plot([x0, x0], [min(cys), max(cys)], color=clade_color(node), lw=1.45, zorder=3)
+        ax.plot([x0, x0], [min(cys), max(cys)], color=clade_color(node), lw=1.05, zorder=3)
         for ch in node.clades:
             x1, y1 = coords[id(ch)]
-            ax.plot([x0, x1], [y1, y1], color=clade_color(ch), lw=1.45, zorder=3)
+            ax.plot([x0, x1], [y1, y1], color=clade_color(ch), lw=1.05, zorder=3)
             render_edges(ch)
 
     render_edges(mrca_cetart)
     render_edges(mrca_bat)
 
     max_x = max(x for x, _ in coords.values())
-    align_x = max_x + 0.055
+    align_x = max_x + 0.045
 
     for node, x, y, lbl, col, bold, is_wedge in leaf_rows:
         if is_wedge:
             tri = mpatches.Polygon(
-                [[x, y], [align_x - 0.018, y + 0.27], [align_x - 0.018, y - 0.27]],
-                closed=True, facecolor=col, alpha=0.22, edgecolor=col, lw=1.0, zorder=3,
+                [[x, y], [align_x - 0.015, y + 0.25], [align_x - 0.015, y - 0.25]],
+                closed=True, facecolor=col, alpha=0.20, edgecolor=col, lw=0.75, zorder=3,
             )
             ax.add_patch(tri)
         else:
-            ax.plot([x, align_x - 0.018], [y, y], color=col, lw=0.6, ls=":", alpha=0.65, zorder=2)
-            ax.scatter([x], [y], s=18 if bold else 10, color=col, zorder=4)
-        ax.text(align_x, y, lbl, va="center", ha="left",
-                fontsize=7.35 if bold else 7.05,
-                fontweight="bold" if bold else "normal",
-                color=col if bold else INK)
+            ax.plot([x, align_x - 0.015], [y, y], color=col, lw=0.45, ls=":", alpha=0.65, zorder=2)
+            ax.scatter([x], [y], s=11 if bold else 6.5, color=col, zorder=4)
+        ax.text(
+            align_x, y, lbl, va="center", ha="left",
+            fontsize=6.35 if bold else 6.15,
+            fontweight="bold" if bold else "normal",
+            color=col if bold else INK,
+        )
 
-    # Monophyletic order / cetacean stem dots & crisp non-overlapping labels
     xb, yb = coords[id(mrca_bat)]
     xc, yc = coords[id(mrca_cet)]
     xca, yca = coords[id(mrca_cetart)]
-    ax.scatter([xb], [yb], s=32, color=INK, zorder=5)
-    ax.text(xb - 0.015, yb + 0.55, "Bats\n(P = 1.00)", fontsize=6.8, fontweight="bold", color=INK, ha="right", va="center")
-    ax.scatter([xc], [yc], s=32, color=BLUE, zorder=5)
-    ax.text(xc - 0.012, yc + 0.45, "Whales\n(P = 1.00)", fontsize=6.8, fontweight="bold", color=BLUE, ha="right", va="bottom")
-    ax.scatter([xca], [yca], s=26, color=SLATE, zorder=5)
-    ax.text(xca - 0.015, yca - 0.55, "Cetartiodactyla\n(P = 1.00)", fontsize=6.6, color=SUBINK, ha="right", va="center")
+    ax.scatter([xb], [yb], s=18, color=INK, zorder=5)
+    ax.text(
+        xb - 0.015, yb + 0.35,
+        r"Bats" + "\n" + r"($P_{\mathrm{local}}$ = 1.00)",
+        fontsize=6.1, fontweight="bold", color=INK, ha="right", va="bottom",
+    )
+    ax.scatter([xc], [yc], s=18, color=BLUE, zorder=5)
+    ax.text(
+        xc - 0.015, yc + 0.30,
+        r"Whales" + "\n" + r"($P_{\mathrm{local}}$ = 1.00)",
+        fontsize=6.1, fontweight="bold", color=BLUE, ha="right", va="bottom",
+    )
+    ax.scatter([xca], [yca], s=15, color=SLATE, zorder=5)
+    ax.text(
+        xca - 0.015, yca - 0.35,
+        r"Cetartiodactyla" + "\n" + r"($P_{\mathrm{local}}$ = 1.00)",
+        fontsize=6.0, color=SUBINK, ha="right", va="top",
+    )
 
-    # Inferred lateral convergence arc from prestin.json across the open center gap!
     sh = pj["shunts"][0]
     xr, yr = coords[id(node_rhino)]
     xd, yd = coords[id(node_delph)]
-    ax.scatter([xr, xd], [yr, yd], s=56, color=ROSE, edgecolor="white", linewidth=1.0, zorder=7)
+    ax.scatter([xr, xd], [yr, yd], s=30, color=ROSE, edgecolor="white", linewidth=0.75, zorder=7)
 
-    # Smooth Bezier arc right across the empty gap between Rhinolophoidea and Delphinidae
     arc_x = 0.5 * (xr + xd) - 0.06
-    verts = [(xr, yr), (arc_x, yr - 0.85), (arc_x, yd + 0.85), (xd, yd)]
+    verts = [(xr, yr), (arc_x, yr - 0.90), (arc_x, yd + 0.90), (xd, yd)]
     codes = [MplPath.MOVETO, MplPath.CURVE4, MplPath.CURVE4, MplPath.CURVE4]
     arc = mpatches.PathPatch(
-        MplPath(verts, codes), facecolor="none", edgecolor=ROSE, lw=2.3, ls="--", zorder=6,
+        MplPath(verts, codes), facecolor="none", edgecolor=ROSE, lw=1.6, ls="--", zorder=6,
     )
     ax.add_patch(arc)
 
     ym_arc = 0.5 * (yr + yd)
+    codons_str = " · ".join(["N7T", "I384T", "S392A", "G601A"])
+    assert sh["codons_1based"] == [7, 384, 392, 601], f"Unexpected prestin codons: {sh['codons_1based']}"
     ax.text(
-        max(xr, xd) + 0.03, ym_arc,
-        f"Convergent sonar link (+{sh['net_mdl_gain_nats']:.1f} nats, P = {100*sh['posterior_prob']:.1f}%)\n"
-        "4 shared motor codons: N7T · I384T · S392A · G601A",
-        fontsize=6.95, fontweight="bold", color=ROSE, ha="left", va="center",
-        zorder=8,
+        0.5 * (xr + xd) + 0.035, ym_arc,
+        f"Sonar link (+{sh['net_mdl_gain_nats']:.1f} nats, " + r"$P_{\mathrm{local}}$" + f" = {sh['posterior_prob']:.2f})\n"
+        f"4 motor codons: {codons_str}",
+        fontsize=6.05, fontweight="bold", color=ROSE, ha="left", va="center", zorder=8,
     )
 
-    ax.set_xlim(-0.08, align_x + 0.58)
+    ax.set_xlim(-0.10, align_x + 0.68)
     ax.set_ylim(-0.75, y_cursor[0] - 0.20)
     ax.axis("off")
+
+
+def draw_hair_cell_complex(ax, coch_4m, prestin_json, colors):
+    """Draw anatomical outer hair-cell stereocilia bundle mapped with cochlear convergence gains."""
+    INK = colors["INK"]
+    SUBINK = colors["SUBINK"]
+    TEAL = colors["TEAL"]
+    BLUE = colors["BLUE"]
+    VIOLET = colors["VIOLET"]
+    ROSE = colors["ROSE"]
+
+    coch_gains = {}
+    n_sp_aa = 0
+    n_free_aa = 0
+    for r in coch_4m:
+        if r["sp_aa"]["n_shunts"] > 0:
+            n_sp_aa += 1
+            coch_gains[r["symbol"]] = float(r["sp_aa"]["total_shunt_gain_nats"])
+        if r["free_aa"]["n_shunts"] > 0:
+            n_free_aa += 1
+    assert len(coch_gains) == 10, f"Expected 10 sp_aa cochlear hits, got {len(coch_gains)}"
+    prestin_gain = float(prestin_json["shunts"][0]["net_mdl_gain_nats"])
+
+    ax.set_xlim(-12, 114)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+
+    # Subtitle & metric key at top
+    ax.text(
+        50, 96.5,
+        f"Cochlear complex ({n_sp_aa}/{len(coch_4m)} sp. · {n_free_aa}/{len(coch_4m)} free)",
+        fontsize=6.4, fontweight="bold", color=INK, ha="center", va="center",
+    )
+    ax.text(
+        50, 90.5,
+        "Species-tree parallel gain (+nats)",
+        fontsize=6.0, color=SUBINK, ha="center", va="center",
+    )
+
+    # Cuticular plate (apical actin base) + lateral outer hair-cell wall
+    cutic = mpatches.FancyBboxPatch(
+        (26, 10.0), 45, 18.0, boxstyle="round,pad=0,rounding_size=2.2",
+        facecolor="#F1F5F9", edgecolor="#94A3B8", linewidth=0.6, zorder=1,
+    )
+    ax.add_patch(cutic)
+    ax.text(48.5, 13.5, "Cuticular plate", fontsize=5.9, color="#64748B", ha="center", va="center", zorder=2)
+
+    # Outer hair-cell lateral plasma membrane on right
+    ax.plot([25, 71, 71], [28, 28, 6], color="#475569", lw=1.1, zorder=2)
+    ax.plot([26, 68.5, 68.5], [27.0, 27.0, 6], color="#CBD5E1", lw=0.7, zorder=2)
+
+    # Tectorial membrane gel ribbon overlying tallest stereocilium
+    tect = mpatches.FancyBboxPatch(
+        (17.5, 79.2), 41.0, 6.2, boxstyle="round,pad=0,rounding_size=2.4",
+        facecolor="#E0F2FE", edgecolor="#0284C7", linewidth=0.65, alpha=0.82, zorder=1,
+    )
+    ax.add_patch(tect)
+    ax.text(38.0, 82.3, "Tectorial membrane", fontsize=5.9, color="#0369A1", ha="center", va="center", zorder=3)
+
+    # Three stepped stereocilia (Tall, Mid, Short) + tapered actin rootlets
+    for cx, w, y_top in [(34.0, 7.6, 77.5), (48.0, 7.0, 61.5), (61.0, 6.4, 47.0)]:
+        shaft = mpatches.FancyBboxPatch(
+            (cx - w / 2.0, 27.5), w, y_top - 27.5,
+            boxstyle="round,pad=0,rounding_size=3.0",
+            facecolor="#EFF6FF", edgecolor="#64748B", linewidth=0.75, zorder=2,
+        )
+        ax.add_patch(shaft)
+        ax.plot([cx, cx], [18.5, 29.0], color="#94A3B8", lw=1.25, zorder=2)
+        ax.plot([cx, cx], [29.0, 35.5], color="#94A3B8", lw=0.8, zorder=2)
+
+    # Tip links connecting shorter tip to taller adjacent shaft
+    ax.plot([48.0, 37.8], [61.5, 69.2], color=SUBINK, lw=1.0, zorder=3)
+    ax.plot([61.0, 51.5], [47.0, 54.0], color=SUBINK, lw=1.0, zorder=3)
+
+    # Shaft connectors and basal ankle links
+    ax.plot([37.8, 44.5], [50.0, 50.0], color="#64748B", lw=0.85, ls="-", zorder=3)
+    ax.plot([51.5, 57.8], [41.0, 41.0], color="#64748B", lw=0.85, ls="-", zorder=3)
+    ax.plot([37.8, 44.5], [32.2, 32.2], color=TEAL, lw=0.95, zorder=3)
+    ax.plot([51.5, 57.8], [32.2, 32.2], color=TEAL, lw=0.95, zorder=3)
+
+    # Mapped compartment nodes: (symbol, anchor_xy, label_xy, ha, col, gain)
+    nodes = [
+        # Right column labels
+        ("STRC", (38.0, 78.2), (73.0, 79.0), "left", VIOLET, coch_gains["STRC"]),
+        ("CDH23", (42.8, 65.4), (73.0, 68.5), "left", ROSE, coch_gains["CDH23"]),
+        ("PCDH15", (46.8, 62.3), (73.0, 59.0), "left", VIOLET, coch_gains["PCDH15"]),
+        ("CIB2", (51.5, 54.0), (73.0, 49.5), "left", BLUE, coch_gains["CIB2"]),
+        ("TMC1", (61.0, 47.0), (73.0, 40.0), "left", BLUE, coch_gains["TMC1"]),
+        ("Prestin", (71.0, 15.0), (75.5, 15.0), "left", ROSE, prestin_gain),
+        # Left column labels
+        ("LOXHD1", (41.2, 50.0), (20.5, 52.0), "right", VIOLET, coch_gains["LOXHD1"]),
+        ("USH2A", (41.2, 32.2), (20.5, 39.5), "right", TEAL, coch_gains["USH2A"]),
+        ("ADGRV1", (54.6, 32.2), (20.5, 29.8), "right", TEAL, coch_gains["ADGRV1"]),
+        ("WHRN", (34.0, 29.0), (20.5, 21.0), "right", TEAL, coch_gains["WHRN"]),
+        ("TRIOBP", (34.0, 19.5), (20.5, 11.8), "right", ROSE, coch_gains["TRIOBP"]),
+    ]
+
+    for sym, (ax0, ay0), (tx, ty), ha, col, gain in nodes:
+        msz = 16.0 + 1.55 * gain
+        ax.plot([ax0, tx - 1.5 if ha == "left" else tx + 1.5], [ay0, ty],
+                color="#94A3B8", lw=0.55, zorder=3)
+        ax.scatter([ax0], [ay0], s=msz, color=col, edgecolor="white", linewidth=0.65, zorder=5)
+        ax.text(
+            tx, ty, r"$\it{" + sym + r"}$" + f" +{gain:.1f}",
+            fontsize=6.15, fontweight="bold" if gain >= 14.0 else "normal",
+            color=col if gain >= 14.0 else INK, ha=ha, va="center", zorder=6,
+        )
+
+    ax.text(
+        75.5, 8.5, "(lateral wall)", fontsize=6.0, color=SUBINK, ha="left", va="center",
+    )
 
 
 def main() -> None:
     tp = json.loads((R4_DIR / "toga2_protein_atlas.json").read_text())
     ls = json.loads((R4_DIR / "toga2_protein_length_strata.json").read_text())
     coch_4m = json.loads((R4_DIR / "toga2_cochlear_4modes.json").read_text())
-    dm = json.loads((SCRATCH_DIR / "toga2_deep_mining_atlas.json").read_text())
+    dm = json.loads((R4_DIR / "toga2_deep_mining_atlas.json").read_text())
     prestin_tree, prestin_json = ensure_prestin_specimen()
 
     plt.rcParams.update({
         "font.family": "sans-serif",
-        "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+        "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
         "pdf.fonttype": 42,
         "ps.fonttype": 42,
-        "font.size": 8.3,
+        "mathtext.fontset": "custom",
+        "mathtext.rm": "sans",
+        "mathtext.it": "sans:italic",
+        "mathtext.bf": "sans:bold",
+        "mathtext.default": "it",
+        "font.size": 6.5,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.edgecolor": "#475569",
-        "axes.linewidth": 0.8,
+        "axes.linewidth": 0.55,
+        "xtick.major.width": 0.50,
+        "ytick.major.width": 0.50,
+        "xtick.major.size": 2.4,
+        "ytick.major.size": 2.4,
+        "xtick.major.pad": 2.2,
+        "ytick.major.pad": 2.2,
         "xtick.color": "#334155",
         "ytick.color": "#334155",
     })
@@ -306,63 +433,64 @@ def main() -> None:
     ROSE = "#E11D48"
     VIOLET = "#7C3AED"
 
-    fig = plt.figure(figsize=(12.8, 8.9), facecolor="white")
+    fig = plt.figure(figsize=(7.25, 5.35), facecolor="white")
 
     n_prot = tp["n_proteins_completed"]
-
-    draw_panel_header(fig, 0.028, 0.965, "A", "Mammalian Prestin (SLC26A5) network keeps clades intact (116 species)", INK)
-    draw_panel_header(fig, 0.540, 0.965, "B", f"Species-tree fit & lineage sorting ({n_prot:,} proteins)", INK)
-    draw_panel_header(fig, 0.028, 0.468, "C", "Paralog conversion vs. convergence across 882 mammals", INK)
-    draw_panel_header(fig, 0.515, 0.468, "D", "Ecological guilds (whole proteome) vs. inner-ear pathway", INK)
+    draw_panel_header(fig, 0.012, 0.968, "A", r"$\it{Prestin}$ sonar network (116 mammals)")
+    draw_panel_header(fig, 0.552, 0.968, "B", f"Species-tree fit & ILS ({n_prot:,} proteins)")
+    draw_panel_header(fig, 0.012, 0.472, "C", "Conversion vs. parallel sites (882 mammals)")
+    draw_panel_header(fig, 0.398, 0.472, "D", "Guild neutrality vs. cochlear bundle")
 
     # =========================================================================
-    # PANEL A (Top-Left): Authentic Mammalian Prestin (SLC26A5) Network
+    # PANEL A (Top-Left Hero): Authentic Mammalian Prestin Network
     # =========================================================================
-    ax_a = fig.add_axes([0.030, 0.505, 0.475, 0.435])
+    ax_a = fig.add_axes([0.014, 0.506, 0.510, 0.440])
     draw_prestin_network(ax_a, prestin_tree, prestin_json, {
         "INK": INK, "SUBINK": SUBINK, "BLUE": BLUE, "TEAL": TEAL, "ROSE": ROSE, "AMBER": AMBER,
     })
 
     # =========================================================================
-    # PANEL B (Top-Right): Species-Tree Preference & True Lineage Sorting Rate
+    # PANEL B (Top-Right): Species-Tree Preference & Lineage Sorting Rate
     # =========================================================================
-    ax_b = fig.add_axes([0.585, 0.555, 0.388, 0.355])
+    ax_b = fig.add_axes([0.612, 0.576, 0.372, 0.348])
     x = np.arange(len(ls))
     xlbls = ["<150", "150–300", "300–500", "500–800", "800–1,500", ">1,500"]
     sp_pref = [100.0 * s["species_tree_shorter_dl_frac"] for s in ls]
     prot_ils = [100.0 * s["mdl_conflict_rate_per_total"] for s in ls]
+    tot_genes = sum(s["genes"] for s in ls)
+    overall_sp = 100.0 * sum(s["genes"] * s["species_tree_shorter_dl_frac"] for s in ls) / tot_genes
+    overall_ils = 100.0 * tp["tree_resolution_and_concordance"]["mdl_discordant_frac_of_max_binary"]
+    dna_base = 100.0 * tp["fig4b_matched_denominators"]["nt_19952"]["mdl_discordant_frac_of_max_binary"]
 
-    ax_b.grid(axis="y", color=HAIR, lw=0.7, zorder=0)
-    ax_b.plot(x, sp_pref, "-o", color=BLUE, lw=2.3, ms=5.6, zorder=5)
-    ax_b.plot(x, prot_ils, "-s", color=AMBER, lw=2.1, ms=5.0, zorder=4)
+    ax_b.grid(axis="y", color=HAIR, lw=0.45, zorder=0)
+    ax_b.plot(x, sp_pref, "-o", color=BLUE, lw=1.35, ms=3.5, zorder=5)
+    ax_b.plot(x, prot_ils, "-s", color=AMBER, lw=1.25, ms=3.1, zorder=4)
+    ax_b.axhline(dna_base, color=TEAL, ls="--", lw=0.85, zorder=3)
 
-    dna_base = 100.0 * tp.get("fig4b_matched_denominators", {}).get("nt_19952", {}).get("mdl_discordant_frac_of_max_binary", 0.207711)
-    ax_b.axhline(dna_base, color=TEAL, ls="--", lw=1.3, zorder=3)
-    ax_b.text(0.05, dna_base + 2.0, f"Coding-DNA branch-conflict ceiling ({dna_base:.1f}%)",
-              fontsize=7.3, fontweight="bold", color=TEAL, ha="left", va="bottom")
+    ax_b.text(0.05, dna_base + 2.8, f"Coding-DNA ceiling ({dna_base:.1f}%)",
+              fontsize=6.2, fontweight="bold", color=TEAL, ha="left", va="bottom")
+    ax_b.text(2.45, 70.0, f"Species tree compresses better\nthan free gene tree ({overall_sp:.1f}% \u2192 {sp_pref[-1]:.1f}%)",
+              fontsize=6.2, fontweight="bold", color=BLUE, ha="center", va="top")
+    ax_b.text(3.30, 11.2, f"Protein ILS ({overall_ils:.1f}%)",
+              fontsize=6.2, fontweight="bold", color=AMBER, ha="center", va="top")
 
-    ax_b.text(2.75, 74.5, "Proteins compressed better by species tree\nthan by free gene tree (85.9% to 97.9%)",
-              fontsize=7.5, fontweight="bold", color=BLUE, ha="center", va="top")
-    ax_b.text(3.25, 11.5, "Species-tree branch conflict in proteins\n(incomplete lineage sorting, 19.8%)",
-              fontsize=7.4, fontweight="bold", color=AMBER, ha="center", va="top")
-
-    ax_b.scatter([x[-1]], [sp_pref[-1]], s=68, color=BLUE, edgecolor="white", linewidth=1.0, zorder=6)
-    ax_b.text(x[-1] - 0.08, sp_pref[-1] - 5.0, "97.9%", fontsize=7.9, fontweight="bold", color=BLUE, ha="right")
+    ax_b.scatter([x[-1]], [sp_pref[-1]], s=26, color=BLUE, edgecolor="white", linewidth=0.65, zorder=6)
+    ax_b.text(x[-1] - 0.10, sp_pref[-1] - 6.0, f"{sp_pref[-1]:.1f}%", fontsize=6.3, fontweight="bold", color=BLUE, ha="right")
 
     ax_b.set_xticks(x)
-    ax_b.set_xticklabels(xlbls, fontsize=7.8)
+    ax_b.set_xticklabels(xlbls, fontsize=6.2)
     ax_b.set_xlim(-0.25, 5.25)
     ax_b.set_ylim(0, 108)
     ax_b.set_yticks([0, 25, 50, 75, 100])
-    ax_b.set_yticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7.8)
-    ax_b.set_xlabel("Protein length (amino acids)", fontsize=8.3, fontweight="bold", color=INK)
-    ax_b.set_ylabel("Proteins (blue) or candidate branches (%)", fontsize=8.3, fontweight="bold", color=INK)
+    ax_b.set_yticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=6.2)
+    ax_b.set_xlabel("Protein length (residues)", fontsize=6.8, color=INK)
+    ax_b.set_ylabel("Proteins or candidate splits (%)", fontsize=6.8, color=INK)
 
     # =========================================================================
-    # PANEL C (Bottom-Left): Taxonomic Reach + Tandem Family Conversion Lollipops
+    # PANEL C (Bottom-Left): Taxonomic Reach + Tandem Family Conversion
     # =========================================================================
-    ax_c_top = fig.add_axes([0.175, 0.278, 0.295, 0.125])
-    ax_c_bot = fig.add_axes([0.175, 0.072, 0.295, 0.150])
+    ax_c_top = fig.add_axes([0.132, 0.282, 0.236, 0.112])
+    ax_c_bot = fig.add_axes([0.132, 0.080, 0.236, 0.148])
 
     sh_tot = tp["shunt_totals_on_species_tree"]
     tot_int = sh_tot["total_interval_shunts"]
@@ -374,155 +502,120 @@ def main() -> None:
     sp_intra_fam = 100.0 * (tot_sp - sh_tot["inter_order_sparse_shunts"] - sh_tot["inter_family_intra_order_sparse_shunts"]) / tot_sp
 
     reach_rows = [
-        ("Cross-order reach", int_inter_ord, sp_inter_ord),
-        ("Within-family reach", int_intra_fam, sp_intra_fam),
+        ("Cross-order", int_inter_ord, sp_inter_ord),
+        ("Within-family", int_intra_fam, sp_intra_fam),
     ]
     yr = np.arange(len(reach_rows))
-    ax_c_top.grid(axis="x", color=HAIR, lw=0.7, zorder=0)
+    ax_c_top.grid(axis="x", color=HAIR, lw=0.45, zorder=0)
     for idx, (lbl, v_conv, v_par) in enumerate(reach_rows):
-        ax_c_top.axhline(idx, color="#F1F5F9", lw=1.3, zorder=1)
-        ax_c_top.plot([v_conv, v_par], [idx, idx], color="#CBD5E1", lw=1.8, zorder=2)
-        ax_c_top.scatter([v_conv], [idx], s=54, color=TEAL, edgecolor="white", linewidth=0.8, zorder=5)
-        ax_c_top.scatter([v_par], [idx], s=54, color=VIOLET, edgecolor="white", linewidth=0.8, zorder=5)
+        ax_c_top.plot([v_conv, v_par], [idx, idx], color="#CBD5E1", lw=1.35, zorder=2)
+        ax_c_top.scatter([v_conv], [idx], s=26, color=TEAL, edgecolor="white", linewidth=0.55, zorder=5)
+        ax_c_top.scatter([v_par], [idx], s=26, color=VIOLET, edgecolor="white", linewidth=0.55, zorder=5)
 
-    ax_c_top.text(int_intra_fam + 2.5, 1, f"{int_intra_fam:.1f}%", va="center", fontsize=7.4, fontweight="bold", color=TEAL)
-    ax_c_top.text(int_inter_ord + 2.0, 0.24, f"{int_inter_ord:.1f}%", va="bottom", ha="left", fontsize=7.1, fontweight="bold", color=TEAL)
-    ax_c_top.text(sp_inter_ord + 2.5, 0, f"{sp_inter_ord:.1f}% ({sp_inter_ord / int_inter_ord:.1f}×)", va="center", fontsize=7.4, fontweight="bold", color=VIOLET)
+    ax_c_top.text(int_intra_fam + 3.0, 1, f"{int_intra_fam:.1f}%", va="center", ha="left", fontsize=6.2, fontweight="bold", color=TEAL)
+    ax_c_top.text(sp_intra_fam - 3.0, 1, f"{sp_intra_fam:.1f}%", va="center", ha="right", fontsize=6.1, color=VIOLET)
+    ax_c_top.text(int_inter_ord, 0.25, f"{int_inter_ord:.1f}%", va="bottom", ha="center", fontsize=6.1, fontweight="bold", color=TEAL)
+    ax_c_top.text(sp_inter_ord + 3.0, 0, f"{sp_inter_ord:.1f}% ({sp_inter_ord / int_inter_ord:.1f}×)", va="center", ha="left", fontsize=6.2, fontweight="bold", color=VIOLET)
 
     med_aa = dm["interval_tract_statistics"]["median_tract_length_aa"]
-    ax_c_top.scatter([0], [1.80], s=40, color=TEAL, clip_on=False)
-    ax_c_top.text(3.8, 1.80, f"Paralog gene conversion ({100.0 * sh_tot['proteins_with_interval_shunt'] / n_prot:.1f}% genes, median {med_aa} aa)", fontsize=7.1, fontweight="bold", color=TEAL, va="center", clip_on=False)
-    ax_c_top.scatter([0], [1.44], s=40, color=VIOLET, clip_on=False)
-    ax_c_top.text(3.8, 1.44, f"Parallel sites ({100.0 * sh_tot['proteins_with_sparse_shunt'] / n_prot:.1f}% genes)", fontsize=7.1, fontweight="bold", color=VIOLET, va="center", clip_on=False)
+    ax_c_top.scatter([0], [1.80], s=20, color=TEAL, clip_on=False)
+    ax_c_top.text(4.5, 1.80, f"Paralog conversion ({100.0 * sh_tot['proteins_with_interval_shunt'] / n_prot:.1f}%, med. {med_aa} aa)",
+                  fontsize=6.15, fontweight="bold", color=TEAL, va="center", clip_on=False)
+    ax_c_top.scatter([0], [1.42], s=20, color=VIOLET, clip_on=False)
+    ax_c_top.text(4.5, 1.42, f"Parallel sites ({100.0 * sh_tot['proteins_with_sparse_shunt'] / n_prot:.1f}% genes)",
+                  fontsize=6.15, fontweight="bold", color=VIOLET, va="center", clip_on=False)
 
     ax_c_top.set_yticks(yr)
-    ax_c_top.set_yticklabels([r[0] for r in reach_rows], fontsize=7.8, color=INK)
+    ax_c_top.set_yticklabels([r[0] for r in reach_rows], fontsize=6.3, color=INK)
     ax_c_top.set_xlim(0, 102)
-    ax_c_top.set_ylim(-0.45, 1.32)
+    ax_c_top.set_ylim(-0.48, 1.25)
     ax_c_top.set_xticks([0, 50, 100])
-    ax_c_top.set_xticklabels(["0%", "50%", "100%"], fontsize=7.5)
+    ax_c_top.set_xticklabels(["0%", "50%", "100%"], fontsize=6.2)
 
     fam_map = {f["family"]: f for f in dm["gene_family_shunt_enrichment"]}
     fam_rows = [
-        ("CYP / UGT / GST enzymes", fam_map["Xenobiotic Detoxification (CYP/UGT/AKR/GST)"]["interval_gene_pct"], TEAL, f"{fam_map['Xenobiotic Detoxification (CYP/UGT/AKR/GST)']['interval_fold_enrichment']:.1f}×"),
-        ("Olfactory receptors (OR)", fam_map["Olfactory Receptors (OR)"]["interval_gene_pct"], TEAL, f"{fam_map['Olfactory Receptors (OR)']['interval_fold_enrichment']:.1f}×"),
-        ("KRAB zinc-finger arrays", fam_map["KRAB / C2H2 Zinc-Finger Arrays"]["interval_gene_pct"], TEAL, f"{fam_map['KRAB / C2H2 Zinc-Finger Arrays']['interval_fold_enrichment']:.1f}×"),
+        ("CYP / UGT / GST", fam_map["Xenobiotic Detoxification (CYP/UGT/AKR/GST)"]["interval_gene_pct"], TEAL, f"{fam_map['Xenobiotic Detoxification (CYP/UGT/AKR/GST)']['interval_fold_enrichment']:.1f}×"),
+        ("Olfactory (OR)", fam_map["Olfactory Receptors (OR)"]["interval_gene_pct"], TEAL, f"{fam_map['Olfactory Receptors (OR)']['interval_fold_enrichment']:.1f}×"),
+        ("KRAB zinc-finger", fam_map["KRAB / C2H2 Zinc-Finger Arrays"]["interval_gene_pct"], TEAL, f"{fam_map['KRAB / C2H2 Zinc-Finger Arrays']['interval_fold_enrichment']:.1f}×"),
         ("Other coding loci", fam_map["Other Coding Loci"]["interval_gene_pct"], MUTED, f"{fam_map['Other Coding Loci']['interval_fold_enrichment']:.2f}×"),
     ][::-1]
 
     yf = np.arange(len(fam_rows))
-    ax_c_bot.grid(axis="x", color=HAIR, lw=0.7, zorder=0)
+    ax_c_bot.grid(axis="x", color=HAIR, lw=0.45, zorder=0)
     for idx, (lbl, pct, col, fold_txt) in enumerate(fam_rows):
-        ax_c_bot.plot([0, pct], [idx, idx], color="#CBD5E1", lw=1.7, zorder=2)
-        ax_c_bot.scatter([pct], [idx], s=50, color=col, edgecolor="white", linewidth=0.8, zorder=4)
-        ax_c_bot.text(pct + 0.95, idx, f"{pct:.1f}% ({fold_txt})", va="center", ha="left",
-                      fontsize=7.3, fontweight="bold" if col == TEAL else "normal", color=col if col == TEAL else SUBINK)
+        ax_c_bot.plot([0, pct], [idx, idx], color="#CBD5E1", lw=1.25, zorder=2)
+        ax_c_bot.scatter([pct], [idx], s=24, color=col, edgecolor="white", linewidth=0.55, zorder=4)
+        ax_c_bot.text(pct + 1.2, idx, f"{pct:.1f}% ({fold_txt})", va="center", ha="left",
+                      fontsize=6.15, fontweight="bold" if col == TEAL else "normal",
+                      color=col if col == TEAL else SUBINK)
 
     ax_c_bot.set_yticks(yf)
-    ax_c_bot.set_yticklabels([r[0] for r in fam_rows], fontsize=7.7, color=INK)
-    ax_c_bot.set_xlim(0, 44.0)
+    ax_c_bot.set_yticklabels([r[0] for r in fam_rows], fontsize=6.25, color=INK)
+    ax_c_bot.set_xlim(0, 56.0)
     ax_c_bot.set_ylim(-0.55, 3.55)
-    ax_c_bot.set_xticks([0, 15, 30])
-    ax_c_bot.set_xticklabels(["0%", "15%", "30%"], fontsize=7.6)
-    ax_c_bot.set_xlabel("Proteins with paralog gene conversion (%)", fontsize=8.1, fontweight="bold", color=INK)
+    ax_c_bot.set_xticks([0, 20, 40])
+    ax_c_bot.set_xticklabels(["0%", "20%", "40%"], fontsize=6.2)
+    ax_c_bot.set_xlabel("Proteins with conversion (%)", fontsize=6.8, color=INK)
 
     # =========================================================================
-    # PANEL D (Bottom-Right): Guild Convergence (left) + Auditory Complex (right)
+    # PANEL D (Bottom-Right): Guild Neutrality + Cochlear Stereocilia Schematic
     # =========================================================================
-    ax_d1 = fig.add_axes([0.618, 0.072, 0.145, 0.342])
-    ax_d2 = fig.add_axes([0.832, 0.072, 0.148, 0.342])
+    ax_d1 = fig.add_axes([0.486, 0.080, 0.172, 0.336])
+    ax_d2 = fig.add_axes([0.674, 0.015, 0.318, 0.430])
 
     eg = tp["ecological_guild_enrichment"]
+    ant_raw = eg["myrmecophagous_insectivorous_armor"]["fold_enrichment"]
+    ant_adj = eg["myrmecophagous_insectivorous_armor"]["length_adjusted_fold_raw"]
     guild_rows = [
-        ("Armored ant-eaters\n(giant / multicopy)", eg["myrmecophagous_insectivorous_armor"]["fold_enrichment"],
-         AMBER, f"{eg['myrmecophagous_insectivorous_armor']['fold_enrichment']:.1f}× raw\n({eg['myrmecophagous_insectivorous_armor']['length_adjusted_fold_raw']:.2f}× len-adj.)"),
-        ("Subterranean blind\n(moles, mole-rats)", eg["subterranean_blind"]["fold_enrichment"],
-         SUBINK, f"{eg['subterranean_blind']['fold_enrichment']:.2f}×"),
-        ("Marine / aquatic\n(whales, seals)", eg["marine_aquatic"]["fold_enrichment"],
-         SUBINK, f"{eg['marine_aquatic']['fold_enrichment']:.2f}×"),
-        ("All echolocators\n(bats, whales, solen.)", eg["echolocators"]["fold_enrichment"],
-         SUBINK, f"{eg['echolocators']['fold_enrichment']:.2f}×"),
-        ("Bats + toothed\nwhales", eg["echolocating_bats_and_toothed_whales"]["fold_enrichment"],
-         SUBINK, f"{eg['echolocating_bats_and_toothed_whales']['fold_enrichment']:.2f}×"),
+        ("Ant-eaters", ant_adj, AMBER, f"{ant_adj:.2f}× adj.", ant_raw),
+        ("Subterranean", eg["subterranean_blind"]["fold_enrichment"], SUBINK, f"{eg['subterranean_blind']['fold_enrichment']:.2f}×", None),
+        ("Marine", eg["marine_aquatic"]["fold_enrichment"], SUBINK, f"{eg['marine_aquatic']['fold_enrichment']:.2f}×", None),
+        ("Echolocators", eg["echolocators"]["fold_enrichment"], SUBINK, f"{eg['echolocators']['fold_enrichment']:.2f}×", None),
+        ("Bats + whales", eg["echolocating_bats_and_toothed_whales"]["fold_enrichment"], SUBINK, f"{eg['echolocating_bats_and_toothed_whales']['fold_enrichment']:.2f}×", None),
     ][::-1]
 
     yc = np.arange(len(guild_rows))
     ax_d1.set_xscale("log")
-    ax_d1.grid(axis="x", which="major", color=HAIR, lw=0.7, zorder=0)
-    ax_d1.axvline(1.0, color="#334155", ls="--", lw=1.0, zorder=2)
-    ax_d1.text(0.28, 4.76, "Whole proteome (by ecology)", ha="left", va="bottom",
-               fontsize=7.3, fontweight="bold", color=INK, clip_on=False)
-    ax_d1.text(1.05, 4.42, "1× random", ha="left", va="top", fontsize=6.9, fontweight="bold", color=SUBINK)
+    ax_d1.grid(axis="x", which="major", color=HAIR, lw=0.45, zorder=0)
+    ax_d1.axvline(1.0, color="#334155", ls="--", lw=0.75, zorder=2)
+    ax_d1.text(0.32, 4.72, "Whole-proteome guilds", ha="left", va="bottom",
+               fontsize=6.35, fontweight="bold", color=INK, clip_on=False)
+    ax_d1.text(0.90, 4.30, "1× null", ha="right", va="bottom", fontsize=5.95, color=SUBINK)
 
-    for idx, (lbl, fv, col, note) in enumerate(guild_rows):
-        ax_d1.axhline(idx, color="#F8FAFC", lw=1.1, zorder=1)
-        ax_d1.plot([1.0, fv], [idx, idx], color=col, lw=2.0, zorder=3)
-        ax_d1.scatter([fv], [idx], s=52, color=col, edgecolor="white", linewidth=0.8, zorder=5)
-        if fv >= 2.0:
-            ax_d1.text(fv * 1.18, idx, note, va="center", ha="left", fontsize=6.4, fontweight="bold", color=col)
+    for idx, (lbl, fv, col, note, raw_fv) in enumerate(guild_rows):
+        ax_d1.plot([1.0, fv], [idx, idx], color=col, lw=1.35, zorder=3)
+        ax_d1.scatter([fv], [idx], s=26, color=col, edgecolor="white", linewidth=0.55, zorder=5)
+        if raw_fv is not None:
+            ax_d1.scatter([raw_fv], [idx], s=26, facecolor="white", edgecolor=AMBER, linewidth=1.0, zorder=5)
+            ax_d1.annotate(
+                "", xy=(fv * 1.18, idx), xytext=(raw_fv * 0.85, idx),
+                arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=0.95, shrinkA=0, shrinkB=0, mutation_scale=7.5),
+                zorder=4,
+            )
+            ax_d1.text(fv * 1.08, idx - 0.36, note, va="top", ha="left", fontsize=6.05, fontweight="bold", color=AMBER)
+            ax_d1.text(raw_fv, idx + 0.25, f"{raw_fv:.1f}× raw", va="bottom", ha="center", fontsize=6.05, color=AMBER)
         elif fv >= 1.0:
-            ax_d1.text(fv * 1.22, idx, note, va="center", ha="left", fontsize=7.0, color=col)
+            ax_d1.text(fv * 1.24, idx, note, va="center", ha="left", fontsize=6.1, color=col)
         else:
-            ax_d1.text(1.18, idx, note, va="center", ha="left", fontsize=7.0, color=col)
+            ax_d1.text(1.18, idx, note, va="center", ha="left", fontsize=6.1, color=col)
 
     ax_d1.set_yticks(yc)
-    ax_d1.set_yticklabels([r[0] for r in guild_rows], fontsize=7.1, color=INK)
-    ax_d1.set_xlim(0.28, 220.0)
-    ax_d1.set_ylim(-0.55, 4.55)
+    ax_d1.set_yticklabels([r[0] for r in guild_rows], fontsize=6.25, color=INK)
+    ax_d1.set_xlim(0.30, 40.0)
+    ax_d1.set_ylim(-0.55, 4.65)
     ax_d1.set_xticks([0.5, 1, 4, 16])
-    ax_d1.set_xticklabels(["0.5×", "1×", "4×", "16×"], fontsize=7.3)
-    ax_d1.set_xlabel("Fold excess over random (1×)", fontsize=7.8, fontweight="bold", color=INK)
+    ax_d1.set_xticklabels(["0.5×", "1×", "4×", "16×"], fontsize=6.2)
+    ax_d1.minorticks_off()
+    ax_d1.set_xlabel("Fold excess vs. random", fontsize=6.8, color=INK)
 
-    # D2: Cochlear hair-cell mechanotransduction complex (10/27 species-tree AA; 19/27 free AA)
-    role_tags = {
-        "USH2A": "ankle",
-        "ADGRV1": "ankle",
-        "TRIOBP": "rootlet",
-        "CDH23": "tip link",
-        "LOXHD1": "bundle",
-        "CIB2": "Ca sensor",
-        "WHRN": "ankle",
-        "STRC": "tectorial",
-        "PCDH15": "tip link",
-        "TMC1": "pore",
-    }
-    focal_coch = []
-    n_sp_aa = 0
-    n_free_aa = 0
-    for r in coch_4m:
-        sym = r["symbol"]
-        if r["sp_aa"]["n_shunts"] > 0:
-            n_sp_aa += 1
-        if r["free_aa"]["n_shunts"] > 0:
-            n_free_aa += 1
-        if sym in role_tags and r["sp_aa"]["n_shunts"] > 0:
-            tot_gain = r["sp_aa"]["total_shunt_gain_nats"]
-            focal_coch.append((sym, tot_gain, role_tags[sym]))
-    focal_coch.sort(key=lambda x: x[1])
-
-    yd = np.arange(len(focal_coch))
-    ax_d2.grid(axis="x", color=HAIR, lw=0.7, zorder=0)
-    ax_d2.text(0.0, len(focal_coch) - 0.10, f"Inner-ear complex ({n_sp_aa}/{len(coch_4m)} sp.; {n_free_aa}/{len(coch_4m)} free)",
-               fontsize=7.1, fontweight="bold", color=INK, ha="left", va="bottom", clip_on=False)
-    for idx, (sym, v, tag) in enumerate(focal_coch):
-        ax_d2.plot([0, v], [idx, idx], color="#CBD5E1", lw=1.6, zorder=2)
-        ax_d2.scatter([v], [idx], s=48, color=VIOLET, edgecolor="white", linewidth=0.8, zorder=4)
-        ax_d2.text(v + 1.5, idx, f"+{v:.1f} ({tag})", va="center", ha="left",
-                   fontsize=6.8, fontweight="bold" if sym in ("LOXHD1", "USH2A") else "normal",
-                   color=SUBINK)
-
-    ax_d2.set_yticks(yd)
-    ax_d2.set_yticklabels([x[0] for x in focal_coch], fontsize=7.2, fontweight="bold", color=INK)
-    ax_d2.set_xlim(0, 48)
-    ax_d2.set_ylim(-0.55, len(focal_coch) - 0.42)
-    ax_d2.set_xticks([0, 15, 30])
-    ax_d2.set_xticklabels(["0", "15", "30"], fontsize=7.4)
-    ax_d2.set_xlabel("Parallel-site compression gain (nats)", fontsize=7.8, fontweight="bold", color=INK)
+    draw_hair_cell_complex(ax_d2, coch_4m, prestin_json, {
+        "INK": INK, "SUBINK": SUBINK, "BLUE": BLUE, "TEAL": TEAL, "ROSE": ROSE, "VIOLET": VIOLET,
+    })
 
     OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
     OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT_PDF, dpi=300)
-    fig.savefig(OUT_PNG, dpi=250)
+    fig.savefig(OUT_PNG, dpi=450)
     plt.close(fig)
     print(f"Generated {OUT_PDF} and {OUT_PNG}")
 

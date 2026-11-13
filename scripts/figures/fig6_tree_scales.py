@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 """
-Generate Science-standard Figure 6 (`paper/fig_science_tree_scales.pdf` and
-`results/fig_science_tree_scales.png`), dedicated 100% to single-cell Darwinian
-selection and clonal evolution in immune repertoires and human cancer:
+Generate Science-caliber Figure 6 (`paper/fig_science_tree_scales.pdf` and
+`results/fig_science_tree_scales.png`) at native 3-column print width (7.25 in):
   - Panel A: Somatic burst hubs predict in vivo clonal expansion without cell-count
-             input across 147 mouse B-cell germinal centers (10,429 cells; 9.5x)
-             and 168 human myeloid scDNA-seq runs (1,001,609 cells; 6.18x).
-  - Panel B: Experimental yeast-display antibody-binding landscape (Delta log10 KD)
-             across inferred node classes and cross-mouse parallel CDR drivers (5.6x OR).
-  - Panel C: Grounding empirical patient specimen — Single-cell leukemic clonal
-             phylogeny of human patient AML-38-001 (7,016 sequenced cells),
-             reconstructed in 3.0 ms from deduplicated somatic genotypes with all
-             cell counts withheld: early +NPM1 splits into parallel +IDH1 (P = 0.996,
-             k = 3) and +IDH2 (P = 0.997, k = 4) burst hubs, each independently
-             radiating parallel subclonal FLT3, KRAS, NRAS, and PTPN11 branches.
-  - Panel D: Clonal trunk-to-subclone driver architecture and parallel resistance
-             across all 123 human acute myeloid leukemia patients (0.128 s).
+             input across 147 mouse B-cell germinal centers (10,429 cells) and
+             168 human myeloid scDNA-seq runs (1,001,609 cells).
+  - Panel B: Experimental yeast-display antibody-binding landscape (Delta log10 K_D)
+             ordered strictly by burst degree k = 0, 1, 2, >=3 alongside recurrent
+             cross-mouse parallel CDR drivers.
+  - Panel C: Grounding empirical patient specimen — single-cell clonal phylogeny of
+             human patient AML-38-001 reconstructed without cell counts.
+  - Panel D: Clonal trunk-to-subclone driver architecture and parallel signaling
+             resistance across 123 human acute myeloid leukemia patients.
 
-100% of plotted topologies, posteriors, and cell counts come directly from executed
-Bushwhacker outputs and JSON ledgers on disk. Zero bar charts, zero bordered boxes.
+100% of plotted topologies, posteriors, cell counts, and affinity shifts are loaded
+directly from executed Bushwhacker outputs and JSON ledgers on disk.
 """
 
 import json
@@ -28,6 +24,8 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.path import Path as MplPath
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -40,8 +38,15 @@ OUT_PNG = REPO_ROOT / "results" / "fig_science_tree_scales.png"
 
 
 def draw_panel_header(fig, x_fig, y_fig, letter, title, ink="#0F172A"):
-    fig.text(x_fig, y_fig, letter, fontsize=14, fontweight="bold", color=ink, ha="left", va="center")
-    fig.text(x_fig + 0.023, y_fig, title, fontsize=10.8, fontweight="bold", color=ink, ha="left", va="center")
+    fig.text(x_fig, y_fig, letter, fontsize=9.5, fontweight="bold", color=ink, ha="left", va="center")
+    fig.text(x_fig + 0.022, y_fig, title, fontsize=7.2, fontweight="bold", color="#1E293B", ha="left", va="center")
+
+
+def fmt_p(p):
+    """Format a p-value in Science style (e.g., 1.7 x 10^-3)."""
+    s = f"{p:.1e}"
+    mant, exp = s.split("e")
+    return rf"{mant} × $10^{{{int(exp)}}}$"
 
 
 def ensure_aml38_specimen():
@@ -74,6 +79,15 @@ def ensure_aml38_specimen():
     return tree_rec, muts, json.loads(js.read_text())
 
 
+def draw_bezier(ax, p0, p1, color, lw, alpha=1.0, zorder=2):
+    xm = 0.5 * (p0[0] + p1[0])
+    verts = [p0, (xm, p0[1]), (xm, p1[1]), p1]
+    codes = [MplPath.MOVETO, MplPath.CURVE4, MplPath.CURVE4, MplPath.CURVE4]
+    ax.add_patch(mpatches.PathPatch(
+        MplPath(verts, codes), facecolor="none", edgecolor=color, lw=lw, alpha=alpha, zorder=zorder,
+    ))
+
+
 def draw_aml38_patient_tree(ax, tree_rec, muts, bw_json, colors):
     """Render authentic Bushwhacker clonal tree of AML-38-001 with held-out cell counts."""
     INK = colors["INK"]
@@ -83,7 +97,6 @@ def draw_aml38_patient_tree(ax, tree_rec, muts, bw_json, colors):
     TEAL = colors["TEAL"]
     SLATE = "#64748B"
 
-    # Extract authentic cell counts from Morita Tapestri record by node_id
     cell_by_id = {}
     mut_by_id = {}
     def walk(nd):
@@ -94,98 +107,95 @@ def draw_aml38_patient_tree(ax, tree_rec, muts, bw_json, colors):
             walk(ch)
     walk(tree_rec)
 
-    # Exact Bushwhacker rooted topology on AML-38-001 (100% concordant with Tapestri tree,
-    # 0-length sampled-ancestor branches placing NPM1, IDH1, and IDH2 directly on internal hubs):
-    #   0 (WT) -> 1 (+NPM1, 117c)
-    #     |-- P = 0.972 --> 2 (+IDH1 hub, 395c, k=3) -> [5 (+KRAS, 2611c), 6 (+PTPN11, 547c), 4 (+FLT3, 95c)]
-    #     |-- P = 0.994 --> 3 (+IDH2 hub, 360c, k=4) -> [7 (+FLT3, 1476c), 9 (+NRAS, 1043c), 10 (+PTPN11, 105c), 8 (+KRAS, 34c)]
-
-    # Vertical positions (top to bottom cleanly spaced across 7 signaling leaves):
-    # Top block (IDH1 k=3 burst): y = 5.4, 4.4, 3.4 -> hub y = 4.4
-    # Bottom block (IDH2 k=4 burst): y = 2.1, 1.2, 0.3, -0.6 -> hub y = 0.75
     pos = {
         0: (0.04, 2.58),   # WT root
-        1: (0.21, 2.58),   # +NPM1 founder (117 cells)
-        2: (0.46, 4.40),   # +IDH1 hub (395 cells, k=3, P=0.97)
-        5: (0.73, 5.35),   # +KRAS (2,611 cells)
-        6: (0.73, 4.40),   # +PTPN11 (547 cells)
-        4: (0.73, 3.45),   # +FLT3 (95 cells)
-        3: (0.46, 0.75),   # +IDH2 hub (360 cells, k=4, P=0.99)
-        7: (0.73, 2.10),   # +FLT3 (1,476 cells)
-        9: (0.73, 1.20),   # +NRAS (1,043 cells)
-        10: (0.73, 0.30),  # +PTPN11 (105 cells)
-        8: (0.73, -0.60),  # +KRAS (34 cells)
+        1: (0.20, 2.58),   # +NPM1 founder (117 cells)
+        2: (0.43, 4.35),   # +IDH1 hub (395 cells, k=3)
+        5: (0.71, 5.25),   # +KRAS (2,611 cells)
+        6: (0.71, 4.35),   # +PTPN11 (547 cells)
+        4: (0.71, 3.45),   # +FLT3 (95 cells)
+        3: (0.43, 0.80),   # +IDH2 hub (360 cells, k=4)
+        7: (0.71, 2.15),   # +FLT3 (1,476 cells)
+        9: (0.71, 1.25),   # +NRAS (1,043 cells)
+        10: (0.71, 0.35),  # +PTPN11 (105 cells)
+        8: (0.71, -0.55),  # +KRAS (34 cells)
     }
 
-    # Draw trunk and hub radiation edges
-    # WT -> +NPM1
-    ax.plot([pos[0][0], pos[1][0]], [pos[0][1], pos[1][1]], color=SLATE, lw=2.0, zorder=2)
+    # Trunk WT -> +NPM1 -> +IDH1 / +IDH2 hubs
+    draw_bezier(ax, pos[0], pos[1], SLATE, lw=1.35, zorder=2)
+    draw_bezier(ax, pos[1], pos[2], TEAL, lw=1.40, zorder=2)
+    draw_bezier(ax, pos[1], pos[3], TEAL, lw=1.40, zorder=2)
 
-    # +NPM1 -> +IDH1 and +IDH2 metabolic hubs
-    x_fork = 0.28
-    ax.plot([pos[1][0], x_fork], [pos[1][1], pos[1][1]], color=TEAL, lw=2.1, zorder=2)
-    ax.plot([x_fork, x_fork], [pos[3][1], pos[2][1]], color=TEAL, lw=2.1, zorder=2)
-    ax.plot([x_fork, pos[2][0]], [pos[2][1], pos[2][1]], color=TEAL, lw=2.2, zorder=2)
-    ax.plot([x_fork, pos[3][0]], [pos[3][1], pos[3][1]], color=TEAL, lw=2.2, zorder=2)
-
-    # Star-burst rays from +IDH1 hub (k = 3) and +IDH2 hub (k = 4) directly to signaling subclones!
+    # Parallel signaling subclone rays from +IDH1 and +IDH2 burst hubs
     for hub_id, children in [(2, [5, 6, 4]), (3, [7, 9, 10, 8])]:
         xh, yh = pos[hub_id]
         for cid in children:
             xc, yc = pos[cid]
-            lw = 2.2 if cell_by_id[cid] >= 500 else 1.45
-            ax.plot([xh, xc], [yh, yc], color=ROSE, lw=lw, alpha=0.88, zorder=3)
+            lw = 1.45 if cell_by_id[cid] >= 500 else 0.95
+            draw_bezier(ax, (xh, yh), (xc, yc), ROSE, lw=lw, alpha=0.88, zorder=3)
 
-    # Helper to map leukemic cell count -> circle area (sqrt area scaling!)
     def node_size(cells):
-        return 30.0 + 6.2 * np.sqrt(max(10.0, float(cells)))
+        return 14.0 + 2.65 * np.sqrt(max(10.0, float(cells)))
 
     # WT root node
-    ax.scatter([pos[0][0]], [pos[0][1]], s=54, facecolor="white", edgecolor=SLATE, linewidth=1.8, zorder=5)
-    ax.text(pos[0][0], pos[0][1] + 0.42, "WT\nroot", ha="center", va="bottom", fontsize=6.9, fontweight="bold", color=SUBINK)
+    ax.scatter([pos[0][0]], [pos[0][1]], s=24, facecolor="white", edgecolor=SLATE, linewidth=1.1, zorder=5)
+    ax.text(pos[0][0], pos[0][1] + 0.38, "WT\nroot", ha="center", va="bottom", fontsize=6.15, fontweight="bold", color=SUBINK)
 
-    # Early +NPM1 founder & +IDH1 / +IDH2 metabolic burst hubs (blue + outer hub halo for k>=3!)
-    ax.scatter([pos[1][0]], [pos[1][1]], s=node_size(cell_by_id[1]), color=BLUE, edgecolor="white", linewidth=1.0, zorder=5)
-    ax.text(pos[1][0], pos[1][1] + 0.44, f"+NPM1\n({cell_by_id[1]} cells)", ha="center", va="bottom",
-            fontsize=7.0, fontweight="bold", color=BLUE)
+    # Early +NPM1 founder
+    ax.scatter([pos[1][0]], [pos[1][1]], s=node_size(cell_by_id[1]), color=BLUE, edgecolor="white", linewidth=0.75, zorder=5)
+    ax.text(pos[1][0], pos[1][1] + 0.40, r"+$\it{NPM1}$" + f"\n({cell_by_id[1]} cells)",
+            ha="center", va="bottom", fontsize=6.2, fontweight="bold", color=BLUE)
 
-    b1_p = {b["mdl_gain_nats"]: b["mdl_support"] for b in bw_json.get("internal_branches", [])}
+    # +IDH1 and +IDH2 burst hubs with soft radial halos
     sup_sorted = sorted(b["mdl_support"] for b in bw_json.get("internal_branches", []))
-    p_idh1 = f"P = {sup_sorted[0]:.3f}" if len(sup_sorted) >= 2 else "P = 0.996"
-    p_idh2 = f"P = {sup_sorted[-1]:.3f}" if len(sup_sorted) >= 2 else "P = 0.997"
-    for hid, p_str, k_deg in [(2, p_idh1, 3), (3, p_idh2, 4)]:
+    p_idh1 = sup_sorted[0] if len(sup_sorted) >= 2 else 0.996
+    p_idh2 = sup_sorted[-1] if len(sup_sorted) >= 2 else 0.997
+    for hid, p_val, k_deg in [(2, p_idh1, 3), (3, p_idh2, 4)]:
         xh, yh = pos[hid]
         sz = node_size(cell_by_id[hid])
-        # Outer burst halo ring + solid hub core
-        ax.scatter([xh], [yh], s=sz * 2.05, facecolor="none", edgecolor=TEAL, linewidth=1.35, ls="--", zorder=4)
-        ax.scatter([xh], [yh], s=sz, color=TEAL, edgecolor="white", linewidth=1.0, zorder=6)
-        dy = 0.56 if hid == 2 else -0.58
-        va = "bottom" if hid == 2 else "top"
-        ax.text(xh - 0.02, yh + dy,
-                f"+{mut_by_id[hid]} hub (k = {k_deg})\n{cell_by_id[hid]} cells · {p_str}",
-                ha="center", va=va, fontsize=7.0, fontweight="bold", color=TEAL)
+        ax.scatter([xh], [yh], s=sz * 2.5, color=TEAL, alpha=0.14, edgecolor="none", zorder=4)
+        ax.scatter([xh], [yh], s=sz * 1.65, facecolor="none", edgecolor=TEAL, linewidth=0.85, ls=":", zorder=4)
+        ax.scatter([xh], [yh], s=sz, color=TEAL, edgecolor="white", linewidth=0.75, zorder=6)
+        lbl_hub = (
+            r"+$\it{" + mut_by_id[hid] + r"}$" + f" hub ($k$ = {k_deg})\n"
+            f"{cell_by_id[hid]} cells · " + r"$P_{\mathrm{local}}$" + f" = {p_val:.3f}"
+        )
+        if hid == 2:
+            ax.text(xh - 0.02, yh + 0.45, lbl_hub, ha="center", va="bottom",
+                    fontsize=6.15, fontweight="bold", color=TEAL)
+        else:
+            ax.text(xh - 0.04, yh - 0.30, lbl_hub, ha="right", va="top",
+                    fontsize=6.15, fontweight="bold", color=TEAL)
 
-    # Parallel RTK/RAS signaling resistance subclones (crimson/rose)
+    # Signaling resistance subclones
     for cid in [5, 6, 4, 7, 9, 10, 8]:
         xc, yc = pos[cid]
         cells = cell_by_id[cid]
         gname = mut_by_id[cid]
-        ax.scatter([xc], [yc], s=node_size(cells), color=ROSE, alpha=0.92, edgecolor="white", linewidth=0.9, zorder=6)
+        ax.scatter([xc], [yc], s=node_size(cells), color=ROSE, alpha=0.92, edgecolor="white", linewidth=0.70, zorder=6)
         bold = cells >= 500
-        ax.text(xc + 0.032, yc, f"+{gname}  ({cells:,} cells)", va="center", ha="left",
-                fontsize=7.25 if bold else 6.95, fontweight="bold" if bold else "normal",
-                color=ROSE if bold else INK)
+        ax.text(
+            xc + 0.032, yc, r"+$\it{" + gname + r"}$" + f" ({cells:,})",
+            va="center", ha="left",
+            fontsize=6.25, fontweight="bold" if bold else "normal",
+            color=ROSE if bold else INK,
+        )
 
-    # Crisp inline caption header at top-left (zero boxes!)
-    ax.text(0.01, 6.08,
-            f"7,016 sequenced cells · {bw_json['runtime_sec']*1000:.1f} ms inference (cell counts withheld)",
-            fontsize=7.15, fontweight="bold", color=SUBINK, ha="left", va="top")
-    ax.text(0.01, -1.18,
-            "Circle area = held-out in vivo leukemic cells  |  3 parallel drivers (FLT3, KRAS, PTPN11) recur on both hubs",
-            fontsize=6.75, color=SUBINK, ha="left", va="bottom")
+    # Compact cell-count scale key in open upper-left space
+    ax.text(0.01, 5.18, "In vivo cells:", fontsize=6.0, fontweight="bold", color=SUBINK, ha="left", va="center")
+    for idx_s, (c_ref, xs, dx) in enumerate([(100, 0.03, 0.024), (500, 0.135, 0.028), (2500, 0.250, 0.036)]):
+        ax.scatter([xs], [4.62], s=node_size(c_ref), color="#CBD5E1", edgecolor=SLATE, linewidth=0.55, zorder=4)
+        ax.text(xs + dx, 4.62, f"{c_ref:,}", fontsize=6.0, color=SUBINK, ha="left", va="center")
+
+    ax.text(0.01, 5.95,
+            f"7,016 cells · {bw_json['runtime_sec']*1000:.1f} ms (counts withheld)",
+            fontsize=6.2, fontweight="bold", color=SUBINK, ha="left", va="top")
+    ax.text(0.01, -1.25,
+            r"Parallel $\it{FLT3}$, $\it{KRAS}$, $\it{PTPN11}$ clones arise on both hubs",
+            fontsize=6.1, color=SUBINK, ha="left", va="bottom")
 
     ax.set_xlim(-0.02, 1.08)
-    ax.set_ylim(-1.35, 6.25)
+    ax.set_ylim(-1.45, 6.15)
     ax.axis("off")
 
 
@@ -196,14 +206,25 @@ def main() -> None:
 
     plt.rcParams.update({
         "font.family": "sans-serif",
-        "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+        "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
         "pdf.fonttype": 42,
         "ps.fonttype": 42,
-        "font.size": 8.3,
+        "mathtext.fontset": "custom",
+        "mathtext.rm": "sans",
+        "mathtext.it": "sans:italic",
+        "mathtext.bf": "sans:bold",
+        "mathtext.default": "it",
+        "font.size": 6.5,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.edgecolor": "#475569",
-        "axes.linewidth": 0.8,
+        "axes.linewidth": 0.55,
+        "xtick.major.width": 0.50,
+        "ytick.major.width": 0.50,
+        "xtick.major.size": 2.4,
+        "ytick.major.size": 2.4,
+        "xtick.major.pad": 2.2,
+        "ytick.major.pad": 2.2,
         "xtick.color": "#334155",
         "ytick.color": "#334155",
     })
@@ -215,21 +236,19 @@ def main() -> None:
     BLUE = "#1D4ED8"
     TEAL = "#0F766E"
     ROSE = "#BE123C"
-    AMBER = "#B45309"
 
-    fig = plt.figure(figsize=(12.6, 8.6))
-    fig.patch.set_facecolor("white")
+    fig = plt.figure(figsize=(7.25, 5.35), facecolor="white")
 
-    draw_panel_header(fig, 0.030, 0.962, "A", "Somatic burst hubs predict in vivo clonal expansion (1.01M cells)")
-    draw_panel_header(fig, 0.530, 0.962, "B", "Experimental antibody affinity & convergent CDR drivers")
-    draw_panel_header(fig, 0.030, 0.468, "C", "Patient AML-38-001 single-cell clonal bursts & parallel resistance")
-    draw_panel_header(fig, 0.530, 0.468, "D", "Clonal trunk-to-subclone architecture across 123 AML patients")
+    draw_panel_header(fig, 0.012, 0.968, "A", "Clonal expansion without cell counts (1.01M cells)")
+    draw_panel_header(fig, 0.512, 0.968, "B", "Antigen affinity & parallel CDR drivers")
+    draw_panel_header(fig, 0.012, 0.472, "C", "Patient AML-38-001 clonal phylogeny")
+    draw_panel_header(fig, 0.512, 0.472, "D", "Driver architecture (123 AML patients)")
 
     # =========================================================================
     # PANEL A (Top-Left): Mouse Germinal Centers + Human Myeloid scDNA-seq
     # =========================================================================
-    ax_a1 = fig.add_axes([0.072, 0.562, 0.188, 0.340])
-    ax_a2 = fig.add_axes([0.312, 0.562, 0.178, 0.340])
+    ax_a1 = fig.add_axes([0.072, 0.576, 0.176, 0.345])
+    ax_a2 = fig.add_axes([0.312, 0.576, 0.172, 0.345])
 
     disc = p3["part3b_empirical_gcreplay"]["zero_leakage_biological_discovery"]
     strat_b = disc["stratified_by_inferred_burst_daughters"]
@@ -242,32 +261,32 @@ def main() -> None:
     xa = np.arange(4)
     bcr_pct = [100.0 * strat_b[k]["frac_expanded_ge2_cells"] for k, _ in k_bcr]
 
-    ax_a1.grid(axis="y", color=HAIR, lw=0.7, zorder=0)
+    ax_a1.grid(axis="y", color=HAIR, lw=0.45, zorder=0)
     ax_a1.fill_between(xa, 0, bcr_pct, color=BLUE, alpha=0.08, zorder=1)
-    ax_a1.plot(xa, bcr_pct, "-o", color=BLUE, lw=2.2, markersize=6.5, zorder=4)
-    ax_a1.scatter([3], [bcr_pct[3]], s=72, color=ROSE, edgecolor="white", linewidth=0.9, zorder=6)
+    ax_a1.plot(xa, bcr_pct, "-o", color=BLUE, lw=1.35, ms=3.8, zorder=4)
+    ax_a1.scatter([3], [bcr_pct[3]], s=28, color=ROSE, edgecolor="white", linewidth=0.65, zorder=6)
 
     for xi, val in enumerate(bcr_pct):
-        if xi == 2:
-            ax_a1.text(xi - 0.10, val + 2.4, f"{val:.1f}%", ha="right", va="bottom", fontsize=7.2, color=INK)
+        if xi in (1, 2):
+            ax_a1.text(xi - 0.12, val + 2.6, f"{val:.1f}%", ha="right", va="bottom", fontsize=6.15, color=INK)
         else:
-            dy = 2.6 if xi < 3 else 3.0
+            dy = 2.5 if xi < 3 else 3.0
             ax_a1.text(xi, val + dy, f"{val:.1f}%", ha="center", va="bottom",
-                       fontsize=7.3, fontweight="bold" if xi in (0, 3) else "normal",
+                       fontsize=6.2, fontweight="bold" if xi in (0, 3) else "normal",
                        color=ROSE if xi == 3 else INK)
 
     fold_bcr = strat_b["k>=3_major_burst_hub"]["frac_expanded_ge2_cells"] / strat_b["k=0_terminal_twig"]["frac_expanded_ge2_cells"]
     p_bcr = disc["in_vivo_clone_abundance"]["hierarchical_gc_paired_diff_hub_minus_nonhub"]["wilcoxon_p_two_sided"]
-    ax_a1.text(0.03, 0.97, f"Mouse B cells (147 GCs)\n{fold_bcr:.1f}× expanded (GC p = {p_bcr:.1e})",
-               transform=ax_a1.transAxes, ha="left", va="top", fontsize=7.0, fontweight="bold", color=BLUE)
+    ax_a1.text(0.03, 0.97, f"Mouse B cells (147 GCs)\n{fold_bcr:.1f}× (GC $p$ = {fmt_p(p_bcr)})",
+               transform=ax_a1.transAxes, ha="left", va="top", fontsize=6.15, fontweight="bold", color=BLUE)
     ax_a1.set_xticks(xa)
-    ax_a1.set_xticklabels([lbl for _, lbl in k_bcr], fontsize=7.4)
+    ax_a1.set_xticklabels([lbl for _, lbl in k_bcr], fontsize=6.2)
     ax_a1.set_xlim(-0.35, 3.40)
     ax_a1.set_ylim(0, 62)
     ax_a1.set_yticks([0, 20, 40, 60])
-    ax_a1.set_yticklabels(["0%", "20%", "40%", "60%"], fontsize=7.5)
-    ax_a1.set_ylabel("Expanded clones in vivo (%)", fontsize=8.0, fontweight="bold", color=INK)
-    ax_a1.set_xlabel("Mutant daughters (k)", fontsize=7.8, fontweight="bold", color=INK)
+    ax_a1.set_yticklabels(["0%", "20%", "40%", "60%"], fontsize=6.2)
+    ax_a1.set_ylabel("Expanded clones in vivo (%)", fontsize=6.8, color=INK)
+    ax_a1.set_xlabel("Mutant daughters ($k$)", fontsize=6.8, color=INK)
 
     rc = cancer["aml_singlecell_tapestri"]["raw_singlecell_compass_zygosity"]
     ab_map = rc["clone_abundance_by_mdl_out_degree"]
@@ -279,108 +298,121 @@ def main() -> None:
     ]
     aml_cells = [ab_map[k]["mean_cells"] for k, _ in k_aml]
 
-    ax_a2.grid(axis="y", color=HAIR, lw=0.7, zorder=0)
+    ax_a2.grid(axis="y", color=HAIR, lw=0.45, zorder=0)
     ax_a2.fill_between(xa, 0, aml_cells, color=TEAL, alpha=0.08, zorder=1)
-    ax_a2.plot(xa, aml_cells, "-o", color=TEAL, lw=2.2, markersize=6.5, zorder=4)
-    ax_a2.scatter([3], [aml_cells[3]], s=72, color=ROSE, edgecolor="white", linewidth=0.9, zorder=6)
+    ax_a2.plot(xa, aml_cells, "-o", color=TEAL, lw=1.35, ms=3.8, zorder=4)
+    ax_a2.scatter([3], [aml_cells[3]], s=28, color=ROSE, edgecolor="white", linewidth=0.65, zorder=6)
 
     for xi, val in enumerate(aml_cells):
         if xi == 2:
-            ax_a2.text(xi - 0.10, val + 12.0, f"{val:.1f}", ha="right", va="bottom", fontsize=7.1, color=INK)
+            ax_a2.text(xi - 0.10, val + 15.0, f"{val:.1f}", ha="right", va="bottom", fontsize=6.15, color=INK)
         else:
             dy = 12.0 if xi != 1 else 14.0
-            ax_a2.text(xi, val + dy, f"{val:.1f}",
-                       ha="center", va="bottom", fontsize=7.2,
+            ax_a2.text(xi, val + dy, f"{val:.1f}", ha="center", va="bottom", fontsize=6.2,
                        fontweight="bold" if xi in (0, 3) else "normal",
                        color=ROSE if xi == 3 else INK)
 
     fold_aml = rc["hub_k3_vs_leaf_k0_mean_cell_fold_enrichment"]
     hier_aml_p = rc["hierarchical_per_run_diff_cells"]["wilcoxon_p_two_sided"]
     n_m_cells = rc["total_single_cells_scanned"] / 1e6
-    ax_a2.text(0.03, 0.97, f"Human myeloid ({n_m_cells:.2f}M cells)\n{fold_aml:.2f}× mean (run p = {hier_aml_p:.1e})",
-               transform=ax_a2.transAxes, ha="left", va="top", fontsize=7.0, fontweight="bold", color=TEAL)
+    ax_a2.text(0.03, 0.97, f"Human myeloid ({n_m_cells:.2f}M)\n{fold_aml:.2f}× (run $p$ = {fmt_p(hier_aml_p)})",
+               transform=ax_a2.transAxes, ha="left", va="top", fontsize=6.15, fontweight="bold", color=TEAL)
     ax_a2.set_xticks(xa)
-    ax_a2.set_xticklabels([lbl for _, lbl in k_aml], fontsize=7.4)
+    ax_a2.set_xticklabels([lbl for _, lbl in k_aml], fontsize=6.2)
     ax_a2.set_xlim(-0.35, 3.40)
     ax_a2.set_ylim(0, 385)
     ax_a2.set_yticks([0, 100, 200, 300])
-    ax_a2.set_ylabel("Mean leukemic cells / clone", fontsize=8.0, fontweight="bold", color=INK)
-    ax_a2.set_xlabel("Mutant daughters (k)", fontsize=7.8, fontweight="bold", color=INK)
+    ax_a2.set_yticklabels(["0", "100", "200", "300"], fontsize=6.2)
+    ax_a2.set_ylabel("Mean cells / clone", fontsize=6.8, color=INK)
+    ax_a2.set_xlabel("Mutant daughters ($k$)", fontsize=6.8, color=INK)
 
     # =========================================================================
-    # PANEL B (Top-Right): Yeast-Display Affinity & Convergent CDR Lollipops
+    # PANEL B (Top-Right): Yeast-Display Affinity (Strictly Ordered k=0..>=3)
     # =========================================================================
-    ax_b1 = fig.add_axes([0.575, 0.562, 0.165, 0.340])
-    ax_b2 = fig.add_axes([0.822, 0.562, 0.150, 0.340])
+    ax_b1 = fig.add_axes([0.578, 0.576, 0.162, 0.345])
+    ax_b2 = fig.add_axes([0.840, 0.576, 0.146, 0.345])
 
+    # STRICTLY monotonic k = 0, 1, 2, >=3 order
     b1_classes = [
-        ("k=0_terminal_twig", "Leaves\n(k=0)", SUBINK),
-        ("k>=3_major_burst_hub", "Hubs\n(k≥3)", ROSE),
-        ("k=2_small_burst", "Hubs\n(k=2)", BLUE),
-        ("k=1_linear_step", "Steps\n(k=1)", TEAL),
+        ("k=0_terminal_twig", "0\nLeaf", SUBINK),
+        ("k=1_linear_step", "1\nStep", TEAL),
+        ("k=2_small_burst", "2\nBurst", BLUE),
+        ("k>=3_major_burst_hub", "≥3\nHub", ROSE),
     ]
     xb1 = np.arange(4)
-    ax_b1.grid(axis="y", color=HAIR, lw=0.7, zorder=0)
+    ax_b1.grid(axis="y", color=HAIR, lw=0.45, zorder=0)
+
+    leaf_med = strat_b["k=0_terminal_twig"]["median_delta_bind"]
+    ax_b1.axhline(leaf_med, color=MUTED, ls="--", lw=0.80, zorder=2)
 
     for xi, (k, _, col) in enumerate(b1_classes):
         med = strat_b[k]["median_delta_bind"]
-        mn = strat_b[k]["mean_delta_bind"]
         q25 = strat_b[k]["iqr25_delta_bind"]
         q75 = strat_b[k]["iqr75_delta_bind"]
-        ax_b1.plot([xi, xi], [q25, q75], color=col, lw=2.2, solid_capstyle="round", zorder=3)
-        ax_b1.scatter([xi], [med], s=48, color=col, edgecolor="white", linewidth=0.8, zorder=4)
-        ax_b1.scatter([xi], [mn], marker="D", s=30, facecolor="white", edgecolor=col, linewidth=1.3, zorder=5)
-        ax_b1.text(xi, q75 + 0.05, f"+{mn:.2f}", ha="center", va="bottom", fontsize=7.0, fontweight="bold", color=col)
+        ax_b1.plot([xi, xi], [q25, q75], color=col, lw=1.65, solid_capstyle="round", zorder=3)
+        ax_b1.scatter([xi], [med], s=28, color=col, edgecolor="white", linewidth=0.65, zorder=5)
+        ax_b1.text(xi, q75 + 0.045, f"+{med:.2f}", ha="center", va="bottom",
+                   fontsize=6.15, fontweight="bold", color=col)
 
     aff = disc["experimental_dms_binding_affinity"]
-    rho_aff = aff["spearman_rho_degree_vs_delta_bind"]
+    rho_gc = aff["hierarchical_gc_spearman_rho"]["mean"]
     p_aff_gc = aff["hierarchical_gc_spearman_rho"]["wilcoxon_p_two_sided"]
     p_aff_m = aff["hierarchical_mouse_spearman_rho"]["wilcoxon_p_two_sided"]
-    ax_b1.text(0.03, 0.05, f"Degree trend: ρ = {rho_aff:.3f}\nGC p = {p_aff_gc:.1e}, mouse p = {p_aff_m:.1e}",
-               transform=ax_b1.transAxes, ha="left", va="bottom", fontsize=6.75, fontweight="bold", color=SUBINK)
+    ax_b1.text(
+        -0.36, -0.30,
+        f"Within-GC $\\rho$ = +{rho_gc:.3f}\n"
+        f"GC $p$ = {fmt_p(p_aff_gc)}\n"
+        f"Mouse $p$ = {fmt_p(p_aff_m)}",
+        ha="left", va="bottom",
+        fontsize=6.0, fontweight="bold", color=SUBINK,
+    )
     ax_b1.set_xticks(xb1)
-    ax_b1.set_xticklabels([lbl for _, lbl, _ in b1_classes], fontsize=7.2)
+    ax_b1.set_xticklabels([lbl for _, lbl, _ in b1_classes], fontsize=6.2)
     ax_b1.set_xlim(-0.48, 3.48)
-    ax_b1.set_ylim(0.0, 1.82)
+    ax_b1.set_ylim(-0.36, 1.88)
     ax_b1.set_yticks([0.0, 0.5, 1.0, 1.5])
-    ax_b1.set_ylabel("Antigen affinity shift (Δlog10 KD)", fontsize=8.0, fontweight="bold", color=INK)
+    ax_b1.set_yticklabels(["0.0", "0.5", "1.0", "1.5"], fontsize=6.2)
+    ax_b1.set_ylabel(r"Antigen affinity ($\Delta\log_{10} K_{\mathrm{D}}$)", fontsize=6.8, color=INK)
+    ax_b1.set_xlabel("Mutant daughters ($k$)", fontsize=6.8, color=INK)
 
     sh = p3["part3b_empirical_gcreplay"]["cross_mouse_replay_shunts"]
     par5 = sh["parallel_star_hub_replay"]["min_mice_5"]
     top_par = par5["top_parallel_convergent_mutations"][:5]
-    rows_b2 = [(f"Other somatic\n({par5['n_other_aa_variants']} variants)", par5["other_mean_delta_bind"], MUTED)] + [
-        (f"{m['mutation']}\n({m['region']}, {m['independent_mice']} mice)", m["dms_delta_bind"],
+    rows_b2 = [(f"Other ({par5['n_other_aa_variants']})", par5["other_mean_delta_bind"], MUTED)] + [
+        (f"{m['mutation']}\n{m['region']} · {m['independent_mice']}m", m["dms_delta_bind"],
          ROSE if "CDR" in m["region"].upper() else BLUE)
         for m in top_par[::-1]
     ]
     yb2 = np.arange(len(rows_b2))
-    ax_b2.grid(axis="x", color=HAIR, lw=0.7, zorder=0)
-    ax_b2.axvline(0.0, color="#334155", lw=0.9, ls="--", zorder=2)
+    ax_b2.grid(axis="x", color=HAIR, lw=0.45, zorder=0)
+    ax_b2.axvline(0.0, color="#334155", lw=0.65, ls="--", zorder=2)
 
     for yi, (lbl, val, col) in enumerate(rows_b2):
-        ax_b2.plot([0.0, val], [yi, yi], color=col, lw=2.0, zorder=3)
-        ax_b2.scatter([val], [yi], s=48, color=col, edgecolor="white", linewidth=0.8, zorder=5)
+        ax_b2.plot([0.0, val], [yi, yi], color=col, lw=1.35, zorder=3)
+        ax_b2.scatter([val], [yi], s=24, color=col, edgecolor="white", linewidth=0.55, zorder=5)
         if val >= 0:
-            ax_b2.text(val + 0.04, yi, f"+{val:.2f}", va="center", ha="left", fontsize=7.0, fontweight="bold", color=col)
+            ax_b2.text(val + 0.045, yi, f"+{val:.2f}", va="center", ha="left", fontsize=6.15, fontweight="bold", color=col)
         else:
-            ax_b2.text(0.04, yi, f"{val:.2f}", va="center", ha="left", fontsize=6.9, color=SUBINK)
+            ax_b2.text(0.045, yi, f"{val:.2f}", va="center", ha="left", fontsize=6.05, color=SUBINK)
 
     ax_b2.text(
-        0.02, 5.72,
-        f"{100*par5['cdr_fraction_parallel']:.1f}% in CDRs ({par5['cdr_enrichment_odds_ratio']:.1f}× OR, p = {par5['cdr_enrichment_fisher_p_two_sided']:.1e})",
-        fontsize=6.95, fontweight="bold", color=ROSE, clip_on=False,
+        1.00, 1.03,
+        f"{100*par5['cdr_fraction_parallel']:.1f}% CDR ({par5['cdr_enrichment_odds_ratio']:.1f}× OR, $p$ = {fmt_p(par5['cdr_enrichment_fisher_p_two_sided'])})",
+        transform=ax_b2.transAxes, ha="right", va="bottom",
+        fontsize=6.05, fontweight="bold", color=ROSE, clip_on=False,
     )
     ax_b2.set_yticks(yb2)
-    ax_b2.set_yticklabels([r[0] for r in rows_b2], fontsize=7.0, color=INK)
+    ax_b2.set_yticklabels([r[0] for r in rows_b2], fontsize=6.05, color=INK)
     ax_b2.set_xlim(-0.20, 1.18)
     ax_b2.set_xticks([0.0, 0.5, 1.0])
+    ax_b2.set_xticklabels(["0.0", "0.5", "1.0"], fontsize=6.2)
     ax_b2.set_ylim(-0.55, 5.45)
-    ax_b2.set_xlabel("Affinity shift (Δlog10 KD)", fontsize=7.9, fontweight="bold", color=INK)
+    ax_b2.set_xlabel(r"Affinity shift ($\Delta\log_{10} K_{\mathrm{D}}$)", fontsize=6.8, color=INK)
 
     # =========================================================================
-    # PANEL C (Bottom-Left): Authentic Single-Cell Clonal Tree of Patient AML-38-001
+    # PANEL C (Bottom-Left): Single-Cell Clonal Tree of Patient AML-38-001
     # =========================================================================
-    ax_c = fig.add_axes([0.032, 0.048, 0.468, 0.392])
+    ax_c = fig.add_axes([0.018, 0.032, 0.472, 0.415])
     draw_aml38_patient_tree(ax_c, aml38_rec, aml38_muts, aml38_bw, {
         "INK": INK, "SUBINK": SUBINK, "BLUE": BLUE, "ROSE": ROSE, "TEAL": TEAL,
     })
@@ -388,7 +420,7 @@ def main() -> None:
     # =========================================================================
     # PANEL D (Bottom-Right): 123-Patient AML Trunk-vs-Subclone Driver Landscape
     # =========================================================================
-    ax_d = fig.add_axes([0.575, 0.075, 0.398, 0.340])
+    ax_d = fig.add_axes([0.578, 0.080, 0.398, 0.345])
     aml = cancer["aml_singlecell_tapestri"]
     genes_all = [
         g for g in aml["gene_convergence_ranking"]
@@ -396,70 +428,79 @@ def main() -> None:
         or g["within_patient_parallel_acquisitions"] >= 2
     ]
 
-    ax_d.grid(True, color=HAIR, lw=0.7, zorder=0)
-    ax_d.axvline(50.0, color="#64748B", ls="--", lw=1.0, zorder=1)
-    ax_d.text(3.0, 42.5, "Early founding trunk (<50%)", fontsize=7.15, fontweight="bold", color=BLUE, ha="left")
+    ax_d.grid(True, color=HAIR, lw=0.45, zorder=0)
+    ax_d.axvline(50.0, color="#64748B", ls="--", lw=0.75, zorder=1)
+    ax_d.text(3.0, 42.6, "Early trunk (<50%)", fontsize=6.15, fontweight="bold", color=BLUE, ha="left", va="center")
     sig_enr = aml["signaling_vs_founder_subclonal_enrichment"]
-    ax_d.text(104.0, 42.5, f"Late subclonal signaling (>50%; OR = {sig_enr['fisher_odds_ratio']:.2f}×, p = {sig_enr['fisher_p_value_two_sided']:.1e})", fontsize=7.05, fontweight="bold", color=ROSE, ha="right")
+    ax_d.text(
+        103.5, 42.2,
+        f"Late signaling (>50%)\nOR = {sig_enr['fisher_odds_ratio']:.2f}×, $p$ = {fmt_p(sig_enr['fisher_p_value_two_sided'])}",
+        fontsize=6.05, fontweight="bold", color=ROSE, ha="right", va="center",
+    )
 
-    for g in genes_all:
+    # Plot largest markers underneath smaller colliding markers so both remain visible
+    genes_sorted = sorted(genes_all, key=lambda g: g["within_patient_parallel_acquisitions"], reverse=True)
+    for idx_g, g in enumerate(genes_sorted):
         xv = 100.0 * g["subclonal_fraction"]
         yv = g["pan_cohort_independent_branch_acquisitions"]
         par = g["within_patient_parallel_acquisitions"]
         is_sig = g["pathway_class"] == "Signaling_Resistance"
         col = ROSE if is_sig else BLUE
-        sz = 34.0 + 24.0 * par
-        ax_d.scatter([xv], [yv], s=sz, color=col, alpha=0.88, edgecolor="white", linewidth=0.8, zorder=4)
+        sz = 16.0 + 9.5 * par
+        ax_d.scatter([xv], [yv], s=sz, color=col, alpha=0.88, edgecolor="white", linewidth=0.65, zorder=3 + 0.01 * idx_g)
 
-    label_offsets = {
-        "NPM1": (-5.2, 1.2, "right"),
-        "RUNX1": (5.2, -2.0, "left"),
-        "FLT3": (-5.2, 1.8, "right"),
-        "NRAS": (5.0, 0.5, "left"),
-        "IDH2": (-5.0, 1.5, "right"),
-        "TET2": (-4.5, 2.5, "right"),
-        "WT1": (-5.5, -2.5, "right"),
-        "SRSF2": (2.5, 6.2, "left"),
-        "KRAS": (7.5, 2.2, "left"),
-        "IDH1": (-5.2, -0.5, "right"),
-        "ASXL1": (-2.5, 5.5, "right"),
-        "TP53": (-5.2, -1.8, "right"),
-        "PTPN11": (3.8, -1.0, "left"),
-        "DNMT3A": (-5.2, 5.2, "right"),
-        "GATA2": (-4.5, 1.5, "right"),
-        "KIT": (-3.5, 5.0, "right"),
-        "U2AF1": (-5.0, -2.5, "right"),
-        "SF3B1": (4.2, -1.2, "left"),
-        "JAK2": (-4.5, -1.4, "right"),
+    # Explicit non-colliding absolute label positions (xytext in data coords)
+    label_targets = {
+        "NPM1": (59.5, 36.2, "right"),
+        "NRAS": (84.8, 31.8, "left"),
+        "FLT3": (61.2, 29.2, "right"),
+        "RUNX1": (81.2, 23.0, "left"),
+        "TET2": (11.5, 21.2, "center"),
+        "DNMT3A": (33.0, 20.8, "center"),
+        "IDH2": (32.5, 11.8, "right"),
+        "IDH1": (41.0, 8.2, "right"),
+        "TP53": (44.0, 3.2, "right"),
+        "ASXL1": (57.5, 13.8, "right"),
+        "SRSF2": (69.0, 17.2, "center"),
+        "KRAS": (79.5, 15.2, "left"),
+        "PTPN11": (86.5, 11.4, "left"),
+        "WT1": (57.5, 7.6, "right"),
+        "U2AF1": (72.0, 2.8, "right"),
+        "KIT": (95.0, 7.6, "right"),
+        "JAK2": (95.0, 2.8, "right"),
     }
     for g in genes_all:
         nm = g["gene"]
-        if nm not in label_offsets:
+        if nm not in label_targets:
             continue
         xv = 100.0 * g["subclonal_fraction"]
         yv = g["pan_cohort_independent_branch_acquisitions"]
         par = g["within_patient_parallel_acquisitions"]
-        dx, dy, ha = label_offsets[nm]
+        tx, ty, ha = label_targets[nm]
         is_sig = g["pathway_class"] == "Signaling_Resistance"
-        txt = f"{nm} ({par})" if par >= 3 else nm
+        txt = r"$\it{" + nm + r"}$" + (f" ({par})" if par >= 3 else "")
         ax_d.annotate(
-            txt, xy=(xv, yv), xytext=(xv + dx, yv + dy),
-            ha=ha, va="center", fontsize=6.85,
+            txt, xy=(xv, yv), xytext=(tx, ty),
+            ha=ha, va="center", fontsize=6.1,
             fontweight="bold" if (par >= 3 or nm in {"TET2", "DNMT3A", "TP53"}) else "normal",
             color=ROSE if is_sig else BLUE,
-            arrowprops=dict(arrowstyle="-", color="#CBD5E1", lw=0.6, shrinkA=0, shrinkB=3),
-            zorder=5,
+            arrowprops=dict(arrowstyle="-", color="#94A3B8", lw=0.45, shrinkA=0, shrinkB=2.5),
+            zorder=7,
         )
 
     ax_d.set_xlim(0, 106)
     ax_d.set_ylim(0, 46)
     ax_d.set_xticks([0, 25, 50, 75, 100])
-    ax_d.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7.6)
-    ax_d.set_xlabel("Late subclonal branch acquisitions (% of patient trees)", fontsize=8.0, fontweight="bold", color=INK)
-    ax_d.set_ylabel("Independent acquisitions across cohort", fontsize=8.0, fontweight="bold", color=INK)
+    ax_d.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=6.2)
+    ax_d.set_yticks([0, 10, 20, 30, 40])
+    ax_d.set_yticklabels(["0", "10", "20", "30", "40"], fontsize=6.2)
+    ax_d.set_xlabel("Subclonal branch acquisitions (% of patient trees)", fontsize=6.8, color=INK)
+    ax_d.set_ylabel("Independent acquisitions across cohort", fontsize=6.8, color=INK)
 
-    fig.savefig(OUT_PDF)
-    fig.savefig(OUT_PNG, dpi=260)
+    OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
+    OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUT_PDF, dpi=300)
+    fig.savefig(OUT_PNG, dpi=450)
     plt.close(fig)
     print(f"Wrote {OUT_PDF} and {OUT_PNG}")
 
