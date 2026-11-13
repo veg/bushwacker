@@ -80,6 +80,20 @@ def universal_int_nats(m: float) -> float:
     return -math.log(max(sm - smp1, 1e-300))
 
 
+def universal_int_nats_vec(m_arr: np.ndarray) -> np.ndarray:
+    """Vectorized exact parameter-free Kraft-tight universal integer code length."""
+    m = np.asarray(m_arr, dtype=np.float64)
+    ln2 = math.log(2.0)
+    p1 = 0.5 - 0.5 * ln2 / math.log(3.0)
+    c1 = -math.log(p1)
+    m_safe = np.maximum(m, 1.0)
+    sm = 0.5 * ln2 / np.log(m_safe + 1.0)
+    smp1 = 0.5 * ln2 / np.log(m_safe + 2.0)
+    tail_code = -np.log(np.maximum(sm - smp1, 1e-300))
+    frac_code = (1.0 - m) * ln2 + m * c1
+    return np.where(m <= 0.0, ln2, np.where(m < 1.0, frac_code, tail_code))
+
+
 def branch_mutation_code_nats(
     m_e: float,
     L_eff: float,
@@ -1673,7 +1687,7 @@ class MDLPhyloEngine:
         # Internal branch cost L_branch(m) for m = 1..K:
         # Clean genome-wide multi-site clades (>= 7 clean 2-vs-2 parsimony codons spanning >= 500 bp)
         # scale marginal positional cost by w_s.
-        headers = np.log(2.0) + np.log(1.0 + m_arr) + 0.5 * np.log(1.0 + np.log(1.0 + m_arr))
+        headers = universal_int_nats_vec(m_arr)
         raw_pos_costs = log_binom_vec(L_eff, np.minimum(m_arr, 0.49 * L_eff))
         clean_sites = np.where(both_parsimony & u_clean_clade & v_clean_clade)[0]
         if (
@@ -2325,7 +2339,11 @@ class MDLPhyloEngine:
             cum_sav += sav
             cur_sites.append(s)
             if m_idx >= self.min_shunt_sites:
-                mask_cost = math.log(2.0) + log_binom(M_pool, float(m_idx))
+                mask_cost = (
+                    math.log(2.0)
+                    + universal_int_nats(float(m_idx - self.min_shunt_sites))
+                    + log_binom(M_pool, float(m_idx))
+                )
                 net_gain = cum_sav - endpoint_cost - mask_cost
                 if net_gain > best_gain:
                     best_gain = net_gain

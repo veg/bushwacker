@@ -94,6 +94,126 @@ pub fn universal_int_nats(m: f64) -> f64 {
     -((sm - smp1).max(1e-300)).ln()
 }
 
+/// Regularized lower incomplete gamma function P(a, x) = gamma(a, x) / Gamma(a).
+pub fn regularized_gamma_p(a: f64, x: f64) -> f64 {
+    if a <= 0.0 || x <= 0.0 {
+        return 0.0;
+    }
+    let ln_ga = ln_gamma(a);
+    if x < a + 1.0 {
+        let mut ap = a;
+        let mut sum = 1.0 / a;
+        let mut del = sum;
+        for _ in 0..400 {
+            ap += 1.0;
+            del *= x / ap;
+            sum += del;
+            if del.abs() <= sum.abs() * 1e-15 {
+                break;
+            }
+        }
+        let log_pref = -x + a * x.ln() - ln_ga;
+        (sum * log_pref.exp()).clamp(0.0, 1.0)
+    } else {
+        let mut b = x + 1.0 - a;
+        let mut c = 1.0 / 1e-30;
+        let mut d = if b.abs() < 1e-30 { 1e30 } else { 1.0 / b };
+        let mut h = d;
+        for i in 1..400 {
+            let fi = i as f64;
+            let an = -fi * (fi - a);
+            b += 2.0;
+            d = an * d + b;
+            if d.abs() < 1e-30 {
+                d = 1e-30;
+            }
+            c = b + an / c;
+            if c.abs() < 1e-30 {
+                c = 1e-30;
+            }
+            d = 1.0 / d;
+            let del = d * c;
+            h *= del;
+            if (del - 1.0).abs() <= 1e-15 {
+                break;
+            }
+        }
+        let log_pref = -x + a * x.ln() - ln_ga;
+        let q = (h * log_pref.exp()).clamp(0.0, 1.0);
+        (1.0 - q).clamp(0.0, 1.0)
+    }
+}
+
+/// Exact analytical equiprobable octile means of the unit-mean Gamma(alpha, alpha) rate distribution.
+pub fn gamma_octile_rates(alpha: f64) -> [f32; 8] {
+    let a = alpha.clamp(0.15, 25.0);
+    let mut quantiles = [0.0_f64; 9];
+    for i in 1..8 {
+        let p = (i as f64) / 8.0;
+        let mut lo = 0.0_f64;
+        let mut hi = (1.0_f64).max(2.0 / a);
+        while regularized_gamma_p(a, a * hi) < p && hi < 1e6 {
+            hi *= 2.0;
+        }
+        for _ in 0..80 {
+            let mid = 0.5 * (lo + hi);
+            if regularized_gamma_p(a, a * mid) < p {
+                lo = mid;
+            } else {
+                hi = mid;
+            }
+        }
+        quantiles[i] = 0.5 * (lo + hi);
+    }
+    let mut partial_means = [0.0_f64; 9];
+    for i in 1..8 {
+        partial_means[i] = regularized_gamma_p(a + 1.0, a * quantiles[i]);
+    }
+    partial_means[8] = 1.0;
+
+    let mut raw = [0.0_f64; 8];
+    let mut sum = 0.0_f64;
+    for c in 0..8 {
+        raw[c] = (8.0 * (partial_means[c + 1] - partial_means[c])).max(1e-6);
+        sum += raw[c];
+    }
+    let norm = 8.0 / sum;
+    let mut out = [0.0_f32; 8];
+    for c in 0..8 {
+        out[c] = (raw[c] * norm) as f32;
+    }
+    out
+}
+
+/// Method-of-moments Gamma(alpha, alpha)-Poisson shape estimator from per-site Fitch step counts.
+pub fn estimate_gamma_alpha_from_fitch(steps_and_nv: &[(u32, u32)]) -> f64 {
+    if steps_and_nv.is_empty() {
+        return 1.0;
+    }
+    let mut sum_steps = 0.0_f64;
+    let mut sum_nv = 0.0_f64;
+    for &(st, nv) in steps_and_nv {
+        sum_steps += st as f64;
+        sum_nv += nv as f64;
+    }
+    if sum_steps <= 1.0 || sum_nv <= 1.0 {
+        return 1.0;
+    }
+    let rate_per_nv = sum_steps / sum_nv;
+    let mut sum_l2 = 0.0_f64;
+    let mut sum_var_excess = 0.0_f64;
+    for &(st, nv) in steps_and_nv {
+        let lam = rate_per_nv * (nv as f64);
+        let diff = (st as f64) - lam;
+        sum_var_excess += diff * diff - lam;
+        sum_l2 += lam * lam;
+    }
+    if sum_l2 <= 1e-12 || sum_var_excess <= 0.05 * sum_l2 {
+        return 20.0;
+    }
+    (sum_l2 / sum_var_excess).clamp(0.15, 20.0)
+}
+
 /// Exact enumerative code length (in nats) to transmit m_e mutations along a
 /// single branch e over L_eff effective sites.
 #[inline]
@@ -1022,6 +1142,8 @@ pub struct BushwhackerEngine {
     pub force_protein: bool,
     pub translate_coding: bool,
     pub discrete_mode: Option<discrete::DiscreteMode>,
+    pub no_mult_pen: bool,
+    pub empirical_alpha: bool,
 }
 
 impl Default for BushwhackerEngine {
@@ -1033,6 +1155,8 @@ impl Default for BushwhackerEngine {
             force_protein: false,
             translate_coding: false,
             discrete_mode: None,
+            no_mult_pen: false,
+            empirical_alpha: false,
         }
     }
 }
@@ -1046,6 +1170,8 @@ impl BushwhackerEngine {
             force_protein: false,
             translate_coding: false,
             discrete_mode: None,
+            no_mult_pen: false,
+            empirical_alpha: false,
         }
     }
 
@@ -2920,8 +3046,15 @@ impl BushwhackerEngine {
                 &mut node_labels,
                 &mut next_node,
             );
-            let gtr_stats = nt_gtr::refine_and_score_nt_gtr_mdl(
-                &mut adj, &mut edge_lens, mat, bitmasks, n, l, l_eff,
+            let gtr_stats = nt_gtr::refine_and_score_nt_gtr_mdl_opts(
+                &mut adj,
+                &mut edge_lens,
+                mat,
+                bitmasks,
+                n,
+                l,
+                l_eff,
+                self.empirical_alpha,
             );
             return (loads, adj, node_labels, Some(gtr_stats));
         }
@@ -2946,7 +3079,7 @@ impl BushwhackerEngine {
                 }
             }
         }
-        let gtr_stats = nt_gtr::refine_and_score_nt_gtr_mdl(
+        let gtr_stats = nt_gtr::refine_and_score_nt_gtr_mdl_opts(
             &mut adj_sub,
             &mut edge_lens,
             mat,
@@ -2954,6 +3087,7 @@ impl BushwhackerEngine {
             n,
             l,
             l_eff,
+            self.empirical_alpha,
         );
         (loads, adj_sub, labels_sub, Some(gtr_stats))
     }
@@ -5637,8 +5771,12 @@ impl BushwhackerEngine {
             let m_var: usize = (0..n_blocks).map(count_var_block).sum();
 
             let fisher_n = ((m_var as f64) / std::f64::consts::TAU).max(1.0);
-            let base_pen =
-                0.5 * fisher_n.ln() + 0.5 * ((n.saturating_sub(3)).max(1) as f64).ln();
+            let mult_pen = if self.no_mult_pen {
+                0.0
+            } else {
+                0.5 * ((n.saturating_sub(3)).max(1) as f64).ln()
+            };
+            let base_pen = 0.5 * fisher_n.ln() + mult_pen;
             let min_bl = (0.20 / l_eff.max(1.0)).clamp(1e-6, 1e-3);
 
             loop {
@@ -6365,7 +6503,7 @@ impl BushwhackerEngine {
             let m = (idx + 1) as f64;
             cum_sav += sav;
             cum_subst += subst_s;
-            let header = 2.0_f64.ln() + (1.0 + m).ln() + 0.5 * (1.0 + (1.0 + m).ln()).ln();
+            let header = universal_int_nats(m);
             let raw_pos = log_binom(l_eff, m.min(0.49 * l_eff));
             if scale_pos_cost {
                 let marg = raw_pos - prev_raw_pos;
@@ -7486,7 +7624,9 @@ impl BushwhackerEngine {
             cum_sav += sav;
             cur_sites.push(s);
             if m_idx >= self.min_shunt_sites {
-                let mask_cost = 2.0_f64.ln() + log_binom(m_pool, m_idx as f64);
+                let mask_cost = 2.0_f64.ln()
+                    + universal_int_nats((m_idx - self.min_shunt_sites) as f64)
+                    + log_binom(m_pool, m_idx as f64);
                 let net_gain = cum_sav - endpoint_cost - mask_cost;
                 if net_gain > best_gain {
                     best_gain = net_gain;
@@ -10321,6 +10461,174 @@ Clone_B2,0,0,0,1,1,1,1,?
         let (dec_bnames, dec_bseqs, _) = decompress_alignment_from_bwz(&bwz_bin).unwrap();
         assert_eq!(dec_bnames.len(), 5);
         assert_eq!(dec_bseqs[4], "0001111?");
+    }
+
+    #[test]
+    fn test_sparse_shunt_mask_kraft_bound() {
+        let min_sites = 2usize;
+        for &m_donor in &[2usize, 5usize, 12usize, 40usize] {
+            let mut sparse_sum = 0.0_f64;
+            for m in min_sites..=m_donor {
+                let mask_cost = 2.0_f64.ln()
+                    + universal_int_nats((m - min_sites) as f64)
+                    + log_binom(m_donor as f64, m as f64);
+                // C(m_donor, m) distinct m-subsets each have code length `mask_cost`
+                sparse_sum += (log_binom(m_donor as f64, m as f64) - mask_cost).exp();
+            }
+            // Must be strictly <= 0.5 so INTERVAL + SPARSE combined strictly satisfy Kraft < 1.0
+            assert!(
+                sparse_sum < 0.5,
+                "SPARSE Kraft sum exceeded 0.5 for M={}: {}",
+                m_donor,
+                sparse_sum
+            );
+            let n_intervals = (m_donor * (m_donor + 1)) / 2;
+            let interval_sum =
+                (n_intervals as f64) * (-2.0_f64.ln() - 2.0 * (m_donor as f64).ln()).exp();
+            assert!(
+                interval_sum < 0.5,
+                "INTERVAL Kraft sum exceeded 0.5 for M={}: {}",
+                m_donor,
+                interval_sum
+            );
+            assert!(
+                sparse_sum + interval_sum < 1.0,
+                "Total mask Kraft sum exceeded 1.0 for M={}: {}",
+                m_donor,
+                sparse_sum + interval_sum
+            );
+        }
+    }
+
+    #[test]
+    fn test_empirical_alpha_octiles_unit_mean() {
+        let r1 = gamma_octile_rates(1.0);
+        for c in 0..8 {
+            assert!(
+                ((r1[c] - nt_gtr::NT_CAT_RATES[c]) as f64).abs() < 1e-5,
+                "alpha=1 octile {} mismatch: {} vs {}",
+                c,
+                r1[c],
+                nt_gtr::NT_CAT_RATES[c]
+            );
+        }
+        for &alpha in &[0.25, 0.5, 1.0, 2.0, 5.0, 15.0] {
+            let rates = gamma_octile_rates(alpha);
+            let mean: f64 = rates.iter().map(|&x| x as f64).sum::<f64>() / 8.0;
+            assert!(
+                (mean - 1.0).abs() < 1e-6,
+                "Octile mean mismatch for alpha={}: {}",
+                alpha,
+                mean
+            );
+            for c in 0..7 {
+                assert!(
+                    rates[c] < rates[c + 1],
+                    "Octiles not strictly increasing for alpha={}: {:?}",
+                    alpha,
+                    rates
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_split_scorers_route_through_universal_int_nats() {
+        // Verify that both NT (compute_split_mdl_gain_from_child_refs) and Protein
+        // (compute_protein_split_mdl_gain_refs) split scorers use exact Kraft-tight
+        // universal_int_nats(m) rather than the legacy divergent ln(2)+ln(1+m)+0.5*ln(1+ln(1+m)).
+        let l = 32usize;
+        let l_eff = 32.0_f64;
+        let weights = vec![1.0_f64; l];
+        let old_header_2 = 2.0_f64.ln() + 3.0_f64.ln() + 0.5 * (1.0 + 3.0_f64.ln()).ln();
+        let new_header_2 = universal_int_nats(2.0);
+        assert!((new_header_2 - old_header_2).abs() > 0.1);
+
+        // 1. Nucleotide quartet with 2 clean transitions (A=0 in U, G=2 in V)
+        let u_nt = vec![1_u8; l];
+        let mut v_nt = vec![1_u8; l];
+        for s in 0..2 {
+            v_nt[s] = 4; // G
+        }
+        let load = 0.5_f64;
+        let u_children_nt = [(&u_nt[..], load), (&u_nt[..], load)];
+        let v_children_nt = [(&v_nt[..], load), (&v_nt[..], load)];
+        let engine = BushwhackerEngine::default();
+        let (ti_cost, tv_cost) = (1.0_f64, 1.5_f64);
+        let (nt_gain, nt_m, _) = engine.compute_split_mdl_gain_from_child_refs(
+            &u_children_nt,
+            &v_children_nt,
+            l,
+            l_eff,
+            ti_cost,
+            tv_cost,
+            &weights,
+        );
+        assert!(
+            nt_gain > 0.0 && (nt_m - 2.0).abs() < 1e-12,
+            "Unexpected NT split result: gain={}, m={}",
+            nt_gain,
+            nt_m
+        );
+        let w_c = ((l_eff - load) / (load + 1.0)).ln();
+        // Site s=0 has clean_sites.len()==1 -> delta_steps=1; site s=1 has clean_sites.len()==2 -> delta_steps=2.
+        let total_sav = 4.0 * w_c + 3.0 * ti_cost;
+        let expected_nt_gain = total_sav
+            - (new_header_2 + log_binom(l_eff, 2.0) + 2.0 * ti_cost)
+            - split_topology_cost_nats(2, 2);
+        assert!(
+            (nt_gain - expected_nt_gain).abs() < 1e-10,
+            "NT split scorer did not match universal_int_nats(2): {} vs {}",
+            nt_gain,
+            expected_nt_gain
+        );
+
+        // 2. Protein quartet with 2 clean substitutions (Ala=0 in U, Trp=18 in V)
+        let u_aa = vec![1_u32; l]; // all Ala (bit 0)
+        let mut v_aa = vec![1_u32; l];
+        for s in 0..2 {
+            v_aa[s] = 1_u32 << 18; // Trp
+        }
+        let subst_costs = protein::estimate_aa_subst_costs(&[], 0, 0);
+        let u_children_aa = [(&u_aa[..], load), (&u_aa[..], load)];
+        let v_children_aa = [(&v_aa[..], load), (&v_aa[..], load)];
+        let (aa_gain, aa_m, _) = protein::compute_protein_split_mdl_gain_refs(
+            &u_children_aa,
+            &v_children_aa,
+            l,
+            l_eff,
+            &subst_costs,
+            &weights,
+        );
+        assert!(
+            aa_gain > 0.0 && (aa_m - 2.0).abs() < 1e-12,
+            "Unexpected AA split result: gain={}, m={}",
+            aa_gain,
+            aa_m
+        );
+        // Add a 3rd identical Ala->Trp site: exact marginal header delta must equal
+        // -(universal_int_nats(3.0) - universal_int_nats(2.0)).
+        v_aa[2] = 1_u32 << 18;
+        let (aa_gain_3, aa_m3, _) = protein::compute_protein_split_mdl_gain_refs(
+            &[(&u_aa[..], load), (&u_aa[..], load)],
+            &[(&v_aa[..], load), (&v_aa[..], load)],
+            l,
+            l_eff,
+            &subst_costs,
+            &weights,
+        );
+        assert!((aa_m3 - 3.0).abs() < 1e-12);
+        let total_site_sav_2 = aa_gain + new_header_2 + log_binom(l_eff, 2.0) + split_topology_cost_nats(2, 2);
+        let expected_aa_gain_3 = 1.5 * total_site_sav_2
+            - universal_int_nats(3.0)
+            - log_binom(l_eff, 3.0)
+            - split_topology_cost_nats(2, 2);
+        assert!(
+            (aa_gain_3 - expected_aa_gain_3).abs() < 1e-4,
+            "Protein split scorer header mismatch: {} vs {}",
+            aa_gain_3,
+            expected_aa_gain_3
+        );
     }
 }
 

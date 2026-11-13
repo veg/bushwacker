@@ -1,22 +1,41 @@
 {
   "Bushwhacker_GTR_CAT8_TOGA2_NT": {
-    "max_rss_gb": 2.385,
-    "max_rss_kb": 2500980
+    "max_rss_kb": 2491172,
+    "max_rss_gb": 2.376,
+    "wall_sec": 31.213
   },
   "Bushwhacker_LG08_CAT8_TOGA2_AA": {
+    "max_rss_kb": 2077524,
     "max_rss_gb": 1.981,
-    "max_rss_kb": 2077664
+    "wall_sec": 49.03
   },
   "Bushwhacker_LG08_CAT8_GTDB_ar122": {
-    "max_rss_gb": 1.398,
-    "max_rss_kb": 1465580
+    "max_rss_kb": 2697852,
+    "max_rss_gb": 2.573,
+    "wall_sec": 26.688
   },
   "Bushwhacker_LG08_CAT8_GTDB_bac120": {
-    "max_rss_gb": 0.95,
-    "max_rss_kb": 995648
+    "max_rss_kb": 2839492,
+    "max_rss_gb": 2.708,
+    "wall_sec": 24.293
   },
   "IQTREE2_TOGA2_NT_ram_gb": 39.817,
   "IQTREE2_TOGA2_AA_ram_gb": 79.154,
   "IQTREE2_GTDB_ar122_ram_gb": 32.947,
-  "IQTREE2_GTDB_bac120_ram_gb": 26.366
+  "IQTREE2_GTDB_bac120_ram_gb": 26.366,
+  "Bushwhacker_GTR_CAT8_16S_N32768": {
+    "max_rss_kb": 4262856,
+    "max_rss_gb": 4.065,
+    "wall_sec": 94.476
+  },
+  "FastTreeMP_GTR_16S_N32768": {
+    "max_rss_kb": 2289448,
+    "max_rss_gb": 2.183,
+    "wall_sec": 1125.283
+  },
+  "FastTreeMP_LG_GTDB_ar122": {
+    "max_rss_kb": 10701416,
+    "max_rss_gb": 10.206,
+    "wall_sec": 4504.04
+  }
 }

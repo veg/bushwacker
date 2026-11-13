@@ -1,8 +1,8 @@
 {
-  "method": "Benjamini-Hochberg step-up FDR across all 23 primary two-sided hypothesis tests",
+  "method": "Benjamini-Hochberg step-up FDR across all 31 primary two-sided hypothesis tests",
   "alpha_fdr": 0.05,
-  "n_tests": 23,
-  "n_significant_fdr_05": 20,
+  "n_tests": 31,
+  "n_significant_fdr_05": 24,
   "tests": [
     {
       "test_id": "bcr_gc_paired_hub_abundance",
@@ -10,9 +10,9 @@
       "unit_n": 86,
       "two_sided": true,
       "p_value": 5.868040404356749e-06,
-      "bh_rank": 10,
-      "bh_total_tests": 23,
-      "q_value_bh": 1.3496492930020523e-05
+      "bh_rank": 14,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.2427390601814764e-05
     },
     {
       "test_id": "bcr_gc_spearman_degree_abundance",
@@ -20,9 +20,9 @@
       "unit_n": 123,
       "two_sided": true,
       "p_value": 5.741935057395472e-06,
-      "bh_rank": 9,
-      "bh_total_tests": 23,
-      "q_value_bh": 1.3496492930020523e-05
+      "bh_rank": 13,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.2427390601814764e-05
     },
     {
       "test_id": "bcr_mouse_paired_hub_abundance",
@@ -30,9 +30,9 @@
       "unit_n": 25,
       "two_sided": true,
       "p_value": 1.9669532775878906e-06,
-      "bh_rank": 7,
-      "bh_total_tests": 23,
-      "q_value_bh": 6.462846483503069e-06
+      "bh_rank": 9,
+      "bh_total_tests": 31,
+      "q_value_bh": 6.775061289469401e-06
     },
     {
       "test_id": "bcr_mouse_spearman_degree_abundance",
@@ -40,9 +40,9 @@
       "unit_n": 28,
       "two_sided": true,
       "p_value": 3.330409526824951e-06,
-      "bh_rank": 8,
-      "bh_total_tests": 23,
-      "q_value_bh": 9.574927389621735e-06
+      "bh_rank": 10,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.0324269533157349e-05
     },
     {
       "test_id": "bcr_gc_spearman_degree_dms_affinity",
@@ -50,9 +50,9 @@
       "unit_n": 127,
       "two_sided": true,
       "p_value": 0.001661541696621201,
-      "bh_rank": 15,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0025476972681525083
+      "bh_rank": 20,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.0025753896297628616
     },
     {
       "test_id": "bcr_mouse_spearman_degree_dms_affinity",
@@ -60,9 +60,9 @@
       "unit_n": 28,
       "two_sided": true,
       "p_value": 0.002901986241340637,
-      "bh_rank": 17,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.003926216679460862
+      "bh_rank": 22,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.004089162430979989
     },
     {
       "test_id": "bcr_hub_vs_nonhub_binary_dms_affinity",
@@ -70,9 +70,9 @@
       "unit_n": 9352,
       "two_sided": true,
       "p_value": 0.2030787953586788,
-      "bh_rank": 22,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.21230964969316418
+      "bh_rank": 28,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.22094990040175141
     },
     {
       "test_id": "bcr_parallel_star_m5_cdr_enrichment",
@@ -80,9 +80,9 @@
       "unit_n": 278,
       "two_sided": true,
       "p_value": 7.501977186464825e-05,
-      "bh_rank": 11,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0001560162933222115
+      "bh_rank": 16,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.000145350807987756
     },
     {
       "test_id": "bcr_parallel_star_m5_dms_affinity",
@@ -90,9 +90,9 @@
       "unit_n": 278,
       "two_sided": true,
       "p_value": 8.13998052115886e-05,
-      "bh_rank": 12,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0001560162933222115
+      "bh_rank": 17,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.00014843493891524982
     },
     {
       "test_id": "bcr_parallel_star_m3_cdr_enrichment",
@@ -100,9 +100,9 @@
       "unit_n": 278,
       "two_sided": true,
       "p_value": 0.0005123756998267171,
-      "bh_rank": 13,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0009065108535395764
+      "bh_rank": 18,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.0008824248163682351
     },
     {
       "test_id": "bcr_parallel_star_m3_dms_affinity",
@@ -110,9 +110,9 @@
       "unit_n": 278,
       "two_sided": true,
       "p_value": 0.0005551234942721241,
-      "bh_rank": 14,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0009119885977327754
+      "bh_rank": 19,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.000905727806443992
     },
     {
       "test_id": "aml_compass_per_run_hub_diff_cells",
@@ -120,9 +120,9 @@
       "unit_n": 166,
       "two_sided": true,
       "p_value": 1.6899635993477651e-18,
-      "bh_rank": 2,
-      "bh_total_tests": 23,
-      "q_value_bh": 1.9434581392499298e-17
+      "bh_rank": 3,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.746295719326024e-17
     },
     {
       "test_id": "aml_compass_per_patient_hub_diff_cells",
@@ -130,9 +130,9 @@
       "unit_n": 127,
       "two_sided": true,
       "p_value": 3.534438941732751e-14,
-      "bh_rank": 4,
-      "bh_total_tests": 23,
-      "q_value_bh": 2.0323023914963318e-13
+      "bh_rank": 5,
+      "bh_total_tests": 31,
+      "q_value_bh": 2.1913521438743055e-13
     },
     {
       "test_id": "aml_morita_direct_cell_degree_null",
@@ -140,9 +140,9 @@
       "unit_n": 465,
       "two_sided": true,
       "p_value": 0.19657784441930734,
-      "bh_rank": 21,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.21230964969316418
+      "bh_rank": 27,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.22094990040175141
     },
     {
       "test_id": "aml_morita_per_patient_paired_lineage",
@@ -150,9 +150,9 @@
       "unit_n": 97,
       "two_sided": true,
       "p_value": 3.043048538640394e-15,
-      "bh_rank": 3,
-      "bh_total_tests": 23,
-      "q_value_bh": 2.333003879624302e-14
+      "bh_rank": 4,
+      "bh_total_tests": 31,
+      "q_value_bh": 2.3583626174463054e-14
     },
     {
       "test_id": "aml_morita_per_patient_lineage_spearman",
@@ -161,8 +161,8 @@
       "two_sided": true,
       "p_value": 4.7399078126654984e-12,
       "bh_rank": 6,
-      "bh_total_tests": 23,
-      "q_value_bh": 1.8169646615217745e-11
+      "bh_total_tests": 31,
+      "q_value_bh": 2.448952369877174e-11
     },
     {
       "test_id": "aml_morita_signaling_vs_founder_subclonal",
@@ -170,9 +170,9 @@
       "unit_n": 508,
       "two_sided": true,
       "p_value": 0.001871613530919679,
-      "bh_rank": 16,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0026904444506970385
+      "bh_rank": 21,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.0027628580694528592
     },
     {
       "test_id": "dlp_ov2295_aneuploidy_vs_progression",
@@ -181,8 +181,8 @@
       "two_sided": true,
       "p_value": 4.940729053547262e-268,
       "bh_rank": 1,
-      "bh_total_tests": 23,
-      "q_value_bh": 1.1363676823158703e-266
+      "bh_total_tests": 31,
+      "q_value_bh": 1.5316260065996513e-266
     },
     {
       "test_id": "dlp_sa609_aneuploidy_vs_progression",
@@ -190,9 +190,9 @@
       "unit_n": 600,
       "two_sided": true,
       "p_value": 0.00614935757890451,
-      "bh_rank": 19,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.0074439591744633535
+      "bh_rank": 23,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.008288264562871296
     },
     {
       "test_id": "dlp_sa501_aneuploidy_vs_progression",
@@ -200,9 +200,9 @@
       "unit_n": 2691,
       "two_sided": true,
       "p_value": 0.01096439369955681,
-      "bh_rank": 20,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.01260905275449033
+      "bh_rank": 24,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.014162341861927545
     },
     {
       "test_id": "dlp_sa535_aneuploidy_vs_progression",
@@ -210,29 +210,109 @@
       "unit_n": 548,
       "two_sided": true,
       "p_value": 0.47515879623458346,
-      "bh_rank": 23,
-      "bh_total_tests": 23,
+      "bh_rank": 31,
+      "bh_total_tests": 31,
       "q_value_bh": 0.47515879623458346
     },
     {
       "test_id": "toga2_myrmecophagous_family_dedup",
       "domain": "TOGA2 882-mammal AA atlas",
-      "unit_n": 13,
+      "unit_n": 4,
       "two_sided": true,
-      "p_value": 8.131774477816427e-13,
-      "bh_rank": 5,
-      "bh_total_tests": 23,
-      "q_value_bh": 3.740616259795556e-12
+      "p_value": 6.013253517007143e-06,
+      "bh_rank": 15,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.2427390601814764e-05
+    },
+    {
+      "test_id": "toga2_myrmecophagous_non_multicopy",
+      "domain": "TOGA2 882-mammal AA atlas",
+      "unit_n": 1,
+      "two_sided": true,
+      "p_value": 0.15656754539746198,
+      "bh_rank": 25,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.19414375629285285
     },
     {
       "test_id": "toga2_subterranean_blind_family_dedup",
       "domain": "TOGA2 882-mammal AA atlas",
-      "unit_n": 6,
+      "unit_n": 1,
       "two_sided": true,
-      "p_value": 0.004455980775247847,
-      "bh_rank": 18,
-      "bh_total_tests": 23,
-      "q_value_bh": 0.005693753212816693
+      "p_value": 0.21382248425975944,
+      "bh_rank": 30,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.22094990040175141
+    },
+    {
+      "test_id": "toga2_marine_aquatic_raw",
+      "domain": "TOGA2 882-mammal AA atlas",
+      "unit_n": 29,
+      "two_sided": true,
+      "p_value": 0.16440666842195467,
+      "bh_rank": 26,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.19602333542617673
+    },
+    {
+      "test_id": "gtdb_ar122_informational_vs_operational",
+      "domain": "GTDB Archaea (122 markers)",
+      "unit_n": 122,
+      "two_sided": true,
+      "p_value": 0.21255311409851904,
+      "bh_rank": 29,
+      "bh_total_tests": 31,
+      "q_value_bh": 0.22094990040175141
+    },
+    {
+      "test_id": "bcr_exact_gc_depth_paired_abundance",
+      "domain": "Single-cell BCR (depth-matched)",
+      "unit_n": 85,
+      "two_sided": true,
+      "p_value": 4.128798770462121e-06,
+      "bh_rank": 12,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.0666063490360478e-05
+    },
+    {
+      "test_id": "bcr_fe_ols_log1p_abundance",
+      "domain": "Single-cell BCR (GC FE OLS)",
+      "unit_n": 9352,
+      "two_sided": true,
+      "p_value": 5.302026759255974e-10,
+      "bh_rank": 8,
+      "bh_total_tests": 31,
+      "q_value_bh": 2.05453536921169e-09
+    },
+    {
+      "test_id": "aml_compass_exact_sample_depth_paired",
+      "domain": "AML scDNA COMPASS (depth-matched)",
+      "unit_n": 96,
+      "two_sided": true,
+      "p_value": 5.910620690310333e-12,
+      "bh_rank": 7,
+      "bh_total_tests": 31,
+      "q_value_bh": 2.6175605914231475e-11
+    },
+    {
+      "test_id": "aml_compass_fe_ols_log1p_cells",
+      "domain": "AML scDNA COMPASS (Patient FE OLS)",
+      "unit_n": 6222,
+      "two_sided": true,
+      "p_value": 1.447187242079717e-28,
+      "bh_rank": 2,
+      "bh_total_tests": 31,
+      "q_value_bh": 2.2431402252235615e-27
+    },
+    {
+      "test_id": "aml_morita_fe_ols_log1p_lineage",
+      "domain": "AML Morita (Patient FE OLS)",
+      "unit_n": 462,
+      "two_sided": true,
+      "p_value": 3.94440150915831e-06,
+      "bh_rank": 11,
+      "bh_total_tests": 31,
+      "q_value_bh": 1.0666063490360478e-05
     }
   ]
 }

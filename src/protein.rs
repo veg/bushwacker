@@ -780,6 +780,7 @@ fn refine_and_score_protein_lg08_mdl(
     n: usize,
     l: usize,
     l_eff: f64,
+    empirical_alpha: bool,
 ) -> HashMap<(usize, usize), (f64, f64)> {
     let min_bl = (0.25 / l_eff.max(1.0)).clamp(1e-5, 1e-3);
     if n < 4 || l == 0 {
@@ -894,12 +895,24 @@ fn refine_and_score_protein_lg08_mdl(
     }
     let steps_per_nv = (sum_steps / sum_nv.max(1.0)).max(1e-6);
 
-    let ln_cats: [f64; LG08_N_CATS] = std::array::from_fn(|c| (LG08_CAT_RATES[c] as f64).ln());
+    let (cat_rates, eb_prior, clamp_lo, clamp_hi) = if empirical_alpha {
+        let pairs: Vec<(u32, u32)> = active_cols
+            .iter()
+            .enumerate()
+            .map(|(idx, &col)| (steps[idx], n_val[col]))
+            .collect();
+        let alpha_hat = crate::estimate_gamma_alpha_from_fitch(&pairs);
+        let r = crate::gamma_octile_rates(alpha_hat);
+        (r, alpha_hat, (r[0] as f64) * 0.5, (r[LG08_N_CATS - 1] as f64) * 1.5)
+    } else {
+        (LG08_CAT_RATES, 1.5, 0.065, 3.10)
+    };
+    let ln_cats: [f64; LG08_N_CATS] = std::array::from_fn(|c| (cat_rates[c] as f64).ln());
     let mut cat_patterns: Vec<BTreeMap<Vec<u8>, u32>> =
         (0..LG08_N_CATS).map(|_| BTreeMap::new()).collect();
     for (idx, &col) in active_cols.iter().enumerate() {
         let exp_steps = steps_per_nv * (n_val[col] as f64);
-        let rel = ((1.5 + steps[idx] as f64) / (1.5 + exp_steps)).clamp(0.065, 3.10);
+        let rel = ((eb_prior + steps[idx] as f64) / (eb_prior + exp_steps)).clamp(clamp_lo, clamp_hi);
         let ln_rel = rel.ln();
         let mut best_c = 0usize;
         let mut best_d = (ln_rel - ln_cats[0]).abs();
@@ -951,7 +964,7 @@ fn refine_and_score_protein_lg08_mdl(
     let mut eg_cat_grid = [[[0.0_f32; 20]; LG08_N_TGRID]; LG08_N_CATS];
     let mut pb_leaf_cat_grid = [[[[0.0_f32; 20]; 20]; LG08_N_TGRID]; LG08_N_CATS];
     for c in 0..LG08_N_CATS {
-        let cr = LG08_CAT_RATES[c];
+        let cr = cat_rates[c];
         for k in 0..LG08_N_TGRID {
             let tau = (cr * LG08_T_GRID[k]) as f64;
             for r in 0..20 {
@@ -969,7 +982,7 @@ fn refine_and_score_protein_lg08_mdl(
     let build_cat_pmats = |undir_lens: &[f32]| -> Vec<Vec<[[f32; 21]; 20]>> {
         (0..LG08_N_CATS)
             .map(|c| {
-                let cr = LG08_CAT_RATES[c];
+                let cr = cat_rates[c];
                 undir_lens
                     .iter()
                     .map(|&t| lg08_trans_mat_aug(cr * t))
@@ -1367,7 +1380,7 @@ fn refine_and_score_protein_lg08_mdl(
         let mut spr_left_cat: Vec<Vec<[[f32; 20]; 20]>> = Vec::with_capacity(LG08_N_CATS);
         let mut spr_right_pi_cat: Vec<Vec<[[f32; 20]; 20]>> = Vec::with_capacity(LG08_N_CATS);
         for c in 0..LG08_N_CATS {
-            let cr = LG08_CAT_RATES[c];
+            let cr = cat_rates[c];
             let mut l_vec = Vec::with_capacity(undir_lens.len());
             let mut r_vec = Vec::with_capacity(undir_lens.len());
             for &t in &undir_lens {
@@ -3053,7 +3066,7 @@ fn compute_protein_split_mdl_gain_core(
         let m = (idx + 1) as f64;
         cum_sav += sav;
         cum_subst += subst_s;
-        let header = 2.0_f64.ln() + (1.0 + m).ln() + 0.5 * (1.0 + (1.0 + m).ln()).ln();
+        let header = crate::universal_int_nats(m);
         let pos_cost = log_binom(l_vis, m.min(0.49 * l_vis));
         let branch_cost = header + pos_cost + cum_subst;
         if idx == 0 {
@@ -3893,6 +3906,7 @@ fn contract_protein_edges_mdl(
     expand_hubs: bool,
     lg08_edge_stats: Option<&HashMap<(usize, usize), (f64, f64)>>,
     need_fitch_muts: bool,
+    no_mult_pen: bool,
 ) -> (
     BTreeMap<usize, Vec<usize>>,
     Vec<BranchRecord>,
@@ -3916,8 +3930,12 @@ fn contract_protein_edges_mdl(
             }
         }
         let fisher_n = ((m_var as f64) / std::f64::consts::TAU).max(1.0);
-        let base_pen =
-            0.5 * fisher_n.ln() + 0.5 * ((n.saturating_sub(3)).max(1) as f64).ln();
+        let mult_pen = if no_mult_pen {
+            0.0
+        } else {
+            0.5 * ((n.saturating_sub(3)).max(1) as f64).ln()
+        };
+        let base_pen = 0.5 * fisher_n.ln() + mult_pen;
         loop {
             let mut bad_edges: Vec<(f64, usize, usize)> = Vec::new();
             for (&u, nbs) in &adj {
@@ -4560,7 +4578,9 @@ fn evaluate_protein_sparse_shunt_mdl(
         cur_sites.push(s);
         if k >= min_shunt_sites {
             let m_donor = m_donor_base.max(k as f64);
-            let mask_cost = 2.0_f64.ln() + log_binom(m_donor, k as f64);
+            let mask_cost = 2.0_f64.ln()
+                + crate::universal_int_nats((k - min_shunt_sites) as f64)
+                + log_binom(m_donor, k as f64);
             let data_sav = (cum_raw_info - log_falling_factorial(m_recip_base, k)).max(0.0);
             let net_gain = data_sav - endpoint_cost - mask_cost;
             if net_gain > best_gain {
@@ -5583,6 +5603,7 @@ fn build_protein_loads_and_backbone(
     l_eff: f64,
     _subst_costs: &[[f64; 20]; 20],
     build_backbone: bool,
+    empirical_alpha: bool,
 ) -> (
     Vec<f64>,
     BTreeMap<usize, Vec<usize>>,
@@ -5694,6 +5715,7 @@ fn build_protein_loads_and_backbone(
                 n,
                 l,
                 l_eff,
+                empirical_alpha,
             ))
         } else {
             None
@@ -5932,6 +5954,7 @@ fn build_protein_loads_and_backbone(
         n,
         l,
         l_eff,
+        empirical_alpha,
     ));
 
     (loads, adj, node_labels, lg08_stats)
@@ -5969,6 +5992,7 @@ pub fn infer_protein_mdl(
                 l_eff,
                 &subst_costs,
                 false,
+                engine.empirical_alpha,
             );
             let (parsed_adj, parsed_labels) =
                 BushwhackerEngine::parse_newick_to_unrooted_adj(nwk, names)?;
@@ -5985,6 +6009,7 @@ pub fn infer_protein_mdl(
                 l_eff,
                 &subst_costs,
                 true,
+                engine.empirical_alpha,
             );
             (loads, built_adj, built_labels, true, stats)
         };
@@ -6006,6 +6031,7 @@ pub fn infer_protein_mdl(
         expand_hubs,
         lg08_edge_stats.as_ref(),
         need_fitch_muts,
+        engine.no_mult_pen,
     );
     adj = adj_c;
 
@@ -6113,6 +6139,7 @@ pub fn infer_protein_mdl(
                     false,
                     None,
                     false,
+                    engine.no_mult_pen,
                 );
                 adj = adj_re;
                 branches = branches_re;

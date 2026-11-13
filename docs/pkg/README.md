@@ -23,7 +23,7 @@ Every proposed evolutionary structure—an internal tree split `e = (u, v)`, a m
 ## Key Capabilities
 
 1. **Zero-Parameter, Bootstrap-Free Polytomy Calibration (`0.0% FPR`):**
-   Every internal split dividing a `(d_u + d_v)`-way node into subtrees of degrees `d_u ≥ 2` and `d_v ≥ 2` pays an exact combinatorial topology penalty `L_topo(d_u, d_v) = ln((d_u + d_v)/2 - 1) + ln C(d_u + d_v, d_u)` plus a combinadic branch header `L*(m_e) + ln C(L_eff, m_e)`. Unsupported branches contract deterministically (`MDL_Gain ≤ 0 nats`) into explicit multifurcations without needing 1,000 bootstrap replicates or arbitrary support cutoffs.
+   Every internal split dividing a `(d_u + d_v)`-way node into subtrees of degrees `d_u ≥ 2` and `d_v ≥ 2` pays an exact combinatorial topology penalty `L_topo(d_u, d_v) = ln(max(1, floor((d_u + d_v)/2) - 1)) + ln C(d_u + d_v, d_u) - I(d_u=d_v) ln 2` plus a Kraft-tight combinadic branch header `L_N(m_e) + ln C(L_eff, m_e)`, where `L_N(0) = ln 2` and `L_N(m ≥ 1) = -ln[0.5 ln 2 (1/ln(m+1) - 1/ln(m+2))]` satisfies `sum_{m>=0} exp(-L_N(m)) = 1`. Continuous-time 8-category rate-model refinement (`GTR+CAT8` / `LG08+CAT8` on DNA and proteins) and exact bitwise/interval search (`--discrete` / `--ordered`) pair with deterministic contraction (`MDL_Gain ≤ 0 nats`) and conditional local posteriors `P_local = 1 / (1 + exp(-G_MDL))` without bootstrap replicates or arbitrary support cutoffs.
 2. **Intrinsic Immunity to Long-Branch Attraction (`96.0%` True Split in the Felsenstein Zone):**
    In the Felsenstein Zone (`b_long = 0.40`, `b_short = 0.03`, `b_int = 0.035`), a random mutation on a long branch with `m_c` mutations carries marginal combinadic positional cost `ln((L_eff - m_c) / (m_c + 1)) ≈ 0.6 nats`, whereas a mutation on a short branch carries `≈ 3.8 nats`. Uniting the two short branches yields `+5.8 nats` of compression per synapomorphy, while uniting the two long branches fails to overcome the quartet topology penalty `L_topo(2, 2) = ln 3 nats`.
 3. **Dual-Mode Reticulate Shunt Peeling (`INTERVAL` vs. `SPARSE`):**
@@ -67,46 +67,48 @@ Supported Input Formats & Alphabets (auto-detected):
   - CSV / TSV   (.csv, .tsv; binary 0/1 somatic mutations, unordered K-state traits, ordered copy numbers)
 
 Options:
-  -o, --out-newick <PATH>      Output Newick file path (with MDL branch supports & lengths)
-  -j, --out-json <PATH>        Output JSON report path (full MDL ledger, splits, & shunts)
-  --protein                    Force 20-state amino-acid Dayhoff-6 MDL (or continuous LG08+CAT8 with --lg-cat)
-  --translate                  Translate in-frame coding nucleotide alignment to 20-state AA
-  --binary                     Force 2-state binary (0/1) character MDL
-  --discrete                   Force unordered K-state discrete character MDL
-  --ordered                    Force ordered Wagner L1 integer state MDL (e.g. single-cell CNAs)
-  --gtr-cat / --lg-cat         Continuous-time reversible rate-mixture MDL (GTR+CAT8 / LG08+CAT8)
-  --compress <PATH.bwz>        Lossless phylogenetic .bwz archive compression across any alphabet
-  --decompress <PATH.bwz>      Bit-identical .bwz archive decompression
-  --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting
-  --no-shunts                  Disable Stage 4 reticulate shunt peeling
-  --min-shunt-sites <N>        Minimum parallel mutations to evaluate a shunt (default: 2)
-  -h, --help                   Print help message
+  -o, --out-newick <PATH>         Output Newick file path (with MDL branch supports & lengths)
+  -b, --out-binary <PATH>         Output strictly binary Newick file path (for iqtree3 -t)
+  -t, --contract-tree <PATH>      Contract unsupported splits & peel shunts on an input Newick tree
+  -j, --out-json <PATH>           Output JSON report path (full MDL ledger, splits, & shunts)
+  -c, --compress <PATH.bwz>       Lossless phylogenetic .bwz archive (`bushwhacker <in.fa> -c <out.bwz>`)
+  -d, --decompress <PATH.bwz>     Bit-identical decompression (`bushwhacker <in.bwz> -d <out.fa>`)
+  --protein                       Force 20-state amino-acid LG08+CAT8 / Dayhoff-6 MDL
+  --translate                     Translate in-frame coding nucleotide alignment to 20-state AA
+  --discrete                      Force unordered K-state discrete character MDL (including 0/1 binary)
+  --ordered                       Force ordered Wagner L1 integer state MDL (e.g. single-cell CNAs)
+  --no-coding                     Disable automatic coding-frame 3rd-position entropy weighting
+  --no-shunts                     Disable Stage 4 reticulate shunt peeling
+  --min-shunt-sites <N>           Minimum parallel mutations to evaluate a shunt (default: 2)
+  -T, --threads <N>               Worker threads for deterministic parallel execution (default: all cores)
+  -h, --help                      Print help message
 ```
 
 ### Example: Mammalian *Prestin* (`prestin.fasta`, 116 Mammals, 2,235 bp)
 
 ```bash
-./target/release/bushwhacker prestin.fasta -o prestin.nwk -j prestin.json
+./target/release/bushwhacker docs/examples/prestin.fasta -o prestin.nwk -j prestin.json -T 1
 ```
 
 ```text
 ==============================================================================
-BUSHWHACKER Summary: prestin.fasta  (N=116 taxa, L=2235 sites)
+BUSHWHACKER Summary: docs/examples/prestin.fasta  (N=116 taxa, L=2235 sites)
 ------------------------------------------------------------------------------
   Raw Uncompressed DL   :     351367.4 nats
-  Star Tree MDL (Null)  :      80036.0 nats
-  Induced Tree MDL      :      43812.9 nats  (54.74% of Star)
-  Induced Network MDL   :      43808.0 nats  (54.74% of Star)
-  Resolved Splits       :   95 /  113 binary splits (12 polytomy hubs)
-  Certified Shunts      :    1
-    [1] SPARSE  N140 <-> N167  (+4.94 nats, P=99.3%, m=4 sites, codons=[7, 384, 392, 601])
-  Runtime               : 0.1233 s
+  Star Tree MDL (Null)  :      80342.7 nats
+  Induced Tree MDL      :      46306.1 nats  (57.64% of Star)
+  Induced Network MDL   :      46296.6 nats  (57.62% of Star)
+  Resolved Splits       :   81 /  113 binary splits (19 polytomy hubs)
+  Certified Shunts      :    2
+    [1] SPARSE  N148 <-> N169  (+6.64 nats, P=99.9%, m=4 sites, codons=[7, 384, 392, 601])
+    [2] SPARSE  HLrhiSin1 <-> N154  (+2.79 nats, P=94.2%, m=5 sites, codons=[308, 554, 566, 621, 685])
+  Runtime               : 0.1291 s
 ==============================================================================
 ```
 
 Without any species-tree supervision or empirical amino acid matrices, **BUSHWHACKER**:
-- Resolves the 116-mammal species backbone at **88.0% precision** against the curated NCBI Taxonomy (`RF = 37`, outperforming raw and support-collapsed IQ-TREE 2, FastTree 2, BioNJ, and Maximum Parsimony), and
-- Automatically discovers and certifies the classic **echolocation convergence shunt** (`SPARSE N140 Dolphins <-> N167 Echolocating Bats`, `+4.94 nats`, `P = 99.3%`) on the **exact four classic echolocation codons `7, 384, 392, 601` (`N7T, I384T, S392A, G601A`)** of Liu et al. (*PNAS* 2010) and Li et al. (*Curr. Biol.* 2010).
+- Resolves the 116-mammal species backbone at **93.8% precision** (`76 TP`, `5 FP`, `RF = 42` across all 116 taxa) against the curated NCBI Taxonomy (compared against `83.6%` / `18 FP` for `IQ-TREE --polytomy` and `83.2%` / `19 FP` for raw `IQ-TREE 2`), and
+- Automatically discovers and certifies the classic **echolocation convergence shunt** (`SPARSE N148 Delphinidae <-> N169 Rhinolophoidea Bats`, `+6.64 nats`, `P_local = 99.9%`) on the **exact four classic echolocation codons `7, 384, 392, 601` (`N7T, I384T, S392A, G601A`)** of Liu et al. (*PNAS* 2010) and Li et al. (*Curr. Biol.* 2010), plus a secondary `HLrhiSin1 <-> Odontoceti` link (`+2.79 nats`, `P_local = 94.2%`, codons `[308, 554, 566, 621, 685]`).
 
 ---
 
@@ -146,18 +148,15 @@ Full derivations, proofs, and multi-panel figures are available in [`paper/bushw
 | BioNJ (`JC69`) | 29.2% | 58.3% |
 | Maximum Parsimony (`NNI`) | 8.3% | 75.0% |
 
-### 4. Empirical Mammalian *Prestin* (116 Mammals vs. Curated NCBI Species Tree)
+### 4. Empirical Mammalian *Prestin* (116 Mammals vs. Curated NCBI Species Tree; 116 Shared Taxa)
 
-| Method / Support Rule | Resolved Splits | True Positives (TP) | False Positives (FP) | Precision (%) | Recall (%) | F1 Score (%) | RF Distance |
+| Method / Support Rule | Resolved Splits | True Positives (TP) | False Positives (FP) | Precision (%) | Recall (%) | F1 Score (%) | nRF Distance |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **BUSHWHACKER (+ Echoloc. Shunt)** | **83** | **73** | **10** | **88.0%** | **73.0%** | **79.8%** | **37** |
-| IQ-TREE 2 (`GTR+G` Raw) | 100 | 76 | 24 | 76.0% | 76.0% | 76.0% | 48 |
-| IQ-TREE 2 (`SH-aLRT ≥ 80%`) | 63 | 55 | 8 | 87.3% | 55.0% | 67.5% | 53 |
-| IQ-TREE 2 (`aBayes ≥ 0.95`) | 60 | 52 | 8 | 86.7% | 52.0% | 65.0% | 56 |
-| FastTree 2 (`GTR+CAT` Raw) | 100 | 74 | 26 | 74.0% | 74.0% | 74.0% | 52 |
-| FastTree 2 (`SH ≥ 0.90`) | 66 | 56 | 10 | 84.8% | 56.0% | 67.5% | 54 |
-| BioNJ (`JC69`) | 100 | 77 | 23 | 77.0% | 77.0% | 77.0% | 46 |
-| Maximum Parsimony (`NNI`) | 100 | 70 | 30 | 70.0% | 70.0% | 70.0% | 60 |
+| **BUSHWHACKER (+2 Echoloc. Shunts)** | **81** | **76** | **5** | **93.8%** | **67.3%** | **78.4%** | **0.2165** |
+| IQ-TREE 2 (`GTR+G4 --polytomy`) | 110 | 92 | 18 | 83.6% | 81.4% | 82.5% | 0.1749 |
+| IQ-TREE 2 (`SH-aLRT ≥ 80%`) | 83 | 79 | 4 | 95.2% | 69.9% | 80.6% | 0.1939 |
+| IQ-TREE 2 (`UFBoot ≥ 95%`) | 86 | 83 | 3 | 96.5% | 73.5% | 83.4% | 0.1658 |
+| IQ-TREE 2 (`SH-aLRT80 + UFBoot95`) | 77 | 77 | 0 | 100.0% | 68.1% | 81.1% | 0.1895 |
 
 ---
 
@@ -209,6 +208,5 @@ bushwacker/
     ├── bushwhacker_report.pdf             # Compiled 17-page technical report
     ├── bushwhacker_report.tex             # LaTeX source manuscript
     ├── fig1_synthetic_benchmarks.pdf      # Figure 1 (4-regime synthetic benchmarks)
-    ├── fig2_empirical_compression.pdf     # Figure 2 (Empirical compression & polytomy ratios)
     └── fig3_stress_tests.pdf              # Figure 3 (5-axis ruthless stress tests)
 ```

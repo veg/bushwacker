@@ -8,8 +8,8 @@
     "resolved_internal_splits": 2,
     "max_binary_splits": 8,
     "polytomy_hubs": 3,
-    "runtime_sec": 0.0046,
-    "specimen_runtime_sec": 0.003,
+    "runtime_sec": 0.0038,
+    "specimen_runtime_sec": 0.0031,
     "tree_MDL_nats": 89.03,
     "internal_branches": [
       {
@@ -189,7 +189,7 @@
     "polytomy_hubs": 28,
     "max_polytomy_degree": 12,
     "certified_shunts": 0,
-    "runtime_sec": 0.0424,
+    "runtime_sec": 0.0353,
     "hub_k3plus_n": 16,
     "hub_k3plus_mean_direct_cells": 49.62,
     "leaf_k0_n": 95,

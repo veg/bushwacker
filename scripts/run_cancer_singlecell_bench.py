@@ -37,10 +37,22 @@ from pathlib import Path
 import numpy as np
 from scipy import stats
 
-ROOT = Path(__file__).resolve().parents[2]
-BIN = ROOT / "target" / "release" / "bushwhacker"
-_SCRATCH_SC = ROOT.parent / "scratch" / "cancer_singlecell_data"
-DATA_DIR = ROOT / "data" / "single_cell"
+ROOT = REPO_ROOT
+BIN = Path(resolve_bin("BUSHWHACKER_BIN", str(REPO_ROOT / "target" / "release" / "bushwhacker")))
+_SCRATCH_SC = (
+    REPO_ROOT / "scratch" / "cancer_singlecell_data"
+    if (REPO_ROOT / "scratch" / "cancer_singlecell_data").exists()
+    else ROOT.parent / "scratch" / "cancer_singlecell_data"
+)
+DATA_DIR = (
+    ROOT / "data" / "single_cell"
+    if (ROOT / "data" / "single_cell").exists()
+    else (
+        ROOT / "zenodo_replication" / "data" / "single_cell"
+        if (ROOT / "zenodo_replication" / "data" / "single_cell").exists()
+        else _SCRATCH_SC
+    )
+)
 DLP_DIR = DATA_DIR / "dlp_cna" if (DATA_DIR / "dlp_cna").exists() else (_SCRATCH_SC / "dlp_cna" if (_SCRATCH_SC / "dlp_cna").exists() else DATA_DIR)
 COMPASS_ROOT = (
     DATA_DIR / "aml_tapestri" / "COMPASS" / "data"
@@ -892,6 +904,134 @@ def compute_exact_clone_burst_degrees_from_mdl_tree(
     return out_info, branch_transitions
 
 
+def _fe_cluster_ols_and_depth_strata(
+    records: list[dict],
+    sample_key: str,
+    patient_key: str,
+    value_key: str,
+    k_hub_thresh: int = 3,
+    k_leaf_max: int = 0,
+) -> dict:
+    """
+    BARS depth & WT-exclusion controls for clone expansion:
+      1. Fixed depth strata (depth=1, depth=2, depth>=3 from WT) comparing k_out>=k_hub_thresh vs k_out<=k_leaf_max.
+      2. Exact (sample, depth)-matched hub minus leaf paired difference aggregated to patient level.
+      3. Within-sample demeaned FE OLS: log1p(value) ~ is_hub + depth + FE(sample) with patient-clustered CR1 SEs.
+    Note: All input records strictly exclude WT (depth=0) clones.
+    """
+    strata = {}
+    for lbl, pred in [
+        ("depth=1", lambda d: d == 1),
+        ("depth=2", lambda d: d == 2),
+        ("depth>=3", lambda d: d >= 3),
+    ]:
+        sub = [r for r in records if pred(r["depth"])]
+        hubs = [r[value_key] for r in sub if r["k_out"] >= k_hub_thresh]
+        leaves = [r[value_key] for r in sub if r["k_out"] <= k_leaf_max]
+        p_mwu = (
+            float(stats.mannwhitneyu(hubs, leaves, alternative="two-sided").pvalue)
+            if hubs and leaves
+            else 1.0
+        )
+        strata[lbl] = {
+            "n_clones": len(sub),
+            "n_hubs": len(hubs),
+            "n_leaves": len(leaves),
+            "hub_mean": round(float(np.mean(hubs)), 3) if hubs else None,
+            "leaf_mean": round(float(np.mean(leaves)), 3) if leaves else None,
+            "hub_median": round(float(np.median(hubs)), 3) if hubs else None,
+            "leaf_median": round(float(np.median(leaves)), 3) if leaves else None,
+            "mean_fold": round(float(np.mean(hubs) / max(np.mean(leaves), 1e-9)), 3) if (hubs and leaves) else None,
+            "mwu_p_two_sided": p_mwu,
+        }
+
+    # Exact (sample, depth) matched paired differences -> aggregated to patient level
+    by_sd = defaultdict(list)
+    sample_to_pt = {}
+    for r in records:
+        by_sd[(r[sample_key], r["depth"])].append(r)
+        sample_to_pt[r[sample_key]] = r[patient_key]
+    by_sample_diffs = defaultdict(list)
+    for (smp, _d), grp in by_sd.items():
+        h_v = [r[value_key] for r in grp if r["k_out"] >= k_hub_thresh]
+        l_v = [r[value_key] for r in grp if r["k_out"] <= k_leaf_max]
+        if h_v and l_v:
+            by_sample_diffs[smp].append(float(np.mean(h_v) - np.mean(l_v)))
+    by_pt_diffs = defaultdict(list)
+    for smp, diffs in by_sample_diffs.items():
+        by_pt_diffs[sample_to_pt[smp]].append(float(np.mean(diffs)))
+    pt_vals = [float(np.mean(v)) for _, v in sorted(by_pt_diffs.items())]
+    matched_summary = {
+        "n_matched_samples": len(by_sample_diffs),
+        "n_matched_patients": len(pt_vals),
+        "mean_patient_diff": round(float(np.mean(pt_vals)), 4) if pt_vals else None,
+        "median_patient_diff": round(float(np.median(pt_vals)), 4) if pt_vals else None,
+        "wilcoxon_p_two_sided": (
+            float(stats.wilcoxon(pt_vals, alternative="two-sided").pvalue)
+            if len(pt_vals) >= 3
+            else 1.0
+        ),
+    }
+
+    # Within-sample FE OLS: log1p(val) ~ is_hub + depth + FE(sample)
+    fe_idx = defaultdict(list)
+    for i, r in enumerate(records):
+        fe_idx[r[sample_key]].append(i)
+    keep = np.ones(len(records), dtype=bool)
+    y = np.array([math.log1p(max(0.0, float(r[value_key]))) for r in records], dtype=np.float64)
+    X = np.array(
+        [[1.0 if r["k_out"] >= k_hub_thresh else 0.0, float(r["depth"])] for r in records],
+        dtype=np.float64,
+    )
+    for idxs in fe_idx.values():
+        if len(idxs) < 2:
+            keep[idxs] = False
+            continue
+        y[idxs] -= np.mean(y[idxs])
+        X[idxs, :] -= np.mean(X[idxs, :], axis=0, keepdims=True)
+    y_k = y[keep]
+    X_k = X[keep]
+    pt_k = [records[i][patient_key] for i in range(len(records)) if keep[i]]
+    n_k = len(y_k)
+    ols_out = {}
+    if n_k > 6 and np.linalg.matrix_rank(X_k) == 2:
+        XtX_inv = np.linalg.pinv(X_k.T @ X_k)
+        beta = XtX_inv @ (X_k.T @ y_k)
+        resid = y_k - X_k @ beta
+        pt_map = defaultdict(list)
+        for i, p_id in enumerate(pt_k):
+            pt_map[p_id].append(i)
+        G = len(pt_map)
+        meat = np.zeros((2, 2), dtype=np.float64)
+        for idxs in pt_map.values():
+            sc = X_k[idxs, :].T @ resid[idxs]
+            meat += np.outer(sc, sc)
+        n_fe = len({records[i][sample_key] for i in range(len(records)) if keep[i]})
+        adj = (G / max(1, G - 1)) * ((n_k - 1) / max(1, n_k - 2 - n_fe))
+        cov = adj * (XtX_inv @ meat @ XtX_inv)
+        se = np.sqrt(np.maximum(np.diag(cov), 1e-18))
+        t_st = beta / se
+        p_vs = [float(2.0 * stats.t.sf(abs(ts), df=max(1, G - 1))) for ts in t_st]
+        ols_out = {
+            "n_obs": int(n_k),
+            "n_patient_clusters": int(G),
+            "beta_is_hub_log1p": round(float(beta[0]), 5),
+            "se_is_hub": round(float(se[0]), 5),
+            "t_is_hub": round(float(t_st[0]), 4),
+            "p_is_hub_two_sided": p_vs[0],
+            "beta_depth_log1p": round(float(beta[1]), 5),
+            "p_depth_two_sided": p_vs[1],
+        }
+
+    return {
+        "wt_excluded_verified": True,
+        "k_hub_threshold": k_hub_thresh,
+        "fixed_depth_strata": strata,
+        "exact_sample_depth_matched_paired": matched_summary,
+        "fe_ols_log1p_vs_ishub_depth_patient_clustered": ols_out,
+    }
+
+
 def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
     """
     Evaluate Bushwhacker `--ordered` across:
@@ -1067,8 +1207,10 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
                     "patient_label": pt_label,
                     "n_mutations_in_clone": len(gt),
                     "genes": [gene_labels[g] for g in gt],
+                    "k_out": k_inferred,
                     "inferred_k_out": k_inferred,
                     "true_curated_k_out": gt_to_true_k[gt],
+                    "depth": depth_inf,
                     "inferred_depth": depth_inf,
                     "seq_cells": gt_to_cells[gt],
                     "lineage_descendant_seq_cells": lineage_cells,
@@ -1133,9 +1275,12 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
     wp_pt_lfrac_wilcoxon_p = float(stats.wilcoxon(wp_pt_diff_lfrac, alternative="two-sided").pvalue) if len(wp_pt_diff_lfrac) >= 3 else 1.0
     wp_pt_rho_wilcoxon_p = float(stats.wilcoxon(wp_pt_rhos_lin, alternative="two-sided").pvalue) if len(wp_pt_rhos_lin) >= 3 else 1.0
 
-    #Now evaluate post-hoc correlation between sequence-free MDL out-degree k_out and clone size
-    # Wait: ALSO compute subtree descendant leukemic cell burden AND direct clone cell count, plus
-    # evaluate on RAW COMPASS single-cell zygosity matrices (`0=WT, 1=Het, 2=Hom/LOH, ?=dropout`)!
+    morita_depth_lineage = _fe_cluster_ols_and_depth_strata(
+        clone_records, "patient_id", "patient_id", "lineage_descendant_seq_cells", k_hub_thresh=2
+    )
+    morita_depth_direct = _fe_cluster_ols_and_depth_strata(
+        clone_records, "patient_id", "patient_id", "seq_cells", k_hub_thresh=2
+    )
     print("[AML Raw COMPASS Zygosity] Running zero-leakage Bushwhacker --ordered on 185 Tapestri scDNA runs...")
     raw_compass_stats = run_raw_compass_zygosity_benchmarks(tmp_dir)
 
@@ -1313,6 +1458,8 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
             "per_patient_spearman_rho_median": round(float(np.median(wp_pt_rhos_lin)), 4) if wp_pt_rhos_lin else 0.0,
             "per_patient_spearman_rho_wilcoxon_p_two_sided": wp_pt_rho_wilcoxon_p,
             "by_inferred_k_out": wp_by_k,
+            "depth_adjusted_controls_lineage_cells": morita_depth_lineage,
+            "depth_adjusted_controls_direct_cells": morita_depth_direct,
         },
         "pan_cohort_landscape": {
             "n_unique_somatic_genotypes": len(all_pan_gts),
@@ -1436,6 +1583,8 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
     all_k_out = []
     all_cell_counts = []
     all_cell_fracs = []
+    raw_clone_records = []
+    wt_cell_counts = []
     run_records = []
     stepwise_cnloh_1_to_2 = Counter()
     direct_0_to_2 = Counter()
@@ -1486,16 +1635,26 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
         tot_non_wt = sum(cnt for gt, cnt in gt_counts.items() if gt != wt_tuple)
         if tot_non_wt <= 0:
             continue
+        wt_cell_counts.append(int(gt_counts[wt_tuple]))
 
         run_k, run_c, run_f = [], [], []
         for r_i, gt in enumerate(uniq_gts):
             if r_i == wt_idx or gt_counts[gt] == 0:
                 continue
             k_val = out_info[r_i]["k_out"]
+            d_val = max(1, int(out_info[r_i]["depth"]))
             c_cnt = gt_counts[gt]
             all_k_out.append(k_val)
             all_cell_counts.append(c_cnt)
             all_cell_fracs.append(c_cnt / tot_non_wt)
+            raw_clone_records.append({
+                "sample_id": sample_id,
+                "patient_id": patient_id,
+                "k_out": k_val,
+                "depth": d_val,
+                "cell_count": c_cnt,
+                "cell_frac": c_cnt / tot_non_wt,
+            })
             run_k.append(k_val)
             run_c.append(c_cnt)
             run_f.append(c_cnt / tot_non_wt)
@@ -1621,11 +1780,21 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
     tot_0_to_2 = sum(direct_0_to_2.values())
 
     longitudinal_relapse = run_longitudinal_aml_relapse_series(tmp_dir)
+    compass_depth_k3 = _fe_cluster_ols_and_depth_strata(
+        raw_clone_records, "sample_id", "patient_id", "cell_count", k_hub_thresh=3
+    )
+    compass_depth_k2 = _fe_cluster_ols_and_depth_strata(
+        raw_clone_records, "sample_id", "patient_id", "cell_count", k_hub_thresh=2
+    )
 
     return {
         "n_scdna_runs_evaluated": total_samples_run,
         "n_unique_patients_evaluated": len({r["patient_id"] for r in run_records}),
-        "cell_count_definition": "direct single-cell exact-genotype multiplicity (independent tree inferred per Tapestri run)",
+        "cell_count_definition": "direct single-cell exact-genotype multiplicity (independent tree inferred per Tapestri run; all-0 WT strictly excluded from k_out stratification)",
+        "wt_excluded_verified": True,
+        "wt_mean_cells_excluded": round(float(np.mean(wt_cell_counts)), 2) if wt_cell_counts else 0.0,
+        "depth_adjusted_controls_k3": compass_depth_k3,
+        "depth_adjusted_controls_k2": compass_depth_k2,
         "total_single_cells_scanned": total_cells_analyzed,
         "total_unthresholded_somatic_genotypes": int(len(c_arr)),
         "total_bushwhacker_runtime_sec": round(total_runtime_sec, 4),

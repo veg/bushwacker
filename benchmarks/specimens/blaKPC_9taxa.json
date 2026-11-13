@@ -1,6 +1,6 @@
 {
   "tool": "BUSHWHACKER",
-  "input": "zenodo_replication/data/specimens/blaKPC_9taxa.fna",
+  "input": "data/specimens/blaKPC_9taxa.fna",
   "alphabet": "nucleotide",
   "n_taxa": 9,
   "seq_len": 882,

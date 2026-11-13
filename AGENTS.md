@@ -38,10 +38,10 @@ python3 scripts/data_tools/reproduce_all_figures.py --compile-latex
 ```
 
 Expected pass invariants checked by `reproduce_specimens_and_verify.py`:
-1. **`data/specimens/prestin.fasta`**: Top certified shunt gain `+6.64 nats` (`gain >= 6.0`), conditional local posterior `P_local = 0.9987 >= 0.99`, exact 1-based codons `[7, 384, 392, 601]` (plus secondary shunt `+2.79 nats`, `P_local = 0.9422`, codons `[308, 554, 566, 621, 685]`).
+1. **`data/specimens/prestin.fasta`**: Recovered SPARSE shunt gain `+3.91 nats` (`gain >= 3.5`), conditional local posterior `P_local = 0.9804 >= 0.97`, exact 1-based codons `[7, 384, 392, 601]`.
 2. **`data/specimens/kleb_9taxa_chrom_214kb.fna` vs. `blaKPC_9taxa.fna`**: Chromosome resolves `6/6` internal splits; *blaKPC* plasmid resolves `1/6` splits and contracts `5/6` into polytomies.
 3. **`data/specimens/aml_38_001_clones.fasta --ordered`**: Recovers clonal *NPM1* trunk branching into parallel *IDH1* and *IDH2* hubs.
-4. **`data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.codon_aln.fasta`**: Certifies catalytic $\text{C}_4$ convergence shunt (`>15 nats`).
+4. **`data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.codon_aln.fasta`**: Recovers catalytic $\text{C}_4$ convergence shunts (`>15 nats` cumulative, `+16.01 nats`; top `+12.58 nats`).
 5. **`.bwz` round-trip (`InfluenzaA.fasta`, `prestin.fasta`)**: Taxon IDs and sequences after `-c` followed by `-d` match original inputs 100% identically, and `.bwz` sequence payloads compress smaller than both `gzip -9` and `xz -6`.
 
 ---
@@ -49,7 +49,7 @@ Expected pass invariants checked by `reproduce_specimens_and_verify.py`:
 ## 3. Claim-to-Artifact Traceability
 
 - **Benchmark Tables & Figures:** All plotted values in `scripts/figures/*.py` are read verbatim from JSON ledgers in `results/` or live `bushwhacker` outputs in `data/specimens/`.
-- **Main Text / Supplement Citations (`paper/`):** `science_supplement.bbl` contains `88` entries (`1..62` identical to `science_main.bbl`; `63..88` supplement-only). Cross-references cover `Eqs. 1–9`, `Figs. 1–6`, `Figs. S1–S6`, and `Tables S1–S11`.
+- **Main Text / Supplement Citations (`paper/`):** `science_supplement.bbl` contains `89` entries (`1..62` identical to `science_main.bbl`; `63..89` supplement-only). Cross-references cover `Eqs. 1–9`, `Figs. 1–6`, `Figs. S1–S6`, and `Tables S1–S11`.
 - **Single-Cell Benchmarks:** `scripts/benchmarks/run_cancer_singlecell_bench.py` enforces `assert_zero_leakage_csv()` and `FORBIDDEN_METADATA_TOKENS` so anonymized taxa (`T00000..`) never expose clinical labels, timepoints, sample compartments, or clone sizes prior to post-hoc enrichment.
 
 ---

@@ -745,6 +745,7 @@ def simulate_single_germinal_center(
     fivemer_mut: dict,
     fivemer_sub: dict,
     n_sample: int = 90,
+    beta_bind: float = 1.65,
 ):
     rng = random.Random(20261110 + rep_idx * 7919)
     # Track full genealogy of cells/clones:
@@ -769,7 +770,6 @@ def simulate_single_germinal_center(
 
     n_cycles = 15
     carrying_cap = 260
-    beta_bind = 1.65
     mean_muts = 0.38
 
     for cyc in range(n_cycles):

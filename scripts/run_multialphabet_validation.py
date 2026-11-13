@@ -31,6 +31,7 @@ from pathlib import Path
 BW_BIN = resolve_bin("BUSHWHACKER_BIN", "bushwhacker")
 IQTREE_BIN = resolve_bin("IQTREE_BIN", "iqtree2", "iqtree")
 FASTTREE_BIN = resolve_bin("FASTTREE_BIN", "FastTree", "fasttree")
+COMPASS_BIN = resolve_bin("COMPASS_BIN", "/home/sergei/bushwhacker_bars_rev/COMPASS/COMPASS", "COMPASS")
 OUT_JSON = RESULTS_DIR / "synthetic" / "multialphabet_validation.json"
 
 
@@ -147,6 +148,59 @@ def parse_newick_splits_and_supports(nwk: str):
         splits_with_support.append((sp, sup, blen))
 
     return all_leaves, splits_all, splits_active, splits_with_support
+
+
+def parse_compass_outputs(gv_path: str, cell_assign_path: str, all_cells: list[str]) -> set:
+    """Reconstruct unrooted canonical cell-level bipartitions from COMPASS tree.gv + cellAssignments.tsv."""
+    edges = []
+    nodes = set()
+    with open(gv_path) as f:
+        for ln in f:
+            m = re.match(r"^\s*(\d+)\s*->\s*(\d+)\s*\[(.*)\];", ln)
+            if not m:
+                continue
+            attrs = m.group(3)
+            if "style=dashed" in attrs or "dir=none" in attrs:
+                continue
+            u, v = int(m.group(1)), int(m.group(2))
+            edges.append((u, v))
+            nodes.add(u)
+            nodes.add(v)
+    node_cells: dict[int, set[str]] = {}
+    with open(cell_assign_path) as f:
+        header = f.readline()
+        for ln in f:
+            parts = ln.rstrip("\n").split("\t")
+            if len(parts) >= 2:
+                cid, nid = parts[0].strip(), int(parts[1])
+                node_cells.setdefault(nid, set()).add(cid)
+                nodes.add(nid)
+    all_set = frozenset(all_cells)
+    children: dict[int, list[int]] = {}
+    has_parent = set()
+    for u, v in edges:
+        children.setdefault(u, []).append(v)
+        has_parent.add(v)
+    roots = [nd for nd in nodes if nd not in has_parent]
+    root = roots[0] if roots else (min(nodes) if nodes else 0)
+    splits = set()
+
+    def collect(nd: int) -> frozenset:
+        acc = set(node_cells.get(nd, set()))
+        for c in children.get(nd, []):
+            acc |= collect(c)
+        sub = frozenset(acc)
+        comp = all_set - sub
+        if len(sub) >= 2 and len(comp) >= 2:
+            if len(sub) < len(comp) or (len(sub) == len(comp) and sorted(sub) < sorted(comp)):
+                splits.add(sub)
+            else:
+                splits.add(comp)
+        return sub
+
+    if nodes:
+        collect(root)
+    return splits
 
 
 def eval_splits(est_splits: set, true_active: set):
@@ -362,6 +416,18 @@ def run_protein_rep(args):
         _, bwb_splits, _, _ = parse_newick_splits_and_supports(Path(f"{td}/bw_bin.nwk").read_text())
         pts, bw_res = extract_bw_calibration_points(f"{td}/bw.json", bw_nwk_txt, true_active)
         out["cal_pts"] = pts
+        shunt_pts = []
+        for s in bw_res.get("shunts", []):
+            is_true_shunt = 0
+            if scenario == "P4_ConvergentAA" and s.get("mode") == "SPARSE":
+                hit_s = set(s.get("sites_0based", [])) & conv_sites
+                lu = set(s.get("leaves_u", []))
+                lv = set(s.get("leaves_v", []))
+                ends_ok = bool(lu and lv and ((lu <= c0 and lv <= c5) or (lu <= c5 and lv <= c0)))
+                if ends_ok and len(hit_s) >= 2:
+                    is_true_shunt = 1
+            shunt_pts.append((float(s.get("posterior_prob", 1.0)), is_true_shunt, s.get("mode", "SPARSE"), scenario))
+        out["shunt_cal_pts"] = shunt_pts
         m_bw = eval_splits(bw_splits, true_active)
         m_bw["time_s"] = bw_sec
         m_bwb = eval_splits(bwb_splits, true_active)
@@ -550,6 +616,25 @@ def run_network_rep(args):
             m_ft["false_conv_clade"] = 1 if false_clade in ft_splits else 0
             m_iq["false_conv_clade"] = 1 if false_clade in iq_splits else 0
 
+        shunt_pts = []
+        for s in shunts:
+            is_true_shunt = 0
+            lu = set(s.get("leaves_u", []))
+            lv = set(s.get("leaves_v", []))
+            ends_ok = bool(lu and lv and ((lu <= c0 and lv <= c5) or (lu <= c5 and lv <= c0)))
+            if true_interval is not None and s.get("mode") == "INTERVAL" and s.get("interval_span"):
+                ta, tb = true_interval
+                sa, sb = s["interval_span"]
+                inter = max(0, min(tb, sb) - max(ta, sa) + 1)
+                union = (tb - ta + 1) + (sb - sa + 1) - inter
+                if ends_ok and (inter / max(1, union)) >= 0.30:
+                    is_true_shunt = 1
+            elif scenario == "N4_SparseConv_10Sites" and s.get("mode") == "SPARSE":
+                hit_s = set(s.get("sites_0based", [])) & conv_sites
+                if ends_ok and len(hit_s) >= 2:
+                    is_true_shunt = 1
+            shunt_pts.append((float(s.get("posterior_prob", 1.0)), is_true_shunt, s.get("mode", ""), scenario))
+
         return {
             "scenario": scenario,
             "rep": rep,
@@ -558,6 +643,7 @@ def run_network_rep(args):
             "iq": m_iq,
             "shunt": shunt_metrics,
             "cal_pts": pts,
+            "shunt_cal_pts": shunt_pts,
         }
 
 
@@ -742,7 +828,41 @@ def run_singlecell_rep(args):
             m_iq = eval_splits(iq_splits, true_active)
             m_iq["time_s"] = iq_sec
 
-            out["methods"] = {"bw_mdl": m_bw, "bw_bin": m_bwb, "iq_bin_ml": m_iq}
+            methods_dict = {"bw_mdl": m_bw, "bw_bin": m_bwb, "iq_bin_ml": m_iq}
+
+            if COMPASS_BIN and Path(COMPASS_BIN).exists():
+                pref = f"{td}/comp"
+                var_csv = f"{pref}_variants.csv"
+                with open(var_csv, "w") as f:
+                    f.write("CHR,POS,REF,ALT,REGION,NAME,FREQ," + ",".join(names) + "\n")
+                    for j in range(n_loci):
+                        cells_gt = []
+                        for nm in names:
+                            v = str(mat[nm][j])
+                            if v == "?":
+                                cells_gt.append("0:0")
+                            elif v == "0":
+                                cells_gt.append("60:0")
+                            elif v == "1":
+                                cells_gt.append("30:30")
+                            else:
+                                cells_gt.append("0:60")
+                        f.write(f"1,{j + 100},A,G,exonic,L{j:03d},0.000," + ",".join(cells_gt) + "\n")
+                env1 = os.environ.copy()
+                env1["OMP_NUM_THREADS"] = "1"
+                t0 = time.perf_counter()
+                comp_proc = subprocess.run(
+                    [COMPASS_BIN, "-i", pref, "-o", f"{td}/comp_out", "--CNA", "0", "-d", "0", "--nodecost", "0.15", "--nchains", "2", "--chainlength", "3000", "--prettyplot", "0"],
+                    env=env1, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                )
+                comp_sec = time.perf_counter() - t0
+                if comp_proc.returncode == 0 and Path(f"{td}/comp_out_tree.gv").exists():
+                    comp_splits = parse_compass_outputs(f"{td}/comp_out_tree.gv", f"{td}/comp_out_cellAssignments.tsv", names)
+                    m_comp = eval_splits(comp_splits, true_active)
+                    m_comp["time_s"] = comp_sec
+                    methods_dict["compass"] = m_comp
+
+            out["methods"] = methods_dict
         else:
             # Ordered CNA: Bushwhacker (--ordered) vs Unordered (--discrete) vs Binarized (CN != 2)
             t0 = time.perf_counter()
@@ -800,13 +920,14 @@ def avg_dict(dict_list, keys):
 def main():
     t_start = time.perf_counter()
     n_reps = 100
-    max_workers = min(16, os.cpu_count() or 8)
+    max_workers = int(os.environ.get("BW_WORKERS", str(min(16, os.cpu_count() or 8))))
 
     protein_scenarios = ["P1_StarNull", "P2_RapidRad", "P3_StandardYule", "P4_ConvergentAA"]
     network_scenarios = ["N1_ClonalNull", "N2_HGT_Block200", "N3_HGT_Block450", "N4_SparseConv_10Sites"]
     singlecell_scenarios = ["C1_BinaryBurst", "C2_BinaryHighDropout", "C3_OrderedCNA", "C4_DiploidNullNoise"]
 
     all_cal_pts = []
+    all_shunt_cal_pts = []
     summary = {
         "n_reps_per_scenario": n_reps,
         "total_new_datasets": n_reps * (len(protein_scenarios) + len(network_scenarios) + len(singlecell_scenarios)),
@@ -814,6 +935,7 @@ def main():
         "network_suite": {},
         "singlecell_suite": {},
         "posterior_calibration": {},
+        "shunt_posterior_calibration": {},
     }
 
     print(f"Running Suite 1: 400 Protein LG+G4 alignments ({max_workers} workers)...", flush=True)
@@ -825,6 +947,7 @@ def main():
         sub = [x for x in p_results if x["scenario"] == sc]
         for x in sub:
             all_cal_pts.extend(x["cal_pts"])
+            all_shunt_cal_pts.extend(x.get("shunt_cal_pts", []))
         m_names = list(sub[0]["methods"].keys())
         sc_sum = {}
         for mn in m_names:
@@ -845,6 +968,7 @@ def main():
         sub = [x for x in n_results if x["scenario"] == sc]
         for x in sub:
             all_cal_pts.extend(x["cal_pts"])
+            all_shunt_cal_pts.extend(x.get("shunt_cal_pts", []))
         sc_sum = {
             "bw": avg_dict([x["bw"] for x in sub], ["n_est", "n_true_active", "tp", "fp", "rf", "nrf", "precision", "recall", "false_hgt_clade", "false_conv_clade"]),
             "ft": avg_dict([x["ft"] for x in sub], ["n_est", "n_true_active", "tp", "fp", "rf", "nrf", "precision", "recall", "false_hgt_clade", "false_conv_clade"]),
@@ -902,6 +1026,32 @@ def main():
         "overall_empirical_true_frac": round(sum(y for _, y, _ in all_cal_pts) / max(1, total_pts), 4),
         "expected_calibration_error": round(ece, 4),
         "bins": cal_bins,
+    }
+
+    sh_total = len(all_shunt_cal_pts)
+    sh_ece = 0.0
+    sh_bins = []
+    for lo, hi, lbl in bins:
+        pts_b = [(p, y) for p, y, _, _ in all_shunt_cal_pts if lo <= p < hi]
+        if pts_b:
+            mean_p = sum(p for p, _ in pts_b) / len(pts_b)
+            obs_acc = sum(y for _, y in pts_b) / len(pts_b)
+            sh_ece += (len(pts_b) / max(1, sh_total)) * abs(mean_p - obs_acc)
+            sh_bins.append({
+                "bin": lbl,
+                "n_shunts": len(pts_b),
+                "mean_predicted_prob": round(mean_p, 4),
+                "empirical_true_frac": round(obs_acc, 4),
+            })
+    null_shunts = [x for x in all_shunt_cal_pts if x[3] in ("N1_ClonalNull", "P1_StarNull", "P2_RapidRad", "P3_StandardYule")]
+    summary["shunt_posterior_calibration"] = {
+        "total_evaluated_shunts": sh_total,
+        "overall_mean_predicted_prob": round(sum(p for p, _, _, _ in all_shunt_cal_pts) / max(1, sh_total), 4),
+        "overall_empirical_true_frac": round(sum(y for _, y, _, _ in all_shunt_cal_pts) / max(1, sh_total), 4),
+        "expected_calibration_error": round(sh_ece, 4),
+        "null_regimes_total_shunts": len(null_shunts),
+        "null_regimes_shunt_rate_per_dataset": round(len(null_shunts) / (4.0 * n_reps), 4),
+        "bins": sh_bins,
     }
     summary["wall_sec"] = round(time.perf_counter() - t_start, 2)
 

@@ -529,5 +529,67 @@
         }
       }
     }
-  ]
+  ],
+  "bars_eq9_and_collapsed_ml_baselines": {
+    "default": {
+      "n_reps": 10,
+      "mean_nrf": 0.3,
+      "mean_rf": 12.6,
+      "mean_fp": 6.3,
+      "mean_fn": 6.3,
+      "mean_gene_tree_cpu_sec": 6.23,
+      "mean_wall_64core_sec": 0.599,
+      "mean_astral_sec": 0.501
+    },
+    "no_mult_pen": {
+      "n_reps": 10,
+      "mean_nrf": 0.28571,
+      "mean_rf": 12.0,
+      "mean_fp": 6.0,
+      "mean_fn": 6.0,
+      "mean_gene_tree_cpu_sec": 6.19,
+      "mean_wall_64core_sec": 0.575,
+      "mean_astral_sec": 0.479
+    },
+    "empirical_alpha": {
+      "n_reps": 10,
+      "mean_nrf": 0.32857,
+      "mean_rf": 13.8,
+      "mean_fp": 6.9,
+      "mean_fn": 6.9,
+      "mean_gene_tree_cpu_sec": 6.17,
+      "mean_wall_64core_sec": 0.58,
+      "mean_astral_sec": 0.484
+    },
+    "no_mult_pen_empirical": {
+      "n_reps": 10,
+      "mean_nrf": 0.29048,
+      "mean_rf": 12.2,
+      "mean_fp": 6.1,
+      "mean_fn": 6.1,
+      "mean_gene_tree_cpu_sec": 6.14,
+      "mean_wall_64core_sec": 0.561,
+      "mean_astral_sec": 0.465
+    },
+    "iq_uf95": {
+      "n_reps": 5,
+      "mean_nrf": 0.32381,
+      "mean_rf": 13.6,
+      "mean_fp": 6.8,
+      "mean_fn": 6.8,
+      "mean_gene_tree_cpu_sec": 2371.95,
+      "mean_wall_64core_sec": 37.564,
+      "mean_astral_sec": 0.503
+    },
+    "iq_alrt80": {
+      "n_reps": 5,
+      "mean_nrf": 0.19048,
+      "mean_rf": 8.0,
+      "mean_fp": 4.0,
+      "mean_fn": 4.0,
+      "mean_gene_tree_cpu_sec": 2371.95,
+      "mean_wall_64core_sec": 37.492,
+      "mean_astral_sec": 0.431
+    }
+  }
 }

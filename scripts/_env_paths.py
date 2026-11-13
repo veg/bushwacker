@@ -13,12 +13,16 @@ import os
 import shutil
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+_CUR_DIR = Path(__file__).resolve().parent
+REPO_ROOT = next(
+    (p for p in (_CUR_DIR, *_CUR_DIR.parents) if (p / "Cargo.toml").exists()),
+    _CUR_DIR.parent,
+)
 DATA_DIR = REPO_ROOT / "data"
 SPECIMENS_DIR = DATA_DIR / "specimens"
 ALIGNMENTS_DIR = DATA_DIR / "alignments"
 SINGLE_CELL_DIR = DATA_DIR / "single_cell"
-RESULTS_DIR = REPO_ROOT / "results"
+RESULTS_DIR = Path(os.environ.get("BUSHWHACKER_RESULTS_DIR", os.environ.get("RESULTS_DIR", str(REPO_ROOT / "results"))))
 WORK_ROOT = Path(os.environ.get("BUSHWHACKER_WORK_DIR", str(REPO_ROOT / "work")))
 EXTERNAL_DIR = Path(os.environ.get("EXTERNAL_CORPORA_DIR", str(REPO_ROOT / "external_corpora")))
 

@@ -52,7 +52,7 @@ Because the full raw phylogenomic benchmarks below exceed multiple gigabytes unc
 | Model-Selection Benchmark Archive (`abadi_gerth_osf`) | 7,200 empirical + 27,500 simulated alignments | OSF https://doi.org/10.17605/OSF.IO/T3PF2 |
 | Eukaryotic Radiations (`rokas_shen_zhou_figshare`) | 19 datasets, 45,205 loci (83,180 ML searches) | Figshare Project `22040` |
 | Avian Whole-Genome Radiation (`avian_shultz2019`) | Complete genome-wide avian loci | Dryad https://doi.org/10.5061/dryad.4b8gt83 |
-| TOGA2 882-Mammal Proteome (`toga2_hg38_v1`) | 19,890 coding / 19,952 protein loci | Senckenberg TOGA2 `hg38 v1` (`allCodonAlis.tar.gz`) |
+| TOGA2 882-Mammal Proteome (`toga2_hg38_v1`) | 19,952 coding / 19,953 protein loci | Senckenberg TOGA2 `hg38 v1` (`allCodonAlis.tar.gz`) |
 | GTDB Release 95.0 (`gtdb_r95`) | `ar122` + `bac120` marker MSAs & trees | https://data.gtdb.ecogenomic.org/releases/release95/95.0/ |
 | Greengenes 16S (`greengenes_13_5`) | Full 16S rRNA release | https://greengenes.secondgenome.com/ |
 | COMPASS Tapestri Myeloid (`compass_tapestri`) | 168 runs, 1,001,609 cells | Zenodo https://doi.org/10.5281/zenodo.10822292 |

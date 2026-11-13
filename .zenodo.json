@@ -1,0 +1,51 @@
+{
+  "title": "Replication Package: Evolutionary history from genomes to single cells by lossless compression",
+  "description": "Complete self-contained source code, curated/assembled empirical and simulated alignments, single-cell somatic cohorts, precomputed benchmark ledgers, automated verification harnesses, figure generators, and LaTeX manuscript sources for Bushwhacker (MDL evolutionary tree and lateral network inference).",
+  "upload_type": "software",
+  "publication_date": "2026-11-12",
+  "creators": [
+    {
+      "name": "Kosakovsky Pond, Sergei L.",
+      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA"
+    },
+    {
+      "name": "Martin, Darren P.",
+      "affiliation": "Institute of Infectious Disease and Molecular Medicine, Department of Integrative Biomedical Sciences, University of Cape Town, Cape Town, South Africa"
+    },
+    {
+      "name": "Pond, Stephanie J. K.",
+      "affiliation": "Bioinnovation and Genomic Sciences Division, Translational Genomics Research Institute, Phoenix, AZ, USA"
+    },
+    {
+      "name": "Nekrutenko, Anton",
+      "affiliation": "Department of Biochemistry and Molecular Biology, The Pennsylvania State University, University Park, PA, USA"
+    }
+  ],
+  "license": "mit",
+  "access_right": "open",
+  "keywords": [
+    "phylogenetics",
+    "Minimum Description Length",
+    "lossless compression",
+    "horizontal gene transfer",
+    "recombination",
+    "convergent evolution",
+    "single-cell phylogenomics",
+    "polytomies",
+    "Rust",
+    "Bushwhacker"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/veg/bushwacker",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://veg.github.io/bushwacker/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ],
+  "version": "1.0.0"
+}

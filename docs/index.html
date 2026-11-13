@@ -1690,7 +1690,7 @@
 
             <select id="selColorMode" class="clean-select" style="padding:5px 9px; font-size:12.5px;" onchange="renderCanvas()">
               <option value="clade">Color: Taxonomic / Clade Ribbons</option>
-              <option value="support">Color: MDL Split Posterior P(e|D)</option>
+              <option value="support">Color: Conditional Local Posterior P_local</option>
               <option value="regime">Color: Resolved Splits vs. Polytomy Hubs</option>
               <option value="mutations">Color: Branch Mutation Count (m_e)</option>
             </select>
@@ -2094,13 +2094,13 @@
 
             <div class="help-card" data-help-item>
               <div class="help-card-header">
-                <span class="help-card-title">MDL Split &amp; Shunt Posterior P(e | D)</span>
-                <span class="help-card-tag">Bayesian Calibration</span>
+                <span class="help-card-title">Conditional Local Split &amp; Shunt Posterior P<sub>local</sub></span>
+                <span class="help-card-tag">Local Calibration</span>
               </div>
               <div class="help-card-body">
-                Because description lengths in nats are negative log-probabilities under the universal prefix prior, a net MDL compression gain of <strong>ΔL nats</strong> translates directly into an exact posterior odds ratio <code>exp(ΔL) : 1</code> against the contracted null hypothesis.
+                Because description lengths in nats represent negative log-probabilities under the universal prefix prior, a net MDL compression gain of <strong>ΔL<sub>e</sub> nats</strong> gives the conditional local two-hypothesis posterior <code>P_local = 1 / (1 + exp(−ΔL_e))</code> against contracting edge <strong>e</strong> (or omitting a shunt) conditioned on the fixed surrounding graph. High-confidence splits (<code>P_local ≥ 99%</code>) are well-calibrated, whereas intermediate values are optimistic because competing topologies are not marginalized.
               </div>
-              <div class="help-formula">P(e | D) = 1 / (1 + exp(−ΔL_e)) • ΔL = +4.6 nats ⇒ P = 99.0%</div>
+              <div class="help-formula">P_local = 1 / (1 + exp(−ΔL_e)) • ΔL_e = +4.6 nats ⇒ P_local = 99.0%</div>
             </div>
 
             <div class="help-card" data-help-item>
@@ -2109,9 +2109,9 @@
                 <span class="help-card-tag">Stage 2 Network Peeling</span>
               </div>
               <div class="help-card-body">
-                <strong>INTERVAL</strong> pays <code>2 ln L_eff + ln C(w, k)</code> to specify start/end coordinates of a recombinant block of width <strong>w</strong>. <strong>SPARSE</strong> pays <code>L_N(k) + ln C(L_eff, k)</code> to index <strong>k</strong> scattered convergent sites or codons anywhere in the gene.
+                <strong>INTERVAL</strong> pays <code>2 ln L_eff + ln C(w, k)</code> to specify start/end coordinates of a recombinant block of width <strong>w</strong>. <strong>SPARSE</strong> pays <code>L_N(k) + ln C(M_pool, k)</code> over the variable-site pool <strong>M_pool</strong> to index <strong>k</strong> scattered convergent sites or codons anywhere in the gene.
               </div>
-              <div class="help-formula">Prestin Delphinidae ↔ Rhinolophoidea: 5 convergent codons → ΔL_net = +7.80 nats (P = 99.96%)</div>
+              <div class="help-formula">P_local(shunt) = 1 / (1 + exp(−ΔL_net)) • net MDL gain after endpoint and mask costs</div>
             </div>
           </div>
         </div>
@@ -4463,7 +4463,7 @@
             <th>Mutations (m_e)</th>
             <th>Branch Length</th>
             <th>Net MDL Gain (ΔL_e)</th>
-            <th>Posterior P(e|D)</th>
+            <th>Local Post. P_local</th>
             <th>Clean Synapomorphies</th>
           </tr>`;
 
@@ -4621,9 +4621,9 @@
           <div class="drawer-stat-sub">Parsimony compression</div>
         </div>
         <div class="drawer-stat-cell">
-          <div class="drawer-stat-lbl">Net MDL Gain / P</div>
+          <div class="drawer-stat-lbl">Net MDL Gain / P_local</div>
           <div class="drawer-stat-val" style="color:var(--orange);">+${netGain.toFixed(2)} nats</div>
-          <div class="drawer-stat-sub">P(e|D) = ${(nd.mdlSupport * 100).toFixed(2)}%</div>
+          <div class="drawer-stat-sub">P_local = ${(nd.mdlSupport * 100).toFixed(2)}%</div>
         </div>`;
 
       // Synapomorphy site pills
@@ -5269,11 +5269,11 @@
           tt.style.top = `${Math.max(12, my - 12)}px`;
           if (hit.type === 'shunt') {
             const sh = hit.data;
-            tt.innerHTML = `<strong>${escapeHtml(sh.mode)} Shunt: ${escapeHtml(sh.label_u)} ↔ ${escapeHtml(sh.label_v)}</strong><br/>Net MDL Gain: +${sh.net_mdl_gain_nats.toFixed(2)} nats (P = ${(sh.posterior_prob * 100).toFixed(2)}%)<br/><em>Click to open Shunt Forensic Drawer</em>`;
+            tt.innerHTML = `<strong>${escapeHtml(sh.mode)} Shunt: ${escapeHtml(sh.label_u)} ↔ ${escapeHtml(sh.label_v)}</strong><br/>Net MDL Gain: +${sh.net_mdl_gain_nats.toFixed(2)} nats (P_local = ${(sh.posterior_prob * 100).toFixed(2)}%)<br/><em>Click to open Shunt Forensic Drawer</em>`;
           } else {
             const nd = hit.data;
             const degTxt = !nd.isLeaf && nd.degree >= 4 ? ` • <span style="color:#FBBF24;">${nd.degree}-way Polytomy Hub</span>` : '';
-            tt.innerHTML = `<strong>${escapeHtml(formatDisplayName(nd.rawLabel))}</strong>${degTxt}<br/>Mutations m_e = ${(nd.mutationCount || 0).toFixed(1)} • ΔL = +${(nd.mdlGain || 0).toFixed(2)} nats (P = ${((nd.mdlSupport ?? 1) * 100).toFixed(1)}%)<br/><em>Click to open Split Forensic Drawer</em>`;
+            tt.innerHTML = `<strong>${escapeHtml(formatDisplayName(nd.rawLabel))}</strong>${degTxt}<br/>Mutations m_e = ${(nd.mutationCount || 0).toFixed(1)} • ΔL = +${(nd.mdlGain || 0).toFixed(2)} nats (P_local = ${((nd.mdlSupport ?? 1) * 100).toFixed(1)}%)<br/><em>Click to open Split Forensic Drawer</em>`;
           }
         } else {
           tt.style.display = 'none';
@@ -5449,7 +5449,7 @@
           <div class="shunt-card" onclick="openStage2Drawer(${idx})">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
               <span class="badge ${sh.mode === 'SPARSE' ? 'purple' : 'blue'}">${escapeHtml(sh.mode)} SHUNT #${idx + 1}</span>
-              <span class="badge admitted">Net MDL Gain +${sh.net_mdl_gain_nats.toFixed(2)} nats • P = ${(sh.posterior_prob * 100).toFixed(2)}%</span>
+              <span class="badge admitted">Net MDL Gain +${sh.net_mdl_gain_nats.toFixed(2)} nats • P_local = ${(sh.posterior_prob * 100).toFixed(2)}%</span>
             </div>
             <div>
               <div class="mono" style="font-size:15px; font-weight:700; color:var(--ink);">
@@ -5490,7 +5490,7 @@
       const badge = document.getElementById('s2DrawerBadge');
       badge.className = sh.mode === 'SPARSE' ? 'badge purple' : 'badge blue';
       badge.textContent = `${sh.mode} Shunt #${shuntIdx + 1}`;
-      document.getElementById('s2DrawerSub').textContent = `Posterior Probability P = ${(sh.posterior_prob * 100).toFixed(2)}%`;
+      document.getElementById('s2DrawerSub').textContent = `Conditional Local Posterior P_local = ${(sh.posterior_prob * 100).toFixed(2)}%`;
       document.getElementById('s2DrawerTitle').textContent = `${sh.label_u} ↔ ${sh.label_v}`;
 
       document.getElementById('s2DrawerHeadline').textContent =
@@ -5518,9 +5518,9 @@
           <div class="drawer-stat-sub">2 ln |V| node header</div>
         </div>
         <div class="drawer-stat-cell">
-          <div class="drawer-stat-lbl">Net MDL Gain / P</div>
+          <div class="drawer-stat-lbl">Net MDL Gain / P_local</div>
           <div class="drawer-stat-val" style="color:var(--orange);">+${sh.net_mdl_gain_nats.toFixed(2)} nats</div>
-          <div class="drawer-stat-sub">P = ${(sh.posterior_prob * 100).toFixed(2)}%</div>
+          <div class="drawer-stat-sub">P_local = ${(sh.posterior_prob * 100).toFixed(2)}%</div>
         </div>`;
 
       // Mode selection proof
@@ -5831,7 +5831,7 @@
     <div class="card">
       <h2>1. Certified Reticulate Shunts (SPARSE Convergence &amp; INTERVAL HGT)</h2>
       <table>
-        <thead><tr><th>Shunt</th><th>Endpoints (u &harr; v)</th><th>Shared Mutations</th><th>Gross Savings</th><th>Net MDL Gain</th><th>Posterior P</th></tr></thead>
+        <thead><tr><th>Shunt</th><th>Endpoints (u &harr; v)</th><th>Shared Mutations</th><th>Gross Savings</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${shuntRows}</tbody>
       </table>
     </div>
@@ -5842,7 +5842,7 @@
     <div class="card">
       <h2>3. Top Certified Internal Bipartitions (Ordered by Net MDL Gain)</h2>
       <table>
-        <thead><tr><th>Edge (u &ndash; v)</th><th>Mutations (m_e)</th><th>Branch Length</th><th>Net MDL Gain</th><th>Posterior P(e|D)</th></tr></thead>
+        <thead><tr><th>Edge (u &ndash; v)</th><th>Mutations (m_e)</th><th>Branch Length</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${splitRows}</tbody>
       </table>
     </div>
@@ -5891,7 +5891,7 @@
       if (!currentResult) return;
       const base = (currentDatasetLabel || 'bushwhacker').replace(/\.[^.]+$/, '');
       const shuntsComment = (currentResult.shunts || []).map((sh, i) =>
-        `  [Shunt #${i + 1}: ${sh.mode} ${sh.label_u} <-> ${sh.label_v}, Net_MDL_Gain=+${sh.net_mdl_gain_nats.toFixed(2)}_nats, P=${(sh.posterior_prob * 100).toFixed(2)}%]`
+        `  [Shunt #${i + 1}: ${sh.mode} ${sh.label_u} <-> ${sh.label_v}, Net_MDL_Gain=+${sh.net_mdl_gain_nats.toFixed(2)}_nats, P_local=${(sh.posterior_prob * 100).toFixed(2)}%]`
       ).join('\n');
       const nex = `#NEXUS\nBEGIN TREES;\n${shuntsComment ? shuntsComment + '\n' : ''}  TREE bushwhacker_mdl = ${currentResult.newick}\nEND;\n`;
       downloadBlob(`${base}.bushwhacker.nex`, nex, 'text/plain');
@@ -6418,15 +6418,15 @@
           },
           stage1: {
             title: 'Stage 1: Calibrated MDL Backbone Phylogeny & Polytomy Hubs',
-            body: 'BUSHWHACKER compressed the Star-Tree null (16,580 nats) down to <strong>9,135 nats</strong> across 97 certified binary splits while contracting 10 ambiguous short internal radiations into explicit multi-way polytomy hubs. Notice that dolphins (Cetacea) group inside Cetartiodactyla and bats group inside Chiroptera — the true species phylogeny is preserved!',
+            body: 'BUSHWHACKER compressed the Star-Tree null (80,343 nats) down to <strong>46,306 nats</strong> across 81 binary splits while contracting 19 ambiguous short internal radiations into explicit multi-way polytomy hubs. Notice that dolphins (Cetacea) group inside Cetartiodactyla and bats group inside Chiroptera — the true species phylogeny is preserved!',
             chips: [
-              { label: '🔬 Inspect a Certified Split Drawer', action: () => { const b = currentResult?.branches?.find(x => x.is_internal); if (b) openStage1Drawer(b.v); } },
+              { label: '🔬 Inspect a Split Drawer', action: () => { const b = currentResult?.branches?.find(x => x.is_internal); if (b) openStage1Drawer(b.v); } },
               { label: '▶ Advance to Stage 2: Reticulate Shunts →', action: () => switchView('stage2') }
             ]
           },
           stage2: {
             title: 'Stage 2: Peeling the Delphinidae ↔ Rhinolophoidea Echolocation Shunt',
-            body: 'Rather than distorting the species tree, Stage 2 peeled the parallel amino-acid substitutions shared between echolocating dolphins (<code>N143</code>) and echolocating bats (<code>N192</code>) into a certified <strong>SPARSE Shunt (+7.80 nats net MDL gain, P = 99.96%)</strong> across 5 canonical echolocation codons: <strong>N7T, I384T, S392A, L497M, G601A</strong>.',
+            body: 'Rather than distorting the species tree, Stage 2 peeled the parallel amino-acid substitutions shared between echolocating dolphins (<code>N148</code>) and echolocating bats (<code>N169</code>) into a <strong>SPARSE Shunt (+3.91 nats net MDL gain, P_local = 98.04%)</strong> across 4 canonical echolocation codons: <strong>N7T, I384T, S392A, G601A</strong>.',
             chips: [
               { label: '🧬 Open Echolocation Shunt Codon Table', action: () => openStage2Drawer(0) },
               { label: '▶ Open Stage 3 Publication Dossier →', action: () => openOrRunStage(3) }

@@ -5,9 +5,9 @@
   "n_bp": 2235,
   "models": {
     "Bushwhacker_MDL": {
-      "wall_sec": 0.055,
-      "internal_runtime_sec": 0.055,
-      "certified_shunts": 2,
+      "wall_sec": 0.0475,
+      "internal_runtime_sec": 0.0475,
+      "certified_shunts": 1,
       "resolved_splits": 81,
       "max_binary_splits": 113,
       "tp": 76,

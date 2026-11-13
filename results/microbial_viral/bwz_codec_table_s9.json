@@ -26,10 +26,10 @@
       "bzip2_9_col": 19154,
       "xz_6": 11864,
       "lzma_9": 11821,
-      "bwz_seq_payload_bytes": 7502,
-      "bwz_total_archive_bytes": 10578,
+      "bwz_seq_payload_bytes": 7503,
+      "bwz_total_archive_bytes": 10554,
       "ratio_vs_best": 1.576,
-      "ratio_vs_gzip9": 3.638,
+      "ratio_vs_gzip9": 3.637,
       "bit_exact_verified": true
     },
     {
@@ -42,10 +42,10 @@
       "bzip2_9_col": 49656,
       "xz_6": 31880,
       "lzma_9": 31835,
-      "bwz_seq_payload_bytes": 22052,
-      "bwz_total_archive_bytes": 33460,
-      "ratio_vs_best": 1.444,
-      "ratio_vs_gzip9": 2.492,
+      "bwz_seq_payload_bytes": 22061,
+      "bwz_total_archive_bytes": 33437,
+      "ratio_vs_best": 1.443,
+      "ratio_vs_gzip9": 2.491,
       "bit_exact_verified": true
     },
     {
@@ -58,10 +58,10 @@
       "bzip2_9_col": 7438,
       "xz_6": 6448,
       "lzma_9": 6402,
-      "bwz_seq_payload_bytes": 4176,
-      "bwz_total_archive_bytes": 12720,
-      "ratio_vs_best": 1.533,
-      "ratio_vs_gzip9": 2.381,
+      "bwz_seq_payload_bytes": 4180,
+      "bwz_total_archive_bytes": 12664,
+      "ratio_vs_best": 1.532,
+      "ratio_vs_gzip9": 2.379,
       "bit_exact_verified": true
     },
     {
@@ -75,7 +75,7 @@
       "xz_6": 2212,
       "lzma_9": 2167,
       "bwz_seq_payload_bytes": 1623,
-      "bwz_total_archive_bytes": 2124,
+      "bwz_total_archive_bytes": 2123,
       "ratio_vs_best": 1.335,
       "ratio_vs_gzip9": 1.688,
       "bit_exact_verified": true
@@ -123,7 +123,7 @@
       "xz_6": 415140,
       "lzma_9": 409108,
       "bwz_seq_payload_bytes": 220588,
-      "bwz_total_archive_bytes": 340570,
+      "bwz_total_archive_bytes": 340571,
       "ratio_vs_best": 1.855,
       "ratio_vs_gzip9": 17.186,
       "bit_exact_verified": true
@@ -170,10 +170,10 @@
       "bzip2_9_col": 9709,
       "xz_6": 9392,
       "lzma_9": 9348,
-      "bwz_seq_payload_bytes": 6051,
-      "bwz_total_archive_bytes": 8353,
-      "ratio_vs_best": 1.545,
-      "ratio_vs_gzip9": 3.871,
+      "bwz_seq_payload_bytes": 6054,
+      "bwz_total_archive_bytes": 8345,
+      "ratio_vs_best": 1.544,
+      "ratio_vs_gzip9": 3.869,
       "bit_exact_verified": true
     },
     {
@@ -187,7 +187,7 @@
       "xz_6": 78500,
       "lzma_9": 78441,
       "bwz_seq_payload_bytes": 110499,
-      "bwz_total_archive_bytes": 114717,
+      "bwz_total_archive_bytes": 114718,
       "ratio_vs_best": 0.71,
       "ratio_vs_gzip9": 2.011,
       "bit_exact_verified": true

@@ -3668,8 +3668,9 @@ fn evaluate_discrete_sparse_shunt_mdl(
         cur_sites.push(s);
         if k_ev >= min_shunt_sites {
             let m_donor = m_donor_base.max(k_ev as f64);
-            let mask_cost =
-                2.0_f64.ln() + (m_donor.max(2.0)).ln() + log_binom(m_donor, k_ev as f64);
+            let mask_cost = 2.0_f64.ln()
+                + crate::universal_int_nats((k_ev - min_shunt_sites) as f64)
+                + log_binom(m_donor, k_ev as f64);
             let data_sav = (cum_raw_info - log_falling_factorial(m_recip_base, k_ev)).max(0.0);
             let net_gain = data_sav - endpoint_cost - mask_cost;
             if net_gain > best_gain {

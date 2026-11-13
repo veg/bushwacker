@@ -62,17 +62,18 @@
     }
   },
   "shunt_taxonomic_scope": {
+    "source": "TOGA2_sp_aa_19953_Eq7_refreshed",
     "INTERVAL": {
-      "intra_family": 672,
-      "intra_order_inter_family": 191,
-      "inter_order": 168,
-      "unmapped": 1
+      "intra_family": 1551,
+      "intra_order_inter_family": 437,
+      "inter_order": 263,
+      "total": 2251
     },
     "SPARSE": {
-      "inter_order": 2010,
-      "intra_order_inter_family": 4275,
-      "intra_family": 7818,
-      "unmapped": 2
+      "intra_family": 1548,
+      "intra_order_inter_family": 2429,
+      "inter_order": 2442,
+      "total": 6419
     }
   },
   "top_inter_order_pairs": {

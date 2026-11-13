@@ -4,7 +4,7 @@
 
 [![Language: Rust](https://img.shields.io/badge/Language-Rust%20%28Edition%202021%29-DEA584.svg)](#installation--rust-cli)
 [![WebApp: Rust WASM](https://img.shields.io/badge/WebApp-GitHub%20Pages%20%28WASM%29-ff4f00.svg)](https://veg.github.io/bushwacker/)
-[![Technical Report](https://img.shields.io/badge/Technical%20Report-PDF%20%2817%20pp.%29-blue.svg)](paper/bushwhacker_report.pdf)
+[![Technical Report](https://img.shields.io/badge/Manuscript-Science%20PDF-blue.svg)](paper/science_main.pdf)
 
 > *"Clear the statistical underbrush."*
 
@@ -27,7 +27,7 @@ Every proposed evolutionary structure—an internal tree split `e = (u, v)`, a m
 2. **Intrinsic Immunity to Long-Branch Attraction (`96.0%` True Split in the Felsenstein Zone):**
    In the Felsenstein Zone (`b_long = 0.40`, `b_short = 0.03`, `b_int = 0.035`), a random mutation on a long branch with `m_c` mutations carries marginal combinadic positional cost `ln((L_eff - m_c) / (m_c + 1)) ≈ 0.6 nats`, whereas a mutation on a short branch carries `≈ 3.8 nats`. Uniting the two short branches yields `+5.8 nats` of compression per synapomorphy, while uniting the two long branches fails to overcome the quartet topology penalty `L_topo(2, 2) = ln 3 nats`.
 3. **Dual-Mode Reticulate Shunt Peeling (`INTERVAL` vs. `SPARSE`):**
-   When localized recombination or multi-site adaptive convergence occurs across distant lineages, BUSHWHACKER preserves the vertical species backbone `T_0` and peels off the horizontal/convergent signal as a certified reticulate shunt `e_s = (u, v, M_s)`, automatically classifying contiguous mosaic blocks (`INTERVAL` mode, `L_mask = ln 2 + 2 ln L`) versus dispersed functional convergence (`SPARSE` mode, `L_mask(m) = ln 2 + ln C(M_pool, m)`).
+   When localized recombination or multi-site adaptive convergence occurs across distant lineages, BUSHWHACKER preserves the vertical species backbone `T_0` and peels off the horizontal/convergent signal as a reticulate shunt `e_s = (u, v, M_s)`, automatically classifying contiguous mosaic blocks (`INTERVAL` mode, `L_mask = ln 2 + 2 ln L`) versus dispersed functional convergence (`SPARSE` mode, `L_mask(m) = ln 2 + L_N(m) + ln C(M_pool, m)`).
 
 ---
 
@@ -84,31 +84,39 @@ Options:
   -h, --help                      Print help message
 ```
 
-### Example: Mammalian *Prestin* (`prestin.fasta`, 116 Mammals, 2,235 bp)
+### Example: Mammalian *Prestin* (`data/specimens/prestin.fasta`, 116 Mammals, 2,235 bp)
 
 ```bash
-./target/release/bushwhacker docs/examples/prestin.fasta -o prestin.nwk -j prestin.json -T 1
+./target/release/bushwhacker data/specimens/prestin.fasta -o prestin.nwk -j prestin.json -T 1
 ```
 
 ```text
 ==============================================================================
-BUSHWHACKER Summary: docs/examples/prestin.fasta  (N=116 taxa, L=2235 sites)
+BUSHWHACKER Summary: data/specimens/prestin.fasta  (N=116 taxa, L=2235 sites)
 ------------------------------------------------------------------------------
   Raw Uncompressed DL   :     351367.4 nats
   Star Tree MDL (Null)  :      80342.7 nats
   Induced Tree MDL      :      46306.1 nats  (57.64% of Star)
-  Induced Network MDL   :      46296.6 nats  (57.62% of Star)
+  Induced Network MDL   :      46302.2 nats  (57.63% of Star)
   Resolved Splits       :   81 /  113 binary splits (19 polytomy hubs)
-  Certified Shunts      :    2
-    [1] SPARSE  N148 <-> N169  (+6.64 nats, P=99.9%, m=4 sites, codons=[7, 384, 392, 601])
-    [2] SPARSE  HLrhiSin1 <-> N154  (+2.79 nats, P=94.2%, m=5 sites, codons=[308, 554, 566, 621, 685])
-  Runtime               : 0.1291 s
+  Retained Shunts       :    1
+    [1] SPARSE  N148 <-> N169  (+3.91 nats, P_local=98.0%, m=4 sites, codons=[7, 384, 392, 601])
+  Runtime               : 0.12 s
 ==============================================================================
 ```
 
 Without any species-tree supervision or empirical amino acid matrices, **BUSHWHACKER**:
 - Resolves the 116-mammal species backbone at **93.8% precision** (`76 TP`, `5 FP`, `RF = 42` across all 116 taxa) against the curated NCBI Taxonomy (compared against `83.6%` / `18 FP` for `IQ-TREE --polytomy` and `83.2%` / `19 FP` for raw `IQ-TREE 2`), and
-- Automatically discovers and certifies the classic **echolocation convergence shunt** (`SPARSE N148 Delphinidae <-> N169 Rhinolophoidea Bats`, `+6.64 nats`, `P_local = 99.9%`) on the **exact four classic echolocation codons `7, 384, 392, 601` (`N7T, I384T, S392A, G601A`)** of Liu et al. (*PNAS* 2010) and Li et al. (*Curr. Biol.* 2010), plus a secondary `HLrhiSin1 <-> Odontoceti` link (`+2.79 nats`, `P_local = 94.2%`, codons `[308, 554, 566, 621, 685]`).
+- Automatically recovers the classic **echolocation convergence shunt** (`SPARSE N148 Delphinidae <-> N169 Rhinolophoidea Bats`, `+3.91 nats`, `P_local = 98.04%`) on the **exact four classic echolocation codons `7, 384, 392, 601` (`N7T, I384T, S392A, G601A`)** of Liu et al. (*PNAS* 2010) and Li et al. (*Curr. Biol.* 2010).
+
+### End-to-End Clean-Room Verification
+
+```bash
+python3 scripts/data_tools/verify_manifest_checksums.py
+cargo build --release
+python3 scripts/data_tools/reproduce_specimens_and_verify.py
+python3 scripts/data_tools/reproduce_all_figures.py --compile-latex
+```
 
 ---
 
