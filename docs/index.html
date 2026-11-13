@@ -1469,13 +1469,13 @@
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 1 • MDL Tree &amp; Polytomies</div>
-            <div class="walkthrough-step-name">Combinadic Split Certification</div>
+            <div class="walkthrough-step-name">Combinadic Split Selection</div>
             <div class="walkthrough-step-text">Induces the maximum-compression tree via 64-site bit-plane SIMD, retaining only splits whose parsimony savings strictly beat their topological + combinadic header cost.</div>
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 2 • Reticulate Shunt Peeling</div>
             <div class="walkthrough-step-name">SPARSE Convergence &amp; HGT</div>
-            <div class="walkthrough-step-text">Peels residual non-tree homoplasies into certified <code>SPARSE</code> convergent coding shunts or contiguous <code>INTERVAL</code> recombination/HGT tracts with exact codon forensics.</div>
+            <div class="walkthrough-step-text">Peels residual non-tree homoplasies into supported <code>SPARSE</code> convergent coding shunts or contiguous <code>INTERVAL</code> recombination/HGT tracts with exact codon forensics.</div>
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 3 • Dossier &amp; Lossless .bwz</div>
@@ -1663,7 +1663,7 @@
           <div class="metric-block" onclick="scrollToElement('s1SplitsCard')">
             <div class="metric-caption">Resolved Binary Splits</div>
             <div id="s1MetricSplits" class="metric-num">—</div>
-            <div id="s1MetricSplitsSub" class="metric-sub">Certified internal stems</div>
+            <div id="s1MetricSplitsSub" class="metric-sub">Supported internal stems</div>
           </div>
           <div class="metric-block" onclick="scrollToElement('s1SplitsCard')">
             <div class="metric-caption">Calibrated Polytomy Hubs</div>
@@ -1735,11 +1735,11 @@
         </div>
       </section>
 
-      <!-- STAGE 1 CERTIFIED SPLITS & POLYTOMY HUBS LEDGER -->
+      <!-- STAGE 1 SUPPORTED SPLITS & POLYTOMY HUBS LEDGER -->
       <section class="main-card" id="s1SplitsCard">
         <div class="card-toolbar">
           <div class="view-pills" id="s1LedgerTabPills">
-            <button class="pill active" data-s1t="splits" onclick="setStage1LedgerTab('splits')">Certified Internal Splits <span id="s1CntSplits" class="pill-count">0</span></button>
+            <button class="pill active" data-s1t="splits" onclick="setStage1LedgerTab('splits')">Supported Internal Splits <span id="s1CntSplits" class="pill-count">0</span></button>
             <button class="pill" data-s1t="polytomies" onclick="setStage1LedgerTab('polytomies')">Calibrated Polytomy Hubs (d ≥ 4) <span id="s1CntPolys" class="pill-count">0</span></button>
           </div>
           <span style="font-size:12px; font-family:var(--font-mono); color:var(--ink-muted);">
@@ -1785,7 +1785,7 @@
 
         <div class="hero-metrics">
           <div class="metric-block">
-            <div class="metric-caption">Certified Shunts</div>
+            <div class="metric-caption">Supported Shunts</div>
             <div id="s2MetricTotal" class="metric-num" style="color:var(--orange);">—</div>
             <div id="s2MetricTotalSub" class="metric-sub">Beat combinadic mask tax</div>
           </div>
@@ -1805,18 +1805,18 @@
             <div id="s2MetricGainSub" class="metric-sub">Nats saved beyond tree</div>
           </div>
           <div class="metric-block">
-            <div class="metric-caption">Top Shunt Posterior</div>
+            <div class="metric-caption">Top Shunt P_local</div>
             <div id="s2MetricPosterior" class="metric-num">—</div>
-            <div id="s2MetricPosteriorSub" class="metric-sub">P(shunt | D)</div>
+            <div id="s2MetricPosteriorSub" class="metric-sub">Conditional local P_local</div>
           </div>
         </div>
       </section>
 
-      <!-- LINKED DUAL-PANEL VIEW: GENOME BARCODE TRACK + CERTIFIED SHUNT CARDS -->
+      <!-- LINKED DUAL-PANEL VIEW: GENOME BARCODE TRACK + SUPPORTED SHUNT CARDS -->
       <section class="main-card">
         <div class="card-toolbar">
           <div>
-            <strong style="font-size:13.5px; color:var(--ink);">Genome-Wide Site Coherence &amp; Certified Shunt Coordinate Map (1 .. L)</strong>
+            <strong style="font-size:13.5px; color:var(--ink);">Genome-Wide Site Coherence &amp; Supported Shunt Coordinate Map (1 .. L)</strong>
             <span style="font-size:12px; font-family:var(--font-mono); color:var(--ink-muted); margin-left:8px;">
               ● Orange Lollipops = SPARSE Convergent Codons/Sites • ■ Blue Spans = INTERVAL HGT Blocks • Click any marker or card below to inspect
             </span>
@@ -1899,7 +1899,7 @@
       <div class="drawer-header">
         <div style="min-width:0; flex:1;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
-            <span id="s1DrawerBadge" class="badge admitted">Certified Split</span>
+            <span id="s1DrawerBadge" class="badge admitted">Supported Split</span>
             <span id="s1DrawerSub" style="font-family:var(--font-mono); font-size:12px; color:var(--ink-muted);"></span>
           </div>
           <h2 id="s1DrawerTitle" style="font-family:var(--font-mono); font-size:17px; font-weight:700;">Branch / Node</h2>
@@ -2053,7 +2053,7 @@
             <div class="help-card-body">
               Scans residual homoplasies across the induced tree for pairs of non-sister clades that share parallel derived states. Evaluates two competing prefix codes for the affected site mask: a contiguous <strong>INTERVAL</strong> block header (capturing horizontal gene transfer and recombination) and a <strong>SPARSE</strong> combinadic subset index (capturing site-specific adaptive convergence such as mammalian echolocation in Prestin).
             </div>
-            <div class="help-formula">Certifies Shunt iff Net MDL Gain ΔL_net = Data Savings − Endpoint Header (2 ln |V|) − min(L_interval, L_sparse) &gt; 0</div>
+            <div class="help-formula">Admits Shunt iff Net MDL Gain ΔL_net = Data Savings − Endpoint Header (2 ln |V|) − min(L_interval, L_sparse) &gt; 0</div>
           </div>
 
           <div class="help-card" data-help-item>
@@ -2494,7 +2494,7 @@
         badge: '116 taxa × 2,235 bp (DNA)',
         badgeClass: 'purple',
         desc: 'Outer hair cell motor protein coding DNA across 116 placental, marsupial, and monotreme mammals. Classic test case for functional molecular convergence between echolocating dolphins and bats.',
-        discovery: 'Expected Discovery: SPARSE Shunt N143 (Delphinidae) ↔ N192 (Rhinolophoidea) (+7.80 nats, P = 99.96%, 5 convergent codons: N7T, I384T, S392A, L497M, G601A)'
+        discovery: 'Expected Discovery: 81 mammal splits + 19 polytomy hubs + SPARSE Shunt N148 (Delphinidae) ↔ N169 (Rhinolophoidea) (+3.91 nats, P_local = 98.04%, 4 convergent codons: N7T, I384T, S392A, G601A)'
       },
       {
         id: 'prestin_aa',
@@ -2502,7 +2502,7 @@
         badge: '116 taxa × 745 AA (Protein)',
         badgeClass: 'purple',
         desc: 'Authentic 20-letter amino-acid alignment of mammalian Prestin scored directly under Dayhoff–Miyata 6-class & LG08+CAT8 exchangeability MDL with zero nucleotide codon input.',
-        discovery: 'Expected Discovery: 47 mammal splits + 13 polytomy hubs + SPARSE AA Shunt Delphinidae ↔ Rhinolophoidea (+4.42 nats, P = 98.8%, residues 7, 38, 384, 392, 497, 601)'
+        discovery: 'Expected Discovery: 50 mammal splits + 14 polytomy hubs (LG08+CAT8 AA MDL); SPARSE AA Shunt micMur3 ↔ N200 (+0.34 nats, P_local = 58.38%, residues 497, 595, 642) when Min Shunt Sites = 3'
       },
       {
         id: 'aml_binary',
@@ -2928,7 +2928,7 @@
         primaryBtn.textContent = `Run Stage 1: Induce MDL Tree (${admittedCount} Taxa) →`;
       } else if (activeView === 'stage1') {
         const nShunts = currentResult && currentResult.shunts ? currentResult.shunts.length : 0;
-        primaryBtn.textContent = `Inspect Stage 2: Reticulate Shunts (${nShunts} Certified) →`;
+        primaryBtn.textContent = `Inspect Stage 2: Reticulate Shunts (${nShunts} Supported) →`;
       } else if (activeView === 'stage2') {
         primaryBtn.textContent = 'Generate Stage 3: Standalone HTML Dossier →';
       } else if (activeView === 'stage3') {
@@ -4400,7 +4400,7 @@
 
       document.getElementById('s1VerdictSentence').textContent =
         r.star_tree_nats > 0
-          ? `Induced ${r.n_internal_branches} certified splits and ${r.polytomy_nodes} calibrated polytomy hubs — saving ${savings.toFixed(1)} nats (${pctSaved}%) vs. Star Null`
+          ? `Induced ${r.n_internal_branches} supported splits and ${r.polytomy_nodes} calibrated polytomy hubs — saving ${savings.toFixed(1)} nats (${pctSaved}%) vs. Star Null`
           : `Loaded topology with ${r.n_taxa.toLocaleString()} leaves, ${r.n_internal_branches.toLocaleString()} internal branches, and ${r.polytomy_nodes} polytomy hubs`;
 
       document.getElementById('s1MetricTreeMdl').textContent =
@@ -4584,7 +4584,7 @@
       const isPoly = !nd.isLeaf && nd.degree >= 4;
       const badgeEl = document.getElementById('s1DrawerBadge');
       badgeEl.className = isPoly ? 'badge amber' : 'badge admitted';
-      badgeEl.textContent = isPoly ? `Calibrated ${nd.degree}-Way Polytomy Hub` : (nd.isLeaf ? 'Terminal Branch' : 'Certified Internal Split');
+      badgeEl.textContent = isPoly ? `Calibrated ${nd.degree}-Way Polytomy Hub` : (nd.isLeaf ? 'Terminal Branch' : 'Supported Internal Split');
 
       document.getElementById('s1DrawerSub').textContent =
         pNode ? `Edge ${pNode.rawLabel} → ${nd.rawLabel} • ${nd.leafCount} descendant tips` : `Root Node ${nd.rawLabel}`;
@@ -4599,7 +4599,7 @@
           `Any binary resolution of a ${nd.degree}-way hub must pay at least L_topo(2, ${nd.degree - 2}) + ln 2 = +${minReq.toFixed(2)} nats in topological + presence header overhead. Because no candidate sub-split across these ${nd.degree} lineages yielded ≥ ${minReq.toFixed(2)} nats of parsimony compression, BUSHWHACKER deterministically contracted the unsupported zero-evidence stems.`;
       } else {
         document.getElementById('s1DrawerHeadline').textContent =
-          `Certified with Net MDL Gain ΔL = +${netGain.toFixed(2)} nats (Posterior Support P = ${(nd.mdlSupport * 100).toFixed(2)}%)`;
+          `Supported with Net MDL Gain ΔL = +${netGain.toFixed(2)} nats (Conditional Support P_local = ${(nd.mdlSupport * 100).toFixed(2)}%)`;
         document.getElementById('s1DrawerDesc').textContent =
           `Absorbing m_e = ${mE.toFixed(1)} shared mutations onto this stem saved ${grossSavings.toFixed(2)} nats of descendant code length, beating the topological bipartition penalty L_topo(${degU}, ${degV}) = ${lTopo.toFixed(2)} nats and combinadic branch header L_branch = ${lHeader.toFixed(2)} nats.`;
       }
@@ -5320,7 +5320,7 @@
 
       document.getElementById('s2VerdictSentence').textContent =
         shunts.length > 0
-          ? `Certified ${shunts.length} reticulate shunt${shunts.length === 1 ? '' : 's'} (${nSp} SPARSE convergent, ${nInt} INTERVAL mosaic) saving +${totGain.toFixed(2)} nats beyond the backbone tree`
+          ? `Detected ${shunts.length} reticulate shunt${shunts.length === 1 ? '' : 's'} (${nSp} SPARSE convergent, ${nInt} INTERVAL mosaic) saving +${totGain.toFixed(2)} nats beyond the backbone tree`
           : `0 reticulate shunts exceeded the combinadic mask threshold — evolution is strictly tree-like across all ${currentResult.n_sites.toLocaleString()} columns`;
 
       document.getElementById('s2MetricTotal').textContent = String(shunts.length);
@@ -5413,7 +5413,7 @@
       if (shunts.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align:center; padding:28px; color:var(--ink-secondary); background:var(--bg-subtle); border-radius:8px; border:1px solid var(--border);">
-            <strong style="color:var(--ink); display:block; margin-bottom:4px;">Zero Reticulate Shunts Certified (Strictly Clonal Tree)</strong>
+            <strong style="color:var(--ink); display:block; margin-bottom:4px;">Zero Reticulate Shunts Admitted (Strictly Clonal Tree)</strong>
             No pair of non-sister clades shared enough parallel derived sites to overcome the <code>2 ln |V| + min(L_interval, L_sparse)</code> MDL header tax.
           </div>`;
         return;
@@ -5495,8 +5495,8 @@
 
       document.getElementById('s2DrawerHeadline').textContent =
         sh.mode === 'SPARSE'
-          ? `Certified SPARSE Molecular Convergence (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`
-          : `Certified INTERVAL Horizontal Transfer / Segmental Tract (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`;
+          ? `Supported SPARSE Molecular Convergence (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`
+          : `Supported INTERVAL Horizontal Transfer / Segmental Tract (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`;
 
       document.getElementById('s2DrawerDesc').textContent =
         `Transmitting these ${sh.shared_mutations} parallel derived substitutions via a reticulate shunt between ${sh.label_u} and ${sh.label_v} saves +${sh.data_savings_nats.toFixed(2)} nats of parsimony description length, exceeding the ${sh.endpoint_cost_nats.toFixed(2)}-nat node-pair pointer tax and the ${sh.mask_cost_nats.toFixed(2)}-nat ${sh.mode} site-mask header.`;
@@ -5771,7 +5771,7 @@
       const intBranches = (r.branches || []).filter(b => b.is_internal).sort((a, b) => b.mdl_gain_nats - a.mdl_gain_nats);
 
       const shuntRows = shunts.length === 0
-        ? `<tr><td colspan="6" style="text-align:center; color:#52514E;">No reticulate shunts certified (strictly clonal tree).</td></tr>`
+        ? `<tr><td colspan="6" style="text-align:center; color:#52514E;">No reticulate shunts admitted (strictly clonal tree).</td></tr>`
         : shunts.map((sh, i) => `
             <tr>
               <td>#${i + 1} (${escapeHtml(sh.mode)})</td>
@@ -5829,7 +5829,7 @@
       </div>
     </div>
     <div class="card">
-      <h2>1. Certified Reticulate Shunts (SPARSE Convergence &amp; INTERVAL HGT)</h2>
+      <h2>1. Supported Reticulate Shunts (SPARSE Convergence &amp; INTERVAL HGT)</h2>
       <table>
         <thead><tr><th>Shunt</th><th>Endpoints (u &harr; v)</th><th>Shared Mutations</th><th>Gross Savings</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${shuntRows}</tbody>
@@ -5840,7 +5840,7 @@
       ${svgMarkup}
     </div>
     <div class="card">
-      <h2>3. Top Certified Internal Bipartitions (Ordered by Net MDL Gain)</h2>
+      <h2>3. Top Supported Internal Bipartitions (Ordered by Net MDL Gain)</h2>
       <table>
         <thead><tr><th>Edge (u &ndash; v)</th><th>Mutations (m_e)</th><th>Branch Length</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${splitRows}</tbody>
@@ -6462,7 +6462,7 @@
           },
           stage2: {
             title: 'Stage 2: Specificity Under Clonal Evolution (0 False-Positive Shunts)',
-            body: 'Because no non-sister lineages share excess parallel mutations beyond the combinadic mask threshold, Stage 2 certifies exactly <strong>0 reticulate shunts</strong>.',
+            body: 'Because no non-sister lineages share excess parallel mutations beyond the combinadic mask threshold, Stage 2 admits exactly <strong>0 reticulate shunts</strong>.',
             chips: [
               { label: '▶ Generate Stage 3 Dossier →', action: () => openOrRunStage(3) }
             ]
@@ -6494,7 +6494,7 @@
             ]
           },
           stage2: {
-            title: 'Stage 2: Contiguous INTERVAL Shunt Certification',
+            title: 'Stage 2: Contiguous INTERVAL Shunt Selection',
             body: 'Notice how the <strong>INTERVAL</strong> prefix code (<code>2 ln L_eff + ln C(w, k)</code>) decisively beat the scattered SPARSE combinadic code because the transferred synapomorphies cluster tightly inside sites 321..560.',
             chips: [
               { label: '🧬 Open HGT Shunt Forensic Drawer', action: () => openStage2Drawer(0) },

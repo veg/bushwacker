@@ -48,12 +48,19 @@ def check_prestin(tmp: Path) -> None:
     shunts = d.get("shunts", [])
     assert len(shunts) >= 1, "Expected at least one recovered SPARSE shunt in Prestin"
     top = shunts[0]
+    mode = top.get("mode")
     gain = float(top["net_mdl_gain_nats"])
     prob = float(top["posterior_prob"])
     codons = list(top.get("codons_1based", []))
-    assert gain >= 3.5 and prob >= 0.97, f"Unexpected Prestin gain/posterior: {gain}, {prob}"
+    assert mode == "SPARSE", f"Expected SPARSE Prestin shunt mode, got {mode}"
+    assert abs(gain - 3.912) < 0.02 and abs(prob - 0.9804) < 0.002, (
+        f"Unexpected Prestin gain/P_local: {gain}, {prob}"
+    )
     assert codons == [7, 384, 392, 601], f"Unexpected Prestin codons: {codons}"
-    print(f"[PASS] Prestin (116 mammals, coding NT): +{gain:.2f} nats, P={prob*100:.2f}%, codons={codons}")
+    print(
+        f"[PASS] Prestin (116 mammals, coding NT): {mode} +{gain:.2f} nats, "
+        f"P_local={prob*100:.2f}%, codons={codons}"
+    )
 
 
 def check_klebsiella(tmp: Path) -> None:
