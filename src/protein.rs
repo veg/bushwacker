@@ -382,8 +382,48 @@ const LG08_EVEC_RINV: [[f64; 20]; 20] = [
 
 const LG08_TILE: usize = 64;
 const LG08_N_CATS: usize = 8;
-const LG08_CAT_RATES: [f32; LG08_N_CATS] = [0.12, 0.25, 0.45, 0.75, 1.15, 1.70, 2.45, 3.50];
+/// Exact analytical equiprobable octile means of the unit-mean Gamma(alpha=1, beta=1) rate distribution.
+const LG08_CAT_RATES: [f32; LG08_N_CATS] = [
+    0.06528030, 0.20862730, 0.37607430, 0.57742940, 0.83010100, 1.16989900, 1.69314720,
+    3.07944150,
+];
 const LG08_N_TGRID: usize = 11;
+
+#[inline]
+fn lg08_refine_grid_peak_ln_t_with_curv(
+    ll_slice: &[f64],
+    grid: &[f32],
+    min_bl: f64,
+) -> (f64, f64, f64) {
+    let mut kb = 0usize;
+    for k in 1..grid.len() {
+        if ll_slice[k] > ll_slice[kb] {
+            kb = k;
+        }
+    }
+    let mut best_ll = ll_slice[kb];
+    let mut best_t = (grid[kb] as f64).max(min_bl);
+    let mut fisher_pen = 0.0_f64;
+
+    if kb >= 2 && kb + 1 < grid.len() {
+        let d_minus = ll_slice[kb] - ll_slice[kb - 1];
+        let d_plus = ll_slice[kb] - ll_slice[kb + 1];
+        let denom = d_minus + d_plus;
+        if d_minus >= 0.0 && d_plus >= 0.0 && denom > 1e-9 {
+            let delta = (0.5 * (d_minus - d_plus) / denom).clamp(-0.45, 0.45);
+            let x_m = (grid[kb - 1] as f64).ln();
+            let x_0 = (grid[kb] as f64).ln();
+            let x_p = (grid[kb + 1] as f64).ln();
+            let step = 0.5 * (x_p - x_m);
+            best_t = (x_0 + delta * step).exp().max(min_bl);
+            best_ll += 0.25 * delta * (d_minus - d_plus);
+            let curv_ln_t = (denom / (step * step)).max(0.0);
+            fisher_pen = 0.5 * (1.0 + curv_ln_t / std::f64::consts::TAU).ln();
+        }
+    }
+    let dll = (best_ll - ll_slice[0]).max(0.0);
+    (dll, best_t, fisher_pen)
+}
 const LG08_T_GRID: [f32; LG08_N_TGRID] = [
     0.0, 0.0015, 0.005, 0.013, 0.030, 0.065, 0.130, 0.250, 0.480, 0.900, 1.650,
 ];
@@ -859,7 +899,7 @@ fn refine_and_score_protein_lg08_mdl(
         (0..LG08_N_CATS).map(|_| BTreeMap::new()).collect();
     for (idx, &col) in active_cols.iter().enumerate() {
         let exp_steps = steps_per_nv * (n_val[col] as f64);
-        let rel = ((1.5 + steps[idx] as f64) / (1.5 + exp_steps)).clamp(0.10, 3.60);
+        let rel = ((1.5 + steps[idx] as f64) / (1.5 + exp_steps)).clamp(0.065, 3.10);
         let ln_rel = rel.ln();
         let mut best_c = 0usize;
         let mut best_d = (ln_rel - ln_cats[0]).abs();
@@ -1092,37 +1132,34 @@ fn refine_and_score_protein_lg08_mdl(
         let mut moves: Vec<(f64, usize, usize, usize, f64)> = Vec::new();
         for (ei, &(u, v)) in int_edges.iter().enumerate() {
             let off0 = ei * stride;
-            let mut k0 = 0usize;
-            for k in 1..LG08_N_TGRID {
-                if total_ll[off0 + k] > total_ll[off0 + k0] {
-                    k0 = k;
-                }
-            }
-            let ll0 = total_ll[off0 + k0];
-            let dll = (ll0 - total_ll[off0]).max(0.0);
-            let tmle = (LG08_T_GRID[k0] as f64).max(min_bl);
-            stats.insert((u, v), (dll, tmle));
-            edge_lens.insert((u, v), tmle.max(1e-4));
+            let (dll0, tmle0, pen0) = lg08_refine_grid_peak_ln_t_with_curv(
+                &total_ll[off0..off0 + LG08_N_TGRID],
+                &LG08_T_GRID,
+                min_bl,
+            );
+            let mdl0 = total_ll[off0] + dll0 - pen0;
+            stats.insert((u, v), (dll0, tmle0));
+            edge_lens.insert((u, v), tmle0.max(1e-4));
 
             if nni_tasks[ei].eval_swaps {
                 let off1 = off0 + LG08_N_TGRID;
                 let off2 = off0 + 2 * LG08_N_TGRID;
-                let mut k1 = 0usize;
-                let mut k2 = 0usize;
-                for k in 1..LG08_N_TGRID {
-                    if total_ll[off1 + k] > total_ll[off1 + k1] {
-                        k1 = k;
-                    }
-                    if total_ll[off2 + k] > total_ll[off2 + k2] {
-                        k2 = k;
-                    }
-                }
-                let ll1 = total_ll[off1 + k1];
-                let ll2 = total_ll[off2 + k2];
-                if ll1 >= ll2 && ll1 > ll0 + 0.35 {
-                    moves.push((ll1 - ll0, u, v, 1, (LG08_T_GRID[k1] as f64).max(1e-4)));
-                } else if ll2 > ll1 && ll2 > ll0 + 0.35 {
-                    moves.push((ll2 - ll0, u, v, 2, (LG08_T_GRID[k2] as f64).max(1e-4)));
+                let (dll1, tmle1, pen1) = lg08_refine_grid_peak_ln_t_with_curv(
+                    &total_ll[off1..off1 + LG08_N_TGRID],
+                    &LG08_T_GRID,
+                    min_bl,
+                );
+                let (dll2, tmle2, pen2) = lg08_refine_grid_peak_ln_t_with_curv(
+                    &total_ll[off2..off2 + LG08_N_TGRID],
+                    &LG08_T_GRID,
+                    min_bl,
+                );
+                let mdl1 = total_ll[off1] + dll1 - pen1;
+                let mdl2 = total_ll[off2] + dll2 - pen2;
+                if mdl1 >= mdl2 && mdl1 > mdl0 + 1e-2 {
+                    moves.push((mdl1 - mdl0, u, v, 1, tmle1.max(1e-4)));
+                } else if mdl2 > mdl1 && mdl2 > mdl0 + 1e-2 {
+                    moves.push((mdl2 - mdl0, u, v, 2, tmle2.max(1e-4)));
                 }
             }
         }
@@ -1482,7 +1519,7 @@ fn refine_and_score_protein_lg08_mdl(
                     bi = p_i;
                 }
             }
-            if total_ll[off + bi] > cur_ll + 1.0 {
+            if total_ll[off + bi] > cur_ll + 5e-2 {
                 moves.push((total_ll[off + bi] - cur_ll, v0, v1, v2, LG08_SPR_PERMS[bi]));
             }
         }
@@ -3431,7 +3468,7 @@ fn refine_protein_spr_mdl(
             let mut best_perm: Option<[usize; 5]> = None;
             for perm in &SPR_PERMS {
                 if let Some(sc) = score_caterpillar(perm, false) {
-                    if sc > best_score + 0.35 {
+                    if sc > best_score + 1e-2 {
                         best_score = sc;
                         best_perm = Some(*perm);
                     }
@@ -4406,13 +4443,10 @@ fn evaluate_protein_interval_shunt_mdl(
             let b = cand_sites[j];
             let span_len = b - a + 1;
             let m_in = j - i + 1;
-            if span_len < 8 || (span_len as f64) > (0.55 * (l as f64)).min(2500.0) {
+            if span_len < min_k || span_len > (l / 2) {
                 continue;
             }
             let gaps_in = (gap_pref[b + 1] - gap_pref[a]) as usize;
-            if (gaps_in as f64) > 0.15 * (span_len as f64) {
-                continue;
-            }
             let mut best_rep_idx = 0usize;
             let mut discordant = i32::MAX;
             let mut total_disc_best = 0i32;
@@ -4429,11 +4463,12 @@ fn evaluate_protein_interval_shunt_mdl(
             let d_out = (d_all - disc_f).max(0.0);
             let w_val = (span_len.saturating_sub(gaps_in)).max(1) as f64;
             let out_val = (l_val_total - w_val).max(1.0);
-            if disc_f > 0.25 * (m_in as f64) || (disc_f / w_val) >= (d_out / out_val) {
+            if (disc_f / w_val) >= (d_out / out_val) {
                 continue;
             }
-            let disc_cost = if discordant > 0 {
-                branch_mutation_code_nats(disc_f, w_val, 0.0, AA_ALPHABET_SIZE)
+            let eff_disc = disc_f + (gaps_in as f64);
+            let disc_cost = if eff_disc > 0.0 {
+                branch_mutation_code_nats(eff_disc, span_len as f64, 0.0, AA_ALPHABET_SIZE)
             } else {
                 0.0
             };

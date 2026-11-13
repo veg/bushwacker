@@ -31,11 +31,19 @@ Executes two authentic benchmarks on silverback (64-core ARM64):
                shunts enrich for high-affinity CDR somatic hypermutations.
 """
 
+
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parent) not in _sys.path:
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent))
+from _env_paths import REPO_ROOT, DATA_DIR, SPECIMENS_DIR, ALIGNMENTS_DIR, SINGLE_CELL_DIR, RESULTS_DIR, WORK_ROOT, EXTERNAL_DIR, resolve_bin, ASTRAL_JAR
+
 import os
 import re
 import csv
 import sys
 import json
+import lzma
 import math
 import time
 import random
@@ -46,14 +54,14 @@ from pathlib import Path
 from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-BUSHWHACKER_BIN = "/home/sergei/bushwhacker/target/release/bushwhacker"
-IQTREE_BIN = "/home/sergei/tools/iqtree-2.4.0-Linux-arm/bin/iqtree2"
-FASTTREE_BIN = "/home/sergei/Development/FastTree/FastTreeMP"
+BUSHWHACKER_BIN = resolve_bin("BUSHWHACKER_BIN", REPO_ROOT / "target" / "release" / "bushwhacker", "bushwhacker")
+IQTREE_BIN = resolve_bin("IQTREE_BIN", "iqtree2", "iqtree")
+FASTTREE_BIN = resolve_bin("FASTTREE_BIN", "FastTreeMP", "FastTree", "fasttree")
 
-BCR_DATA_DIR = Path("/home/sergei/tree_pillars_2026/bcr_data")
-TAS_FASTA = Path("/home/sergei/tree_pillars_2026/tools/gctree/example/150228_Clone_3-8.fasta")
-WORK_DIR = Path("/home/sergei/tree_pillars_2026/work_pillar3")
-OUT_JSON = Path("/home/sergei/tree_pillars_2026/results/pillar3_bcr_cellular.json")
+BCR_DATA_DIR = Path(os.environ.get("BCR_DATA_DIR", str(SINGLE_CELL_DIR / "bcr_gcreplay")))
+TAS_FASTA = SPECIMENS_DIR / "150228_Clone_3-8.fasta"
+WORK_DIR = WORK_ROOT / "pillar3"
+OUT_JSON = RESULTS_DIR / "single_cell" / "pillar3_bcr_cellular.json"
 
 CODON_TABLE = {
     "TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L",
@@ -169,6 +177,53 @@ def fisher_exact_2x2_greater(a, b, c, d):
             p_sum += math.exp(lp)
         odds = ((a + 0.5) * (d + 0.5)) / ((b + 0.5) * (c + 0.5))
         return odds, min(1.0, p_sum)
+
+
+def fisher_exact_2x2_two_sided(a, b, c, d):
+    """Two-sided Fisher exact test for [[a, b], [c, d]]."""
+    from scipy.stats import fisher_exact
+    odds, p = fisher_exact([[a, b], [c, d]], alternative="two-sided")
+    return float(odds) if not math.isinf(odds) else 999.0, float(p)
+
+
+def paired_wilcoxon_and_cluster_ci(vals, clusters=None, n_boot=10000, seed=20261112):
+    """Two-sided one-sample/paired Wilcoxon signed-rank p and cluster-bootstrap 95% CI."""
+    from scipy.stats import wilcoxon
+    n = len(vals)
+    if n < 3:
+        return {"n": n, "mean": 0.0, "median": 0.0, "wilcoxon_p_two_sided": 1.0, "ci95": [0.0, 0.0]}
+    nonzero = [v for v in vals if abs(v) > 1e-12]
+    if nonzero:
+        p_w = float(wilcoxon(vals, alternative="two-sided").pvalue)
+    else:
+        p_w = 1.0
+    rng = random.Random(seed)
+    boot_means = []
+    if clusters is None:
+        for _ in range(n_boot):
+            samp = [vals[rng.randrange(n)] for _ in range(n)]
+            boot_means.append(sum(samp) / n)
+    else:
+        by_cl = defaultdict(list)
+        for v, cl in zip(vals, clusters):
+            by_cl[cl].append(v)
+        cl_keys = sorted(by_cl.keys())
+        k_cl = len(cl_keys)
+        for _ in range(n_boot):
+            drawn = [cl_keys[rng.randrange(k_cl)] for _ in range(k_cl)]
+            samp = [v for ck in drawn for v in by_cl[ck]]
+            boot_means.append(sum(samp) / len(samp))
+    boot_means.sort()
+    sv = sorted(vals)
+    return {
+        "n": n,
+        "mean": round(sum(vals) / n, 4),
+        "median": round(quantile_sorted(sv, 0.5), 4),
+        "iqr25": round(quantile_sorted(sv, 0.25), 4),
+        "iqr75": round(quantile_sorted(sv, 0.75), 4),
+        "wilcoxon_p_two_sided": p_w,
+        "ci95": [round(quantile_sorted(boot_means, 0.025), 4), round(quantile_sorted(boot_means, 0.975), 4)],
+    }
 
 
 def quantile_sorted(sv, q):
@@ -1060,13 +1115,22 @@ def aggregate_method_evals(eval_list: list) -> dict:
 # Part 3B: All 147 Empirical Mouse Germinal Centers (DeWitt et al., Cell 2026)
 # =============================================================================
 
+def _open_text_maybe_xz(path: Path):
+    if path.exists():
+        return open(path, "r", encoding="utf-8")
+    xz_path = Path(str(path) + ".xz")
+    if xz_path.exists():
+        return lzma.open(xz_path, "rt", encoding="utf-8")
+    raise FileNotFoundError(f"Neither {path} nor {xz_path} found")
+
+
 def load_empirical_gcreplay_datasets(naive_nt: str):
     obs_csv = BCR_DATA_DIR / "observed-seqs.csv"
     node_csv = BCR_DATA_DIR / "gctree-node-data.csv"
 
     # 1. Load raw observed single cells per uid
     cells_by_uid = defaultdict(list)
-    with open(obs_csv) as f:
+    with _open_text_maybe_xz(obs_csv) as f:
         for r in csv.DictReader(f):
             uid = r["uid"].strip()
             cid = r["ID_HK"].strip()
@@ -1086,7 +1150,7 @@ def load_empirical_gcreplay_datasets(naive_nt: str):
 
     # 2. Load GCtree reference nodes ('default' strategy) per uid FOR POST-HOC EVALUATION ONLY
     nodes_by_uid = defaultdict(list)
-    with open(node_csv) as f:
+    with _open_text_maybe_xz(node_csv) as f:
         for r in csv.DictReader(f):
             if r["ranking_coeff_strategy"].strip() != "default":
                 continue
@@ -1266,6 +1330,7 @@ def worker_part3b_gc(task: dict) -> dict:
             inferred_daughters = bw_burst.get(gnm, 0)
             observed_geno_records.append({
                 "uid": uid,
+                "mouse": task["mouse"],
                 "imm_duration": task["imm_duration"],
                 "gname": gnm,
                 "bw_burst_daughters": inferred_daughters,
@@ -1281,6 +1346,7 @@ def worker_part3b_gc(task: dict) -> dict:
         for inode in bw_internals:
             internal_hub_records.append({
                 "uid": uid,
+                "mouse": task["mouse"],
                 "seq": inode["seq"],
                 "total_out_degree": inode["total_out_degree"],
                 "mutant_daughter_branches": inode["mutant_daughter_branches"],
@@ -1289,6 +1355,7 @@ def worker_part3b_gc(task: dict) -> dict:
 
     return {
         "uid": uid,
+        "mouse": task["mouse"],
         "imm_duration": task["imm_duration"],
         "n_cells": len(task["cell_seq_map"]) - 1,
         "n_unique_genotypes": len(task["geno_seq_map"]) - 1,
@@ -1400,17 +1467,87 @@ def analyze_cross_mouse_replay_shunts(gc_tasks: list, naive_nt: str, codon_meta:
             for c1 in sh.get("codons_1based", []):
                 shunted_codons_min1.add(int(c1))
 
-    # Catalog ALL observed somatic AA substitutions across the 147 representative replay sequences
-    # Map (aln_codon_1based, mut_aa) -> count across the 147 independent GCs & DMS delta_bind
+    # Compare baseline pairwise shunts (zeroed under exact Kraft priors) AND parallel star-hub replay recurrence across independent mice
     aa_mut_gc_counts = Counter()
+    aa_mut_mice = defaultdict(set)
+    mouse_of_uid = {t["uid"]: t["mouse"] for t in gc_tasks}
     for uid, sq in replay_seqs.items():
         if uid == "naive":
             continue
+        m_id = mouse_of_uid[uid]
         for idx, meta in enumerate(codon_meta):
             cod = sq[3 * idx : 3 * idx + 3]
             aa = CODON_TABLE.get(cod, "*")
             if aa != "*" and aa != meta["wt_aa"]:
-                aa_mut_gc_counts[(meta["aln_codon_1based"], aa)] += 1
+                key = (meta["aln_codon_1based"], aa)
+                aa_mut_gc_counts[key] += 1
+                aa_mut_mice[key].add(m_id)
+
+    replay_tree_methods = run_all_methods_on_alignment(replay_seqs, run_ufboot=False)
+    false_vertical_splits = {}
+    for m_name, info in replay_tree_methods.items():
+        tr = parse_newick_tree(info["nwk"])
+        leaves = get_leaf_names(tr)
+        t2b = {tx: (1 << i) for i, tx in enumerate(leaves)}
+        full = (1 << len(leaves)) - 1
+        sp = extract_canonical_splits(tr, t2b, full)
+        false_vertical_splits[m_name] = {"resolved_splits": len(sp), "max_binary_splits": len(leaves) - 3}
+
+    def eval_parallel_threshold(min_mice: int) -> dict:
+        rec_bind, nonrec_bind = [], []
+        cdr_rec, fwr_rec, cdr_non, fwr_non = 0, 0, 0, 0
+        top_hits = []
+        for (aln_cod, mut_aa), gc_cnt in aa_mut_gc_counts.items():
+            n_mice = len(aa_mut_mice[(aln_cod, mut_aa)])
+            meta = codon_meta[aln_cod - 1]
+            db, de = dms_map.get((meta["scfv_pos"], mut_aa), (0.0, 0.0))
+            is_cdr = "CDR" in meta["annotation"].upper()
+            if n_mice >= min_mice:
+                rec_bind.append(db)
+                if is_cdr:
+                    cdr_rec += 1
+                else:
+                    fwr_rec += 1
+                top_hits.append({
+                    "mutation": f"{meta['wt_aa']}{meta['site']}({meta['chain']}){mut_aa}",
+                    "aln_codon_1based": aln_cod,
+                    "scfv_codon": meta["scfv_pos"],
+                    "region": meta["annotation"],
+                    "independent_mice": n_mice,
+                    "independent_gcs": gc_cnt,
+                    "dms_delta_bind": round(db, 4),
+                    "dms_delta_expr": round(de, 4),
+                })
+            else:
+                nonrec_bind.append(db)
+                if is_cdr:
+                    cdr_non += 1
+                else:
+                    fwr_non += 1
+        top_hits.sort(key=lambda x: (x["independent_mice"], x["independent_gcs"], x["dms_delta_bind"]), reverse=True)
+        _, p_mwu_par = mann_whitney_u_two_sided(rec_bind, nonrec_bind)
+        or_cdr_par, p_cdr_two_par = fisher_exact_2x2_two_sided(cdr_rec, fwr_rec, cdr_non, fwr_non)
+        return {
+            "min_independent_mice": min_mice,
+            "n_parallel_aa_variants": len(rec_bind),
+            "n_other_aa_variants": len(nonrec_bind),
+            "parallel_mean_delta_bind": round(sum(rec_bind) / len(rec_bind), 4) if rec_bind else 0.0,
+            "other_mean_delta_bind": round(sum(nonrec_bind) / len(nonrec_bind), 4) if nonrec_bind else 0.0,
+            "parallel_median_delta_bind": round(quantile_sorted(sorted(rec_bind), 0.5), 4) if rec_bind else 0.0,
+            "other_median_delta_bind": round(quantile_sorted(sorted(nonrec_bind), 0.5), 4) if nonrec_bind else 0.0,
+            "mwu_pvalue_delta_bind": p_mwu_par,
+            "cdr_fraction_parallel": round(cdr_rec / max(1, cdr_rec + fwr_rec), 4),
+            "cdr_fraction_other": round(cdr_non / max(1, cdr_non + fwr_non), 4),
+            "cdr_enrichment_odds_ratio": round(or_cdr_par, 3),
+            "cdr_enrichment_fisher_p_two_sided": p_cdr_two_par,
+            "top_parallel_convergent_mutations": top_hits[:15],
+        }
+
+    parallel_replay = {
+        "false_cross_gc_vertical_splits": false_vertical_splits,
+        "min_mice_3": eval_parallel_threshold(3),
+        "min_mice_5": eval_parallel_threshold(5),
+    }
 
     # Compare distinct observed somatic AA mutations at shunted codons vs non-shunted codons
     active_shunt_set = shunted_codons_min2 if len(shunted_codons_min2) >= 3 else shunted_codons_min1
@@ -1451,7 +1588,8 @@ def analyze_cross_mouse_replay_shunts(gc_tasks: list, naive_nt: str, codon_meta:
 
     top_shunted_variants.sort(key=lambda x: (x["independent_gcs"], x["dms_delta_bind"]), reverse=True)
     _, p_mwu = mann_whitney_u_two_sided(shunted_bind, nonshunted_bind)
-    odds_cdr, p_cdr = fisher_exact_2x2_greater(cdr_shunt, fwr_shunt, cdr_nonshunt, fwr_nonshunt)
+    odds_cdr, p_cdr_one = fisher_exact_2x2_greater(cdr_shunt, fwr_shunt, cdr_nonshunt, fwr_nonshunt)
+    odds_cdr_two, p_cdr_two = fisher_exact_2x2_two_sided(cdr_shunt, fwr_shunt, cdr_nonshunt, fwr_nonshunt)
 
     return {
         "n_independent_gcs": len(replay_seqs) - 1,
@@ -1469,9 +1607,12 @@ def analyze_cross_mouse_replay_shunts(gc_tasks: list, naive_nt: str, codon_meta:
         "mwu_pvalue_delta_bind": p_mwu,
         "cdr_fraction_shunted": round(cdr_shunt / max(1, cdr_shunt + fwr_shunt), 4),
         "cdr_fraction_nonshunted": round(cdr_nonshunt / max(1, cdr_nonshunt + fwr_nonshunt), 4),
-        "cdr_enrichment_odds_ratio": round(odds_cdr, 3),
-        "cdr_enrichment_fisher_p": p_cdr,
+        "cdr_enrichment_odds_ratio": round(odds_cdr_two, 3) if not math.isnan(odds_cdr_two) else None,
+        "cdr_enrichment_fisher_p": p_cdr_two,
+        "cdr_enrichment_fisher_p_two_sided": p_cdr_two,
+        "cdr_enrichment_fisher_p_one_sided": p_cdr_one,
         "top_shunted_convergent_mutations": top_shunted_variants[:15],
+        "parallel_star_hub_replay": parallel_replay,
     }
 
 
@@ -1488,10 +1629,11 @@ def main():
     # Part 3A: 50 Ground-Truth Germinal-Center Affinity-Maturation Simulations
     # -------------------------------------------------------------------------
     n_sims = 50
-    print(f"[Part 3A] Running {n_sims} ground-truth Galton-Watson BCR germinal-center simulations across 50 workers...", flush=True)
+    n_workers = min(max(os.cpu_count() or 8, 1), 50)
+    print(f"[Part 3A] Running {n_sims} ground-truth Galton-Watson BCR germinal-center simulations across {n_workers} workers...", flush=True)
     sim_args = [(r, naive_nt, codon_meta, dms_map, fivemer_mut, fivemer_sub) for r in range(n_sims)]
     sim_results = []
-    with ProcessPoolExecutor(max_workers=50) as pool:
+    with ProcessPoolExecutor(max_workers=n_workers) as pool:
         futs = [pool.submit(worker_part3a_replicate, a) for a in sim_args]
         for fut in as_completed(futs):
             res = fut.result()
@@ -1544,7 +1686,7 @@ def main():
     print(f"  Loaded {len(gc_tasks)} empirical GCs ({sum(len(t['cell_seq_map'])-1 for t in gc_tasks)} paired B cells).", flush=True)
 
     emp_results = []
-    with ProcessPoolExecutor(max_workers=60) as pool:
+    with ProcessPoolExecutor(max_workers=n_workers) as pool:
         futs = [pool.submit(worker_part3b_gc, t) for t in gc_tasks]
         for fut in as_completed(futs):
             res = fut.result()
@@ -1563,7 +1705,7 @@ def main():
     twig_recs = [r for r in obs_records if r["bw_burst_daughters"] == 0]
     nonhub_recs = [r for r in obs_records if r["bw_burst_daughters"] < 2]
 
-    # 1. In vivo cellular abundance: Hub (>=2 mutant daughters) vs Non-hub (<2)
+    # 1. In vivo cellular abundance: direct exact-sequence cell multiplicity (NOT descendant sum)
     hub_ab = [r["abundance"] for r in hub_recs]
     nonhub_ab = [r["abundance"] for r in nonhub_recs]
     _, p_ab_mwu = mann_whitney_u_two_sided(hub_ab, nonhub_ab)
@@ -1575,6 +1717,66 @@ def main():
     hub_desc_ab = [r["descendant_abundance"] for r in hub_recs]
     nonhub_desc_ab = [r["descendant_abundance"] for r in nonhub_recs]
     _, p_desc_mwu = mann_whitney_u_two_sided(hub_desc_ab, nonhub_desc_ab)
+
+    # Hierarchical GC-level and Mouse-level tests (cluster-aware mixed/paired evaluation)
+    gc_ab_diffs, gc_ab_mice = [], []
+    gc_ab_rhos, gc_ab_rho_mice = [], []
+    gc_dms_diffs, gc_dms_mice = [], []
+    gc_dms_rhos, gc_dms_rho_mice = [], []
+    mouse_records = defaultdict(list)
+    for r in emp_results:
+        recs = r["observed_geno_records"]
+        if not recs:
+            continue
+        ms = r["mouse"]
+        mouse_records[ms].extend(recs)
+        h_a = [x["abundance"] for x in recs if x["bw_burst_daughters"] >= 2]
+        nh_a = [x["abundance"] for x in recs if x["bw_burst_daughters"] < 2]
+        if h_a and nh_a:
+            gc_ab_diffs.append((sum(h_a) / len(h_a)) - (sum(nh_a) / len(nh_a)))
+            gc_ab_mice.append(ms)
+        if len(recs) >= 5 and len({x["bw_burst_daughters"] for x in recs}) >= 2 and len({x["abundance"] for x in recs}) >= 2:
+            rho_g, _ = spearman_corr([x["bw_burst_daughters"] for x in recs], [x["abundance"] for x in recs])
+            gc_ab_rhos.append(rho_g)
+            gc_ab_rho_mice.append(ms)
+        dms_r = [x for x in recs if x["delta_bind"] is not None]
+        h_d = [x["delta_bind"] for x in dms_r if x["bw_burst_daughters"] >= 2]
+        nh_d = [x["delta_bind"] for x in dms_r if x["bw_burst_daughters"] < 2]
+        if h_d and nh_d:
+            gc_dms_diffs.append((sum(h_d) / len(h_d)) - (sum(nh_d) / len(nh_d)))
+            gc_dms_mice.append(ms)
+        if len(dms_r) >= 5 and len({x["bw_burst_daughters"] for x in dms_r}) >= 2:
+            rho_d, _ = spearman_corr([x["bw_burst_daughters"] for x in dms_r], [x["delta_bind"] for x in dms_r])
+            gc_dms_rhos.append(rho_d)
+            gc_dms_rho_mice.append(ms)
+
+    mouse_ab_diffs, mouse_ab_rhos = [], []
+    mouse_dms_diffs, mouse_dms_rhos = [], []
+    for ms, recs in sorted(mouse_records.items()):
+        by_gc_diff_a = []
+        by_gc_rho_a = []
+        by_gc_diff_d = []
+        by_gc_rho_d = []
+        for d, m_tag in zip(gc_ab_diffs, gc_ab_mice):
+            if m_tag == ms:
+                by_gc_diff_a.append(d)
+        for rh, m_tag in zip(gc_ab_rhos, gc_ab_rho_mice):
+            if m_tag == ms:
+                by_gc_rho_a.append(rh)
+        for d, m_tag in zip(gc_dms_diffs, gc_dms_mice):
+            if m_tag == ms:
+                by_gc_diff_d.append(d)
+        for rh, m_tag in zip(gc_dms_rhos, gc_dms_rho_mice):
+            if m_tag == ms:
+                by_gc_rho_d.append(rh)
+        if by_gc_diff_a:
+            mouse_ab_diffs.append(sum(by_gc_diff_a) / len(by_gc_diff_a))
+        if by_gc_rho_a:
+            mouse_ab_rhos.append(sum(by_gc_rho_a) / len(by_gc_rho_a))
+        if by_gc_diff_d:
+            mouse_dms_diffs.append(sum(by_gc_diff_d) / len(by_gc_diff_d))
+        if by_gc_rho_d:
+            mouse_dms_rhos.append(sum(by_gc_rho_d) / len(by_gc_rho_d))
 
     # 2. Experimental Yeast-Display DMS Antigen-Binding Affinity (delta_bind = delta_log10 K_D)
     obs_with_dms = [r for r in obs_records if r["delta_bind"] is not None]
@@ -1639,8 +1841,10 @@ def main():
         "part3a_simulations": part3a_out,
         "part3b_empirical_gcreplay": {
             "n_germinal_centers": len(emp_results),
+            "n_mice": len(mouse_records),
             "total_sequenced_b_cells": sum(r["n_cells"] for r in emp_results),
             "total_unique_genotypes": sum(r["n_unique_genotypes"] for r in emp_results),
+            "abundance_definition": "direct exact-sequence cell multiplicity collapsed onto each unique genotype node (not descendant subtree sum)",
             "cell_level_vs_gctree_reference": emp_cell_summary,
             "unique_genotype_vs_gctree_reference": emp_geno_summary,
             "zero_leakage_biological_discovery": {
@@ -1659,6 +1863,10 @@ def main():
                     "mwu_pvalue_descendant_abundance": p_desc_mwu,
                     "spearman_rho_degree_vs_abundance": round(rho_ab, 5),
                     "spearman_pvalue_degree_vs_abundance": p_ab_rho,
+                    "hierarchical_gc_paired_diff_hub_minus_nonhub": paired_wilcoxon_and_cluster_ci(gc_ab_diffs, gc_ab_mice),
+                    "hierarchical_gc_spearman_rho": paired_wilcoxon_and_cluster_ci(gc_ab_rhos, gc_ab_rho_mice),
+                    "hierarchical_mouse_paired_diff_hub_minus_nonhub": paired_wilcoxon_and_cluster_ci(mouse_ab_diffs),
+                    "hierarchical_mouse_spearman_rho": paired_wilcoxon_and_cluster_ci(mouse_ab_rhos),
                 },
                 "experimental_dms_binding_affinity": {
                     "hub_mean_delta_bind": round(sum(hub_dms) / max(1, len(hub_dms)), 4),
@@ -1671,6 +1879,10 @@ def main():
                     "mwu_pvalue_hub_vs_twig": p_dms_hub_vs_twig,
                     "spearman_rho_degree_vs_delta_bind": round(rho_dms, 5),
                     "spearman_pvalue_degree_vs_delta_bind": p_dms_rho,
+                    "hierarchical_gc_paired_diff_hub_minus_nonhub": paired_wilcoxon_and_cluster_ci(gc_dms_diffs, gc_dms_mice),
+                    "hierarchical_gc_spearman_rho": paired_wilcoxon_and_cluster_ci(gc_dms_rhos, gc_dms_rho_mice),
+                    "hierarchical_mouse_paired_diff_hub_minus_nonhub": paired_wilcoxon_and_cluster_ci(mouse_dms_diffs),
+                    "hierarchical_mouse_spearman_rho": paired_wilcoxon_and_cluster_ci(mouse_dms_rhos),
                     "reconstructed_internal_nodes": {
                         "n_polytomy_hubs_deg_ge3": len(inode_poly_dms),
                         "n_binary_nodes_deg_lt3": len(inode_bin_dms),

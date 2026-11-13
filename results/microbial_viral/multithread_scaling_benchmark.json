@@ -1,0 +1,348 @@
+{
+  "generated_at": "2026-11-10T22:49:15Z",
+  "cpu_model": "Model name:                           Neoverse-N1",
+  "thread_grid": [
+    1,
+    8,
+    32,
+    64
+  ],
+  "benchmarks": [
+    {
+      "dataset": "hiv1_kal153_global_nt",
+      "alphabet": "nucleotide",
+      "n_taxa": 9,
+      "seq_len": 9953,
+      "legacy_v1_single_thread_sec": 0.2057,
+      "engine_sec_by_threads": {
+        "1": 0.2107,
+        "8": 0.1417,
+        "32": 0.1414,
+        "64": 0.1475
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 0.222,
+        "8": 0.1479,
+        "32": 0.1495,
+        "64": 0.158
+      },
+      "speedup_t1_to_t8": 1.49,
+      "speedup_t1_to_t32": 1.49,
+      "speedup_t1_to_t64": 1.43,
+      "speedup_legacy_v1_to_t32": 1.45,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 41702.3,
+      "network_MDL_nats": 41657.79,
+      "resolved_internal_splits": 6,
+      "certified_shunts": 3
+    },
+    {
+      "dataset": "sc2_blinded_x_panel",
+      "alphabet": "nucleotide",
+      "n_taxa": 84,
+      "seq_len": 29903,
+      "legacy_v1_single_thread_sec": 2.6399,
+      "engine_sec_by_threads": {
+        "1": 1.6065,
+        "8": 1.2697,
+        "32": 1.1779,
+        "64": 1.175
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 1.6279,
+        "8": 1.2905,
+        "32": 1.2018,
+        "64": 1.2007
+      },
+      "speedup_t1_to_t8": 1.27,
+      "speedup_t1_to_t32": 1.36,
+      "speedup_t1_to_t64": 1.37,
+      "speedup_legacy_v1_to_t32": 2.24,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 50719.42,
+      "network_MDL_nats": 50490.11,
+      "resolved_internal_splits": 51,
+      "certified_shunts": 14
+    },
+    {
+      "dataset": "denv4_cds_nt",
+      "alphabet": "nucleotide",
+      "n_taxa": 585,
+      "seq_len": 10050,
+      "legacy_v1_single_thread_sec": 21.2527,
+      "engine_sec_by_threads": {
+        "1": 20.2654,
+        "8": 11.79,
+        "32": 10.2379,
+        "64": 10.0317
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 20.3068,
+        "8": 11.8312,
+        "32": 10.2841,
+        "64": 10.0807
+      },
+      "speedup_t1_to_t8": 1.72,
+      "speedup_t1_to_t32": 1.98,
+      "speedup_t1_to_t64": 2.02,
+      "speedup_legacy_v1_to_t32": 2.08,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 141881.96,
+      "network_MDL_nats": 141881.96,
+      "resolved_internal_splits": 452,
+      "certified_shunts": 0
+    },
+    {
+      "dataset": "denv4_polyprotein_aa",
+      "alphabet": "protein",
+      "n_taxa": 585,
+      "seq_len": 3350,
+      "legacy_v1_single_thread_sec": 4.2758,
+      "engine_sec_by_threads": {
+        "1": 2.3237,
+        "8": 0.8816,
+        "32": 0.8397,
+        "64": 0.8587
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 2.3963,
+        "8": 0.9519,
+        "32": 0.9128,
+        "64": 0.9354
+      },
+      "speedup_t1_to_t8": 2.64,
+      "speedup_t1_to_t32": 2.77,
+      "speedup_t1_to_t64": 2.71,
+      "speedup_legacy_v1_to_t32": 5.09,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 35642.74,
+      "network_MDL_nats": 35342.54,
+      "resolved_internal_splits": 258,
+      "certified_shunts": 14
+    },
+    {
+      "dataset": "denv3_cds_nt",
+      "alphabet": "nucleotide",
+      "n_taxa": 855,
+      "seq_len": 10059,
+      "legacy_v1_single_thread_sec": 25.4723,
+      "engine_sec_by_threads": {
+        "1": 23.5218,
+        "8": 13.7119,
+        "32": 11.8097,
+        "64": 11.6071
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 23.5796,
+        "8": 13.7712,
+        "32": 11.8729,
+        "64": 11.6726
+      },
+      "speedup_t1_to_t8": 1.72,
+      "speedup_t1_to_t32": 1.99,
+      "speedup_t1_to_t64": 2.03,
+      "speedup_legacy_v1_to_t32": 2.16,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 158160.11,
+      "network_MDL_nats": 158129.63,
+      "resolved_internal_splits": 554,
+      "certified_shunts": 3
+    },
+    {
+      "dataset": "denv3_polyprotein_aa",
+      "alphabet": "protein",
+      "n_taxa": 855,
+      "seq_len": 3353,
+      "legacy_v1_single_thread_sec": 6.729,
+      "engine_sec_by_threads": {
+        "1": 3.6101,
+        "8": 1.3417,
+        "32": 1.2931,
+        "64": 1.2732
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 3.7089,
+        "8": 1.4404,
+        "32": 1.3954,
+        "64": 1.3777
+      },
+      "speedup_t1_to_t8": 2.69,
+      "speedup_t1_to_t32": 2.79,
+      "speedup_t1_to_t64": 2.84,
+      "speedup_legacy_v1_to_t32": 5.2,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 40378.41,
+      "network_MDL_nats": 40256.93,
+      "resolved_internal_splits": 312,
+      "certified_shunts": 12
+    },
+    {
+      "dataset": "denv1_cds_nt",
+      "alphabet": "nucleotide",
+      "n_taxa": 1426,
+      "seq_len": 10065,
+      "legacy_v1_single_thread_sec": 26.1054,
+      "engine_sec_by_threads": {
+        "1": 24.7122,
+        "8": 17.1106,
+        "32": 15.4928,
+        "64": 15.2766
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 24.7997,
+        "8": 17.2004,
+        "32": 15.5957,
+        "64": 15.3725
+      },
+      "speedup_t1_to_t8": 1.44,
+      "speedup_t1_to_t32": 1.6,
+      "speedup_t1_to_t64": 1.62,
+      "speedup_legacy_v1_to_t32": 1.69,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 194594.01,
+      "network_MDL_nats": 194552.31,
+      "resolved_internal_splits": 910,
+      "certified_shunts": 7
+    },
+    {
+      "dataset": "denv1_polyprotein_aa",
+      "alphabet": "protein",
+      "n_taxa": 1426,
+      "seq_len": 3355,
+      "legacy_v1_single_thread_sec": 22.6637,
+      "engine_sec_by_threads": {
+        "1": 4.9167,
+        "8": 1.5988,
+        "32": 1.4042,
+        "64": 1.4341
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 5.0801,
+        "8": 1.764,
+        "32": 1.5693,
+        "64": 1.6016
+      },
+      "speedup_t1_to_t8": 3.08,
+      "speedup_t1_to_t32": 3.5,
+      "speedup_t1_to_t64": 3.43,
+      "speedup_legacy_v1_to_t32": 16.14,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 50188.47,
+      "network_MDL_nats": 49885.19,
+      "resolved_internal_splits": 457,
+      "certified_shunts": 28
+    },
+    {
+      "dataset": "denv2_cds_nt",
+      "alphabet": "nucleotide",
+      "n_taxa": 2632,
+      "seq_len": 10062,
+      "legacy_v1_single_thread_sec": 50.3529,
+      "engine_sec_by_threads": {
+        "1": 45.3457,
+        "8": 31.7632,
+        "32": 28.5142,
+        "64": 28.1068
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 45.5014,
+        "8": 31.9208,
+        "32": 28.6725,
+        "64": 28.2696
+      },
+      "speedup_t1_to_t8": 1.43,
+      "speedup_t1_to_t32": 1.59,
+      "speedup_t1_to_t64": 1.61,
+      "speedup_legacy_v1_to_t32": 1.77,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 397671.38,
+      "network_MDL_nats": 397426.54,
+      "resolved_internal_splits": 1708,
+      "certified_shunts": 13
+    },
+    {
+      "dataset": "denv2_polyprotein_aa",
+      "alphabet": "protein",
+      "n_taxa": 2632,
+      "seq_len": 3354,
+      "legacy_v1_single_thread_sec": 116.1692,
+      "engine_sec_by_threads": {
+        "1": 15.6112,
+        "8": 4.7824,
+        "32": 3.9945,
+        "64": 3.9707
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 15.9076,
+        "8": 5.0817,
+        "32": 4.2995,
+        "64": 4.2789
+      },
+      "speedup_t1_to_t8": 3.26,
+      "speedup_t1_to_t32": 3.91,
+      "speedup_t1_to_t64": 3.93,
+      "speedup_legacy_v1_to_t32": 29.08,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 101512.16,
+      "network_MDL_nats": 100726.12,
+      "resolved_internal_splits": 811,
+      "certified_shunts": 46
+    },
+    {
+      "dataset": "sars_cov_2_open_global",
+      "alphabet": "nucleotide",
+      "n_taxa": 5097,
+      "seq_len": 29903,
+      "legacy_v1_single_thread_sec": 189.7598,
+      "engine_sec_by_threads": {
+        "1": 185.797,
+        "8": 86.4102,
+        "32": 75.5969,
+        "64": 73.6047
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 186.4711,
+        "8": 87.158,
+        "32": 76.2654,
+        "64": 74.2701
+      },
+      "speedup_t1_to_t8": 2.15,
+      "speedup_t1_to_t32": 2.46,
+      "speedup_t1_to_t64": 2.52,
+      "speedup_legacy_v1_to_t32": 2.51,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 300377.19,
+      "network_MDL_nats": 300365.81,
+      "resolved_internal_splits": 1835,
+      "certified_shunts": 1
+    },
+    {
+      "dataset": "sars_cov_2_open_world_union",
+      "alphabet": "nucleotide",
+      "n_taxa": 10062,
+      "seq_len": 29903,
+      "legacy_v1_single_thread_sec": 645.6592,
+      "engine_sec_by_threads": {
+        "1": 437.4191,
+        "8": 193.409,
+        "32": 165.4146,
+        "64": 165.0635
+      },
+      "cli_wall_sec_by_threads": {
+        "1": 438.7247,
+        "8": 194.7118,
+        "32": 166.7146,
+        "64": 166.4101
+      },
+      "speedup_t1_to_t8": 2.26,
+      "speedup_t1_to_t32": 2.64,
+      "speedup_t1_to_t64": 2.65,
+      "speedup_legacy_v1_to_t32": 3.9,
+      "bit_exact_across_all_threads": true,
+      "tree_MDL_nats": 584516.97,
+      "network_MDL_nats": 584450.92,
+      "resolved_internal_splits": 3190,
+      "certified_shunts": 3
+    }
+  ]
+}

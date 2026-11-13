@@ -14,6 +14,13 @@ Zero-Leakage Protocol:
 
 from __future__ import annotations
 
+
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parent) not in _sys.path:
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent))
+from _env_paths import REPO_ROOT, DATA_DIR, SPECIMENS_DIR, ALIGNMENTS_DIR, SINGLE_CELL_DIR, RESULTS_DIR, WORK_ROOT, EXTERNAL_DIR, resolve_bin, ASTRAL_JAR
+
 import csv
 import gzip
 import json
@@ -30,10 +37,21 @@ from pathlib import Path
 import numpy as np
 from scipy import stats
 
-ROOT = Path("/Users/sergei/Projects/trees")
+ROOT = Path(__file__).resolve().parents[2]
 BIN = ROOT / "target" / "release" / "bushwhacker"
-DATA_DIR = ROOT / "scratch" / "cancer_singlecell_data"
-OUT_DIR = ROOT / "results" / "cancer_singlecell"
+_SCRATCH_SC = ROOT.parent / "scratch" / "cancer_singlecell_data"
+DATA_DIR = ROOT / "data" / "single_cell"
+DLP_DIR = DATA_DIR / "dlp_cna" if (DATA_DIR / "dlp_cna").exists() else (_SCRATCH_SC / "dlp_cna" if (_SCRATCH_SC / "dlp_cna").exists() else DATA_DIR)
+COMPASS_ROOT = (
+    DATA_DIR / "aml_tapestri" / "COMPASS" / "data"
+    if (DATA_DIR / "aml_tapestri" / "COMPASS" / "data").exists()
+    else (
+        _SCRATCH_SC / "aml_tapestri" / "COMPASS" / "data"
+        if (_SCRATCH_SC / "aml_tapestri" / "COMPASS" / "data").exists()
+        else EXTERNAL_DIR / "compass_tapestri" / "data"
+    )
+)
+OUT_DIR = ROOT / "results" / "single_cell"
 SUMMARY_JSON = OUT_DIR / "cancer_singlecell_summary.json"
 
 FORBIDDEN_METADATA_TOKENS = [
@@ -495,33 +513,34 @@ def compute_subclone_shannon_entropy(
 
 
 def run_dlp_cna_benchmarks(tmp_dir: Path) -> dict:
+    dlp_base = DLP_DIR if (DLP_DIR / "sitka_data").exists() else DATA_DIR / "dlp_cna"
     dlp_datasets = [
         (
             "OV2295",
             "High-grade serous ovarian cancer (Primary ovary + Pre/Post-Tx ascites)",
             "gz",
-            DATA_DIR / "dlp_cna" / "sitka_data" / "data_files" / "ova_cn_bin_cell_filtered.csv.gz",
+            dlp_base / "sitka_data" / "data_files" / "ova_cn_bin_cell_filtered.csv.gz",
         ),
         (
             "SA609",
             "Triple-negative breast cancer PDX (Diploid SA928 + Untreated X1 vs Selected X2)",
             "sa609",
             (
-                DATA_DIR / "dlp_cna" / "sitkatree" / "example" / "data" / "cnv.csv",
-                DATA_DIR / "dlp_cna" / "sitkatree" / "example" / "data" / "extra.csv",
+                dlp_base / "sitkatree" / "example" / "data" / "cnv.csv",
+                dlp_base / "sitkatree" / "example" / "data" / "extra.csv",
             ),
         ),
         (
             "SA501",
             "Triple-negative breast cancer PDX longitudinal series (X2 -> X15)",
             "gz",
-            DATA_DIR / "dlp_cna" / "sitka_data" / "data_files" / "sa501_cn_bin_cell_filtered.csv.gz",
+            dlp_base / "sitka_data" / "data_files" / "sa501_cn_bin_cell_filtered.csv.gz",
         ),
         (
             "SA535",
             "Triple-negative breast cancer PDX longitudinal series (X1 -> X8)",
             "gz",
-            DATA_DIR / "dlp_cna" / "sitka_data" / "data_files" / "sa535_cn_bin_cell_filtered.csv.gz",
+            dlp_base / "sitka_data" / "data_files" / "sa535_cn_bin_cell_filtered.csv.gz",
         ),
     ]
 
@@ -885,15 +904,7 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
     3. Pan-cohort 123-patient somatic genotype landscape (`31` AML driver genes) to test Stage 4
        `SPARSE` shunts for parallel signaling resistance vs clonal trunk mutations.
     """
-    fitree_path = (
-        DATA_DIR
-        / "aml_tapestri"
-        / "FiTree"
-        / "analysis"
-        / "AML"
-        / "data"
-        / "AML_cohort_Morita_2020.json"
-    )
+    fitree_path = DATA_DIR / "AML_cohort_Morita_2020.json"
     fitree = json.loads(fitree_path.read_text())
     gene_labels: list[str] = fitree["mutation_labels"]
     n_genes = len(gene_labels)
@@ -1101,6 +1112,26 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
     _, wp_mwu_lin_p = stats.mannwhitneyu(
         wp_lin[wp_k >= 2], wp_lin[wp_k == 0], alternative="greater"
     )
+    _, wp_mwu_lin_p_two = stats.mannwhitneyu(
+        wp_lin[wp_k >= 2], wp_lin[wp_k == 0], alternative="two-sided"
+    )
+    wp_by_pt = defaultdict(list)
+    for rec in clone_records:
+        wp_by_pt[rec["patient_id"]].append(rec)
+    wp_pt_diff_lin, wp_pt_diff_lfrac, wp_pt_rhos_lin = [], [], []
+    for _pt, recs in sorted(wp_by_pt.items()):
+        hb = [r for r in recs if r["inferred_k_out"] >= 2]
+        lf = [r for r in recs if r["inferred_k_out"] == 0]
+        if hb and lf:
+            wp_pt_diff_lin.append(float(np.mean([x["lineage_descendant_seq_cells"] for x in hb]) - np.mean([x["lineage_descendant_seq_cells"] for x in lf])))
+            wp_pt_diff_lfrac.append(float(np.mean([x["lineage_cell_fraction"] for x in hb]) - np.mean([x["lineage_cell_fraction"] for x in lf])))
+        if len(recs) >= 4 and len({r["inferred_k_out"] for r in recs}) >= 2:
+            rv = float(stats.spearmanr([r["inferred_k_out"] for r in recs], [r["lineage_descendant_seq_cells"] for r in recs]).statistic)
+            if not math.isnan(rv):
+                wp_pt_rhos_lin.append(rv)
+    wp_pt_lin_wilcoxon_p = float(stats.wilcoxon(wp_pt_diff_lin, alternative="two-sided").pvalue) if len(wp_pt_diff_lin) >= 3 else 1.0
+    wp_pt_lfrac_wilcoxon_p = float(stats.wilcoxon(wp_pt_diff_lfrac, alternative="two-sided").pvalue) if len(wp_pt_diff_lfrac) >= 3 else 1.0
+    wp_pt_rho_wilcoxon_p = float(stats.wilcoxon(wp_pt_rhos_lin, alternative="two-sided").pvalue) if len(wp_pt_rhos_lin) >= 3 else 1.0
 
     #Now evaluate post-hoc correlation between sequence-free MDL out-degree k_out and clone size
     # Wait: ALSO compute subtree descendant leukemic cell burden AND direct clone cell count, plus
@@ -1237,6 +1268,9 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
     fisher_or, fisher_p = stats.fisher_exact(
         [[sig_subclonal, sig_trunk], [fnd_subclonal, fnd_trunk]], alternative="greater"
     )
+    _, fisher_p_two = stats.fisher_exact(
+        [[sig_subclonal, sig_trunk], [fnd_subclonal, fnd_trunk]], alternative="two-sided"
+    )
     gene_convergence_table.sort(
         key=lambda x: (
             x["pan_cohort_sparse_shunt_events_m2"],
@@ -1262,6 +1296,7 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
             "founder_trunk_hits": int(fnd_trunk),
             "fisher_odds_ratio": round(float(fisher_or), 3),
             "fisher_p_value": float(fisher_p),
+            "fisher_p_value_two_sided": float(fisher_p_two),
         },
         "within_patient_123_clone_expansion": {
             "k_out_vs_direct_cells_spearman_rho": round(float(wp_rho_seq), 4),
@@ -1271,6 +1306,12 @@ def run_aml_morita_123_cohort_benchmark(tmp_dir: Path) -> dict:
             "k_out_vs_lineage_fraction_spearman_rho": round(float(wp_rho_lfrac), 4),
             "k_out_vs_lineage_fraction_p_value": float(wp_p_lfrac),
             "branching_hub_vs_leaf_lineage_mannwhitney_p_value": float(wp_mwu_lin_p),
+            "branching_hub_vs_leaf_lineage_mannwhitney_p_two_sided": float(wp_mwu_lin_p_two),
+            "per_patient_paired_n_patients": len(wp_pt_diff_lin),
+            "per_patient_paired_wilcoxon_lineage_cells_p_two_sided": wp_pt_lin_wilcoxon_p,
+            "per_patient_paired_wilcoxon_lineage_frac_p_two_sided": wp_pt_lfrac_wilcoxon_p,
+            "per_patient_spearman_rho_median": round(float(np.median(wp_pt_rhos_lin)), 4) if wp_pt_rhos_lin else 0.0,
+            "per_patient_spearman_rho_wilcoxon_p_two_sided": wp_pt_rho_wilcoxon_p,
             "by_inferred_k_out": wp_by_k,
         },
         "pan_cohort_landscape": {
@@ -1377,27 +1418,13 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
        relapse-expanded clones emerge from internal MDL polytomy hubs or parallel signaling branches?
     """
     morita_files = sorted(
-        (DATA_DIR / "aml_tapestri" / "COMPASS" / "data" / "preprocessed_data_AML_Morita2020").glob(
-            "*_variants.csv"
-        )
+        (COMPASS_ROOT / "preprocessed_data_AML_Morita2020").glob("*_variants.csv")
     )
     tp53_aml_files = sorted(
-        (
-            DATA_DIR
-            / "aml_tapestri"
-            / "COMPASS"
-            / "data"
-            / "preprocessed_data_AML-TP53_Thijssen2021"
-        ).glob("*_variants.csv")
+        (COMPASS_ROOT / "preprocessed_data_AML-TP53_Thijssen2021").glob("*_variants.csv")
     )
     tp53_mpn_files = sorted(
-        (
-            DATA_DIR
-            / "aml_tapestri"
-            / "COMPASS"
-            / "data"
-            / "preprocessed_data_MPN-TP53_Maslah2022"
-        ).glob("*_variants.csv")
+        (COMPASS_ROOT / "preprocessed_data_MPN-TP53_Maslah2022").glob("*_variants.csv")
     )
 
     all_runs = (
@@ -1409,6 +1436,7 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
     all_k_out = []
     all_cell_counts = []
     all_cell_fracs = []
+    run_records = []
     stepwise_cnloh_1_to_2 = Counter()
     direct_0_to_2 = Counter()
     parallel_raw_shunt_genes = Counter()
@@ -1419,6 +1447,7 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
 
     for cohort_tag, v_path in all_runs:
         sample_id = v_path.name.replace("_variants.csv", "")
+        patient_id = "-".join(sample_id.split("-")[:2]) if sample_id.startswith("AML-") else sample_id.split("-")[0].split("_")[0]
         var_meta, cell_mat = parse_compass_variants_csv(v_path)
         n_cells, m_vars = cell_mat.shape
         total_cells_analyzed += n_cells
@@ -1458,6 +1487,7 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
         if tot_non_wt <= 0:
             continue
 
+        run_k, run_c, run_f = [], [], []
         for r_i, gt in enumerate(uniq_gts):
             if r_i == wt_idx or gt_counts[gt] == 0:
                 continue
@@ -1466,6 +1496,27 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
             all_k_out.append(k_val)
             all_cell_counts.append(c_cnt)
             all_cell_fracs.append(c_cnt / tot_non_wt)
+            run_k.append(k_val)
+            run_c.append(c_cnt)
+            run_f.append(c_cnt / tot_non_wt)
+        if run_k:
+            hub_c_r = [run_c[i] for i, k in enumerate(run_k) if k >= 3]
+            leaf_c_r = [run_c[i] for i, k in enumerate(run_k) if k == 0]
+            hub_f_r = [run_f[i] for i, k in enumerate(run_k) if k >= 3]
+            leaf_f_r = [run_f[i] for i, k in enumerate(run_k) if k == 0]
+            rho_r = float(stats.spearmanr(run_k, run_c).statistic) if (len(run_k) >= 4 and len(set(run_k)) >= 2 and len(set(run_c)) >= 2) else None
+            run_records.append({
+                "sample_id": sample_id,
+                "patient_id": patient_id,
+                "cohort": cohort_tag,
+                "hub_mean_cells": float(np.mean(hub_c_r)) if hub_c_r else None,
+                "leaf_mean_cells": float(np.mean(leaf_c_r)) if leaf_c_r else None,
+                "hub_mean_frac": float(np.mean(hub_f_r)) if hub_f_r else None,
+                "leaf_mean_frac": float(np.mean(leaf_f_r)) if leaf_f_r else None,
+                "diff_cells": (float(np.mean(hub_c_r)) - float(np.mean(leaf_c_r))) if (hub_c_r and leaf_c_r) else None,
+                "diff_frac": (float(np.mean(hub_f_r)) - float(np.mean(leaf_f_r))) if (hub_f_r and leaf_f_r) else None,
+                "rho_cells": rho_r if (rho_r is not None and not math.isnan(rho_r)) else None,
+            })
 
         # Count stepwise heterozygous-to-homozygous CN-LOH (1 -> 2) vs direct (0 -> 2) transitions
         for c_i, a_st, b_st, _ in branch_trans:
@@ -1524,6 +1575,48 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
     leaves_c = c_arr[k_arr == 0]
     _, mwu_raw_p = stats.mannwhitneyu(hubs_c, leaves_c, alternative="greater")
 
+    def _hier_summary(vals: list[float], cl_ids: list[str] | None = None) -> dict:
+        if len(vals) < 3:
+            return {"n": len(vals), "wilcoxon_p_two_sided": 1.0, "ci95": [0.0, 0.0]}
+        p_w = float(stats.wilcoxon(vals, alternative="two-sided").pvalue)
+        rng = np.random.default_rng(20261112)
+        if cl_ids is None:
+            arr = np.asarray(vals, dtype=np.float64)
+            idx = rng.integers(0, len(arr), size=(10000, len(arr)))
+            bm = np.mean(arr[idx], axis=1)
+        else:
+            by_c = defaultdict(list)
+            for v, c in zip(vals, cl_ids):
+                by_c[c].append(v)
+            keys = sorted(by_c.keys())
+            bm = []
+            for _ in range(10000):
+                drawn = rng.integers(0, len(keys), size=len(keys))
+                s_vals = [v for ki in drawn for v in by_c[keys[ki]]]
+                bm.append(sum(s_vals) / len(s_vals))
+            bm = np.asarray(bm, dtype=np.float64)
+        return {
+            "n": len(vals),
+            "mean": round(float(np.mean(vals)), 4),
+            "median": round(float(np.median(vals)), 4),
+            "iqr25": round(float(np.percentile(vals, 25)), 4),
+            "iqr75": round(float(np.percentile(vals, 75)), 4),
+            "wilcoxon_p_two_sided": p_w,
+            "ci95": [round(float(np.percentile(bm, 2.5)), 4), round(float(np.percentile(bm, 97.5)), 4)],
+        }
+
+    paired_runs = [r for r in run_records if r["diff_cells"] is not None]
+    rho_runs = [r for r in run_records if r["rho_cells"] is not None]
+    pt_groups = defaultdict(list)
+    for r in paired_runs:
+        pt_groups[r["patient_id"]].append(r)
+    pt_rho_groups = defaultdict(list)
+    for r in rho_runs:
+        pt_rho_groups[r["patient_id"]].append(r)
+    pt_diff_cells = [float(np.mean([x["diff_cells"] for x in rs])) for _, rs in sorted(pt_groups.items())]
+    pt_diff_frac = [float(np.mean([x["diff_frac"] for x in rs])) for _, rs in sorted(pt_groups.items())]
+    pt_rhos = [float(np.mean([x["rho_cells"] for x in rs])) for _, rs in sorted(pt_rho_groups.items())]
+
     tot_1_to_2 = sum(stepwise_cnloh_1_to_2.values())
     tot_0_to_2 = sum(direct_0_to_2.values())
 
@@ -1531,6 +1624,8 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
 
     return {
         "n_scdna_runs_evaluated": total_samples_run,
+        "n_unique_patients_evaluated": len({r["patient_id"] for r in run_records}),
+        "cell_count_definition": "direct single-cell exact-genotype multiplicity (independent tree inferred per Tapestri run)",
         "total_single_cells_scanned": total_cells_analyzed,
         "total_unthresholded_somatic_genotypes": int(len(c_arr)),
         "total_bushwhacker_runtime_sec": round(total_runtime_sec, 4),
@@ -1545,6 +1640,12 @@ def run_raw_compass_zygosity_benchmarks(tmp_dir: Path) -> dict:
             float(np.median(hubs_c) / max(np.median(leaves_c), 1e-9)), 2
         ),
         "hub_k3_vs_leaf_k0_mannwhitney_p_value": float(mwu_raw_p),
+        "hierarchical_per_run_diff_cells": _hier_summary([r["diff_cells"] for r in paired_runs], [r["patient_id"] for r in paired_runs]),
+        "hierarchical_per_run_diff_frac": _hier_summary([r["diff_frac"] for r in paired_runs], [r["patient_id"] for r in paired_runs]),
+        "hierarchical_per_run_spearman_rho": _hier_summary([r["rho_cells"] for r in rho_runs], [r["patient_id"] for r in rho_runs]),
+        "hierarchical_per_patient_diff_cells": _hier_summary(pt_diff_cells),
+        "hierarchical_per_patient_diff_frac": _hier_summary(pt_diff_frac),
+        "hierarchical_per_patient_spearman_rho": _hier_summary(pt_rhos),
         "clone_abundance_by_mdl_out_degree": by_k_raw,
         "zygosity_cn_loh_stepwise_1_to_2_transitions": int(tot_1_to_2),
         "zygosity_direct_0_to_2_jumps": int(tot_0_to_2),
@@ -1565,9 +1666,7 @@ def run_longitudinal_aml_relapse_series(tmp_dir: Path) -> dict:
     for cells with >=75% observed loci and >=3 cells per genotype to keep unique '?'-bearing
     states tractable, while holding out which timepoint each cell came from!).
     """
-    morita_dir = (
-        DATA_DIR / "aml_tapestri" / "COMPASS" / "data" / "preprocessed_data_AML_Morita2020"
-    )
+    morita_dir = COMPASS_ROOT / "preprocessed_data_AML_Morita2020"
     by_pt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(morita_dir.glob("*_variants.csv")):
         nm = f.name.replace("_variants.csv", "")

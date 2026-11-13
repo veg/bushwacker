@@ -98,21 +98,21 @@ def main() -> None:
     ax_a.text(
         2.15, 11.5,
         "Length-Invariant Mammalian Discordance Floor (~33.2%–34.0%)\n"
-        "(53.5% of binary conflicts = 3.91M splits contracted as noise)",
+        "(55.5% of binary conflicts = 3.87M splits contracted as noise)",
         ha="center", va="center", fontsize=6.5, color="#004b76",
         bbox=dict(boxstyle="round,pad=0.25", facecolor="#eef7fc", edgecolor=c_sky, lw=0.8),
     )
 
     ax_a.set_xticks(x_a)
     ax_a.set_xticklabels(bin_labels, fontsize=7.1)
-    ax_a.set_ylabel("Percentage across 19,952 Mammalian Genes (%)", fontsize=7.8)
+    ax_a.set_ylabel("Percentage across 19,890 Mammalian Genes (%)", fontsize=7.8)
     ax_a.set_ylim(2, 104)
     ax_a.set_xlim(-0.4, 4.4)
     ax_a.spines["top"].set_visible(False)
     ax_a.spines["right"].set_visible(False)
     ax_a.legend(loc="upper left", fontsize=6.5, frameon=True)
     ax_a.set_title(
-        "A. Length-Invariance Law of Mammalian Discordance (19,952 TOGA2 Genes)",
+        "A. Length-Invariance of Mammalian Discordance (19,890 Coding Loci)",
         loc="left", pad=8,
     )
 
@@ -186,18 +186,27 @@ def main() -> None:
     # PANEL C: Cochlear Hair-Cell Mechanotransduction Complex (16/25 Genes)
     # =========================================================================
     ax_c = fig.add_subplot(gs[1, 0])
-    cochlear_genes = [
-        ("MYO15A (7 shunts)", 82.79, "Odontoceti (Sagmatias ↔ Cephalorhynchus/Delphinapterus), Dugong"),
-        ("USH2A (2 shunts)", 74.68, "Subterranean Zokors (Eospalax ↔ Myospalax, P=0.998), Primates"),
-        ("TMC1 (3 shunts)", 27.08, "Echolocating Bats (Rhynchonycteris ↔ Aselliscus) & Beluga ↔ Kogia"),
-        ("OTOF (3 shunts)", 25.51, "Bats (Rhinopoma ↔ Craseonycteris; Lasiurus ↔ Molossidae) & Talpidae"),
-        ("CDH23 (3 shunts)", 24.33, "Tip-Link Cadherin-23 (Echolocating Chiroptera & Rodentia)"),
-        ("PJVK (3 shunts)", 17.44, "Pejvakin Hair-Cell Protection (Subterranean & Aquatic Lineages)"),
-        ("PTPRQ (4 shunts)", 15.56, "Stereocilia Shaft-Link Phosphatase (Chiroptera & Carnivora)"),
-        ("PIEZO2 (3 shunts)", 14.08, "Reverse-Polarity Mechanosensitive Channel (Chiroptera & Cetacea)"),
-        ("WHRN (1 shunt)", 9.13, "Whirlin Ankle-Link Scaffold (P=0.9999)"),
-        ("SLC26A5 (1 shunt)", 7.80, "Outer Hair-Cell Motor Prestin (Delphinidae ↔ Rhinolophoidea)"),
-    ]
+    coch_notes = {
+        "PCDH15": "Protocadherin-15 tip-link (Chiroptera & Primates, max +54.6)",
+        "USH2A": "Subterranean Zokors (Eospalax ↔ Myospalax) & ankle link",
+        "MYO15A": "Stereocilia tip elongation myosin (Chiroptera & Rodentia)",
+        "TRIOBP": "Stereocilia rootlet actin-bundling (5 SPARSE + 2 INTERVAL)",
+        "ESPN": "Espin parallel actin-bundle crosslinker (max +28.4)",
+        "TMC1": "Mechanotransduction pore channel (4 species-tree shunts)",
+        "OTOF": "Inner hair-cell ribbon-synapse Ca2+ sensor",
+        "KCNQ4": "Outer hair-cell voltage-gated K+ channel (max +23.6)",
+        "STRC": "Stereocilin tectorial top-connector (2 AA sp shunts)",
+        "SLC26A5": "Outer hair-cell motor Prestin (+9.4 nats in 116-sp NT)",
+    }
+    coch_rows = []
+    for row in toga_sum["cochlear_auditory_complex_25_genes"]:
+        sym = row["gene_symbol"]
+        n_sh = row["n_interval_shunts"] + row["n_sparse_shunts"]
+        if n_sh == 0 or sym not in coch_notes:
+            continue
+        gain_sum = sum(s["net_mdl_gain_nats"] for s in row.get("top_shunts", []))
+        coch_rows.append((f"{sym} ({n_sh} {'shunt' if n_sh == 1 else 'shunts'})", gain_sum, coch_notes[sym]))
+    cochlear_genes = sorted(coch_rows, key=lambda r: -r[1])[:10]
     y_c = np.arange(len(cochlear_genes))
     gains_c = [g[1] for g in cochlear_genes]
     names_c = [g[0] for g in cochlear_genes]
@@ -221,7 +230,7 @@ def main() -> None:
         )
 
     ax_c.set_title(
-        "C. Pathway Co-Convergence: 16 / 25 (64%) Mammalian Hearing Genes",
+        "C. Pathway Co-Convergence: Cochlear Complex (16/25 DNA; 12/25 AA)",
         loc="left", pad=8,
     )
 
@@ -271,22 +280,22 @@ def main() -> None:
     ax_d.annotate(
         "−88.3% Shunts (60 → 7)\n3rd-pos GC convergence\neliminated; Sorghum ↔ Zea\nINTERVAL tract (+8.04 nats)\npreserved!",
         xy=(1.0 + w_d, 11.0),
-        xytext=(1.32, 99.0),
-        fontsize=6.2, fontweight="bold", color="#803000",
+        xytext=(1.75, 118.0),
+        fontsize=6.0, fontweight="bold", color="#803000",
         bbox=dict(boxstyle="round,pad=0.25", facecolor="#fff5eb", edgecolor=c_vermillion, lw=0.85),
-        arrowprops=dict(arrowstyle="->", color=c_vermillion, lw=1.3, connectionstyle="arc3,rad=-0.15"),
+        arrowprops=dict(arrowstyle="->", color=c_vermillion, lw=1.3, connectionstyle="arc3,rad=-0.18"),
         ha="center", va="center",
     )
 
     ax_d.set_xticks(x_d)
     ax_d.set_xticklabels(p_cats, fontsize=7.1)
     ax_d.set_ylabel("Percentage (%) or Shunt Count", fontsize=7.9)
-    ax_d.set_ylim(0, 128)
+    ax_d.set_ylim(0, 142)
     ax_d.spines["top"].set_visible(False)
     ax_d.spines["right"].set_visible(False)
     ax_d.legend(loc="upper left", fontsize=6.6, frameon=True)
     ax_d.set_title(
-        "D. Plant Kingdom (1,998 Loci): 3rd-Codon Saturation vs. True Introgression",
+        "D. Plant Phylogenomics (1,998 Nuclear Loci): 3rd-Codon Saturation vs. Introgression",
         loc="left", pad=8,
     )
 

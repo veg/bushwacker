@@ -1,0 +1,773 @@
+{
+  "dataset": "denv1_polyprotein_aa",
+  "status": "ok",
+  "alphabet": "protein",
+  "n_taxa": 1426,
+  "seq_len": 3355,
+  "bushwhacker_runtime_sec": 1.4042,
+  "total_cli_wall_sec": 1.5693,
+  "fasttree_gtr_wall_sec": null,
+  "speedup_vs_fasttree": null,
+  "raw_dl_nats": 14113799.45,
+  "star_mdl_nats": 485036.98,
+  "tree_mdl_nats": 50188.47,
+  "network_mdl_nats": 49885.19,
+  "resolved_splits": 457,
+  "max_binary_splits": 1423,
+  "collapsed_zero_signal_splits": 966,
+  "collapsed_polytomy_frac": 0.6788,
+  "hub_topology_stats": {
+    "n_internal_nodes": 458,
+    "n_polytomy_hubs": 211,
+    "max_hub_degree": 43,
+    "hubs_deg_ge_10": 40,
+    "hubs_deg_ge_25": 9,
+    "hubs_deg_ge_50": 0,
+    "hubs_deg_ge_100": 0,
+    "top_15_hub_degrees": [
+      43,
+      40,
+      38,
+      32,
+      31,
+      31,
+      27,
+      27,
+      27,
+      23,
+      23,
+      22,
+      21,
+      19,
+      17
+    ]
+  },
+  "compression_benchmark": {
+    "raw_fasta_bytes": 14623001,
+    "bwz_bytes": 74209,
+    "gzip9_bytes": 374648,
+    "xz6_bytes": 89952,
+    "bwz_vs_raw_ratio": 197.05,
+    "bwz_vs_gzip9_ratio": 5.05,
+    "bwz_vs_xz6_ratio": 1.21
+  },
+  "n_shunts": 28,
+  "n_interval_shunts": 0,
+  "n_sparse_shunts": 28,
+  "n_shunts_involving_known_recombinants": 0,
+  "top_shunts": [
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 43.02,
+      "shared_mutations": 10,
+      "interval_span": null,
+      "clade_size_u": 42,
+      "clade_size_v": 357,
+      "u_sample": [
+        "OQ567774.1|2014-02-27",
+        "OQ567776.1|2015-03-20",
+        "OQ567777.1|2015-03-26",
+        "OQ567779.1|2015-06-02"
+      ],
+      "v_sample": [
+        "OQ078871.1|2019-04-12",
+        "OQ078872.1|2019-03-21",
+        "OQ078873.1|2019-03-21",
+        "OQ078874.1|2019-03-23"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        859,
+        1177,
+        2226,
+        2238,
+        2726,
+        2821,
+        3041,
+        3091,
+        3092,
+        3125
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 41.98,
+      "shared_mutations": 11,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 357,
+      "u_sample": [
+        "OR389007.1|2000",
+        "OR389276.1|1990"
+      ],
+      "v_sample": [
+        "OQ078871.1|2019-04-12",
+        "OQ078872.1|2019-03-21",
+        "OQ078873.1|2019-03-21",
+        "OQ078874.1|2019-03-23"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        646,
+        1125,
+        1154,
+        1252,
+        1255,
+        1342,
+        2169,
+        2231,
+        2255,
+        3107,
+        3290
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 40.38,
+      "shared_mutations": 14,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 5,
+      "u_sample": [
+        "PP087792.1|2023-06"
+      ],
+      "v_sample": [
+        "OR389013.1|1988",
+        "PP204092.1|2023-06-01",
+        "PP234941.1|2018-07-01",
+        "PP234951.1|2018-07-01"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        172,
+        354,
+        605,
+        702,
+        884,
+        1157,
+        1180,
+        1195,
+        1219,
+        1261,
+        1268,
+        1682,
+        1784,
+        1793
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 29.68,
+      "shared_mutations": 9,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 4,
+      "u_sample": [
+        "PP269535.1|2014-11-13",
+        "PP269574.1|2014-09-24"
+      ],
+      "v_sample": [
+        "PP269576.1|2014-10-23",
+        "PP269654.1|2014-10-17",
+        "PP269685.1|2014-10-27",
+        "PP269735.1|2015-12-22"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        27,
+        854,
+        855,
+        1222,
+        1631,
+        2082,
+        2170,
+        2721,
+        2981
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 22.77,
+      "shared_mutations": 7,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OQ078873.1|2019-03-21",
+        "OQ078886.1|2019-05-30"
+      ],
+      "v_sample": [
+        "OQ078878.1|2019-04-09",
+        "OQ078884.1|2019-04-16"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1187,
+        1224,
+        1227,
+        1811,
+        2386,
+        2552,
+        2629
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 19.13,
+      "shared_mutations": 6,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "PP269569.1|2013-09-10"
+      ],
+      "v_sample": [
+        "PP269509.1|2011-09-23",
+        "PP269513.1|2011-12-23"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        9,
+        94,
+        243,
+        645,
+        1231,
+        3083
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 11.73,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OR258508.1|2022-04-13"
+      ],
+      "v_sample": [
+        "OR258413.1|2022-03-22",
+        "OR258509.1|2022-04-13"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        694,
+        1132,
+        2125,
+        2238
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 10.73,
+      "shared_mutations": 6,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 2,
+      "u_sample": [
+        "PP269756.1|2017-02-06",
+        "PP269772.1|2017-04-18"
+      ],
+      "v_sample": [
+        "PP269761.1|2017-02-27",
+        "PP269781.1|2017-06-16"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        422,
+        1197,
+        1256,
+        1433,
+        1913,
+        3310
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 8.71,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "PP269734.1|2015-12-21"
+      ],
+      "v_sample": [
+        "PP269775.1|2017-05-09"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        8,
+        1231,
+        1268
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 8.61,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "PP269491.1|2012-08-27"
+      ],
+      "v_sample": [
+        "PP269470.1|2012-07-31",
+        "PP269678.1|2012-12-19"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        936,
+        1169,
+        1272,
+        2726
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 7.85,
+      "shared_mutations": 5,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OR393968.1|2019-06-03",
+        "OR393993.1|2019-10-02"
+      ],
+      "v_sample": [
+        "OR394010.1|2019-10-21",
+        "OR394040.1|2019-12-24"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        131,
+        648,
+        1549,
+        1578,
+        2858
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 7.16,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR258488.1|2022-04-13"
+      ],
+      "v_sample": [
+        "OR258573.1|2022-04-15"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1751,
+        1752,
+        1753
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 7.02,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "PP269581.1|2014-12-17"
+      ],
+      "v_sample": [
+        "PP269578.1|2014-11-24",
+        "PP269614.1|2015-08-10"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        71,
+        405,
+        1128,
+        2509
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 7.02,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OQ567810.1|2022-04-22"
+      ],
+      "v_sample": [
+        "OR258411.1|2022-03-28"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1751,
+        1752,
+        1755
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 6.76,
+      "shared_mutations": 5,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 55,
+      "u_sample": [
+        "PP563940.1|2023-10-22",
+        "PP563959.1|2023-11-10"
+      ],
+      "v_sample": [
+        "PP540291.1|2023-08-19",
+        "PP563826.1|2023-08-21",
+        "PP563827.1|2023-08-20",
+        "PP563830.1|2023-09-02"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        27,
+        491,
+        1272,
+        1978,
+        3021
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 5.95,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OP121156.1|2019-07"
+      ],
+      "v_sample": [
+        "OQ603262.1|2016-04-26"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        10,
+        13,
+        19
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 4.05,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OR235533.1|2022-04"
+      ],
+      "v_sample": [
+        "OR235523.1|2022-05",
+        "OR235543.1|2022-03"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        222,
+        877,
+        1291,
+        1390
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 3.89,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "PP234961.1|2019-07-01"
+      ],
+      "v_sample": [
+        "OR804008.1|2023-04",
+        "PP204094.1|2023-08-01"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1084,
+        2741,
+        3010,
+        3018
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 3.8,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR258403.1|2022-03-23"
+      ],
+      "v_sample": [
+        "OR258566.1|2022-04-15"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        2039,
+        2040,
+        2500
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 2.22,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OQ567807.1|2022-04-19",
+        "OQ567808.1|2022-04-18"
+      ],
+      "v_sample": [
+        "OQ567803.1|2022-03-28",
+        "OQ567804.1|2022-04-04"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1445,
+        1935,
+        2490,
+        2651
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 2.21,
+      "shared_mutations": 2,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR258414.1|2022-03-28"
+      ],
+      "v_sample": [
+        "OR258417.1|2022-03-24"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        2647,
+        2648
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.87,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OR235364.1|2020-07"
+      ],
+      "v_sample": [
+        "OR235265.1|2020-05",
+        "OR235270.1|2020-12"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1268,
+        1474,
+        2843
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.71,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "OQ078873.1|2019-03-21"
+      ],
+      "v_sample": [
+        "OQ078878.1|2019-04-09",
+        "OQ078884.1|2019-04-16"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1713,
+        3063,
+        3184
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.61,
+      "shared_mutations": 2,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "PP234954.1|2018-07-01"
+      ],
+      "v_sample": [
+        "PP269816.1|2018-05-07"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        170,
+        1208
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.37,
+      "shared_mutations": 2,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR235261.1|2020-05"
+      ],
+      "v_sample": [
+        "OR235372.1|2020-06"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        312,
+        936
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.23,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 4,
+      "clade_size_v": 44,
+      "u_sample": [
+        "PP269754.1|2017-01-09",
+        "PP269790.1|2017-07-27",
+        "PP269791.1|2017-07-27",
+        "PP269801.1|2017-09-13"
+      ],
+      "v_sample": [
+        "OR029742.1|2019-08-15",
+        "OR029745.1|2019-08-16",
+        "OR029746.1|2019-08-16",
+        "OR029748.1|2019-08-15"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        155,
+        236,
+        1175,
+        2848
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 0.7,
+      "shared_mutations": 2,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR235691.1|2021-04"
+      ],
+      "v_sample": [
+        "OR235693.1|2021-06"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        715,
+        3100
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 0.11,
+      "shared_mutations": 2,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "OR258496.1|2022-04-15"
+      ],
+      "v_sample": [
+        "OR258549.1|2022-04-16"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        436,
+        437
+      ]
+    }
+  ],
+  "bushwhacker_legacy_v1_sec": 22.6637,
+  "bushwhacker_t1_sec": 4.9167,
+  "bushwhacker_t8_sec": 1.5988,
+  "bushwhacker_t32_sec": 1.4042,
+  "bushwhacker_t64_sec": 1.4341,
+  "multithread_bit_exact_verified": true
+}

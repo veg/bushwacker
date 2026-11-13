@@ -1,0 +1,718 @@
+{
+  "generated_at": "2026-11-13T03:58:41Z",
+  "threads": 32,
+  "elapsed_wall_sec": 68.17,
+  "datasets": {
+    "ar122_archaea_1672": {
+      "title": "GTDB r95 Archaeal Domain (1,672 species x 32,675 AA; 122 markers)",
+      "methods": {
+        "Bushwhacker_v0_Unweighted_Fitch_Ablation": {
+          "method": "Bushwhacker_v0_Unweighted_Fitch_Ablation",
+          "wall_sec": 202.32,
+          "vs_gtdb_ref": {
+            "n_shared": 1672,
+            "pred_splits": 1654,
+            "ref_splits": 1669,
+            "tp": 620,
+            "fp": 1034,
+            "fn": 1049,
+            "rf": 2083,
+            "nrf": 0.62403,
+            "false_positive_rate_pct": 62.52,
+            "precision_pct": 37.48,
+            "recall_pct": 37.15
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 17,
+              "strict_monophyletic": 1,
+              "strict_pct": 5.88,
+              "compatible_uncontradicted": 1,
+              "compatible_pct": 5.88,
+              "mean_contradicting_splits": 33.882
+            },
+            "class": {
+              "n_groups": 40,
+              "strict_monophyletic": 3,
+              "strict_pct": 7.5,
+              "compatible_uncontradicted": 4,
+              "compatible_pct": 10.0,
+              "mean_contradicting_splits": 29.875
+            },
+            "order": {
+              "n_groups": 85,
+              "strict_monophyletic": 17,
+              "strict_pct": 20.0,
+              "compatible_uncontradicted": 18,
+              "compatible_pct": 21.18,
+              "mean_contradicting_splits": 21.365
+            },
+            "family": {
+              "n_groups": 148,
+              "strict_monophyletic": 42,
+              "strict_pct": 28.38,
+              "compatible_uncontradicted": 42,
+              "compatible_pct": 28.38,
+              "mean_contradicting_splits": 17.797
+            },
+            "genus": {
+              "n_groups": 256,
+              "strict_monophyletic": 130,
+              "strict_pct": 50.78,
+              "compatible_uncontradicted": 131,
+              "compatible_pct": 51.17,
+              "mean_contradicting_splits": 12.168
+            }
+          }
+        },
+        "Bushwhacker_LG08_CAT8_MDL": {
+          "method": "Bushwhacker_LG08_CAT8_MDL",
+          "wall_sec": 31.5,
+          "vs_gtdb_ref": {
+            "n_shared": 1672,
+            "pred_splits": 1669,
+            "ref_splits": 1669,
+            "tp": 1409,
+            "fp": 260,
+            "fn": 260,
+            "rf": 520,
+            "nrf": 0.15578,
+            "false_positive_rate_pct": 15.58,
+            "precision_pct": 84.42,
+            "recall_pct": 84.42
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 17,
+              "strict_monophyletic": 14,
+              "strict_pct": 82.35,
+              "compatible_uncontradicted": 14,
+              "compatible_pct": 82.35,
+              "mean_contradicting_splits": 0.294
+            },
+            "class": {
+              "n_groups": 40,
+              "strict_monophyletic": 36,
+              "strict_pct": 90.0,
+              "compatible_uncontradicted": 36,
+              "compatible_pct": 90.0,
+              "mean_contradicting_splits": 0.15
+            },
+            "order": {
+              "n_groups": 85,
+              "strict_monophyletic": 84,
+              "strict_pct": 98.82,
+              "compatible_uncontradicted": 84,
+              "compatible_pct": 98.82,
+              "mean_contradicting_splits": 0.012
+            },
+            "family": {
+              "n_groups": 148,
+              "strict_monophyletic": 146,
+              "strict_pct": 98.65,
+              "compatible_uncontradicted": 146,
+              "compatible_pct": 98.65,
+              "mean_contradicting_splits": 0.027
+            },
+            "genus": {
+              "n_groups": 256,
+              "strict_monophyletic": 252,
+              "strict_pct": 98.44,
+              "compatible_uncontradicted": 252,
+              "compatible_pct": 98.44,
+              "mean_contradicting_splits": 0.031
+            }
+          },
+          "engine_sec": 31.03,
+          "resolved_splits": 1669,
+          "max_binary_splits": 1669,
+          "resolved_pct": 100.0
+        },
+        "Bushwhacker_LG08_CAT8_Binary": {
+          "method": "Bushwhacker_LG08_CAT8_Binary",
+          "wall_sec": 31.5,
+          "vs_gtdb_ref": {
+            "n_shared": 1672,
+            "pred_splits": 1669,
+            "ref_splits": 1669,
+            "tp": 1409,
+            "fp": 260,
+            "fn": 260,
+            "rf": 520,
+            "nrf": 0.15578,
+            "false_positive_rate_pct": 15.58,
+            "precision_pct": 84.42,
+            "recall_pct": 84.42
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 17,
+              "strict_monophyletic": 14,
+              "strict_pct": 82.35,
+              "compatible_uncontradicted": 14,
+              "compatible_pct": 82.35,
+              "mean_contradicting_splits": 0.294
+            },
+            "class": {
+              "n_groups": 40,
+              "strict_monophyletic": 36,
+              "strict_pct": 90.0,
+              "compatible_uncontradicted": 36,
+              "compatible_pct": 90.0,
+              "mean_contradicting_splits": 0.15
+            },
+            "order": {
+              "n_groups": 85,
+              "strict_monophyletic": 84,
+              "strict_pct": 98.82,
+              "compatible_uncontradicted": 84,
+              "compatible_pct": 98.82,
+              "mean_contradicting_splits": 0.012
+            },
+            "family": {
+              "n_groups": 148,
+              "strict_monophyletic": 146,
+              "strict_pct": 98.65,
+              "compatible_uncontradicted": 146,
+              "compatible_pct": 98.65,
+              "mean_contradicting_splits": 0.027
+            },
+            "genus": {
+              "n_groups": 256,
+              "strict_monophyletic": 252,
+              "strict_pct": 98.44,
+              "compatible_uncontradicted": 252,
+              "compatible_pct": 98.44,
+              "mean_contradicting_splits": 0.031
+            }
+          },
+          "engine_sec": 31.03
+        },
+        "FastTreeMP_LG": {
+          "method": "FastTreeMP_LG (T=32)",
+          "wall_sec": 4499.48,
+          "vs_gtdb_ref": {
+            "n_shared": 1672,
+            "pred_splits": 1669,
+            "ref_splits": 1669,
+            "tp": 1444,
+            "fp": 225,
+            "fn": 225,
+            "rf": 450,
+            "nrf": 0.13481,
+            "false_positive_rate_pct": 13.48,
+            "precision_pct": 86.52,
+            "recall_pct": 86.52
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 17,
+              "strict_monophyletic": 15,
+              "strict_pct": 88.24,
+              "compatible_uncontradicted": 15,
+              "compatible_pct": 88.24,
+              "mean_contradicting_splits": 0.176
+            },
+            "class": {
+              "n_groups": 40,
+              "strict_monophyletic": 37,
+              "strict_pct": 92.5,
+              "compatible_uncontradicted": 37,
+              "compatible_pct": 92.5,
+              "mean_contradicting_splits": 0.125
+            },
+            "order": {
+              "n_groups": 85,
+              "strict_monophyletic": 83,
+              "strict_pct": 97.65,
+              "compatible_uncontradicted": 83,
+              "compatible_pct": 97.65,
+              "mean_contradicting_splits": 0.047
+            },
+            "family": {
+              "n_groups": 148,
+              "strict_monophyletic": 147,
+              "strict_pct": 99.32,
+              "compatible_uncontradicted": 147,
+              "compatible_pct": 99.32,
+              "mean_contradicting_splits": 0.014
+            },
+            "genus": {
+              "n_groups": 256,
+              "strict_monophyletic": 254,
+              "strict_pct": 99.22,
+              "compatible_uncontradicted": 254,
+              "compatible_pct": 99.22,
+              "mean_contradicting_splits": 0.008
+            }
+          },
+          "speedup_of_bushwhacker_x": 142.82
+        },
+        "IQTREE2_LG_G4_fast": {
+          "method": "IQTREE2_LG_G4_fast",
+          "wall_sec": 1691.53,
+          "vs_gtdb_ref": {
+            "n_shared": 1672,
+            "pred_splits": 1669,
+            "ref_splits": 1669,
+            "tp": 1451,
+            "fp": 218,
+            "fn": 218,
+            "rf": 436,
+            "nrf": 0.13062,
+            "false_positive_rate_pct": 13.06,
+            "precision_pct": 86.94,
+            "recall_pct": 86.94
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 17,
+              "strict_monophyletic": 15,
+              "strict_pct": 88.24,
+              "compatible_uncontradicted": 15,
+              "compatible_pct": 88.24,
+              "mean_contradicting_splits": 0.176
+            },
+            "class": {
+              "n_groups": 40,
+              "strict_monophyletic": 38,
+              "strict_pct": 95.0,
+              "compatible_uncontradicted": 38,
+              "compatible_pct": 95.0,
+              "mean_contradicting_splits": 0.075
+            },
+            "order": {
+              "n_groups": 85,
+              "strict_monophyletic": 84,
+              "strict_pct": 98.82,
+              "compatible_uncontradicted": 84,
+              "compatible_pct": 98.82,
+              "mean_contradicting_splits": 0.012
+            },
+            "family": {
+              "n_groups": 148,
+              "strict_monophyletic": 148,
+              "strict_pct": 100.0,
+              "compatible_uncontradicted": 148,
+              "compatible_pct": 100.0,
+              "mean_contradicting_splits": 0.0
+            },
+            "genus": {
+              "n_groups": 256,
+              "strict_monophyletic": 252,
+              "strict_pct": 98.44,
+              "compatible_uncontradicted": 252,
+              "compatible_pct": 98.44,
+              "mean_contradicting_splits": 0.031
+            }
+          },
+          "speedup_of_bushwhacker_x": 53.69
+        }
+      },
+      "pairwise_nrf": {
+        "Bushwhacker_LG08_CAT8_MDL__vs__Bushwhacker_LG08_CAT8_Binary": 0.0,
+        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.08209,
+        "Bushwhacker_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast": 0.07789,
+        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.08209,
+        "Bushwhacker_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast": 0.07789,
+        "FastTreeMP_LG__vs__IQTREE2_LG_G4_fast": 0.05872
+      },
+      "gtdb_ref_taxonomy_5ranks": {
+        "phylum": {
+          "n_groups": 17,
+          "strict_monophyletic": 17,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 17,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "class": {
+          "n_groups": 40,
+          "strict_monophyletic": 40,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 40,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "order": {
+          "n_groups": 85,
+          "strict_monophyletic": 85,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 85,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "family": {
+          "n_groups": 148,
+          "strict_monophyletic": 148,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 148,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "genus": {
+          "n_groups": 256,
+          "strict_monophyletic": 256,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 256,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        }
+      }
+    },
+    "bac120_bacteria_1000": {
+      "title": "GTDB r95 Bacterial Domain (1,000 species across all 111 phyla x 43,733 AA; 120 markers)",
+      "methods": {
+        "Bushwhacker_v0_Unweighted_Fitch_Ablation": {
+          "method": "Bushwhacker_v0_Unweighted_Fitch_Ablation",
+          "wall_sec": 291.21,
+          "vs_gtdb_ref": {
+            "n_shared": 1000,
+            "pred_splits": 990,
+            "ref_splits": 997,
+            "tp": 263,
+            "fp": 727,
+            "fn": 734,
+            "rf": 1461,
+            "nrf": 0.7327,
+            "false_positive_rate_pct": 73.43,
+            "precision_pct": 26.57,
+            "recall_pct": 26.38
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 105,
+              "strict_monophyletic": 16,
+              "strict_pct": 15.24,
+              "compatible_uncontradicted": 16,
+              "compatible_pct": 15.24,
+              "mean_contradicting_splits": 33.295
+            },
+            "class": {
+              "n_groups": 171,
+              "strict_monophyletic": 52,
+              "strict_pct": 30.41,
+              "compatible_uncontradicted": 52,
+              "compatible_pct": 30.41,
+              "mean_contradicting_splits": 23.228
+            },
+            "order": {
+              "n_groups": 223,
+              "strict_monophyletic": 89,
+              "strict_pct": 39.91,
+              "compatible_uncontradicted": 89,
+              "compatible_pct": 39.91,
+              "mean_contradicting_splits": 19.031
+            },
+            "family": {
+              "n_groups": 205,
+              "strict_monophyletic": 90,
+              "strict_pct": 43.9,
+              "compatible_uncontradicted": 90,
+              "compatible_pct": 43.9,
+              "mean_contradicting_splits": 16.751
+            },
+            "genus": {
+              "n_groups": 99,
+              "strict_monophyletic": 59,
+              "strict_pct": 59.6,
+              "compatible_uncontradicted": 59,
+              "compatible_pct": 59.6,
+              "mean_contradicting_splits": 10.263
+            }
+          }
+        },
+        "Bushwhacker_LG08_CAT8_MDL": {
+          "method": "Bushwhacker_LG08_CAT8_MDL",
+          "wall_sec": 26.91,
+          "vs_gtdb_ref": {
+            "n_shared": 1000,
+            "pred_splits": 997,
+            "ref_splits": 997,
+            "tp": 751,
+            "fp": 246,
+            "fn": 246,
+            "rf": 492,
+            "nrf": 0.24674,
+            "false_positive_rate_pct": 24.67,
+            "precision_pct": 75.33,
+            "recall_pct": 75.33
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 105,
+              "strict_monophyletic": 99,
+              "strict_pct": 94.29,
+              "compatible_uncontradicted": 99,
+              "compatible_pct": 94.29,
+              "mean_contradicting_splits": 0.2
+            },
+            "class": {
+              "n_groups": 171,
+              "strict_monophyletic": 166,
+              "strict_pct": 97.08,
+              "compatible_uncontradicted": 166,
+              "compatible_pct": 97.08,
+              "mean_contradicting_splits": 0.053
+            },
+            "order": {
+              "n_groups": 223,
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.018
+            },
+            "family": {
+              "n_groups": 205,
+              "strict_monophyletic": 203,
+              "strict_pct": 99.02,
+              "compatible_uncontradicted": 203,
+              "compatible_pct": 99.02,
+              "mean_contradicting_splits": 0.024
+            },
+            "genus": {
+              "n_groups": 99,
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
+            }
+          },
+          "engine_sec": 26.53,
+          "resolved_splits": 997,
+          "max_binary_splits": 997,
+          "resolved_pct": 100.0
+        },
+        "Bushwhacker_LG08_CAT8_Binary": {
+          "method": "Bushwhacker_LG08_CAT8_Binary",
+          "wall_sec": 26.91,
+          "vs_gtdb_ref": {
+            "n_shared": 1000,
+            "pred_splits": 997,
+            "ref_splits": 997,
+            "tp": 751,
+            "fp": 246,
+            "fn": 246,
+            "rf": 492,
+            "nrf": 0.24674,
+            "false_positive_rate_pct": 24.67,
+            "precision_pct": 75.33,
+            "recall_pct": 75.33
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 105,
+              "strict_monophyletic": 99,
+              "strict_pct": 94.29,
+              "compatible_uncontradicted": 99,
+              "compatible_pct": 94.29,
+              "mean_contradicting_splits": 0.2
+            },
+            "class": {
+              "n_groups": 171,
+              "strict_monophyletic": 166,
+              "strict_pct": 97.08,
+              "compatible_uncontradicted": 166,
+              "compatible_pct": 97.08,
+              "mean_contradicting_splits": 0.053
+            },
+            "order": {
+              "n_groups": 223,
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.018
+            },
+            "family": {
+              "n_groups": 205,
+              "strict_monophyletic": 203,
+              "strict_pct": 99.02,
+              "compatible_uncontradicted": 203,
+              "compatible_pct": 99.02,
+              "mean_contradicting_splits": 0.024
+            },
+            "genus": {
+              "n_groups": 99,
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
+            }
+          },
+          "engine_sec": 26.53
+        },
+        "FastTreeMP_LG": {
+          "method": "FastTreeMP_LG (cached)",
+          "wall_sec": 3822.63,
+          "vs_gtdb_ref": {
+            "n_shared": 1000,
+            "pred_splits": 997,
+            "ref_splits": 997,
+            "tp": 770,
+            "fp": 227,
+            "fn": 227,
+            "rf": 454,
+            "nrf": 0.22768,
+            "false_positive_rate_pct": 22.77,
+            "precision_pct": 77.23,
+            "recall_pct": 77.23
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 105,
+              "strict_monophyletic": 94,
+              "strict_pct": 89.52,
+              "compatible_uncontradicted": 94,
+              "compatible_pct": 89.52,
+              "mean_contradicting_splits": 0.486
+            },
+            "class": {
+              "n_groups": 171,
+              "strict_monophyletic": 163,
+              "strict_pct": 95.32,
+              "compatible_uncontradicted": 163,
+              "compatible_pct": 95.32,
+              "mean_contradicting_splits": 0.205
+            },
+            "order": {
+              "n_groups": 223,
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.004
+            },
+            "family": {
+              "n_groups": 205,
+              "strict_monophyletic": 204,
+              "strict_pct": 99.51,
+              "compatible_uncontradicted": 204,
+              "compatible_pct": 99.51,
+              "mean_contradicting_splits": 0.02
+            },
+            "genus": {
+              "n_groups": 99,
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
+            }
+          }
+        },
+        "IQTREE2_LG_G4_fast": {
+          "method": "IQTREE2_LG_G4_fast",
+          "wall_sec": 1137.85,
+          "vs_gtdb_ref": {
+            "n_shared": 1000,
+            "pred_splits": 997,
+            "ref_splits": 997,
+            "tp": 762,
+            "fp": 235,
+            "fn": 235,
+            "rf": 470,
+            "nrf": 0.23571,
+            "false_positive_rate_pct": 23.57,
+            "precision_pct": 76.43,
+            "recall_pct": 76.43
+          },
+          "taxonomy_5ranks": {
+            "phylum": {
+              "n_groups": 105,
+              "strict_monophyletic": 99,
+              "strict_pct": 94.29,
+              "compatible_uncontradicted": 99,
+              "compatible_pct": 94.29,
+              "mean_contradicting_splits": 0.19
+            },
+            "class": {
+              "n_groups": 171,
+              "strict_monophyletic": 168,
+              "strict_pct": 98.25,
+              "compatible_uncontradicted": 168,
+              "compatible_pct": 98.25,
+              "mean_contradicting_splits": 0.047
+            },
+            "order": {
+              "n_groups": 223,
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.004
+            },
+            "family": {
+              "n_groups": 205,
+              "strict_monophyletic": 202,
+              "strict_pct": 98.54,
+              "compatible_uncontradicted": 202,
+              "compatible_pct": 98.54,
+              "mean_contradicting_splits": 0.034
+            },
+            "genus": {
+              "n_groups": 99,
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
+            }
+          },
+          "nrf_vs_bushwhacker": 0.15948,
+          "speedup_of_bushwhacker_x": 42.28
+        }
+      },
+      "pairwise_nrf": {
+        "Bushwhacker_LG08_CAT8_MDL__vs__Bushwhacker_LG08_CAT8_Binary": 0.0,
+        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.17252,
+        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.17252
+      },
+      "gtdb_ref_taxonomy_5ranks": {
+        "phylum": {
+          "n_groups": 105,
+          "strict_monophyletic": 105,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 105,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "class": {
+          "n_groups": 264,
+          "strict_monophyletic": 264,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 264,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "order": {
+          "n_groups": 658,
+          "strict_monophyletic": 658,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 658,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "family": {
+          "n_groups": 1450,
+          "strict_monophyletic": 1450,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 1450,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        },
+        "genus": {
+          "n_groups": 3655,
+          "strict_monophyletic": 3655,
+          "strict_pct": 100.0,
+          "compatible_uncontradicted": 3655,
+          "compatible_pct": 100.0,
+          "mean_contradicting_splits": 0.0
+        }
+      }
+    }
+  }
+}

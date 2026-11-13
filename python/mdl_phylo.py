@@ -62,10 +62,22 @@ def log_binom_vec(n: float, k_arr: np.ndarray) -> np.ndarray:
 
 
 def universal_int_nats(m: float) -> float:
-    """Rissanen universal prefix code length (in nats) for non-negative integer m."""
+    """
+    Exact parameter-free Kraft-tight universal integer prefix code length (in nats)
+    for non-negative integer m via telescoping logarithmic tail:
+      P(0) = 1/2, P(m) = (ln 2 / 2) * (1 / ln(m + 1) - 1 / ln(m + 2)) for m >= 1.
+    """
+    ln2 = math.log(2.0)
     if m <= 0.0:
-        return math.log(2.0)
-    return math.log(2.0) + math.log(1.0 + m) + 0.5 * math.log(1.0 + math.log(1.0 + m))
+        return ln2
+    s1 = 0.5
+    s2 = 0.5 * ln2 / math.log(3.0)
+    p1 = s1 - s2
+    if m < 1.0:
+        return (1.0 - m) * ln2 + m * (-math.log(p1))
+    sm = 0.5 * ln2 / math.log(m + 1.0)
+    smp1 = 0.5 * ln2 / math.log(m + 2.0)
+    return -math.log(max(sm - smp1, 1e-300))
 
 
 def branch_mutation_code_nats(
@@ -77,12 +89,12 @@ def branch_mutation_code_nats(
     """
     Exact enumerative code length (in nats) to transmit m_e mutations along a
     single branch e over L_eff effective sites:
-      1. Universal integer header for mutation count m_e
+      1. Universal integer header for mutation count m_e (ln 2 at m_e = 0)
       2. Combinatorial site-address code ln C(L_eff, m_e) (monotonically clamped at 0.49 * L_eff)
       3. State transition code sum_{s in M_e} l_subst(s)
     """
     if m_e <= 1e-9:
-        return 0.0
+        return universal_int_nats(0.0)
     m_pos = min(m_e, 0.49 * L_eff)
     header = universal_int_nats(m_e)
     site_positions = log_binom(L_eff, m_pos)
@@ -2157,10 +2169,10 @@ class MDLPhyloEngine:
                     bp_term = math.log(max(L_eff / max(0.5 * (m_u + m_v), 0.5), 1.0)) - max(
                         0.0, math.log(max(expected_collision, 1.0))
                     )
-                    eff_var_pool = max(variable_sites * (0.45 if codon_bonus > 0.0 else 1.0), 1.0)
+                    eff_var_pool = max(variable_sites, 1.0)
                     conservation_surprise = max(
                         0.0,
-                        math.log((L_eff / eff_var_pool) * (3.0 / (bg_muts + 0.35))),
+                        math.log((L_eff / eff_var_pool) * (3.0 / (bg_muts + 1.0))),
                     )
 
                 sav = bp_term + subst_s + codon_bonus + conservation_surprise
@@ -2307,9 +2319,7 @@ class MDLPhyloEngine:
 
         cum_sav = 0.0
         cur_sites: List[int] = []
-        M_pool = max(float(variable_sites), float(len(strict_parallel)) * 2.0, 20.0)
-        if is_coding:
-            M_pool = max(min(float(variable_sites) * 0.35, L_eff / 3.0), 20.0)
+        M_pool = max(float(variable_sites), float(len(strict_parallel)))
 
         for m_idx, (sav, s) in enumerate(strict_parallel, start=1):
             cum_sav += sav

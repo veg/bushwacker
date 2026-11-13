@@ -1,0 +1,25 @@
+{
+  "tool": "BUSHWHACKER",
+  "input": "zenodo_replication/data/specimens/blaKPC_9taxa.fna",
+  "alphabet": "nucleotide",
+  "n_taxa": 9,
+  "seq_len": 882,
+  "raw_Description_Length_nats": 11004.40,
+  "star_tree_MDL_nats": 1255.58,
+  "tree_MDL_nats": 1260.80,
+  "network_MDL_nats": 1260.80,
+  "compression_ratio_vs_star": 1.0042,
+  "resolved_internal_splits": 1,
+  "max_binary_splits": 6,
+  "polytomy_nodes": 2,
+  "certified_shunts": 0,
+  "runtime_sec": 0.0024,
+  "newick": "(CAV1016:0.000227,(CAV1392:0.000227,CAV1596:0.000227,NJST258_2:0.000227)0.634:0.000939,CAV1042:0.000227,CAV1193:0.000227,CAV1344:0.000227,CAV1453:0.000227,HS11286_ST11:0.000227);",
+  "binary_newick": "(((((CAV1016:0.000227,((CAV1392:0.000227,CAV1596:0.000227):0.000227,NJST258_2:0.000227):0.000939):0.000227,CAV1042:0.000227):0.000227,CAV1193:0.000227):0.000227,CAV1344:0.000227):0.000227,CAV1453:0.000227,HS11286_ST11:0.000227);",
+  "internal_branches": [
+    {"u": 9, "v": 11, "mutations": 1.00, "branch_length": 0.000939, "mdl_gain_nats": 0.549, "mdl_support": 0.6338, "num_synapomorphies": 1}
+  ],
+  "shunts": [
+
+  ]
+}

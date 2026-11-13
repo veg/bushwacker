@@ -1,0 +1,351 @@
+{
+  "dataset": "NagyA1",
+  "alphabet": "protein",
+  "total_files": 594,
+  "ok_loci": 594,
+  "error_loci": 0,
+  "wall_sec": 3.2,
+  "sum_cpu_runtime_sec": 26.28,
+  "mean_taxa": 27.25,
+  "mean_seq_len": 289.7,
+  "total_max_binary_splits": 14407,
+  "total_mdl_resolved_splits": 6191,
+  "polytomy_contracted_frac": 0.5703,
+  "sp_tree_total_splits": 14407,
+  "sp_tree_mdl_supported_splits": 5461,
+  "sp_tree_hard_polytomy_frac": 0.6209,
+  "forced_binary_sp_shared": 7737,
+  "forced_binary_sp_conflict": 6670,
+  "mdl_sp_shared": 4426,
+  "mdl_sp_conflict": 1765,
+  "spurious_discordance_eliminated_frac": 0.7354,
+  "loci_with_sp_shunts": 349,
+  "total_sp_shunts": 843,
+  "total_sp_interval": 29,
+  "total_sp_sparse": 814,
+  "total_free_shunts": 1013,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "Cluster1028.aln",
+      "mode": "SPARSE",
+      "gain_nats": 75.82,
+      "m": 41,
+      "u": [
+        "Fusgr"
+      ],
+      "v": [
+        "Hisca"
+      ]
+    },
+    {
+      "locus": "Cluster4991.aln",
+      "mode": "SPARSE",
+      "gain_nats": 50.04,
+      "m": 25,
+      "u": [
+        "CocheC5_3"
+      ],
+      "v": [
+        "Fusgr"
+      ]
+    },
+    {
+      "locus": "Cluster1227.aln",
+      "mode": "SPARSE",
+      "gain_nats": 47.93,
+      "m": 21,
+      "u": [
+        "Antlo"
+      ],
+      "v": [
+        "Canal",
+        "Debha",
+        "Picst3"
+      ]
+    },
+    {
+      "locus": "Cluster4530.aln",
+      "mode": "SPARSE",
+      "gain_nats": 40.9,
+      "m": 33,
+      "u": [
+        "Cryne_H99_1"
+      ],
+      "v": [
+        "Symko1"
+      ]
+    },
+    {
+      "locus": "Cluster4979.aln",
+      "mode": "SPARSE",
+      "gain_nats": 20.15,
+      "m": 22,
+      "u": [
+        "Symko1"
+      ],
+      "v": [
+        "Botci",
+        "Botfu"
+      ]
+    },
+    {
+      "locus": "Cluster8952.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 19.91,
+      "m": 10,
+      "u": [
+        "Mucci2"
+      ],
+      "v": [
+        "Phybl2"
+      ]
+    },
+    {
+      "locus": "Cluster4991.aln",
+      "mode": "SPARSE",
+      "gain_nats": 18.68,
+      "m": 9,
+      "u": [
+        "Galma1",
+        "Plicr1"
+      ],
+      "v": [
+        "Botci",
+        "Botfu",
+        "Crypa1",
+        "Fusgr"
+      ]
+    },
+    {
+      "locus": "Cluster10050.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 17.88,
+      "m": 14,
+      "u": [
+        "Mucci2"
+      ],
+      "v": [
+        "Phybl2"
+      ]
+    },
+    {
+      "locus": "Cluster7927.aln",
+      "mode": "SPARSE",
+      "gain_nats": 16.41,
+      "m": 19,
+      "u": [
+        "Coere1"
+      ],
+      "v": [
+        "Phybl2"
+      ]
+    },
+    {
+      "locus": "Cluster3846.aln",
+      "mode": "SPARSE",
+      "gain_nats": 14.52,
+      "m": 40,
+      "u": [
+        "Batde5"
+      ],
+      "v": [
+        "Schpo1"
+      ]
+    },
+    {
+      "locus": "Cluster5176.aln",
+      "mode": "SPARSE",
+      "gain_nats": 14.07,
+      "m": 9,
+      "u": [
+        "Fusgr"
+      ],
+      "v": [
+        "Neucr"
+      ]
+    },
+    {
+      "locus": "Cluster1128.aln",
+      "mode": "SPARSE",
+      "gain_nats": 13.38,
+      "m": 16,
+      "u": [
+        "Coere1"
+      ],
+      "v": [
+        "Canal",
+        "Cangl",
+        "Debha",
+        "Dekbr2"
+      ]
+    },
+    {
+      "locus": "Cluster5197.aln",
+      "mode": "SPARSE",
+      "gain_nats": 13.12,
+      "m": 7,
+      "u": [
+        "CocheC5_3"
+      ],
+      "v": [
+        "Crypa1",
+        "Neucr"
+      ]
+    },
+    {
+      "locus": "Cluster8716.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 13.03,
+      "m": 6,
+      "u": [
+        "Mucci2"
+      ],
+      "v": [
+        "Phybl2"
+      ]
+    },
+    {
+      "locus": "Cluster8273.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.99,
+      "m": 4,
+      "u": [
+        "Monbr"
+      ],
+      "v": [
+        "Batde5",
+        "Spipu"
+      ]
+    },
+    {
+      "locus": "Cluster7115.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.93,
+      "m": 18,
+      "u": [
+        "Crypa1"
+      ],
+      "v": [
+        "Pench1"
+      ]
+    },
+    {
+      "locus": "Cluster4140.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.87,
+      "m": 14,
+      "u": [
+        "Cangl"
+      ],
+      "v": [
+        "Klula"
+      ]
+    },
+    {
+      "locus": "Cluster1029.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.43,
+      "m": 15,
+      "u": [
+        "Aurde1"
+      ],
+      "v": [
+        "Conpu1"
+      ]
+    },
+    {
+      "locus": "Cluster3275.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.35,
+      "m": 12,
+      "u": [
+        "CocheC5_3"
+      ],
+      "v": [
+        "Fusgr",
+        "Trire2"
+      ]
+    },
+    {
+      "locus": "Cluster3438.aln",
+      "mode": "SPARSE",
+      "gain_nats": 11.43,
+      "m": 28,
+      "u": [
+        "Symko1"
+      ],
+      "v": [
+        "Botci",
+        "Botfu"
+      ]
+    },
+    {
+      "locus": "Cluster9319.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 10.64,
+      "m": 8,
+      "u": [
+        "Mucci2"
+      ],
+      "v": [
+        "Phybl2"
+      ]
+    },
+    {
+      "locus": "Cluster1058.aln",
+      "mode": "SPARSE",
+      "gain_nats": 10.57,
+      "m": 14,
+      "u": [
+        "Botbo1"
+      ],
+      "v": [
+        "Fompi3"
+      ]
+    },
+    {
+      "locus": "Cluster6518.aln",
+      "mode": "SPARSE",
+      "gain_nats": 10.57,
+      "m": 7,
+      "u": [
+        "Crypa1"
+      ],
+      "v": [
+        "Botci",
+        "Botfu"
+      ]
+    },
+    {
+      "locus": "Cluster3156.aln",
+      "mode": "SPARSE",
+      "gain_nats": 10.42,
+      "m": 22,
+      "u": [
+        "Cangl",
+        "Erego",
+        "Klula",
+        "Sacce1"
+      ],
+      "v": [
+        "Aspfu1",
+        "Botci",
+        "Botfu",
+        "CocheC5_3"
+      ]
+    },
+    {
+      "locus": "Cluster4854.aln",
+      "mode": "SPARSE",
+      "gain_nats": 10.27,
+      "m": 12,
+      "u": [
+        "Cryne_H99_1"
+      ],
+      "v": [
+        "Pucgr1"
+      ]
+    }
+  ]
+}

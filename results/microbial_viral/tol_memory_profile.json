@@ -1,0 +1,22 @@
+{
+  "Bushwhacker_GTR_CAT8_TOGA2_NT": {
+    "max_rss_gb": 2.385,
+    "max_rss_kb": 2500980
+  },
+  "Bushwhacker_LG08_CAT8_TOGA2_AA": {
+    "max_rss_gb": 1.981,
+    "max_rss_kb": 2077664
+  },
+  "Bushwhacker_LG08_CAT8_GTDB_ar122": {
+    "max_rss_gb": 1.398,
+    "max_rss_kb": 1465580
+  },
+  "Bushwhacker_LG08_CAT8_GTDB_bac120": {
+    "max_rss_gb": 0.95,
+    "max_rss_kb": 995648
+  },
+  "IQTREE2_TOGA2_NT_ram_gb": 39.817,
+  "IQTREE2_TOGA2_AA_ram_gb": 79.154,
+  "IQTREE2_GTDB_ar122_ram_gb": 32.947,
+  "IQTREE2_GTDB_bac120_ram_gb": 26.366
+}

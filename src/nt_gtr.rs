@@ -16,7 +16,11 @@ use rayon::prelude::*;
 
 pub const NT_TILE: usize = 64;
 pub const NT_N_CATS: usize = 8;
-pub const NT_CAT_RATES: [f32; NT_N_CATS] = [0.12, 0.25, 0.45, 0.75, 1.15, 1.70, 2.45, 3.50];
+/// Exact analytical equiprobable octile means of the unit-mean Gamma(alpha=1, beta=1) rate distribution.
+pub const NT_CAT_RATES: [f32; NT_N_CATS] = [
+    0.06528030, 0.20862730, 0.37607430, 0.57742940, 0.83010100, 1.16989900, 1.69314720,
+    3.07944150,
+];
 pub const NT_N_TGRID: usize = 15;
 pub const NT_T_GRID: [f32; NT_N_TGRID] = [
     0.0, 0.00004, 0.00015, 0.0005, 0.0015, 0.004, 0.010, 0.024, 0.055, 0.115, 0.230, 0.450, 0.850,
@@ -888,9 +892,13 @@ fn nt_populate_tile_messages(
     }
 }
 
-/// Parabolic log-space sub-grid branch-length & peak log-likelihood refinement around `kb`.
+/// Parabolic log-space sub-grid branch-length, peak log-likelihood, and local Fisher curvature penalty.
 #[inline]
-fn refine_grid_peak_ln_t(ll_slice: &[f64], grid: &[f32], min_bl: f64) -> (f64, f64) {
+fn refine_grid_peak_ln_t_with_curv(
+    ll_slice: &[f64],
+    grid: &[f32],
+    min_bl: f64,
+) -> (f64, f64, f64) {
     let mut kb = 0usize;
     for k in 1..NT_N_TGRID {
         if ll_slice[k] > ll_slice[kb] {
@@ -899,6 +907,7 @@ fn refine_grid_peak_ln_t(ll_slice: &[f64], grid: &[f32], min_bl: f64) -> (f64, f
     }
     let mut best_ll = ll_slice[kb];
     let mut best_t = (grid[kb] as f64).max(min_bl);
+    let mut fisher_pen = 0.0_f64;
 
     if kb >= 2 && kb + 1 < NT_N_TGRID {
         let d_minus = ll_slice[kb] - ll_slice[kb - 1];
@@ -912,9 +921,17 @@ fn refine_grid_peak_ln_t(ll_slice: &[f64], grid: &[f32], min_bl: f64) -> (f64, f
             let step = 0.5 * (x_p - x_m);
             best_t = (x_0 + delta * step).exp().max(min_bl);
             best_ll += 0.25 * delta * (d_minus - d_plus);
+            let curv_ln_t = (denom / (step * step)).max(0.0);
+            fisher_pen = 0.5 * (1.0 + curv_ln_t / std::f64::consts::TAU).ln();
         }
     }
     let dll = (best_ll - ll_slice[0]).max(0.0);
+    (dll, best_t, fisher_pen)
+}
+
+#[inline]
+fn refine_grid_peak_ln_t(ll_slice: &[f64], grid: &[f32], min_bl: f64) -> (f64, f64) {
+    let (dll, best_t, _) = refine_grid_peak_ln_t_with_curv(ll_slice, grid, min_bl);
     (dll, best_t)
 }
 
@@ -1097,7 +1114,7 @@ pub fn refine_and_score_nt_gtr_mdl(
             .zip(pats)
             .map(|(&(_, nv, st), pat)| {
                 let exp_steps = steps_per_nv * (nv as f64);
-                let rel = ((1.5 + st as f64) / (1.5 + exp_steps)).clamp(0.10, 3.60);
+                let rel = ((1.5 + st as f64) / (1.5 + exp_steps)).clamp(0.065, 3.10);
                 let ln_rel = rel.ln();
                 let mut best_c = 0usize;
                 let mut best_d = (ln_rel - ln_cats[0]).abs();
@@ -1384,25 +1401,34 @@ pub fn refine_and_score_nt_gtr_mdl(
         let mut moves: Vec<(f64, usize, usize, usize, f64)> = Vec::new();
         for (ei, &(u, v)) in int_edges.iter().enumerate() {
             let off0 = ei * stride;
-            let (dll0, tmle0) =
-                refine_grid_peak_ln_t(&total_ll[off0..off0 + NT_N_TGRID], &NT_T_GRID, min_bl);
-            let ll0 = total_ll[off0] + dll0;
+            let (dll0, tmle0, pen0) = refine_grid_peak_ln_t_with_curv(
+                &total_ll[off0..off0 + NT_N_TGRID],
+                &NT_T_GRID,
+                min_bl,
+            );
+            let mdl0 = total_ll[off0] + dll0 - pen0;
             stats.insert((u, v), (dll0, tmle0));
             edge_lens.insert((u, v), tmle0.max(3e-5));
 
             if nni_tasks[ei].eval_swaps {
                 let off1 = off0 + NT_N_TGRID;
                 let off2 = off0 + 2 * NT_N_TGRID;
-                let (dll1, tmle1) =
-                    refine_grid_peak_ln_t(&total_ll[off1..off1 + NT_N_TGRID], &NT_T_GRID, min_bl);
-                let (dll2, tmle2) =
-                    refine_grid_peak_ln_t(&total_ll[off2..off2 + NT_N_TGRID], &NT_T_GRID, min_bl);
-                let ll1 = total_ll[off1] + dll1;
-                let ll2 = total_ll[off2] + dll2;
-                if ll1 >= ll2 && ll1 > ll0 + 0.35 {
-                    moves.push((ll1 - ll0, u, v, 1, tmle1.max(3e-5)));
-                } else if ll2 > ll1 && ll2 > ll0 + 0.35 {
-                    moves.push((ll2 - ll0, u, v, 2, tmle2.max(3e-5)));
+                let (dll1, tmle1, pen1) = refine_grid_peak_ln_t_with_curv(
+                    &total_ll[off1..off1 + NT_N_TGRID],
+                    &NT_T_GRID,
+                    min_bl,
+                );
+                let (dll2, tmle2, pen2) = refine_grid_peak_ln_t_with_curv(
+                    &total_ll[off2..off2 + NT_N_TGRID],
+                    &NT_T_GRID,
+                    min_bl,
+                );
+                let mdl1 = total_ll[off1] + dll1 - pen1;
+                let mdl2 = total_ll[off2] + dll2 - pen2;
+                if mdl1 >= mdl2 && mdl1 > mdl0 + 1e-2 {
+                    moves.push((mdl1 - mdl0, u, v, 1, tmle1.max(3e-5)));
+                } else if mdl2 > mdl1 && mdl2 > mdl0 + 1e-2 {
+                    moves.push((mdl2 - mdl0, u, v, 2, tmle2.max(3e-5)));
                 }
             }
         }
@@ -1753,7 +1779,7 @@ pub fn refine_and_score_nt_gtr_mdl(
                     bi = p_i;
                 }
             }
-            if total_ll[off + bi] > cur_ll + 1.0 {
+            if total_ll[off + bi] > cur_ll + 5e-2 {
                 moves.push((total_ll[off + bi] - cur_ll, v0, v1, v2, NT_SPR_PERMS[bi]));
             }
         }

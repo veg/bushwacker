@@ -1,0 +1,174 @@
+{
+  "dataset": "sars_cov_2_open_world_union",
+  "status": "ok",
+  "alphabet": "nucleotide",
+  "n_taxa": 10062,
+  "seq_len": 29903,
+  "bushwhacker_legacy_v1_sec": 645.6592,
+  "bushwhacker_runtime_sec": 165.4146,
+  "fasttree_gtr_wall_sec": 4758.0,
+  "fasttree_gtr_timed_out": true,
+  "fasttree_gtr_note": "FastTreeMP -nt -gtr (OMP_NUM_THREADS=32) exceeded 4,758 s before 5,400 s Slurm job timeout (Job 1366818_10)",
+  "speedup_vs_fasttree": 28.76,
+  "raw_dl_nats": 403436594.36,
+  "star_mdl_nats": 5697690.47,
+  "tree_mdl_nats": 584516.97,
+  "network_mdl_nats": 584450.92,
+  "resolved_splits": 3190,
+  "max_binary_splits": 10059,
+  "collapsed_zero_signal_splits": 6869,
+  "collapsed_polytomy_frac": 0.6829,
+  "hub_topology_stats": {
+    "n_internal_nodes": 3191,
+    "n_polytomy_hubs": 1426,
+    "max_hub_degree": 335,
+    "hubs_deg_ge_10": 189,
+    "hubs_deg_ge_25": 60,
+    "hubs_deg_ge_50": 17,
+    "hubs_deg_ge_100": 4,
+    "top_15_hub_degrees": [
+      335,
+      305,
+      132,
+      114,
+      82,
+      74,
+      72,
+      69,
+      65,
+      62,
+      56,
+      56,
+      54,
+      53,
+      53
+    ]
+  },
+  "compression_benchmark": {
+    "raw_fasta_bytes": 301132831,
+    "bwz_bytes": 633025,
+    "gzip9_bytes": 7570496,
+    "xz6_bytes": 1001356,
+    "bwz_vs_raw_ratio": 475.7,
+    "bwz_vs_gzip9_ratio": 11.96,
+    "bwz_vs_xz6_ratio": 1.58
+  },
+  "n_shunts": 3,
+  "n_interval_shunts": 3,
+  "n_sparse_shunts": 0,
+  "n_shunts_involving_known_recombinants": 1,
+  "top_shunts": [
+    {
+      "mode": "INTERVAL",
+      "net_mdl_gain_nats": 52.61,
+      "shared_mutations": 11,
+      "interval_span": [
+        29700,
+        29757
+      ],
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "ITA/10_PZ_C/2022"
+      ],
+      "v_sample": [
+        "ITA/11_PZ_D/2022"
+      ],
+      "u_posthoc_lineages": [
+        "BA.5.2.9(1)"
+      ],
+      "v_posthoc_lineages": [
+        "BA.5.1.10(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        9912,
+        9913,
+        9913,
+        9914,
+        9916,
+        9917,
+        9917,
+        9918,
+        9918,
+        9919,
+        9919
+      ]
+    },
+    {
+      "mode": "INTERVAL",
+      "net_mdl_gain_nats": 8.19,
+      "shared_mutations": 5,
+      "interval_span": [
+        27311,
+        27509
+      ],
+      "clade_size_u": 1,
+      "clade_size_v": 3,
+      "u_sample": [
+        "IMS-10122-CVDP-7076984E-5F38-4F82-860C-96A285A68724"
+      ],
+      "v_sample": [
+        "IMS-10122-CVDP-0EEF3E08-D39F-443C-AF7A-2896175090E4",
+        "IMS-10122-CVDP-497849A4-FCBA-4855-A8CB-AFA415DB28AA",
+        "Liechtenstein/FL-Risch-2192206989/2021"
+      ],
+      "u_posthoc_lineages": [
+        "BA.1(1)"
+      ],
+      "v_posthoc_lineages": [
+        "AY.43(2)",
+        "AY.4.6(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        9122,
+        9126,
+        9127,
+        9128,
+        9128
+      ]
+    },
+    {
+      "mode": "INTERVAL",
+      "net_mdl_gain_nats": 5.25,
+      "shared_mutations": 8,
+      "interval_span": [
+        21329,
+        22917
+      ],
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "BRA/ITpS_X78_001LG_001/2026"
+      ],
+      "v_sample": [
+        "BRA/ITpS_Q4p_001HJ_001/2026"
+      ],
+      "u_posthoc_lineages": [
+        "XFG.14.1.1(1)"
+      ],
+      "v_posthoc_lineages": [
+        "QF.2.6(1)"
+      ],
+      "involves_known_recombinant": true,
+      "sites_1based": [
+        7519,
+        7526,
+        7526,
+        7543,
+        7558,
+        7560,
+        7562,
+        7563
+      ]
+    }
+  ],
+  "bushwhacker_t1_sec": 437.4191,
+  "bushwhacker_t8_sec": 193.409,
+  "bushwhacker_t32_sec": 165.4146,
+  "bushwhacker_t64_sec": 165.0635,
+  "total_cli_wall_sec": 166.7146,
+  "multithread_bit_exact_verified": true,
+  "speedup_vs_fasttree_t1": 10.88
+}

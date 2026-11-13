@@ -1,0 +1,540 @@
+{
+  "audit": "TOGA2_882_guild_family_independence_and_cochlear_reconciliation",
+  "guild_enrichment_audit": {
+    "echolocators": {
+      "observed_inter_order_sparse_shunts": 137,
+      "expected_random_inter_order": 172.28,
+      "fold_enrichment_raw": 0.795,
+      "poisson_p_raw_upper": 0.9975716939316044,
+      "poisson_p_raw_two_sided": 0.0060689965936509245,
+      "top_hits_enumerated": 15,
+      "distinct_symbols_in_top_hits": 14,
+      "distinct_gene_families_in_top_hits": 7,
+      "distinct_gene_family_list": [
+        "ACSM2A",
+        "ADAM20",
+        "CNTNAP3B",
+        "HLA_MHC_family",
+        "OR_olfactory_receptor_family",
+        "SSX_cancer_testis_family",
+        "ZNF_ZSCAN_zinc_finger_family"
+      ],
+      "distinct_mammal_family_pairs_in_top_hits": 11,
+      "conservative_family_dedup_fold": 0.041,
+      "poisson_p_family_dedup_upper": 1.0,
+      "poisson_p_family_dedup_two_sided": 3.041126789632409e-63,
+      "top_hit_symbols": [
+        "OR10C1",
+        "OR10H2",
+        "OR5M3",
+        "OR11G2",
+        "SSX2B",
+        "ZNF559",
+        "CNTNAP3B",
+        "ADAM20",
+        "ZNF280D",
+        "ACSM2A",
+        "SSX4",
+        "HLA-DPA1",
+        "ZNF334",
+        "OR5W2",
+        "OR5M3"
+      ]
+    },
+    "echolocating_bats_and_toothed_whales": {
+      "observed_inter_order_sparse_shunts": 53,
+      "expected_random_inter_order": 123.82,
+      "fold_enrichment_raw": 0.428,
+      "poisson_p_raw_upper": 0.9999999999997621,
+      "poisson_p_raw_two_sided": 1.2439573118747877e-12,
+      "top_hits_enumerated": 15,
+      "distinct_symbols_in_top_hits": 15,
+      "distinct_gene_families_in_top_hits": 10,
+      "distinct_gene_family_list": [
+        "HLA_MHC_family",
+        "MAGE_family",
+        "NBPF6",
+        "OR_olfactory_receptor_family",
+        "PCDH_protocadherin_family",
+        "SAGE1",
+        "SPATA31_family",
+        "SSX_cancer_testis_family",
+        "TSPY1",
+        "ZNF_ZSCAN_zinc_finger_family"
+      ],
+      "distinct_mammal_family_pairs_in_top_hits": 11,
+      "conservative_family_dedup_fold": 0.081,
+      "poisson_p_family_dedup_upper": 1.0,
+      "poisson_p_family_dedup_two_sided": 8.031355093438983e-40,
+      "top_hit_symbols": [
+        "OR11G2",
+        "SSX2B",
+        "SSX4",
+        "HLA-DPA1",
+        "ZNF334",
+        "ZNF81",
+        "SAGE1",
+        "MAGED2",
+        "TSPY1",
+        "NBPF6",
+        "PCDHGB6",
+        "SPATA31C2",
+        "ZNF846",
+        "PCDHGA8",
+        "ZNF630"
+      ]
+    },
+    "marine_aquatic": {
+      "observed_inter_order_sparse_shunts": 55,
+      "expected_random_inter_order": 48.48,
+      "fold_enrichment_raw": 1.134,
+      "poisson_p_raw_upper": 0.1918524646180476,
+      "poisson_p_raw_two_sided": 0.34966712944063433,
+      "top_hits_enumerated": 15,
+      "distinct_symbols_in_top_hits": 15,
+      "distinct_gene_families_in_top_hits": 10,
+      "distinct_gene_family_list": [
+        "ADGRE2",
+        "GBP3",
+        "MAGE_family",
+        "NXF2B",
+        "NXF3",
+        "OR_olfactory_receptor_family",
+        "PCDH_protocadherin_family",
+        "PYCR2",
+        "SPATA31_family",
+        "SSX_cancer_testis_family"
+      ],
+      "distinct_mammal_family_pairs_in_top_hits": 11,
+      "conservative_family_dedup_fold": 0.206,
+      "poisson_p_family_dedup_upper": 0.9999999999956093,
+      "poisson_p_family_dedup_two_sided": 5.2700983722398486e-11,
+      "top_hit_symbols": [
+        "PCDHA9",
+        "PCDHA8",
+        "GBP3",
+        "OR51E1",
+        "SSX2",
+        "OR52E5",
+        "MAGEB10",
+        "PYCR2",
+        "ADGRE2",
+        "OR7G2",
+        "NXF3",
+        "PCDHA11",
+        "SPATA31D3",
+        "NXF2B",
+        "MAGED4B"
+      ]
+    },
+    "subterranean_blind": {
+      "observed_inter_order_sparse_shunts": 6,
+      "expected_random_inter_order": 1.5,
+      "fold_enrichment_raw": 4.0,
+      "poisson_p_raw_upper": 0.004455980775247892,
+      "poisson_p_raw_two_sided": 0.004455980775247847,
+      "top_hits_enumerated": 6,
+      "distinct_symbols_in_top_hits": 6,
+      "distinct_gene_families_in_top_hits": 6,
+      "distinct_gene_family_list": [
+        "ARHGAP17",
+        "BICRA",
+        "DPEP3",
+        "OR_olfactory_receptor_family",
+        "SYT14",
+        "ZDHHC21"
+      ],
+      "distinct_mammal_family_pairs_in_top_hits": 4,
+      "conservative_family_dedup_fold": 4.0,
+      "poisson_p_family_dedup_upper": 0.004455980775247892,
+      "poisson_p_family_dedup_two_sided": 0.004455980775247847,
+      "top_hit_symbols": [
+        "ZDHHC21",
+        "OR10A2",
+        "SYT14",
+        "BICRA",
+        "ARHGAP17",
+        "DPEP3"
+      ]
+    },
+    "myrmecophagous_insectivorous_armor": {
+      "observed_inter_order_sparse_shunts": 18,
+      "expected_random_inter_order": 0.7,
+      "fold_enrichment_raw": 25.714,
+      "poisson_p_raw_upper": 0.0,
+      "poisson_p_raw_two_sided": 1.3112591622230267e-19,
+      "top_hits_enumerated": 15,
+      "distinct_symbols_in_top_hits": 15,
+      "distinct_gene_families_in_top_hits": 13,
+      "distinct_gene_family_list": [
+        "ALMS1",
+        "CCNB3",
+        "CEP170B",
+        "CUBN",
+        "KRT75",
+        "MAML2",
+        "OR_olfactory_receptor_family",
+        "PKD1",
+        "PSG4",
+        "SOX4",
+        "TTN",
+        "UTRN",
+        "ZNF_ZSCAN_zinc_finger_family"
+      ],
+      "distinct_mammal_family_pairs_in_top_hits": 5,
+      "conservative_family_dedup_fold": 18.571,
+      "poisson_p_family_dedup_upper": 8.130163209330021e-13,
+      "poisson_p_family_dedup_two_sided": 8.131774477816427e-13,
+      "top_hit_symbols": [
+        "OR10D3",
+        "ZSCAN16",
+        "TTN",
+        "ALMS1",
+        "ZNF605",
+        "MAML2",
+        "OR8S1",
+        "CCNB3",
+        "KRT75",
+        "UTRN",
+        "PSG4",
+        "CEP170B",
+        "SOX4",
+        "PKD1",
+        "CUBN"
+      ]
+    }
+  },
+  "cochlear_25_gene_reconciliation": {
+    "n_genes_total": 25,
+    "dna_free_tree_shunted_genes_count": 13,
+    "dna_species_tree_shunted_genes_count": 7,
+    "dna_free_or_species_union_count": 16,
+    "aa_species_tree_shunted_genes_count": 12,
+    "aa_or_dna_species_tree_union_count": 16,
+    "aa_species_tree_interval_genes_count": 3,
+    "aa_species_tree_sparse_genes_count": 11,
+    "aa_free_tree_shunted_genes_count": 22,
+    "loxhd1_aa_sp": {
+      "n_interval": 0,
+      "n_sparse": 7,
+      "max_gain_nats": 28.981
+    },
+    "ush2a_aa_sp": {
+      "n_interval": 1,
+      "n_sparse": 4,
+      "max_gain_nats": 85.847
+    },
+    "tecta_aa_sp": {
+      "n_interval": 1,
+      "n_sparse": 0,
+      "max_gain_nats": 19.047
+    },
+    "adgrv1_aa_sp": {
+      "n_interval": 1,
+      "n_sparse": 3,
+      "max_gain_nats": 3.253
+    },
+    "genes": [
+      {
+        "symbol": "ADGRV1",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 3,
+        "aa_sp_n_interval": 1,
+        "aa_sp_max_gain_nats": 3.253,
+        "aa_free_shunts": 225
+      },
+      {
+        "symbol": "CDH23",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 6,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 12.009,
+        "aa_free_shunts": 127
+      },
+      {
+        "symbol": "CIB2",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "CLRN1",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 5
+      },
+      {
+        "symbol": "COCH",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "EPS8",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 1,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 7.862,
+        "aa_free_shunts": 38
+      },
+      {
+        "symbol": "ESPN",
+        "dna_n_sparse": 4,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 28.41,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "GJB2",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "KCNQ4",
+        "dna_n_sparse": 2,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 23.6,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 13
+      },
+      {
+        "symbol": "LHFPL5",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "LOXHD1",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 7,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 28.981,
+        "aa_free_shunts": 75
+      },
+      {
+        "symbol": "MYO15A",
+        "dna_n_sparse": 6,
+        "dna_n_interval": 1,
+        "dna_max_gain_nats": 24.69,
+        "aa_sp_n_sparse": 1,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.31,
+        "aa_free_shunts": 177
+      },
+      {
+        "symbol": "MYO6",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 27
+      },
+      {
+        "symbol": "MYO7A",
+        "dna_n_sparse": 1,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.58,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 47
+      },
+      {
+        "symbol": "OTOF",
+        "dna_n_sparse": 3,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 9.23,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 84
+      },
+      {
+        "symbol": "PCDH15",
+        "dna_n_sparse": 7,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 54.64,
+        "aa_sp_n_sparse": 3,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 12.867,
+        "aa_free_shunts": 108
+      },
+      {
+        "symbol": "PJVK",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 1
+      },
+      {
+        "symbol": "POU4F3",
+        "dna_n_sparse": 1,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 3.51,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "SLC26A5",
+        "dna_n_sparse": 1,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 3.96,
+        "aa_sp_n_sparse": 1,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 4.199,
+        "aa_free_shunts": 15
+      },
+      {
+        "symbol": "STRC",
+        "dna_n_sparse": 2,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 13.87,
+        "aa_sp_n_sparse": 2,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 3.922,
+        "aa_free_shunts": 107
+      },
+      {
+        "symbol": "TECTA",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 1,
+        "aa_sp_max_gain_nats": 19.047,
+        "aa_free_shunts": 68
+      },
+      {
+        "symbol": "TECTB",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 1
+      },
+      {
+        "symbol": "TMC1",
+        "dna_n_sparse": 3,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 22.45,
+        "aa_sp_n_sparse": 1,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 9.258,
+        "aa_free_shunts": 10
+      },
+      {
+        "symbol": "TMC2",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 34
+      },
+      {
+        "symbol": "TMIE",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "TRIOBP",
+        "dna_n_sparse": 5,
+        "dna_n_interval": 2,
+        "dna_max_gain_nats": 31.77,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 0
+      },
+      {
+        "symbol": "USH1C",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 29
+      },
+      {
+        "symbol": "USH1G",
+        "dna_n_sparse": 0,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 0.0,
+        "aa_sp_n_sparse": 0,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 0.0,
+        "aa_free_shunts": 8
+      },
+      {
+        "symbol": "USH2A",
+        "dna_n_sparse": 2,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 68.65,
+        "aa_sp_n_sparse": 4,
+        "aa_sp_n_interval": 1,
+        "aa_sp_max_gain_nats": 85.847,
+        "aa_free_shunts": 148
+      },
+      {
+        "symbol": "WHRN",
+        "dna_n_sparse": 1,
+        "dna_n_interval": 0,
+        "dna_max_gain_nats": 2.86,
+        "aa_sp_n_sparse": 1,
+        "aa_sp_n_interval": 0,
+        "aa_sp_max_gain_nats": 12.314,
+        "aa_free_shunts": 48
+      }
+    ]
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "dataset": "MisoD2b",
+  "alphabet": "nucleotide",
+  "total_files": 1478,
+  "ok_loci": 1478,
+  "error_loci": 0,
+  "wall_sec": 144.63,
+  "sum_cpu_runtime_sec": 1131.81,
+  "mean_taxa": 131.57,
+  "mean_seq_len": 805.2,
+  "total_max_binary_splits": 190030,
+  "total_mdl_resolved_splits": 134220,
+  "polytomy_contracted_frac": 0.2937,
+  "sp_tree_total_splits": 190030,
+  "sp_tree_mdl_supported_splits": 118028,
+  "sp_tree_hard_polytomy_frac": 0.3789,
+  "forced_binary_sp_shared": 46017,
+  "forced_binary_sp_conflict": 144013,
+  "mdl_sp_shared": 40182,
+  "mdl_sp_conflict": 94038,
+  "spurious_discordance_eliminated_frac": 0.347,
+  "loci_with_sp_shunts": 70,
+  "total_sp_shunts": 98,
+  "total_sp_interval": 84,
+  "total_sp_sparse": 14,
+  "total_free_shunts": 34,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "EOG5547DW.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 60.0,
+      "m": 18,
+      "u": [
+        "Empusa_pennata"
+      ],
+      "v": [
+        "ZOOTERMOPSIS_NEVADENSIS"
+      ]
+    },
+    {
+      "locus": "EOG5612JW.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 49.48,
+      "m": 18,
+      "u": [
+        "Orussus_abietinus"
+      ],
+      "v": [
+        "APIS_MELLIFERA",
+        "Bombus_terrestris"
+      ]
+    },
+    {
+      "locus": "EOG5H18B5.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 40.94,
+      "m": 32,
+      "u": [
+        "Empusa_pennata"
+      ],
+      "v": [
+        "Perla_marginata"
+      ]
+    },
+    {
+      "locus": "EOG56Q57P.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 38.36,
+      "m": 15,
+      "u": [
+        "Acanthosoma_haemorrhoidale"
+      ],
+      "v": [
+        "Gyrinus_marinus"
+      ]
+    },
+    {
+      "locus": "EOG5PNVZM.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 30.51,
+      "m": 23,
+      "u": [
+        "ZOOTERMOPSIS_NEVADENSIS"
+      ],
+      "v": [
+        "Empusa_pennata"
+      ]
+    },
+    {
+      "locus": "EOG58PK10.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 28.77,
+      "m": 15,
+      "u": [
+        "ZOOTERMOPSIS_NEVADENSIS"
+      ],
+      "v": [
+        "Leuctra_sp",
+        "Perla_marginata"
+      ]
+    },
+    {
+      "locus": "EOG56Q57P.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 28.17,
+      "m": 13,
+      "u": [
+        "Ranatra_linearis"
+      ],
+      "v": [
+        "Gryllotalpa_sp"
+      ]
+    },
+    {
+      "locus": "EOG5C5B07.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 24.27,
+      "m": 18,
+      "u": [
+        "Zygaena_fausta"
+      ],
+      "v": [
+        "Aposthonia_japonica",
+        "Aretaon_asperrimus",
+        "Blaberus_atropos",
+        "Ceuthophilus_sp"
+      ]
+    },
+    {
+      "locus": "EOG57M0F1.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 22.59,
+      "m": 9,
+      "u": [
+        "Essigella_californica"
+      ],
+      "v": [
+        "ACYRTOSIPHON_PISUM"
+      ]
+    },
+    {
+      "locus": "EOG5TMPHF.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 22.5,
+      "m": 23,
+      "u": [
+        "Essigella_californica"
+      ],
+      "v": [
+        "ACYRTOSIPHON_PISUM"
+      ]
+    },
+    {
+      "locus": "EOG5S7H64.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 21.69,
+      "m": 11,
+      "u": [
+        "Ceuthophilus_sp"
+      ],
+      "v": [
+        "Cryptocercus_wrighti"
+      ]
+    },
+    {
+      "locus": "EOG57D7Z3.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 20.83,
+      "m": 12,
+      "u": [
+        "Eurylophella_sp"
+      ],
+      "v": [
+        "Isonychia_bicolor"
+      ]
+    },
+    {
+      "locus": "EOG5DV431.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 20.77,
+      "m": 16,
+      "u": [
+        "Metallyticus_splendidus"
+      ],
+      "v": [
+        "Periplaneta_americana"
+      ]
+    },
+    {
+      "locus": "EOG5PRR5Q.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 20.3,
+      "m": 17,
+      "u": [
+        "Tricholepidion_gertschi"
+      ],
+      "v": [
+        "Cryptocercus_wrighti"
+      ]
+    },
+    {
+      "locus": "EOG537PW4.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 19.88,
+      "m": 19,
+      "u": [
+        "Apachyus_charteceus"
+      ],
+      "v": [
+        "Thrips_palmi"
+      ]
+    },
+    {
+      "locus": "EOG5F7M1Z.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 18.47,
+      "m": 19,
+      "u": [
+        "Empusa_pennata"
+      ],
+      "v": [
+        "Ceuthophilus_sp"
+      ]
+    },
+    {
+      "locus": "EOG51JWVM.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 18.41,
+      "m": 17,
+      "u": [
+        "Cercopis_vulnerata",
+        "Nilaparvata_lugens",
+        "Okanagana_villosa",
+        "Xenophysella_greensladeae"
+      ],
+      "v": [
+        "Aposthonia_japonica",
+        "Aretaon_asperrimus",
+        "Blaberus_atropos",
+        "Ceuthophilus_sp"
+      ]
+    },
+    {
+      "locus": "EOG5X95Z0.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 17.91,
+      "m": 12,
+      "u": [
+        "Acanthosoma_haemorrhoidale",
+        "Cercopis_vulnerata",
+        "Nilaparvata_lugens",
+        "Notostira_elongata"
+      ],
+      "v": [
+        "Apachyus_charteceus",
+        "Aposthonia_japonica",
+        "Aretaon_asperrimus",
+        "Blaberus_atropos"
+      ]
+    },
+    {
+      "locus": "EOG5Q83CW.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 16.7,
+      "m": 12,
+      "u": [
+        "Mantis_religiosa"
+      ],
+      "v": [
+        "Periplaneta_americana"
+      ]
+    },
+    {
+      "locus": "EOG5CZ8XH.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 16.57,
+      "m": 10,
+      "u": [
+        "Sminthurus_vir_nig"
+      ],
+      "v": [
+        "Tetrodontophora_bielanensis"
+      ]
+    },
+    {
+      "locus": "EOG5W9GJS.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 16.28,
+      "m": 15,
+      "u": [
+        "Ceratophyllus_gallinae"
+      ],
+      "v": [
+        "Ctenocephalides_felis"
+      ]
+    },
+    {
+      "locus": "EOG51ZCS9.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 15.8,
+      "m": 17,
+      "u": [
+        "Galloisiana_yuasai"
+      ],
+      "v": [
+        "Periplaneta_americana"
+      ]
+    },
+    {
+      "locus": "EOG56Q57P.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 15.39,
+      "m": 11,
+      "u": [
+        "Prosarthria_teretrirostris"
+      ],
+      "v": [
+        "Frankliniella_cephalica"
+      ]
+    },
+    {
+      "locus": "EOG5612JW.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 15.01,
+      "m": 13,
+      "u": [
+        "Cotesia_vestalis"
+      ],
+      "v": [
+        "Tenthredo_koehleri"
+      ]
+    },
+    {
+      "locus": "EOG59CNQ4.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 14.22,
+      "m": 20,
+      "u": [
+        "Mengenilla_moldrzyki"
+      ],
+      "v": [
+        "Prosarthria_teretrirostris"
+      ]
+    }
+  ]
+}

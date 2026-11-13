@@ -1,0 +1,358 @@
+{
+  "dataset": "BoroA6",
+  "alphabet": "protein",
+  "total_files": 1080,
+  "ok_loci": 1080,
+  "error_loci": 0,
+  "wall_sec": 9.22,
+  "sum_cpu_runtime_sec": 101.1,
+  "mean_taxa": 31.18,
+  "mean_seq_len": 356.5,
+  "total_max_binary_splits": 30433,
+  "total_mdl_resolved_splits": 7755,
+  "polytomy_contracted_frac": 0.7452,
+  "sp_tree_total_splits": 30433,
+  "sp_tree_mdl_supported_splits": 6901,
+  "sp_tree_hard_polytomy_frac": 0.7732,
+  "forced_binary_sp_shared": 8849,
+  "forced_binary_sp_conflict": 21584,
+  "mdl_sp_shared": 3987,
+  "mdl_sp_conflict": 3768,
+  "spurious_discordance_eliminated_frac": 0.8254,
+  "loci_with_sp_shunts": 648,
+  "total_sp_shunts": 1458,
+  "total_sp_interval": 149,
+  "total_sp_sparse": 1309,
+  "total_free_shunts": 1697,
+  "focal_hypotheses": {
+    "Ctenophora_sister": {
+      "informative_loci": 601,
+      "mdl_resolved": 4,
+      "mdl_polytomy": 366,
+      "mdl_conflicted": 231,
+      "forced_binary_count": 69,
+      "cumulative_mdl_nats": 38.67
+    },
+    "Porifera_sister": {
+      "informative_loci": 601,
+      "mdl_resolved": 1,
+      "mdl_polytomy": 345,
+      "mdl_conflicted": 255,
+      "forced_binary_count": 47,
+      "cumulative_mdl_nats": 5.52
+    },
+    "Ctenophora_plus_Porifera": {
+      "informative_loci": 601,
+      "mdl_resolved": 0,
+      "mdl_polytomy": 365,
+      "mdl_conflicted": 236,
+      "forced_binary_count": 43,
+      "cumulative_mdl_nats": 0.0
+    }
+  },
+  "top_sp_shunts": [
+    {
+      "locus": "OG288_gene337.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 242.41,
+      "m": 72,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG1160_gene154.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 140.1,
+      "m": 92,
+      "u": [
+        "Trichoplax"
+      ],
+      "v": [
+        "Strigamia"
+      ]
+    },
+    {
+      "locus": "OG539_gene602.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 99.29,
+      "m": 30,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG891_gene975.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 97.02,
+      "m": 41,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG100_gene9.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 60.95,
+      "m": 61,
+      "u": [
+        "Drosophila"
+      ],
+      "v": [
+        "Caenorhabditis"
+      ]
+    },
+    {
+      "locus": "OG159_gene199.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 40.21,
+      "m": 37,
+      "u": [
+        "Xenopus"
+      ],
+      "v": [
+        "Ixodes"
+      ]
+    },
+    {
+      "locus": "OG1003_gene3.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 37.09,
+      "m": 26,
+      "u": [
+        "Fugu"
+      ],
+      "v": [
+        "Gasterosteus"
+      ]
+    },
+    {
+      "locus": "OG238_gene283.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 34.54,
+      "m": 42,
+      "u": [
+        "Oikopleura"
+      ],
+      "v": [
+        "Ciona"
+      ]
+    },
+    {
+      "locus": "OG869_gene950.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 34.25,
+      "m": 14,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG1143_gene135.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 33.83,
+      "m": 11,
+      "u": [
+        "Hydra"
+      ],
+      "v": [
+        "Ixodes"
+      ]
+    },
+    {
+      "locus": "OG1040_gene37.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 33.54,
+      "m": 24,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG812_gene891.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 32.98,
+      "m": 22,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG470_gene532.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 30.4,
+      "m": 14,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG332_gene384.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 30.3,
+      "m": 25,
+      "u": [
+        "Anolis"
+      ],
+      "v": [
+        "Latimeria"
+      ]
+    },
+    {
+      "locus": "OG255_gene302.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 29.05,
+      "m": 12,
+      "u": [
+        "Tribolium"
+      ],
+      "v": [
+        "Danaus"
+      ]
+    },
+    {
+      "locus": "OG467_gene528.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 28.77,
+      "m": 42,
+      "u": [
+        "Oikopleura"
+      ],
+      "v": [
+        "Ciona"
+      ]
+    },
+    {
+      "locus": "OG416_gene475.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 26.69,
+      "m": 25,
+      "u": [
+        "Lottia"
+      ],
+      "v": [
+        "Anolis",
+        "Branchiostoma",
+        "Ciona",
+        "Fugu"
+      ]
+    },
+    {
+      "locus": "OG317_gene369.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 26.53,
+      "m": 24,
+      "u": [
+        "Oikopleura"
+      ],
+      "v": [
+        "Ciona"
+      ]
+    },
+    {
+      "locus": "OG350_gene404.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 26.4,
+      "m": 10,
+      "u": [
+        "Xenopus"
+      ],
+      "v": [
+        "Nematostella"
+      ]
+    },
+    {
+      "locus": "OG185_gene226.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 24.13,
+      "m": 12,
+      "u": [
+        "Brugia"
+      ],
+      "v": [
+        "Caenorhabditis"
+      ]
+    },
+    {
+      "locus": "OG68_gene759.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 23.12,
+      "m": 14,
+      "u": [
+        "Caenorhabditis"
+      ],
+      "v": [
+        "Mnemiopsis"
+      ]
+    },
+    {
+      "locus": "OG151_gene191.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 21.58,
+      "m": 57,
+      "u": [
+        "Mnemiopsis"
+      ],
+      "v": [
+        "Ciona"
+      ]
+    },
+    {
+      "locus": "OG765_gene840.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 21.42,
+      "m": 26,
+      "u": [
+        "Hydra"
+      ],
+      "v": [
+        "Rhodnius"
+      ]
+    },
+    {
+      "locus": "OG208_gene251.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 21.33,
+      "m": 14,
+      "u": [
+        "Apis"
+      ],
+      "v": [
+        "Bombus"
+      ]
+    },
+    {
+      "locus": "OG761_gene836.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 20.36,
+      "m": 15,
+      "u": [
+        "Gallus"
+      ],
+      "v": [
+        "Homo"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "dataset": "WickA3",
+  "alphabet": "protein",
+  "total_files": 844,
+  "ok_loci": 844,
+  "error_loci": 0,
+  "wall_sec": 9.43,
+  "sum_cpu_runtime_sec": 102.84,
+  "mean_taxa": 48.78,
+  "mean_seq_len": 651.9,
+  "total_max_binary_splits": 38638,
+  "total_mdl_resolved_splits": 16560,
+  "polytomy_contracted_frac": 0.5714,
+  "sp_tree_total_splits": 38638,
+  "sp_tree_mdl_supported_splits": 14756,
+  "sp_tree_hard_polytomy_frac": 0.6181,
+  "forced_binary_sp_shared": 14964,
+  "forced_binary_sp_conflict": 23674,
+  "mdl_sp_shared": 8653,
+  "mdl_sp_conflict": 7907,
+  "spurious_discordance_eliminated_frac": 0.666,
+  "loci_with_sp_shunts": 630,
+  "total_sp_shunts": 2098,
+  "total_sp_interval": 131,
+  "total_sp_sparse": 1967,
+  "total_free_shunts": 2551,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "6810.aln",
+      "mode": "SPARSE",
+      "gain_nats": 643.25,
+      "m": 285,
+      "u": [
+        "Kochia_scoparia"
+      ],
+      "v": [
+        "Inula_helenium",
+        "Tanacetum_parthenium"
+      ]
+    },
+    {
+      "locus": "5172.aln",
+      "mode": "SPARSE",
+      "gain_nats": 519.86,
+      "m": 176,
+      "u": [
+        "Aquilegia_formosa"
+      ],
+      "v": [
+        "Taxus_baccata"
+      ]
+    },
+    {
+      "locus": "5096.aln",
+      "mode": "SPARSE",
+      "gain_nats": 487.38,
+      "m": 162,
+      "u": [
+        "Kadsura_heteroclita"
+      ],
+      "v": [
+        "Diospyros_malabarica"
+      ]
+    },
+    {
+      "locus": "5326.aln",
+      "mode": "SPARSE",
+      "gain_nats": 413.85,
+      "m": 120,
+      "u": [
+        "Smilax_bona"
+      ],
+      "v": [
+        "Klebsormidium_subtile"
+      ]
+    },
+    {
+      "locus": "4524.aln",
+      "mode": "SPARSE",
+      "gain_nats": 335.56,
+      "m": 101,
+      "u": [
+        "Mougeotia_sp"
+      ],
+      "v": [
+        "Coleochaete_irregularis"
+      ]
+    },
+    {
+      "locus": "5248.aln",
+      "mode": "SPARSE",
+      "gain_nats": 327.78,
+      "m": 119,
+      "u": [
+        "Metzgeria_crassipilis"
+      ],
+      "v": [
+        "Anomodon_attenuatus"
+      ]
+    },
+    {
+      "locus": "6810.aln",
+      "mode": "SPARSE",
+      "gain_nats": 286.81,
+      "m": 226,
+      "u": [
+        "Bryum_argenteum"
+      ],
+      "v": [
+        "Acorus_americanus",
+        "Amborella_trichopoda",
+        "Arabidopsis_thaliana",
+        "Carica_papaya"
+      ]
+    },
+    {
+      "locus": "6010.aln",
+      "mode": "SPARSE",
+      "gain_nats": 269.19,
+      "m": 92,
+      "u": [
+        "Acorus_americanus"
+      ],
+      "v": [
+        "Podophyllum_peltatum"
+      ]
+    },
+    {
+      "locus": "6379.aln",
+      "mode": "SPARSE",
+      "gain_nats": 249.11,
+      "m": 96,
+      "u": [
+        "Thuidium_delicatulum"
+      ],
+      "v": [
+        "Hedwigia_ciliata"
+      ]
+    },
+    {
+      "locus": "5769.aln",
+      "mode": "SPARSE",
+      "gain_nats": 240.59,
+      "m": 82,
+      "u": [
+        "Aquilegia_formosa"
+      ],
+      "v": [
+        "Anomodon_attenuatus",
+        "Bazzania_trilobata",
+        "Marchantia_polymorpha",
+        "Metzgeria_crassipilis"
+      ]
+    },
+    {
+      "locus": "6476.aln",
+      "mode": "SPARSE",
+      "gain_nats": 205.72,
+      "m": 60,
+      "u": [
+        "Amborella_trichopoda"
+      ],
+      "v": [
+        "Anomodon_attenuatus"
+      ]
+    },
+    {
+      "locus": "4955.aln",
+      "mode": "SPARSE",
+      "gain_nats": 193.19,
+      "m": 73,
+      "u": [
+        "Mesotaenium_endlicherianum"
+      ],
+      "v": [
+        "Chlorokybus_atmophyticus",
+        "Nephroselmis_pyriformis",
+        "Pyramimonas_parkeae",
+        "Spirotaenia_minuta"
+      ]
+    },
+    {
+      "locus": "5463.aln",
+      "mode": "SPARSE",
+      "gain_nats": 181.91,
+      "m": 57,
+      "u": [
+        "Bazzania_trilobata",
+        "Ceratodon_purpureus",
+        "Marchantia_polymorpha",
+        "Riccia_sp"
+      ],
+      "v": [
+        "Catharanthus_roseus",
+        "Rosmarinus_officinalis"
+      ]
+    },
+    {
+      "locus": "5925.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 170.14,
+      "m": 49,
+      "u": [
+        "Thuidium_delicatulum"
+      ],
+      "v": [
+        "Rhynchostegium_serrulatum"
+      ]
+    },
+    {
+      "locus": "6010.aln",
+      "mode": "SPARSE",
+      "gain_nats": 169.92,
+      "m": 77,
+      "u": [
+        "Dioscorea_villosa"
+      ],
+      "v": [
+        "Taxus_baccata"
+      ]
+    },
+    {
+      "locus": "6810.aln",
+      "mode": "SPARSE",
+      "gain_nats": 167.54,
+      "m": 120,
+      "u": [
+        "Polytrichum_commune"
+      ],
+      "v": [
+        "Cylindrocystis_cushleckae",
+        "Mougeotia_sp"
+      ]
+    },
+    {
+      "locus": "6948.aln",
+      "mode": "SPARSE",
+      "gain_nats": 167.22,
+      "m": 59,
+      "u": [
+        "Metzgeria_crassipilis"
+      ],
+      "v": [
+        "Selaginella_moellendorffii_1kp"
+      ]
+    },
+    {
+      "locus": "5294.aln",
+      "mode": "SPARSE",
+      "gain_nats": 145.24,
+      "m": 101,
+      "u": [
+        "Allamanda_cathartica"
+      ],
+      "v": [
+        "Liriodendron_tulipifera",
+        "Sarcandra_glabra"
+      ]
+    },
+    {
+      "locus": "6948.aln",
+      "mode": "SPARSE",
+      "gain_nats": 137.95,
+      "m": 64,
+      "u": [
+        "Cedrus_libani"
+      ],
+      "v": [
+        "Colchicum_autumnale"
+      ]
+    },
+    {
+      "locus": "6916.aln",
+      "mode": "SPARSE",
+      "gain_nats": 137.53,
+      "m": 136,
+      "u": [
+        "Dioscorea_villosa"
+      ],
+      "v": [
+        "Allamanda_cathartica"
+      ]
+    },
+    {
+      "locus": "6916.aln",
+      "mode": "SPARSE",
+      "gain_nats": 130.9,
+      "m": 67,
+      "u": [
+        "Bryum_argenteum"
+      ],
+      "v": [
+        "Pseudolycopodiella_caroliniana",
+        "Selaginella_moellendorffii_1kp"
+      ]
+    },
+    {
+      "locus": "6810.aln",
+      "mode": "SPARSE",
+      "gain_nats": 119.25,
+      "m": 41,
+      "u": [
+        "Tanacetum_parthenium"
+      ],
+      "v": [
+        "Arabidopsis_thaliana",
+        "Carica_papaya",
+        "Kochia_scoparia",
+        "Larrea_tridentata"
+      ]
+    },
+    {
+      "locus": "5294.aln",
+      "mode": "SPARSE",
+      "gain_nats": 111.99,
+      "m": 116,
+      "u": [
+        "Rosmarinus_officinalis"
+      ],
+      "v": [
+        "Sabal_bermudana"
+      ]
+    },
+    {
+      "locus": "7924.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 111.52,
+      "m": 33,
+      "u": [
+        "Medicago_truncatula"
+      ],
+      "v": [
+        "Arabidopsis_thaliana",
+        "Carica_papaya",
+        "Hibiscus_cannabinus",
+        "Populus_trichocarpa"
+      ]
+    },
+    {
+      "locus": "5573.aln",
+      "mode": "SPARSE",
+      "gain_nats": 111.19,
+      "m": 37,
+      "u": [
+        "Nothoceros_vincentianus"
+      ],
+      "v": [
+        "Ceratodon_purpureus"
+      ]
+    }
+  ]
+}

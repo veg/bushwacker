@@ -1,0 +1,353 @@
+{
+  "dataset": "WickD3a",
+  "alphabet": "nucleotide",
+  "total_files": 844,
+  "ok_loci": 844,
+  "error_loci": 0,
+  "wall_sec": 189.95,
+  "sum_cpu_runtime_sec": 1501.09,
+  "mean_taxa": 48.78,
+  "mean_seq_len": 1999.9,
+  "total_max_binary_splits": 38638,
+  "total_mdl_resolved_splits": 16818,
+  "polytomy_contracted_frac": 0.5647,
+  "sp_tree_total_splits": 38638,
+  "sp_tree_mdl_supported_splits": 16542,
+  "sp_tree_hard_polytomy_frac": 0.5719,
+  "forced_binary_sp_shared": 10116,
+  "forced_binary_sp_conflict": 28522,
+  "mdl_sp_shared": 7317,
+  "mdl_sp_conflict": 9501,
+  "spurious_discordance_eliminated_frac": 0.6669,
+  "loci_with_sp_shunts": 31,
+  "total_sp_shunts": 35,
+  "total_sp_interval": 17,
+  "total_sp_sparse": 18,
+  "total_free_shunts": 60,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "6262.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 34.17,
+      "m": 15,
+      "u": [
+        "Anomodon_attenuatus"
+      ],
+      "v": [
+        "Leucodon_brachypus"
+      ]
+    },
+    {
+      "locus": "6476.aln",
+      "mode": "SPARSE",
+      "gain_nats": 22.89,
+      "m": 11,
+      "u": [
+        "Boehmeria_nivea"
+      ],
+      "v": [
+        "Catharanthus_roseus"
+      ]
+    },
+    {
+      "locus": "7298.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 16.46,
+      "m": 27,
+      "u": [
+        "Nothoceros_aenigmaticus"
+      ],
+      "v": [
+        "Nothoceros_vincentianus"
+      ]
+    },
+    {
+      "locus": "6246.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 14.09,
+      "m": 8,
+      "u": [
+        "Pinus_taeda"
+      ],
+      "v": [
+        "Cycas_micholitzii"
+      ]
+    },
+    {
+      "locus": "7857.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 13.31,
+      "m": 10,
+      "u": [
+        "Oryza_sativa"
+      ],
+      "v": [
+        "Zea_mays"
+      ]
+    },
+    {
+      "locus": "6694.aln",
+      "mode": "SPARSE",
+      "gain_nats": 11.16,
+      "m": 23,
+      "u": [
+        "Anomodon_attenuatus"
+      ],
+      "v": [
+        "Leucodon_brachypus"
+      ]
+    },
+    {
+      "locus": "6713.aln",
+      "mode": "SPARSE",
+      "gain_nats": 8.89,
+      "m": 34,
+      "u": [
+        "Pyramimonas_parkeae"
+      ],
+      "v": [
+        "Brachypodium_distachyon",
+        "Oryza_sativa",
+        "Sorghum_bicolor",
+        "Zea_mays"
+      ]
+    },
+    {
+      "locus": "7765.aln",
+      "mode": "SPARSE",
+      "gain_nats": 8.46,
+      "m": 17,
+      "u": [
+        "Metzgeria_crassipilis"
+      ],
+      "v": [
+        "Rosulabryum_cf._capillare_sp",
+        "Thuidium_delicatulum"
+      ]
+    },
+    {
+      "locus": "7481.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 8.31,
+      "m": 11,
+      "u": [
+        "Sorghum_bicolor",
+        "Zea_mays"
+      ],
+      "v": [
+        "Brachypodium_distachyon",
+        "Oryza_sativa"
+      ]
+    },
+    {
+      "locus": "5075.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 6.24,
+      "m": 9,
+      "u": [
+        "Rhynchostegium_serrulatum"
+      ],
+      "v": [
+        "Leucodon_brachypus"
+      ]
+    },
+    {
+      "locus": "6476.aln",
+      "mode": "SPARSE",
+      "gain_nats": 5.62,
+      "m": 11,
+      "u": [
+        "Marchantia_polymorpha"
+      ],
+      "v": [
+        "Pteridium_aquilinum"
+      ]
+    },
+    {
+      "locus": "6476.aln",
+      "mode": "SPARSE",
+      "gain_nats": 5.48,
+      "m": 5,
+      "u": [
+        "Sabal_bermudana"
+      ],
+      "v": [
+        "Medicago_truncatula"
+      ]
+    },
+    {
+      "locus": "7705.aln",
+      "mode": "SPARSE",
+      "gain_nats": 4.34,
+      "m": 6,
+      "u": [
+        "Oryza_sativa"
+      ],
+      "v": [
+        "Sorghum_bicolor"
+      ]
+    },
+    {
+      "locus": "6436.aln",
+      "mode": "SPARSE",
+      "gain_nats": 4.16,
+      "m": 13,
+      "u": [
+        "Pteridium_aquilinum"
+      ],
+      "v": [
+        "Allamanda_cathartica",
+        "Arabidopsis_thaliana",
+        "Carica_papaya",
+        "Catharanthus_roseus"
+      ]
+    },
+    {
+      "locus": "6594.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.7,
+      "m": 11,
+      "u": [
+        "Ipomoea_purpurea"
+      ],
+      "v": [
+        "Brachypodium_distachyon",
+        "Oryza_sativa"
+      ]
+    },
+    {
+      "locus": "6680.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.31,
+      "m": 8,
+      "u": [
+        "Acorus_americanus",
+        "Brachypodium_distachyon",
+        "Oryza_sativa",
+        "Smilax_bona"
+      ],
+      "v": [
+        "Arabidopsis_thaliana",
+        "Carica_papaya",
+        "Hibiscus_cannabinus"
+      ]
+    },
+    {
+      "locus": "6532.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 3.04,
+      "m": 15,
+      "u": [
+        "Rhynchostegium_serrulatum"
+      ],
+      "v": [
+        "Hedwigia_ciliata"
+      ]
+    },
+    {
+      "locus": "7041.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 2.88,
+      "m": 12,
+      "u": [
+        "Nothoceros_aenigmaticus"
+      ],
+      "v": [
+        "Nothoceros_vincentianus"
+      ]
+    },
+    {
+      "locus": "7629.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 2.29,
+      "m": 8,
+      "u": [
+        "Sorghum_bicolor"
+      ],
+      "v": [
+        "Zea_mays"
+      ]
+    },
+    {
+      "locus": "7324.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.09,
+      "m": 8,
+      "u": [
+        "Ginkgo_biloba"
+      ],
+      "v": [
+        "Cedrus_libani",
+        "Pinus_taeda"
+      ]
+    },
+    {
+      "locus": "7389.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.04,
+      "m": 9,
+      "u": [
+        "Cycas_micholitzii",
+        "Ginkgo_biloba"
+      ],
+      "v": [
+        "Cunninghamia_lanceolata",
+        "Taxus_baccata"
+      ]
+    },
+    {
+      "locus": "7771.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 1.82,
+      "m": 7,
+      "u": [
+        "Hedwigia_ciliata"
+      ],
+      "v": [
+        "Anomodon_attenuatus",
+        "Bryum_argenteum",
+        "Rhynchostegium_serrulatum",
+        "Rosulabryum_cf._capillare_sp"
+      ]
+    },
+    {
+      "locus": "7705.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 1.68,
+      "m": 4,
+      "u": [
+        "Sorghum_bicolor",
+        "Zea_mays"
+      ],
+      "v": [
+        "Brachypodium_distachyon",
+        "Oryza_sativa"
+      ]
+    },
+    {
+      "locus": "5858.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 1.66,
+      "m": 10,
+      "u": [
+        "Rhynchostegium_serrulatum"
+      ],
+      "v": [
+        "Anomodon_attenuatus"
+      ]
+    },
+    {
+      "locus": "5696.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.65,
+      "m": 15,
+      "u": [
+        "Thuidium_delicatulum"
+      ],
+      "v": [
+        "Hedwigia_ciliata"
+      ]
+    }
+  ]
+}

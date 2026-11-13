@@ -1,0 +1,336 @@
+{
+  "dataset": "StruA5",
+  "alphabet": "protein",
+  "total_files": 679,
+  "ok_loci": 679,
+  "error_loci": 0,
+  "wall_sec": 4.56,
+  "sum_cpu_runtime_sec": 41.01,
+  "mean_taxa": 54.47,
+  "mean_seq_len": 278.6,
+  "total_max_binary_splits": 34951,
+  "total_mdl_resolved_splits": 14127,
+  "polytomy_contracted_frac": 0.5958,
+  "sp_tree_total_splits": 34951,
+  "sp_tree_mdl_supported_splits": 10553,
+  "sp_tree_hard_polytomy_frac": 0.6981,
+  "forced_binary_sp_shared": 7263,
+  "forced_binary_sp_conflict": 27688,
+  "mdl_sp_shared": 4954,
+  "mdl_sp_conflict": 9173,
+  "spurious_discordance_eliminated_frac": 0.6687,
+  "loci_with_sp_shunts": 480,
+  "total_sp_shunts": 1884,
+  "total_sp_interval": 179,
+  "total_sp_sparse": 1705,
+  "total_free_shunts": 1940,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "gene281_22161.aln",
+      "mode": "SPARSE",
+      "gain_nats": 363.12,
+      "m": 159,
+      "u": [
+        "Arabella_sp"
+      ],
+      "v": [
+        "Ridgeia_sp"
+      ]
+    },
+    {
+      "locus": "gene1819_23701.aln",
+      "mode": "SPARSE",
+      "gain_nats": 360.89,
+      "m": 198,
+      "u": [
+        "Riftia_only"
+      ],
+      "v": [
+        "Ophryotrocha_globopalpata"
+      ]
+    },
+    {
+      "locus": "gene623_22503.aln",
+      "mode": "SPARSE",
+      "gain_nats": 306.9,
+      "m": 153,
+      "u": [
+        "Dinophilus_gyrociliatus"
+      ],
+      "v": [
+        "Polygordius_lacteus",
+        "Polygordius_sp10",
+        "Polygordius_sp3"
+      ]
+    },
+    {
+      "locus": "gene1793_23675.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 300.85,
+      "m": 68,
+      "u": [
+        "Polygordius_sp3"
+      ],
+      "v": [
+        "Saccocirrus_papillocercus"
+      ]
+    },
+    {
+      "locus": "gene414_22294.aln",
+      "mode": "SPARSE",
+      "gain_nats": 265.43,
+      "m": 116,
+      "u": [
+        "Phylo_Feb-2-12"
+      ],
+      "v": [
+        "Polygordius_lacteus",
+        "Polygordius_sp10",
+        "Polygordius_sp3",
+        "Saccocirrus_papillocercus"
+      ]
+    },
+    {
+      "locus": "gene1856_23738.aln",
+      "mode": "SPARSE",
+      "gain_nats": 264.35,
+      "m": 138,
+      "u": [
+        "Diopatra_Wormnet"
+      ],
+      "v": [
+        "Glycera_tridactyla_Neu"
+      ]
+    },
+    {
+      "locus": "gene281_22161.aln",
+      "mode": "SPARSE",
+      "gain_nats": 257.56,
+      "m": 114,
+      "u": [
+        "Polygordius_sp3"
+      ],
+      "v": [
+        "Tubifex_tubifex"
+      ]
+    },
+    {
+      "locus": "gene1199_23081.aln",
+      "mode": "SPARSE",
+      "gain_nats": 257.34,
+      "m": 70,
+      "u": [
+        "Diopatra_Wormnet"
+      ],
+      "v": [
+        "Lumbricus_rubellus"
+      ]
+    },
+    {
+      "locus": "gene281_22161.aln",
+      "mode": "SPARSE",
+      "gain_nats": 256.67,
+      "m": 134,
+      "u": [
+        "Tubulanus"
+      ],
+      "v": [
+        "Alvinella_pompejana"
+      ]
+    },
+    {
+      "locus": "gene553_22433.aln",
+      "mode": "SPARSE",
+      "gain_nats": 223.03,
+      "m": 85,
+      "u": [
+        "Owenia_Feb-1-12"
+      ],
+      "v": [
+        "Sthenelais_boa"
+      ]
+    },
+    {
+      "locus": "gene1349_23231.aln",
+      "mode": "SPARSE",
+      "gain_nats": 222.01,
+      "m": 64,
+      "u": [
+        "Magelona_beckleyi_Trim_CLC"
+      ],
+      "v": [
+        "Pectinaria"
+      ]
+    },
+    {
+      "locus": "gene1416_23298.aln",
+      "mode": "SPARSE",
+      "gain_nats": 220.31,
+      "m": 91,
+      "u": [
+        "Protodrilus_adherens"
+      ],
+      "v": [
+        "Euprymna_scolopes"
+      ]
+    },
+    {
+      "locus": "gene623_22503.aln",
+      "mode": "SPARSE",
+      "gain_nats": 210.5,
+      "m": 115,
+      "u": [
+        "Ophryotrocha_globopalpata"
+      ],
+      "v": [
+        "Eunice_pennata"
+      ]
+    },
+    {
+      "locus": "gene1934_23816.aln",
+      "mode": "SPARSE",
+      "gain_nats": 193.76,
+      "m": 53,
+      "u": [
+        "Crassostrea_gigas"
+      ],
+      "v": [
+        "Ridgeia_piscesae"
+      ]
+    },
+    {
+      "locus": "gene1998_23880.aln",
+      "mode": "SPARSE",
+      "gain_nats": 185.06,
+      "m": 71,
+      "u": [
+        "Protodriloides_symbioticus"
+      ],
+      "v": [
+        "Arabella_sp"
+      ]
+    },
+    {
+      "locus": "gene1801_23683.aln",
+      "mode": "SPARSE",
+      "gain_nats": 183.88,
+      "m": 43,
+      "u": [
+        "Protodorvillea_kefersteinii"
+      ],
+      "v": [
+        "Polygordius_lacteus"
+      ]
+    },
+    {
+      "locus": "gene553_22433.aln",
+      "mode": "SPARSE",
+      "gain_nats": 181.69,
+      "m": 93,
+      "u": [
+        "Protodorvillea_kefersteinii"
+      ],
+      "v": [
+        "Pedicellina_cernua",
+        "Pedicellina_sp"
+      ]
+    },
+    {
+      "locus": "gene1026_22908.aln",
+      "mode": "SPARSE",
+      "gain_nats": 168.69,
+      "m": 67,
+      "u": [
+        "Paramphinome_jeffreysii_Trim_CLC"
+      ],
+      "v": [
+        "Alvinella_pompejana"
+      ]
+    },
+    {
+      "locus": "gene530_22410.aln",
+      "mode": "SPARSE",
+      "gain_nats": 138.0,
+      "m": 54,
+      "u": [
+        "Apharyngtus_punicus"
+      ],
+      "v": [
+        "Ophelina"
+      ]
+    },
+    {
+      "locus": "gene1856_23738.aln",
+      "mode": "SPARSE",
+      "gain_nats": 137.23,
+      "m": 37,
+      "u": [
+        "Mesonerilla_fagei"
+      ],
+      "v": [
+        "Perionyx_excavatus"
+      ]
+    },
+    {
+      "locus": "gene1997_23879.aln",
+      "mode": "SPARSE",
+      "gain_nats": 135.03,
+      "m": 86,
+      "u": [
+        "Protodriloides_symbioticus"
+      ],
+      "v": [
+        "Paramphinome_jeffreysii_Trim_CLC"
+      ]
+    },
+    {
+      "locus": "gene1513_23395.aln",
+      "mode": "SPARSE",
+      "gain_nats": 132.69,
+      "m": 54,
+      "u": [
+        "Ophelia_rathkei"
+      ],
+      "v": [
+        "Eunice_pennata"
+      ]
+    },
+    {
+      "locus": "gene1819_23701.aln",
+      "mode": "SPARSE",
+      "gain_nats": 127.99,
+      "m": 129,
+      "u": [
+        "Spiochaetopterus_Feb-2-12"
+      ],
+      "v": [
+        "Phylo_Feb-2-12"
+      ]
+    },
+    {
+      "locus": "gene518_22398.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 126.3,
+      "m": 46,
+      "u": [
+        "Oenone_fulgida"
+      ],
+      "v": [
+        "Eunice_pennata"
+      ]
+    },
+    {
+      "locus": "gene956_22838.aln",
+      "mode": "SPARSE",
+      "gain_nats": 122.55,
+      "m": 50,
+      "u": [
+        "Ophryotrocha_globopalpata"
+      ],
+      "v": [
+        "Lumbricus_rubellus"
+      ]
+    }
+  ]
+}

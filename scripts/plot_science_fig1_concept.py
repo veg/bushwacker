@@ -263,10 +263,10 @@ def main() -> None:
         ax_b.text(tx + (-0.18 if tx < hub_x else 0.18), ty, tlbl,
                   fontsize=8.1, fontweight="bold", color=INK, ha="center", va="center")
     for ty_sign in [1, -1]:
-        for frac, col in [(0.42, BLUE), (0.62, BLUE), (0.82, AMBER)]:
+        for frac, col in [(0.34, BLUE), (0.50, BLUE), (0.68, AMBER), (0.84, AMBER)]:
             px = hub_x + frac * (0.82 - hub_x)
             py = hub_y + frac * ((5.12 + 0.78 * ty_sign) - hub_y)
-            ax_b.scatter([px], [py], s=28, color=col, edgecolor="white", linewidth=0.6, zorder=4)
+            ax_b.scatter([px], [py], s=26, color=col, edgecolor="white", linewidth=0.6, zorder=4)
         for frac in [0.58, 0.78]:
             px = hub_x + frac * (3.18 - hub_x)
             py = hub_y + frac * ((5.12 + 0.78 * ty_sign) - hub_y)
@@ -300,7 +300,7 @@ def main() -> None:
             px = nx + frac * (tx - nx)
             py = r_y + frac * (ty - r_y)
             ax_b.scatter([px], [py], s=25, color=AMBER, edgecolor="white", linewidth=0.6, zorder=4)
-    ax_b.scatter([r_left, r_right], [r_y, r_y], s=44, color=BLUE, edgecolor="white", linewidth=1.0, zorder=5)
+    ax_b.scatter([r_left, r_right], [r_y, r_y], s=44, color=INK, edgecolor="white", linewidth=1.0, zorder=5)
     ax_b.text(7.50, 6.22, "Resolved clade", fontsize=8.4, fontweight="bold", color=BLUE, ha="center", va="center")
     ax_b.text(7.50, 3.92, "Shared edits sent once;\npays branch address", fontsize=7.4, color=SUBINK, ha="center", va="center")
 

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-11T11:36:57Z",
+  "generated_at": "2026-11-13T03:58:41Z",
   "threads": 32,
-  "elapsed_wall_sec": 50.06,
+  "elapsed_wall_sec": 68.17,
   "datasets": {
     "ar122_archaea_1672": {
       "title": "GTDB r95 Archaeal Domain (1,672 species x 32,675 AA; 122 markers)",
       "methods": {
-        "Bushwhacker_Legacy_PreFix": {
-          "method": "Bushwhacker_Legacy_PreFix",
+        "Bushwhacker_v0_Unweighted_Fitch_Ablation": {
+          "method": "Bushwhacker_v0_Unweighted_Fitch_Ablation",
           "wall_sec": 202.32,
           "vs_gtdb_ref": {
             "n_shared": 1672,
@@ -67,52 +67,52 @@
         },
         "Bushwhacker_LG08_CAT8_MDL": {
           "method": "Bushwhacker_LG08_CAT8_MDL",
-          "wall_sec": 23.0,
+          "wall_sec": 31.5,
           "vs_gtdb_ref": {
             "n_shared": 1672,
             "pred_splits": 1669,
             "ref_splits": 1669,
-            "tp": 1410,
-            "fp": 259,
-            "fn": 259,
-            "rf": 518,
-            "nrf": 0.15518,
-            "false_positive_rate_pct": 15.52,
-            "precision_pct": 84.48,
-            "recall_pct": 84.48
+            "tp": 1409,
+            "fp": 260,
+            "fn": 260,
+            "rf": 520,
+            "nrf": 0.15578,
+            "false_positive_rate_pct": 15.58,
+            "precision_pct": 84.42,
+            "recall_pct": 84.42
           },
           "taxonomy_5ranks": {
             "phylum": {
               "n_groups": 17,
-              "strict_monophyletic": 15,
-              "strict_pct": 88.24,
-              "compatible_uncontradicted": 15,
-              "compatible_pct": 88.24,
-              "mean_contradicting_splits": 0.176
+              "strict_monophyletic": 14,
+              "strict_pct": 82.35,
+              "compatible_uncontradicted": 14,
+              "compatible_pct": 82.35,
+              "mean_contradicting_splits": 0.294
             },
             "class": {
               "n_groups": 40,
-              "strict_monophyletic": 37,
-              "strict_pct": 92.5,
-              "compatible_uncontradicted": 37,
-              "compatible_pct": 92.5,
+              "strict_monophyletic": 36,
+              "strict_pct": 90.0,
+              "compatible_uncontradicted": 36,
+              "compatible_pct": 90.0,
               "mean_contradicting_splits": 0.15
             },
             "order": {
               "n_groups": 85,
-              "strict_monophyletic": 83,
-              "strict_pct": 97.65,
-              "compatible_uncontradicted": 83,
-              "compatible_pct": 97.65,
-              "mean_contradicting_splits": 0.047
+              "strict_monophyletic": 84,
+              "strict_pct": 98.82,
+              "compatible_uncontradicted": 84,
+              "compatible_pct": 98.82,
+              "mean_contradicting_splits": 0.012
             },
             "family": {
               "n_groups": 148,
-              "strict_monophyletic": 147,
-              "strict_pct": 99.32,
-              "compatible_uncontradicted": 147,
-              "compatible_pct": 99.32,
-              "mean_contradicting_splits": 0.014
+              "strict_monophyletic": 146,
+              "strict_pct": 98.65,
+              "compatible_uncontradicted": 146,
+              "compatible_pct": 98.65,
+              "mean_contradicting_splits": 0.027
             },
             "genus": {
               "n_groups": 256,
@@ -120,62 +120,62 @@
               "strict_pct": 98.44,
               "compatible_uncontradicted": 252,
               "compatible_pct": 98.44,
-              "mean_contradicting_splits": 0.039
+              "mean_contradicting_splits": 0.031
             }
           },
-          "engine_sec": 22.73,
+          "engine_sec": 31.03,
           "resolved_splits": 1669,
           "max_binary_splits": 1669,
           "resolved_pct": 100.0
         },
         "Bushwhacker_LG08_CAT8_Binary": {
           "method": "Bushwhacker_LG08_CAT8_Binary",
-          "wall_sec": 23.0,
+          "wall_sec": 31.5,
           "vs_gtdb_ref": {
             "n_shared": 1672,
             "pred_splits": 1669,
             "ref_splits": 1669,
-            "tp": 1410,
-            "fp": 259,
-            "fn": 259,
-            "rf": 518,
-            "nrf": 0.15518,
-            "false_positive_rate_pct": 15.52,
-            "precision_pct": 84.48,
-            "recall_pct": 84.48
+            "tp": 1409,
+            "fp": 260,
+            "fn": 260,
+            "rf": 520,
+            "nrf": 0.15578,
+            "false_positive_rate_pct": 15.58,
+            "precision_pct": 84.42,
+            "recall_pct": 84.42
           },
           "taxonomy_5ranks": {
             "phylum": {
               "n_groups": 17,
-              "strict_monophyletic": 15,
-              "strict_pct": 88.24,
-              "compatible_uncontradicted": 15,
-              "compatible_pct": 88.24,
-              "mean_contradicting_splits": 0.176
+              "strict_monophyletic": 14,
+              "strict_pct": 82.35,
+              "compatible_uncontradicted": 14,
+              "compatible_pct": 82.35,
+              "mean_contradicting_splits": 0.294
             },
             "class": {
               "n_groups": 40,
-              "strict_monophyletic": 37,
-              "strict_pct": 92.5,
-              "compatible_uncontradicted": 37,
-              "compatible_pct": 92.5,
+              "strict_monophyletic": 36,
+              "strict_pct": 90.0,
+              "compatible_uncontradicted": 36,
+              "compatible_pct": 90.0,
               "mean_contradicting_splits": 0.15
             },
             "order": {
               "n_groups": 85,
-              "strict_monophyletic": 83,
-              "strict_pct": 97.65,
-              "compatible_uncontradicted": 83,
-              "compatible_pct": 97.65,
-              "mean_contradicting_splits": 0.047
+              "strict_monophyletic": 84,
+              "strict_pct": 98.82,
+              "compatible_uncontradicted": 84,
+              "compatible_pct": 98.82,
+              "mean_contradicting_splits": 0.012
             },
             "family": {
               "n_groups": 148,
-              "strict_monophyletic": 147,
-              "strict_pct": 99.32,
-              "compatible_uncontradicted": 147,
-              "compatible_pct": 99.32,
-              "mean_contradicting_splits": 0.014
+              "strict_monophyletic": 146,
+              "strict_pct": 98.65,
+              "compatible_uncontradicted": 146,
+              "compatible_pct": 98.65,
+              "mean_contradicting_splits": 0.027
             },
             "genus": {
               "n_groups": 256,
@@ -183,13 +183,13 @@
               "strict_pct": 98.44,
               "compatible_uncontradicted": 252,
               "compatible_pct": 98.44,
-              "mean_contradicting_splits": 0.039
+              "mean_contradicting_splits": 0.031
             }
           },
-          "engine_sec": 22.73
+          "engine_sec": 31.03
         },
         "FastTreeMP_LG": {
-          "method": "FastTreeMP_LG",
+          "method": "FastTreeMP_LG (T=32)",
           "wall_sec": 4499.48,
           "vs_gtdb_ref": {
             "n_shared": 1672,
@@ -246,32 +246,32 @@
               "mean_contradicting_splits": 0.008
             }
           },
-          "speedup_of_bushwhacker_x": 195.63
+          "speedup_of_bushwhacker_x": 142.82
         },
         "IQTREE2_LG_G4_fast": {
           "method": "IQTREE2_LG_G4_fast",
-          "wall_sec": 1683.52,
+          "wall_sec": 1691.53,
           "vs_gtdb_ref": {
             "n_shared": 1672,
             "pred_splits": 1669,
             "ref_splits": 1669,
-            "tp": 1452,
-            "fp": 217,
-            "fn": 217,
-            "rf": 434,
-            "nrf": 0.13002,
-            "false_positive_rate_pct": 13.0,
-            "precision_pct": 87.0,
-            "recall_pct": 87.0
+            "tp": 1451,
+            "fp": 218,
+            "fn": 218,
+            "rf": 436,
+            "nrf": 0.13062,
+            "false_positive_rate_pct": 13.06,
+            "precision_pct": 86.94,
+            "recall_pct": 86.94
           },
           "taxonomy_5ranks": {
             "phylum": {
               "n_groups": 17,
-              "strict_monophyletic": 16,
-              "strict_pct": 94.12,
-              "compatible_uncontradicted": 16,
-              "compatible_pct": 94.12,
-              "mean_contradicting_splits": 0.059
+              "strict_monophyletic": 15,
+              "strict_pct": 88.24,
+              "compatible_uncontradicted": 15,
+              "compatible_pct": 88.24,
+              "mean_contradicting_splits": 0.176
             },
             "class": {
               "n_groups": 40,
@@ -291,11 +291,11 @@
             },
             "family": {
               "n_groups": 148,
-              "strict_monophyletic": 147,
-              "strict_pct": 99.32,
-              "compatible_uncontradicted": 147,
-              "compatible_pct": 99.32,
-              "mean_contradicting_splits": 0.014
+              "strict_monophyletic": 148,
+              "strict_pct": 100.0,
+              "compatible_uncontradicted": 148,
+              "compatible_pct": 100.0,
+              "mean_contradicting_splits": 0.0
             },
             "genus": {
               "n_groups": 256,
@@ -306,17 +306,16 @@
               "mean_contradicting_splits": 0.031
             }
           },
-          "nrf_vs_bushwhacker": 0.08328,
-          "speedup_of_bushwhacker_x": 73.2
+          "speedup_of_bushwhacker_x": 53.69
         }
       },
       "pairwise_nrf": {
         "Bushwhacker_LG08_CAT8_MDL__vs__Bushwhacker_LG08_CAT8_Binary": 0.0,
-        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.08748,
-        "Bushwhacker_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast": 0.08328,
-        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.08748,
-        "Bushwhacker_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast": 0.08328,
-        "FastTreeMP_LG__vs__IQTREE2_LG_G4_fast": 0.06111
+        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.08209,
+        "Bushwhacker_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast": 0.07789,
+        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.08209,
+        "Bushwhacker_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast": 0.07789,
+        "FastTreeMP_LG__vs__IQTREE2_LG_G4_fast": 0.05872
       },
       "gtdb_ref_taxonomy_5ranks": {
         "phylum": {
@@ -364,8 +363,8 @@
     "bac120_bacteria_1000": {
       "title": "GTDB r95 Bacterial Domain (1,000 species across all 111 phyla x 43,733 AA; 120 markers)",
       "methods": {
-        "Bushwhacker_Legacy_PreFix": {
-          "method": "Bushwhacker_Legacy_PreFix",
+        "Bushwhacker_v0_Unweighted_Fitch_Ablation": {
+          "method": "Bushwhacker_v0_Unweighted_Fitch_Ablation",
           "wall_sec": 291.21,
           "vs_gtdb_ref": {
             "n_shared": 1000,
@@ -425,130 +424,130 @@
         },
         "Bushwhacker_LG08_CAT8_MDL": {
           "method": "Bushwhacker_LG08_CAT8_MDL",
-          "wall_sec": 20.1,
+          "wall_sec": 26.91,
           "vs_gtdb_ref": {
             "n_shared": 1000,
             "pred_splits": 997,
             "ref_splits": 997,
-            "tp": 753,
-            "fp": 244,
-            "fn": 244,
-            "rf": 488,
-            "nrf": 0.24473,
-            "false_positive_rate_pct": 24.47,
-            "precision_pct": 75.53,
-            "recall_pct": 75.53
+            "tp": 751,
+            "fp": 246,
+            "fn": 246,
+            "rf": 492,
+            "nrf": 0.24674,
+            "false_positive_rate_pct": 24.67,
+            "precision_pct": 75.33,
+            "recall_pct": 75.33
           },
           "taxonomy_5ranks": {
             "phylum": {
               "n_groups": 105,
-              "strict_monophyletic": 97,
-              "strict_pct": 92.38,
-              "compatible_uncontradicted": 97,
-              "compatible_pct": 92.38,
-              "mean_contradicting_splits": 0.219
+              "strict_monophyletic": 99,
+              "strict_pct": 94.29,
+              "compatible_uncontradicted": 99,
+              "compatible_pct": 94.29,
+              "mean_contradicting_splits": 0.2
             },
             "class": {
               "n_groups": 171,
-              "strict_monophyletic": 168,
-              "strict_pct": 98.25,
-              "compatible_uncontradicted": 168,
-              "compatible_pct": 98.25,
-              "mean_contradicting_splits": 0.035
+              "strict_monophyletic": 166,
+              "strict_pct": 97.08,
+              "compatible_uncontradicted": 166,
+              "compatible_pct": 97.08,
+              "mean_contradicting_splits": 0.053
             },
             "order": {
               "n_groups": 223,
-              "strict_monophyletic": 220,
-              "strict_pct": 98.65,
-              "compatible_uncontradicted": 220,
-              "compatible_pct": 98.65,
-              "mean_contradicting_splits": 0.027
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.018
             },
             "family": {
               "n_groups": 205,
-              "strict_monophyletic": 201,
-              "strict_pct": 98.05,
-              "compatible_uncontradicted": 201,
-              "compatible_pct": 98.05,
-              "mean_contradicting_splits": 0.034
+              "strict_monophyletic": 203,
+              "strict_pct": 99.02,
+              "compatible_uncontradicted": 203,
+              "compatible_pct": 99.02,
+              "mean_contradicting_splits": 0.024
             },
             "genus": {
               "n_groups": 99,
-              "strict_monophyletic": 96,
-              "strict_pct": 96.97,
-              "compatible_uncontradicted": 96,
-              "compatible_pct": 96.97,
-              "mean_contradicting_splits": 0.03
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
             }
           },
-          "engine_sec": 19.87,
+          "engine_sec": 26.53,
           "resolved_splits": 997,
           "max_binary_splits": 997,
           "resolved_pct": 100.0
         },
         "Bushwhacker_LG08_CAT8_Binary": {
           "method": "Bushwhacker_LG08_CAT8_Binary",
-          "wall_sec": 20.1,
+          "wall_sec": 26.91,
           "vs_gtdb_ref": {
             "n_shared": 1000,
             "pred_splits": 997,
             "ref_splits": 997,
-            "tp": 753,
-            "fp": 244,
-            "fn": 244,
-            "rf": 488,
-            "nrf": 0.24473,
-            "false_positive_rate_pct": 24.47,
-            "precision_pct": 75.53,
-            "recall_pct": 75.53
+            "tp": 751,
+            "fp": 246,
+            "fn": 246,
+            "rf": 492,
+            "nrf": 0.24674,
+            "false_positive_rate_pct": 24.67,
+            "precision_pct": 75.33,
+            "recall_pct": 75.33
           },
           "taxonomy_5ranks": {
             "phylum": {
               "n_groups": 105,
-              "strict_monophyletic": 97,
-              "strict_pct": 92.38,
-              "compatible_uncontradicted": 97,
-              "compatible_pct": 92.38,
-              "mean_contradicting_splits": 0.219
+              "strict_monophyletic": 99,
+              "strict_pct": 94.29,
+              "compatible_uncontradicted": 99,
+              "compatible_pct": 94.29,
+              "mean_contradicting_splits": 0.2
             },
             "class": {
               "n_groups": 171,
-              "strict_monophyletic": 168,
-              "strict_pct": 98.25,
-              "compatible_uncontradicted": 168,
-              "compatible_pct": 98.25,
-              "mean_contradicting_splits": 0.035
+              "strict_monophyletic": 166,
+              "strict_pct": 97.08,
+              "compatible_uncontradicted": 166,
+              "compatible_pct": 97.08,
+              "mean_contradicting_splits": 0.053
             },
             "order": {
               "n_groups": 223,
-              "strict_monophyletic": 220,
-              "strict_pct": 98.65,
-              "compatible_uncontradicted": 220,
-              "compatible_pct": 98.65,
-              "mean_contradicting_splits": 0.027
+              "strict_monophyletic": 222,
+              "strict_pct": 99.55,
+              "compatible_uncontradicted": 222,
+              "compatible_pct": 99.55,
+              "mean_contradicting_splits": 0.018
             },
             "family": {
               "n_groups": 205,
-              "strict_monophyletic": 201,
-              "strict_pct": 98.05,
-              "compatible_uncontradicted": 201,
-              "compatible_pct": 98.05,
-              "mean_contradicting_splits": 0.034
+              "strict_monophyletic": 203,
+              "strict_pct": 99.02,
+              "compatible_uncontradicted": 203,
+              "compatible_pct": 99.02,
+              "mean_contradicting_splits": 0.024
             },
             "genus": {
               "n_groups": 99,
-              "strict_monophyletic": 96,
-              "strict_pct": 96.97,
-              "compatible_uncontradicted": 96,
-              "compatible_pct": 96.97,
-              "mean_contradicting_splits": 0.03
+              "strict_monophyletic": 97,
+              "strict_pct": 97.98,
+              "compatible_uncontradicted": 97,
+              "compatible_pct": 97.98,
+              "mean_contradicting_splits": 0.02
             }
           },
-          "engine_sec": 19.87
+          "engine_sec": 26.53
         },
         "FastTreeMP_LG": {
           "method": "FastTreeMP_LG (cached)",
-          "wall_sec": 0.0,
+          "wall_sec": 3822.63,
           "vs_gtdb_ref": {
             "n_shared": 1000,
             "pred_splits": 997,
@@ -664,16 +663,13 @@
             }
           },
           "nrf_vs_bushwhacker": 0.15948,
-          "speedup_of_bushwhacker_x": 56.61
+          "speedup_of_bushwhacker_x": 42.28
         }
       },
       "pairwise_nrf": {
         "Bushwhacker_LG08_CAT8_MDL__vs__Bushwhacker_LG08_CAT8_Binary": 0.0,
-        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.17452,
-        "Bushwhacker_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast": 0.15948,
-        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.17452,
-        "Bushwhacker_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast": 0.15948,
-        "FastTreeMP_LG__vs__IQTREE2_LG_G4_fast": 0.14443
+        "Bushwhacker_LG08_CAT8_MDL__vs__FastTreeMP_LG": 0.17252,
+        "Bushwhacker_LG08_CAT8_Binary__vs__FastTreeMP_LG": 0.17252
       },
       "gtdb_ref_taxonomy_5ranks": {
         "phylum": {

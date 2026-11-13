@@ -1,0 +1,360 @@
+{
+  "dataset": "YangA8",
+  "alphabet": "protein",
+  "total_files": 1122,
+  "ok_loci": 1122,
+  "error_loci": 0,
+  "wall_sec": 15.75,
+  "sum_cpu_runtime_sec": 158.57,
+  "mean_taxa": 87.47,
+  "mean_seq_len": 450.0,
+  "total_max_binary_splits": 94772,
+  "total_mdl_resolved_splits": 58652,
+  "polytomy_contracted_frac": 0.3811,
+  "sp_tree_total_splits": 94772,
+  "sp_tree_mdl_supported_splits": 53964,
+  "sp_tree_hard_polytomy_frac": 0.4306,
+  "forced_binary_sp_shared": 48177,
+  "forced_binary_sp_conflict": 46595,
+  "mdl_sp_shared": 37399,
+  "mdl_sp_conflict": 21253,
+  "spurious_discordance_eliminated_frac": 0.5439,
+  "loci_with_sp_shunts": 961,
+  "total_sp_shunts": 2997,
+  "total_sp_interval": 80,
+  "total_sp_sparse": 2917,
+  "total_free_shunts": 5038,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "cc6151-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 133.87,
+      "m": 35,
+      "u": [
+        "Ccle"
+      ],
+      "v": [
+        "Pper"
+      ]
+    },
+    {
+      "locus": "cc6173-1.inclade1.ortho2.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 132.3,
+      "m": 41,
+      "u": [
+        "Thal"
+      ],
+      "v": [
+        "Alyr",
+        "Atha",
+        "Crub"
+      ]
+    },
+    {
+      "locus": "cc393-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 124.8,
+      "m": 26,
+      "u": [
+        "ILU1"
+      ],
+      "v": [
+        "HMFE"
+      ]
+    },
+    {
+      "locus": "cc6994-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 73.41,
+      "m": 19,
+      "u": [
+        "ILU5"
+      ],
+      "v": [
+        "ILU4"
+      ]
+    },
+    {
+      "locus": "cc2678-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 72.27,
+      "m": 27,
+      "u": [
+        "WGET"
+      ],
+      "v": [
+        "FZQN",
+        "OLES",
+        "RXEN",
+        "SHEZ"
+      ]
+    },
+    {
+      "locus": "cc5121-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 71.03,
+      "m": 15,
+      "u": [
+        "BLWH"
+      ],
+      "v": [
+        "BWRK",
+        "CUTE",
+        "EYRD",
+        "HDSY"
+      ]
+    },
+    {
+      "locus": "cc7026-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 69.62,
+      "m": 12,
+      "u": [
+        "ILU1"
+      ],
+      "v": [
+        "ILU5"
+      ]
+    },
+    {
+      "locus": "cc4568-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 67.53,
+      "m": 21,
+      "u": [
+        "BLWH",
+        "CPKP",
+        "CPLT",
+        "CTYH"
+      ],
+      "v": [
+        "AZBL",
+        "BKQU",
+        "EGOS",
+        "GIWN"
+      ]
+    },
+    {
+      "locus": "cc6309-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 52.18,
+      "m": 13,
+      "u": [
+        "ILU6"
+      ],
+      "v": [
+        "ILU3"
+      ]
+    },
+    {
+      "locus": "cc6536-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 50.97,
+      "m": 19,
+      "u": [
+        "Slyc"
+      ],
+      "v": [
+        "Stub"
+      ]
+    },
+    {
+      "locus": "cc5191-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 47.71,
+      "m": 19,
+      "u": [
+        "Slyc"
+      ],
+      "v": [
+        "Stub"
+      ]
+    },
+    {
+      "locus": "cc943-1.inclade1.ortho2.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 46.45,
+      "m": 10,
+      "u": [
+        "GJNX"
+      ],
+      "v": [
+        "BERS"
+      ]
+    },
+    {
+      "locus": "cc8317-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 38.66,
+      "m": 16,
+      "u": [
+        "ILU2"
+      ],
+      "v": [
+        "Ccle",
+        "Csin"
+      ]
+    },
+    {
+      "locus": "cc6108-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 38.57,
+      "m": 16,
+      "u": [
+        "BLWH"
+      ],
+      "v": [
+        "AAXJ",
+        "BVGI",
+        "BWRK",
+        "CBJR"
+      ]
+    },
+    {
+      "locus": "cc5533-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 34.9,
+      "m": 9,
+      "u": [
+        "ZBPY"
+      ],
+      "v": [
+        "BWRK"
+      ]
+    },
+    {
+      "locus": "cc8361-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 33.69,
+      "m": 21,
+      "u": [
+        "Stub"
+      ],
+      "v": [
+        "Slyc"
+      ]
+    },
+    {
+      "locus": "cc7027-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 32.88,
+      "m": 15,
+      "u": [
+        "OMYK"
+      ],
+      "v": [
+        "BWRK",
+        "CUTE",
+        "EYRD",
+        "HDSY"
+      ]
+    },
+    {
+      "locus": "cc7112-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 32.51,
+      "m": 10,
+      "u": [
+        "Slyc"
+      ],
+      "v": [
+        "Stub"
+      ]
+    },
+    {
+      "locus": "cc4924-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 31.25,
+      "m": 17,
+      "u": [
+        "BLWH"
+      ],
+      "v": [
+        "BWRK",
+        "CUTE",
+        "EYRD",
+        "HDSY"
+      ]
+    },
+    {
+      "locus": "cc1156-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 31.1,
+      "m": 9,
+      "u": [
+        "BVGI"
+      ],
+      "v": [
+        "FVXD"
+      ]
+    },
+    {
+      "locus": "cc5711-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 29.9,
+      "m": 12,
+      "u": [
+        "PDQH"
+      ],
+      "v": [
+        "BLWH"
+      ]
+    },
+    {
+      "locus": "cc8009-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 27.97,
+      "m": 10,
+      "u": [
+        "Stub"
+      ],
+      "v": [
+        "Slyc"
+      ]
+    },
+    {
+      "locus": "cc5638-1.inclade1.ortho1.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 26.85,
+      "m": 13,
+      "u": [
+        "Stub"
+      ],
+      "v": [
+        "Slyc"
+      ]
+    },
+    {
+      "locus": "cc5647-1.inclade1.ortho1.aln-cln",
+      "mode": "SPARSE",
+      "gain_nats": 26.84,
+      "m": 12,
+      "u": [
+        "AAXJ",
+        "BWRK",
+        "CBJR",
+        "CUTE"
+      ],
+      "v": [
+        "BERS",
+        "GJNX",
+        "HZTS",
+        "OMYK"
+      ]
+    },
+    {
+      "locus": "cc812-1.inclade1.ortho2.aln-cln",
+      "mode": "INTERVAL",
+      "gain_nats": 26.43,
+      "m": 11,
+      "u": [
+        "Slyc"
+      ],
+      "v": [
+        "Stub"
+      ]
+    }
+  ]
+}

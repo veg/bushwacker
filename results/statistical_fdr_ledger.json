@@ -1,0 +1,238 @@
+{
+  "method": "Benjamini-Hochberg step-up FDR across all 23 primary two-sided hypothesis tests",
+  "alpha_fdr": 0.05,
+  "n_tests": 23,
+  "n_significant_fdr_05": 20,
+  "tests": [
+    {
+      "test_id": "bcr_gc_paired_hub_abundance",
+      "domain": "Single-cell BCR (147 GCs)",
+      "unit_n": 86,
+      "two_sided": true,
+      "p_value": 5.868040404356749e-06,
+      "bh_rank": 10,
+      "bh_total_tests": 23,
+      "q_value_bh": 1.3496492930020523e-05
+    },
+    {
+      "test_id": "bcr_gc_spearman_degree_abundance",
+      "domain": "Single-cell BCR (147 GCs)",
+      "unit_n": 123,
+      "two_sided": true,
+      "p_value": 5.741935057395472e-06,
+      "bh_rank": 9,
+      "bh_total_tests": 23,
+      "q_value_bh": 1.3496492930020523e-05
+    },
+    {
+      "test_id": "bcr_mouse_paired_hub_abundance",
+      "domain": "Single-cell BCR (mice)",
+      "unit_n": 25,
+      "two_sided": true,
+      "p_value": 1.9669532775878906e-06,
+      "bh_rank": 7,
+      "bh_total_tests": 23,
+      "q_value_bh": 6.462846483503069e-06
+    },
+    {
+      "test_id": "bcr_mouse_spearman_degree_abundance",
+      "domain": "Single-cell BCR (mice)",
+      "unit_n": 28,
+      "two_sided": true,
+      "p_value": 3.330409526824951e-06,
+      "bh_rank": 8,
+      "bh_total_tests": 23,
+      "q_value_bh": 9.574927389621735e-06
+    },
+    {
+      "test_id": "bcr_gc_spearman_degree_dms_affinity",
+      "domain": "Single-cell BCR DMS",
+      "unit_n": 127,
+      "two_sided": true,
+      "p_value": 0.001661541696621201,
+      "bh_rank": 15,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0025476972681525083
+    },
+    {
+      "test_id": "bcr_mouse_spearman_degree_dms_affinity",
+      "domain": "Single-cell BCR DMS",
+      "unit_n": 28,
+      "two_sided": true,
+      "p_value": 0.002901986241340637,
+      "bh_rank": 17,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.003926216679460862
+    },
+    {
+      "test_id": "bcr_hub_vs_nonhub_binary_dms_affinity",
+      "domain": "Single-cell BCR DMS",
+      "unit_n": 9352,
+      "two_sided": true,
+      "p_value": 0.2030787953586788,
+      "bh_rank": 22,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.21230964969316418
+    },
+    {
+      "test_id": "bcr_parallel_star_m5_cdr_enrichment",
+      "domain": "Cross-mouse replay (>=5 mice)",
+      "unit_n": 278,
+      "two_sided": true,
+      "p_value": 7.501977186464825e-05,
+      "bh_rank": 11,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0001560162933222115
+    },
+    {
+      "test_id": "bcr_parallel_star_m5_dms_affinity",
+      "domain": "Cross-mouse replay (>=5 mice)",
+      "unit_n": 278,
+      "two_sided": true,
+      "p_value": 8.13998052115886e-05,
+      "bh_rank": 12,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0001560162933222115
+    },
+    {
+      "test_id": "bcr_parallel_star_m3_cdr_enrichment",
+      "domain": "Cross-mouse replay (>=3 mice)",
+      "unit_n": 278,
+      "two_sided": true,
+      "p_value": 0.0005123756998267171,
+      "bh_rank": 13,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0009065108535395764
+    },
+    {
+      "test_id": "bcr_parallel_star_m3_dms_affinity",
+      "domain": "Cross-mouse replay (>=3 mice)",
+      "unit_n": 278,
+      "two_sided": true,
+      "p_value": 0.0005551234942721241,
+      "bh_rank": 14,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0009119885977327754
+    },
+    {
+      "test_id": "aml_compass_per_run_hub_diff_cells",
+      "domain": "AML scDNA COMPASS (168 runs)",
+      "unit_n": 166,
+      "two_sided": true,
+      "p_value": 1.6899635993477651e-18,
+      "bh_rank": 2,
+      "bh_total_tests": 23,
+      "q_value_bh": 1.9434581392499298e-17
+    },
+    {
+      "test_id": "aml_compass_per_patient_hub_diff_cells",
+      "domain": "AML scDNA COMPASS (129 pts)",
+      "unit_n": 127,
+      "two_sided": true,
+      "p_value": 3.534438941732751e-14,
+      "bh_rank": 4,
+      "bh_total_tests": 23,
+      "q_value_bh": 2.0323023914963318e-13
+    },
+    {
+      "test_id": "aml_morita_direct_cell_degree_null",
+      "domain": "AML Morita (123 pts)",
+      "unit_n": 465,
+      "two_sided": true,
+      "p_value": 0.19657784441930734,
+      "bh_rank": 21,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.21230964969316418
+    },
+    {
+      "test_id": "aml_morita_per_patient_paired_lineage",
+      "domain": "AML Morita (123 pts)",
+      "unit_n": 97,
+      "two_sided": true,
+      "p_value": 3.043048538640394e-15,
+      "bh_rank": 3,
+      "bh_total_tests": 23,
+      "q_value_bh": 2.333003879624302e-14
+    },
+    {
+      "test_id": "aml_morita_per_patient_lineage_spearman",
+      "domain": "AML Morita (123 pts)",
+      "unit_n": 97,
+      "two_sided": true,
+      "p_value": 4.7399078126654984e-12,
+      "bh_rank": 6,
+      "bh_total_tests": 23,
+      "q_value_bh": 1.8169646615217745e-11
+    },
+    {
+      "test_id": "aml_morita_signaling_vs_founder_subclonal",
+      "domain": "AML Morita (123 pts)",
+      "unit_n": 508,
+      "two_sided": true,
+      "p_value": 0.001871613530919679,
+      "bh_rank": 16,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0026904444506970385
+    },
+    {
+      "test_id": "dlp_ov2295_aneuploidy_vs_progression",
+      "domain": "DLP+ CNA (OV2295)",
+      "unit_n": 1111,
+      "two_sided": true,
+      "p_value": 4.940729053547262e-268,
+      "bh_rank": 1,
+      "bh_total_tests": 23,
+      "q_value_bh": 1.1363676823158703e-266
+    },
+    {
+      "test_id": "dlp_sa609_aneuploidy_vs_progression",
+      "domain": "DLP+ CNA (SA609)",
+      "unit_n": 600,
+      "two_sided": true,
+      "p_value": 0.00614935757890451,
+      "bh_rank": 19,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.0074439591744633535
+    },
+    {
+      "test_id": "dlp_sa501_aneuploidy_vs_progression",
+      "domain": "DLP+ CNA (SA501)",
+      "unit_n": 2691,
+      "two_sided": true,
+      "p_value": 0.01096439369955681,
+      "bh_rank": 20,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.01260905275449033
+    },
+    {
+      "test_id": "dlp_sa535_aneuploidy_vs_progression",
+      "domain": "DLP+ CNA (SA535)",
+      "unit_n": 548,
+      "two_sided": true,
+      "p_value": 0.47515879623458346,
+      "bh_rank": 23,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.47515879623458346
+    },
+    {
+      "test_id": "toga2_myrmecophagous_family_dedup",
+      "domain": "TOGA2 882-mammal AA atlas",
+      "unit_n": 13,
+      "two_sided": true,
+      "p_value": 8.131774477816427e-13,
+      "bh_rank": 5,
+      "bh_total_tests": 23,
+      "q_value_bh": 3.740616259795556e-12
+    },
+    {
+      "test_id": "toga2_subterranean_blind_family_dedup",
+      "domain": "TOGA2 882-mammal AA atlas",
+      "unit_n": 6,
+      "two_sided": true,
+      "p_value": 0.004455980775247847,
+      "bh_rank": 18,
+      "bh_total_tests": 23,
+      "q_value_bh": 0.005693753212816693
+    }
+  ]
+}

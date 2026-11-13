@@ -328,7 +328,7 @@ def main() -> None:
     ax_d.add_patch(box_d2)
     ax_d.text(
         0.25, 2.40,
-        "2. When Non-Sister Lineages Share Parallel States: Lateral Shunt Peeling (Eq. 8)",
+        "2. When Non-Sister Lineages Share Parallel States: Lateral Shunt Peeling (Eq. 7)",
         fontsize=6.8, color="#004b76", ha="left", va="center",
     )
     ax_d.text(

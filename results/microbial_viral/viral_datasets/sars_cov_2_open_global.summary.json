@@ -1,0 +1,101 @@
+{
+  "dataset": "sars_cov_2_open_global",
+  "status": "ok",
+  "alphabet": "nucleotide",
+  "n_taxa": 5097,
+  "seq_len": 29903,
+  "bushwhacker_runtime_sec": 75.5969,
+  "total_cli_wall_sec": 76.2654,
+  "fasttree_gtr_wall_sec": 3832.894,
+  "speedup_vs_fasttree": 50.7,
+  "raw_dl_nats": 203713022.97,
+  "star_mdl_nats": 2245718.75,
+  "tree_mdl_nats": 300377.19,
+  "network_mdl_nats": 300365.81,
+  "resolved_splits": 1835,
+  "max_binary_splits": 5094,
+  "collapsed_zero_signal_splits": 3259,
+  "collapsed_polytomy_frac": 0.6398,
+  "hub_topology_stats": {
+    "n_internal_nodes": 1836,
+    "n_polytomy_hubs": 780,
+    "max_hub_degree": 223,
+    "hubs_deg_ge_10": 103,
+    "hubs_deg_ge_25": 22,
+    "hubs_deg_ge_50": 5,
+    "hubs_deg_ge_100": 1,
+    "top_15_hub_degrees": [
+      223,
+      81,
+      56,
+      53,
+      51,
+      49,
+      46,
+      45,
+      44,
+      40,
+      37,
+      36,
+      34,
+      33,
+      33
+    ]
+  },
+  "compression_benchmark": {
+    "raw_fasta_bytes": 152540330,
+    "bwz_bytes": 332974,
+    "gzip9_bytes": 3907144,
+    "xz6_bytes": 518864,
+    "bwz_vs_raw_ratio": 458.11,
+    "bwz_vs_gzip9_ratio": 11.73,
+    "bwz_vs_xz6_ratio": 1.56
+  },
+  "n_shunts": 1,
+  "n_interval_shunts": 0,
+  "n_sparse_shunts": 1,
+  "n_shunts_involving_known_recombinants": 0,
+  "top_shunts": [
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 11.38,
+      "shared_mutations": 11,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "USA/CA-IGI-3209/2021"
+      ],
+      "v_sample": [
+        "USA/NY-PRL-210222_00N02/2021"
+      ],
+      "u_posthoc_lineages": [
+        "B.1.429(1)"
+      ],
+      "v_posthoc_lineages": [
+        "B.1.429(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        799,
+        866,
+        2983,
+        4034,
+        4293,
+        5672,
+        7200,
+        7340,
+        7639,
+        8117,
+        9297
+      ]
+    }
+  ],
+  "bushwhacker_legacy_v1_sec": 189.7598,
+  "bushwhacker_t1_sec": 185.797,
+  "bushwhacker_t8_sec": 86.4102,
+  "bushwhacker_t32_sec": 75.5969,
+  "bushwhacker_t64_sec": 73.6047,
+  "multithread_bit_exact_verified": true,
+  "speedup_vs_fasttree_t1": 20.63
+}

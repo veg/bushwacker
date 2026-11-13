@@ -73,8 +73,8 @@ FRUIT_BATS = {"HLpteVam2", "pteAle1"}
 
 def ensure_prestin_outputs(repo_root: Path) -> tuple[Path, Path, Path]:
     fa_path = repo_root / "docs" / "examples" / "prestin.fasta"
-    nwk_path = Path("/tmp/prestin_mdl.nwk")
-    json_path = Path("/tmp/prestin_mdl.json")
+    nwk_path = repo_root / "benchmarks" / "specimens" / "prestin.nwk"
+    json_path = repo_root / "benchmarks" / "specimens" / "prestin.json"
     bw_bin = repo_root / "target" / "release" / "bushwhacker"
     if not nwk_path.exists() or not json_path.exists():
         subprocess.run(
@@ -258,8 +258,8 @@ def main() -> None:
     x_v, y_v = all_coords[id(node_rhino)]
 
     ax_tree.scatter([x_u, x_v], [y_u, y_v], s=58, color="#c51b7d", edgecolor="white", linewidth=1.2, zorder=6)
-    ax_tree.text(x_u - 0.015, y_u + 0.75, "N143 (Delphinidae)\nP_MDL = 1.00", fontsize=6.6, fontweight="bold", color="#00587a", ha="right")
-    ax_tree.text(x_v - 0.015, y_v - 0.95, "N192 (Rhinolophoidea)\nP_MDL = 1.00", fontsize=6.6, fontweight="bold", color="#99000d", ha="right")
+    ax_tree.text(x_u - 0.015, y_u + 0.75, f"{shunt['label_u']} (Delphinidae)\nP = 1.00", fontsize=6.6, fontweight="bold", color="#00587a", ha="right")
+    ax_tree.text(x_v - 0.015, y_v + 0.85, f"{shunt['label_v']} (Rhinolophoidea)\nP = 1.00", fontsize=6.6, fontweight="bold", color="#99000d", ha="right")
 
     node_cetacea = mrca_cet.common_ancestor(list(ECHOLOCATING_WHALES | BALEEN_WHALES))
     xc, yc = all_coords[id(node_cetacea)]
@@ -291,8 +291,8 @@ def main() -> None:
     ax_tree.annotate(
         "Certified SPARSE Shunt\n"
         f"+{shunt['net_mdl_gain_nats']:.2f} nats (P = {shunt['posterior_prob']*100:.2f}%)\n"
-        "5 Convergent Codons:\n"
-        "N7T, I384T, S392A,\nL497M, G601A",
+        f"{shunt['shared_mutations']} Convergent Codons:\n"
+        "N7T, I384T, S392A, G601A",
         xy=(0.24, y_u - 3.6),
         xytext=(-0.22, 29.8),
         fontsize=6.8,
@@ -340,11 +340,11 @@ def main() -> None:
     ]
 
     codon_sites = [
-        (19, 7, "Codon 7\n(N7T)", "T"),
-        (1150, 384, "Codon 384\n(I384T)", "T"),
-        (1173, 392, "Codon 392\n(S392A)", "A"),
-        (1488, 497, "Codon 497\n(L497M)", "M"),
-        (1801, 601, "Codon 601\n(G601A)", "A"),
+        (19, 7, "Codon 7\n(N7T)", "T", True),
+        (1150, 384, "Codon 384\n(I384T)", "T", True),
+        (1173, 392, "Codon 392\n(S392A)", "A", True),
+        (1801, 601, "Codon 601\n(G601A)", "A", True),
+        (1488, 497, "Codon 497\n(Bat stem\nL497M)", "M", False),
     ]
 
     n_r = len(rep_rows)
@@ -355,16 +355,20 @@ def main() -> None:
 
     for r_i, (tid, t_label, grp) in enumerate(rep_rows):
         seq = seqs[tid]
-        for c_i, (nt_site, cod_num, _, conv_aa) in enumerate(codon_sites):
+        for c_i, (nt_site, cod_num, _, conv_aa, is_certified) in enumerate(codon_sites):
             c0 = (cod_num - 1) * 3
             cod_str = seq[c0:c0 + 3]
             aa = str(Seq(cod_str).translate()) if "-" not in cod_str else "-"
             is_conv = (aa == conv_aa)
-            bg = "#f46d43" if is_conv else "#e0f3f8"
-            fg = "white" if is_conv else "#2b3e50"
-            if not is_conv and aa not in ("N", "I", "S", "L", "G"):
-                bg = "#fee08b"
+            if not is_certified:
+                bg = "#eceef2" if is_conv else "#f6f7f9"
                 fg = "#333333"
+            else:
+                bg = "#f46d43" if is_conv else "#e0f3f8"
+                fg = "white" if is_conv else "#2b3e50"
+                if not is_conv and aa not in ("N", "I", "S", "L", "G"):
+                    bg = "#fee08b"
+                    fg = "#333333"
             rect = mpatches.FancyBboxPatch(
                 (c_i - 0.44, r_i - 0.40),
                 0.88,
@@ -410,7 +414,7 @@ def main() -> None:
     for spine in ax_mat.spines.values():
         spine.set_visible(False)
     ax_mat.tick_params(length=0)
-    ax_mat.set_title("B. Empirical Codon States at the 5 Certified Shunt Sites", loc="left", pad=26)
+    ax_mat.set_title("B. Codon States at the 4 Certified Shunt Sites (+ Ancestral Bat L497M)", loc="left", pad=26)
 
     # =========================================================================
     # PANEL C: MDL Code-Length Ledger & 116-Mammal Species-Tree Precision

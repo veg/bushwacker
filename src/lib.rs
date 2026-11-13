@@ -73,13 +73,25 @@ pub fn log_binom(n: f64, k: f64) -> f64 {
     ln_gamma(n + 1.0) - ln_gamma(k + 1.0) - ln_gamma(n - k + 1.0)
 }
 
-/// Rissanen universal prefix code length (in nats) for non-negative integer m.
+/// Exact parameter-free Kraft-tight universal integer prefix code length (in nats)
+/// for non-negative integer `m` via telescoping logarithmic tail:
+/// P(0) = 1/2, P(m) = (ln 2 / 2) * (1 / ln(m + 1) - 1 / ln(m + 2)) for m >= 1,
+/// satisfying sum_{m >= 0} exp(-L_N(m)) = 1.0 identically.
 #[inline]
 pub fn universal_int_nats(m: f64) -> f64 {
+    let ln2 = 2.0_f64.ln();
     if m <= 0.0 {
-        return 2.0_f64.ln();
+        return ln2;
     }
-    2.0_f64.ln() + (1.0 + m).ln() + 0.5 * (1.0 + (1.0 + m).ln()).ln()
+    let s1 = 0.5 * ln2 / 2.0_f64.ln(); // 0.5
+    let s2 = 0.5 * ln2 / 3.0_f64.ln();
+    let p1 = s1 - s2;
+    if m < 1.0 {
+        return (1.0 - m) * ln2 + m * (-p1.ln());
+    }
+    let sm = 0.5 * ln2 / (m + 1.0).ln();
+    let smp1 = 0.5 * ln2 / (m + 2.0).ln();
+    -((sm - smp1).max(1e-300)).ln()
 }
 
 /// Exact enumerative code length (in nats) to transmit m_e mutations along a
@@ -92,7 +104,7 @@ pub fn branch_mutation_code_nats(
     alphabet_size: usize,
 ) -> f64 {
     if m_e <= 1e-9 {
-        return 0.0;
+        return universal_int_nats(0.0);
     }
     let m_pos = m_e.min(0.49 * l_eff);
     let header = universal_int_nats(m_e);
@@ -6583,7 +6595,41 @@ impl BushwhackerEngine {
                 site_mut_counts[s] += 1;
             }
         }
-        let variable_sites = site_mut_counts.iter().filter(|&&c| c > 0).count().max(10);
+        let variable_sites = site_mut_counts.iter().filter(|&&c| c > 0).count().max(1);
+        let aa_variable_codons = if is_coding {
+            let mut n_aa_var = 0usize;
+            let mut c_start = 0usize;
+            while c_start + 2 < l {
+                let mut seen_aas: HashSet<u8> = HashSet::new();
+                for i in 0..n {
+                    let row = &mat[i * l..(i + 1) * l];
+                    let b0 = row[c_start];
+                    let b1 = row[c_start + 1];
+                    let b2 = row[c_start + 2];
+                    if (0..=3).contains(&b0) && (0..=3).contains(&b1) && (0..=3).contains(&b2) {
+                        let aa = translate_bases(b0, b1, b2);
+                        if aa != b'*' && aa != b'X' {
+                            seen_aas.insert(aa);
+                            if seen_aas.len() >= 2 {
+                                break;
+                            }
+                        }
+                    }
+                }
+                if seen_aas.len() >= 2 {
+                    n_aa_var += 1;
+                }
+                c_start += 3;
+            }
+            n_aa_var.max(1)
+        } else {
+            variable_sites
+        };
+        let shunt_var_pool = if is_coding {
+            aa_variable_codons
+        } else {
+            variable_sites
+        };
 
         let root = adj
             .iter()
@@ -6921,7 +6967,7 @@ impl BushwhackerEngine {
                     &eff_anc_node,
                     &branch_mut_load,
                     l_eff,
-                    variable_sites,
+                    shunt_var_pool,
                     endpoint_cost,
                     ti_cost,
                     tv_cost,
@@ -7065,7 +7111,7 @@ impl BushwhackerEngine {
                         &eff_anc_node,
                         &branch_mut_load,
                         l_eff,
-                        variable_sites,
+                        shunt_var_pool,
                         endpoint_cost,
                         ti_cost,
                         tv_cost,
@@ -7174,10 +7220,8 @@ impl BushwhackerEngine {
                 } else {
                     let bp = (l_eff / (0.5 * (m_u + m_v)).max(0.5)).max(1.0).ln()
                         - expected_collision.max(1.0).ln().max(0.0);
-                    let eff_var_pool = ((variable_sites as f64)
-                        * if codon_bonus > 0.0 { 0.45 } else { 1.0 })
-                    .max(1.0);
-                    let cs = ((l_eff / eff_var_pool) * (3.0 / (bg_muts + 0.35)))
+                    let eff_var_pool = (variable_sites as f64).max(1.0);
+                    let cs = ((l_eff / eff_var_pool) * (3.0 / (bg_muts + 1.0)))
                         .ln()
                         .max(0.0);
                     (bp, cs)
@@ -7311,13 +7355,11 @@ impl BushwhackerEngine {
                 let b = cand_sites[j];
                 let span_len = b - a + 1;
                 let m_in = j - i + 1;
-                if span_len < 15 || (span_len as f64) > 0.55 * (l as f64) {
+                // Unrooted identifiability: a lateral tract spans at most half the alignment
+                if span_len < min_k || span_len > (l / 2) {
                     continue;
                 }
                 let gaps_in = (gap_pref[b + 1] - gap_pref[a]) as usize;
-                if (gaps_in as f64) > 0.12 * (span_len as f64) {
-                    continue;
-                }
                 let mut best_rep_idx = 0usize;
                 let mut discordant = i32::MAX;
                 let mut total_disc_best = 0i32;
@@ -7334,7 +7376,7 @@ impl BushwhackerEngine {
                 let d_out = (d_all - disc_f).max(0.0);
                 let w_val = (span_len.saturating_sub(gaps_in)).max(1) as f64;
                 let out_val = (l_val_total - w_val).max(1.0);
-                if disc_f > 0.25 * (m_in as f64) || (disc_f / w_val) >= (d_out / out_val) {
+                if (disc_f / w_val) >= (d_out / out_val) {
                     continue;
                 }
                 // Exact combinadic block-homogeneity gain of partitioning (u, v) divergence at (a, b):
@@ -7347,8 +7389,9 @@ impl BushwhackerEngine {
                     .max(m_in as f64);
                 let window_addr_cost =
                     (log_binom(w_pool, m_in as f64) - block_kl_gain).max(0.0);
-                let disc_cost = if discordant > 0 {
-                    branch_mutation_code_nats(disc_f, span_len as f64, 0.0, 4)
+                let eff_disc = disc_f + (gaps_in as f64);
+                let disc_cost = if eff_disc > 0.0 {
+                    branch_mutation_code_nats(eff_disc, span_len as f64, 0.0, 4)
                 } else {
                     0.0
                 };
@@ -7428,14 +7471,8 @@ impl BushwhackerEngine {
                 .then_with(|| b.1.cmp(&a.1))
         });
 
-        let mut m_pool = (variable_sites as f64)
-            .max((strict_parallel.len() as f64) * 2.0)
-            .max(20.0);
-        if is_coding {
-            m_pool = ((variable_sites as f64) * 0.35)
-                .min(l_eff / 3.0)
-                .max(20.0);
-        }
+        let m_pool = (variable_sites as f64).max(strict_parallel.len() as f64);
+        let _ = (l_eff, is_coding);
 
         let mut best_gain = -1e9_f64;
         let mut best_sites = Vec::new();
@@ -10008,27 +10045,64 @@ MVLSAADKNNVKGIFTKIAGHAEEYGAETLERMFTTYPPTKTYFPHFDLSHGSAQIKAHG
             seqs.push(s);
         }
 
-        let pool1 = rayon::ThreadPoolBuilder::new().num_threads(1).build().unwrap();
-        let pool8 = rayon::ThreadPoolBuilder::new().num_threads(8).build().unwrap();
+        let mut nt_refs: Vec<BushwhackerResult> = Vec::new();
+        let mut aa_refs: Vec<BushwhackerResult> = Vec::new();
+        for &nth in &[1usize, 2, 4, 8, 16, 64] {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(nth)
+                .build()
+                .unwrap();
+            let engine_nt = BushwhackerEngine::default();
+            nt_refs.push(pool.install(|| engine_nt.infer(&names, &seqs).unwrap()));
+            let mut engine_aa = BushwhackerEngine::default();
+            engine_aa.translate_coding = true;
+            aa_refs.push(pool.install(|| engine_aa.infer(&names, &seqs).unwrap()));
+        }
+        for i in 1..nt_refs.len() {
+            assert_eq!(nt_refs[0].newick, nt_refs[i].newick);
+            assert_eq!(nt_refs[0].binary_newick, nt_refs[i].binary_newick);
+            assert_eq!(
+                nt_refs[0].backbone_tree_nats.to_bits(),
+                nt_refs[i].backbone_tree_nats.to_bits()
+            );
+            assert_eq!(
+                nt_refs[0].full_graph_nats.to_bits(),
+                nt_refs[i].full_graph_nats.to_bits()
+            );
+            assert_eq!(nt_refs[0].shunts.len(), nt_refs[i].shunts.len());
 
-        let engine_nt = BushwhackerEngine::default();
-        let res_nt_1 = pool1.install(|| engine_nt.infer(&names, &seqs).unwrap());
-        let res_nt_8 = pool8.install(|| engine_nt.infer(&names, &seqs).unwrap());
-        assert_eq!(res_nt_1.newick, res_nt_8.newick);
-        assert_eq!(res_nt_1.binary_newick, res_nt_8.binary_newick);
-        assert_eq!(res_nt_1.backbone_tree_nats.to_bits(), res_nt_8.backbone_tree_nats.to_bits());
-        assert_eq!(res_nt_1.full_graph_nats.to_bits(), res_nt_8.full_graph_nats.to_bits());
-        assert_eq!(res_nt_1.shunts.len(), res_nt_8.shunts.len());
+            assert_eq!(aa_refs[0].newick, aa_refs[i].newick);
+            assert_eq!(aa_refs[0].binary_newick, aa_refs[i].binary_newick);
+            assert_eq!(
+                aa_refs[0].backbone_tree_nats.to_bits(),
+                aa_refs[i].backbone_tree_nats.to_bits()
+            );
+            assert_eq!(
+                aa_refs[0].full_graph_nats.to_bits(),
+                aa_refs[i].full_graph_nats.to_bits()
+            );
+            assert_eq!(aa_refs[0].shunts.len(), aa_refs[i].shunts.len());
+        }
+    }
 
-        let mut engine_aa = BushwhackerEngine::default();
-        engine_aa.translate_coding = true;
-        let res_aa_1 = pool1.install(|| engine_aa.infer(&names, &seqs).unwrap());
-        let res_aa_8 = pool8.install(|| engine_aa.infer(&names, &seqs).unwrap());
-        assert_eq!(res_aa_1.newick, res_aa_8.newick);
-        assert_eq!(res_aa_1.binary_newick, res_aa_8.binary_newick);
-        assert_eq!(res_aa_1.backbone_tree_nats.to_bits(), res_aa_8.backbone_tree_nats.to_bits());
-        assert_eq!(res_aa_1.full_graph_nats.to_bits(), res_aa_8.full_graph_nats.to_bits());
-        assert_eq!(res_aa_1.shunts.len(), res_aa_8.shunts.len());
+    #[test]
+    fn test_universal_int_kraft_exact() {
+        let ln2 = 2.0_f64.ln();
+        let partial: f64 = (0..200_000)
+            .map(|m| (-universal_int_nats(m as f64)).exp())
+            .sum();
+        let tail = 0.5 * ln2 / 200_001.0_f64.ln();
+        assert!(
+            ((partial + tail) - 1.0).abs() < 1e-11,
+            "Kraft sum must equal 1.0 identically, got {}",
+            partial + tail
+        );
+    }
+
+    #[test]
+    fn test_cat8_exact_unit_mean() {
+        let sum_r: f64 = nt_gtr::NT_CAT_RATES.iter().map(|&r| r as f64).sum();
+        assert!(((sum_r / (nt_gtr::NT_N_CATS as f64)) - 1.0).abs() < 1e-6);
     }
 
     #[test]

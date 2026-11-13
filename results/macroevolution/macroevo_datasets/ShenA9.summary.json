@@ -1,0 +1,336 @@
+{
+  "dataset": "ShenA9",
+  "alphabet": "protein",
+  "total_files": 1233,
+  "ok_loci": 1233,
+  "error_loci": 0,
+  "wall_sec": 29.23,
+  "sum_cpu_runtime_sec": 325.83,
+  "mean_taxa": 86.49,
+  "mean_seq_len": 494.6,
+  "total_max_binary_splits": 102946,
+  "total_mdl_resolved_splits": 49279,
+  "polytomy_contracted_frac": 0.5213,
+  "sp_tree_total_splits": 102946,
+  "sp_tree_mdl_supported_splits": 45757,
+  "sp_tree_hard_polytomy_frac": 0.5555,
+  "forced_binary_sp_shared": 61751,
+  "forced_binary_sp_conflict": 41195,
+  "mdl_sp_shared": 36553,
+  "mdl_sp_conflict": 12726,
+  "spurious_discordance_eliminated_frac": 0.6911,
+  "loci_with_sp_shunts": 808,
+  "total_sp_shunts": 1727,
+  "total_sp_interval": 560,
+  "total_sp_sparse": 1167,
+  "total_free_shunts": 1673,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "BUSCOfEOG71GB3B.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 511.52,
+      "m": 140,
+      "u": [
+        "Nakaseomyces_bacillisporus"
+      ],
+      "v": [
+        "Saccharomyces_cerevisiae"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7TXKRS.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 431.37,
+      "m": 152,
+      "u": [
+        "Cyberlindnera_fabianii"
+      ],
+      "v": [
+        "Nakaseomyces_bacillisporus"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7VB2QQ.domain.aa.aln.trimmed.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 324.76,
+      "m": 89,
+      "u": [
+        "Kluyveromyces_dobzhanskii"
+      ],
+      "v": [
+        "Kluyveromyces_wickerhamii"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7N63XC.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 294.49,
+      "m": 121,
+      "u": [
+        "Eremothecium_cymbalariae"
+      ],
+      "v": [
+        "Stagonospora_nodorum"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG74BK23.domain.aa.aln.trimmed.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 293.99,
+      "m": 80,
+      "u": [
+        "Hansenula_polymorpha"
+      ],
+      "v": [
+        "Ogataea_parapolymorpha"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG79930D.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 251.85,
+      "m": 115,
+      "u": [
+        "Ascoidea_rubescens"
+      ],
+      "v": [
+        "Candida_albicans"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7FR7S6.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 248.54,
+      "m": 105,
+      "u": [
+        "Kluyveromyces_aestuarii"
+      ],
+      "v": [
+        "Tetrapisispora_phaffii"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7QG4G3.domain.aa.aln.trimmed.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 232.8,
+      "m": 86,
+      "u": [
+        "Candida_dubliniensis"
+      ],
+      "v": [
+        "Candida_sojae"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7XH70W.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 225.31,
+      "m": 108,
+      "u": [
+        "Hyphopichia_burtonii"
+      ],
+      "v": [
+        "Candida_maltosa",
+        "Candida_sojae"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG72RN6D.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 225.28,
+      "m": 105,
+      "u": [
+        "Geotrichum_candidum_CLIB918"
+      ],
+      "v": [
+        "Lachancea_lanzarotensis"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7GXPKZ.domain.aa.aln.trimmed.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 206.84,
+      "m": 80,
+      "u": [
+        "Candida_sojae"
+      ],
+      "v": [
+        "Lodderomyces_elongisporus"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG783N4B.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 201.73,
+      "m": 92,
+      "u": [
+        "Pichia_kudriavzevii"
+      ],
+      "v": [
+        "Candida_sojae",
+        "Candida_tropicalis"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7FR7S6.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 194.43,
+      "m": 88,
+      "u": [
+        "Debaryomyces_hansenii"
+      ],
+      "v": [
+        "Pichia_membranifaciens"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG76TB15.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 186.83,
+      "m": 84,
+      "u": [
+        "Stagonospora_nodorum"
+      ],
+      "v": [
+        "Tortispora_caseinolytica"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG71VT2Q.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 184.57,
+      "m": 97,
+      "u": [
+        "Hyphopichia_burtonii"
+      ],
+      "v": [
+        "Pichia_kudriavzevii"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG79PJXZ.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 181.35,
+      "m": 115,
+      "u": [
+        "Kluyveromyces_wickerhamii"
+      ],
+      "v": [
+        "Saccharomyces_uvarum"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7DC2CX.domain.aa.aln.trimmed.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 174.8,
+      "m": 53,
+      "u": [
+        "Hansenula_polymorpha"
+      ],
+      "v": [
+        "Ogataea_parapolymorpha"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7SXWBR.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 166.49,
+      "m": 118,
+      "u": [
+        "Lachancea_waltii"
+      ],
+      "v": [
+        "Naumovozyma_castellii"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG73NGD9.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 163.56,
+      "m": 71,
+      "u": [
+        "Candida_albicans"
+      ],
+      "v": [
+        "Hanseniaspora_uvarum",
+        "Hanseniaspora_valbyensis"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG757D5X.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 159.87,
+      "m": 68,
+      "u": [
+        "Candida_sojae"
+      ],
+      "v": [
+        "Dekkera_bruxellensis"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7B05NZ.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 159.53,
+      "m": 119,
+      "u": [
+        "Candida_auris"
+      ],
+      "v": [
+        "Hansenula_polymorpha",
+        "Ogataea_parapolymorpha"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7HB5JW.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 147.0,
+      "m": 68,
+      "u": [
+        "Saccharomyces_uvarum"
+      ],
+      "v": [
+        "Tetrapisispora_phaffii"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7HB5JW.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 141.96,
+      "m": 94,
+      "u": [
+        "Candida_albicans"
+      ],
+      "v": [
+        "Candida_arabinofermentans"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7380FJ.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 133.37,
+      "m": 68,
+      "u": [
+        "Candida_glabrata"
+      ],
+      "v": [
+        "Hanseniaspora_uvarum"
+      ]
+    },
+    {
+      "locus": "BUSCOfEOG7WQ856.domain.aa.aln.trimmed.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 131.61,
+      "m": 49,
+      "u": [
+        "Kazachstania_naganishii"
+      ],
+      "v": [
+        "Dekkera_bruxellensis",
+        "Pichia_kudriavzevii",
+        "Pichia_membranifaciens"
+      ]
+    }
+  ]
+}

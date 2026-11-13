@@ -9,6 +9,13 @@ and compares head-to-head against GTDB r95 curated reference trees, pre-fix Bush
 FastTreeMP (-lg), and any completed IQ-TREE 2 (-m LG+G4) trees from Job 1367512.
 """
 
+
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parent) not in _sys.path:
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent))
+from _env_paths import REPO_ROOT, DATA_DIR, SPECIMENS_DIR, ALIGNMENTS_DIR, SINGLE_CELL_DIR, RESULTS_DIR, WORK_ROOT, EXTERNAL_DIR, resolve_bin, ASTRAL_JAR
+
 import os
 import json
 import time
@@ -28,7 +35,7 @@ from run_gtdb_sota_protein_bench import (
     compare_unrooted_trees,
 )
 
-OUT_JSON = Path("/home/sergei/tree_pillars_2026/results/gtdb_sota_bw_upgraded.json")
+OUT_JSON = RESULTS_DIR / "microbial_viral" / "gtdb_sota_bw_upgraded.json"
 THREADS = int(os.environ.get("BENCH_THREADS", "32"))
 
 
@@ -58,9 +65,13 @@ def main():
         },
     ]
 
-    # Load any fresh FastTreeMP / IQ-TREE 2 timings already recorded by Job 1367512
-    prev_bench_json = Path("/home/sergei/tree_pillars_2026/results/gtdb_sota_protein_bench.json")
+    # Load any fresh FastTreeMP / IQ-TREE 2 timings already recorded by Job 1367512 or pillar2_megatrees.json
+    prev_bench_json = WORK_ROOT / "pillar2" / "gtdb_sota_protein_bench.json"
+    if not prev_bench_json.exists():
+        prev_bench_json = RESULTS_DIR / "gtdb_sota_protein_bench.json"
     prev_data = json.loads(prev_bench_json.read_text()) if prev_bench_json.exists() else {}
+    p2_json = RESULTS_DIR / "pillar2_megatrees.json"
+    p2_data = json.loads(p2_json.read_text()) if p2_json.exists() else {}
 
     results = {}
     for cfg in datasets_cfg:
@@ -79,8 +90,8 @@ def main():
         if cfg["old_bw_json"].exists():
             old_bw = json.loads(cfg["old_bw_json"].read_text())
             r_old = parse_newick_tree(old_bw["binary_newick"])
-            results[key]["methods"]["Bushwhacker_Legacy_PreFix"] = evaluate_method(
-                "Bushwhacker_Legacy_PreFix",
+            results[key]["methods"]["Bushwhacker_v0_Unweighted_Fitch_Ablation"] = evaluate_method(
+                "Bushwhacker_v0_Unweighted_Fitch_Ablation",
                 r_old,
                 ref_root,
                 tax_map,
@@ -145,6 +156,14 @@ def main():
             .get("FastTreeMP_LG", {})
             .get("wall_sec", 0.0)
         )
+        if not prev_ft_wall:
+            p2_part = p2_data.get("part_2b_gtdb_domain_supermatrices", {})
+            p2_key = (
+                "ar122_archaeal_domain_supermatrix"
+                if "ar122" in key
+                else "bac120_bacterial_domain_supermatrix"
+            )
+            prev_ft_wall = float(p2_part.get(p2_key, {}).get("fasttree_lg_t32_sec", 0.0))
         if ft_fresh.exists() and ft_fresh.stat().st_size > 100:
             r_ft = parse_newick_tree(ft_fresh.read_text())
             trees["FastTreeMP_LG"] = r_ft

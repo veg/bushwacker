@@ -1,0 +1,440 @@
+{
+  "reference_astral_newick": "(P005_Rock_hyrax,(P006_Elephant,(P004_Tenrec,((P007_Armadillo,P008_Sloth)1:2.49199017806159,((P001_Platypus,(P002_Opossum,P003_Wallaby)1:3.417277588020713)1:1.9791177877075503,(((P009_Hedgehog,P010_Common_shrew)1:0.661969093454656,((P018_Megabat,P019_Microbat)1:1.1732442488689898,((P017_Cat,P016_Dog)1:2.487336896114039,(P015_Horse,(P014_Alpaca,(P013_Pig,(P011_Dolphin,P012_Cow)1:1.0485749718715078)1:0.5302944141442121)1:2.4085751990004565)1:0.027790006507405946)1:0.040281701546407915)1:0.3906046249312035)1:1.0837822983163619,(((P028_Bushbaby,P029_Mouse_lemur)1:1.8972715061444587,(P030_Tarsier,(P031_Marmoset,(P032_Rhesus,(P033_Orangutan,(P034_Gorilla,(P035_Chimp,P036_Human)1:0.5373830910581004)1:1.976237768445032)1:2.143337988053818)1:2.2051215139729785)1:4.4588571095731995)1:0.5044121372413273)1:1.2863843892369349,(P027_Tree_shrew,((P020_Rabbit,P021_Pika)1:2.9153266586919457,(P022_Squirrel,(P023_Guinea_pig,((P025_Mouse,P026_Rat)1:6.237660412114757,P024_Kangaroo_rat)1:0.45547332080592157)1:0.18605019567133804)1:1.0946623577766852)1:0.447340790881282)1:0.08929747818109043)1:1.3178181935402202)1:0.6338569900894762)1:0.16484053049767056)1:1.784118246989533)1:1.3216833866464424));",
+  "genes": {
+    "ENSG00000180767": {
+      "ml_best_observed_newick": "(P001_Platypus:0.0860800593,(P002_Opossum:0.0563005285,P003_Wallaby:0.1028494695):0.184142,(((P005_Rock_hyrax:0.1566798002,(P031_Marmoset:0.0597344087,(P032_Rhesus:0.0431597743,(P033_Orangutan:0.0217181732,((P034_Gorilla:0.0044404229,P035_Chimp:0.0055093437):0.000003,P036_Human:0.0044027783):0.008472):0.018974):0.015565):0.052254):0.007738,(((P008_Sloth:0.0615973266,P021_Pika:0.1335968070):0.015106,P023_Guinea_pig:0.1499736425):0.002356,(((((P011_Dolphin:0.0389111484,P012_Cow:0.0720551316):0.002425,P013_Pig:0.0755171749):0.026772,P016_Dog:0.0828686447):0.017135,P018_Megabat:0.1366445317):0.005108,P024_Kangaroo_rat:0.3751128408):0.011272):0.004971):0.016373,((P025_Mouse:0.0385394636,P026_Rat:0.0473142681):0.159183,P028_Bushbaby:0.0730827002):0.010255):0.569545);",
+      "bw_json": {
+        "tool": "BUSHWHACKER",
+        "input": "rokas2018/single-gene_alignments/TarvD7/ENSG00000180767.nuc.ord.aln",
+        "alphabet": "nucleotide",
+        "n_taxa": 22,
+        "seq_len": 1176,
+        "raw_Description_Length_nats": 27319.7,
+        "star_tree_MDL_nats": 10542.55,
+        "tree_MDL_nats": 10120.61,
+        "network_MDL_nats": 10119.26,
+        "compression_ratio_vs_star": 0.9598,
+        "resolved_internal_splits": 9,
+        "max_binary_splits": 19,
+        "polytomy_nodes": 3,
+        "certified_shunts": 1,
+        "runtime_sec": 0.0204,
+        "newick": "(P024_Kangaroo_rat:0.233562,(P001_Platypus:0.078810,(P002_Opossum:0.061820,P003_Wallaby:0.074546)1.000:0.116914)1.000:0.260939,(P025_Mouse:0.037012,P026_Rat:0.040712)1.000:0.102165,P028_Bushbaby:0.069707,P005_Rock_hyrax:0.115973,P021_Pika:0.097801,P008_Sloth:0.049351,P023_Guinea_pig:0.120905,(P031_Marmoset:0.047337,(P032_Rhesus:0.037991,(P033_Orangutan:0.018005,(P034_Gorilla:0.003758,P036_Human:0.003729,P035_Chimp:0.004969)0.991:0.007389)1.000:0.016354)0.819:0.011974)1.000:0.045194,(P016_Dog:0.067646,(P011_Dolphin:0.033351,P012_Cow:0.059632,P013_Pig:0.063525)1.000:0.019670)0.972:0.014339,P018_Megabat:0.110637);",
+        "binary_newick": "((((P005_Rock_hyrax:0.115973,P021_Pika:0.097801):0.009123,P008_Sloth:0.049351):0.013724,(P023_Guinea_pig:0.120905,(P031_Marmoset:0.047337,(P032_Rhesus:0.037991,(P033_Orangutan:0.018005,((P034_Gorilla:0.003758,P036_Human:0.003729):0.000223,P035_Chimp:0.004969):0.007389):0.016354):0.011974):0.045194):0.003629):0.003362,((((P011_Dolphin:0.033351,P012_Cow:0.059632):0.002357,P013_Pig:0.063525):0.019670,P016_Dog:0.067646):0.014339,P018_Megabat:0.110637):0.009599,(((P024_Kangaroo_rat:0.233562,(P001_Platypus:0.078810,(P002_Opossum:0.061820,P003_Wallaby:0.074546):0.116914):0.260939):0.005669,(P025_Mouse:0.037012,P026_Rat:0.040712):0.102165):0.012337,P028_Bushbaby:0.069707):0.016578);",
+        "internal_branches": [
+          {
+            "u": 22,
+            "v": 23,
+            "mutations": 104.71,
+            "branch_length": 0.116914,
+            "mdl_gain_nats": 64.423,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 51
+          },
+          {
+            "u": 23,
+            "v": 29,
+            "mutations": 233.71,
+            "branch_length": 0.260939,
+            "mdl_gain_nats": 199.702,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 140
+          },
+          {
+            "u": 24,
+            "v": 29,
+            "mutations": 91.51,
+            "branch_length": 0.102165,
+            "mdl_gain_nats": 107.548,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 66
+          },
+          {
+            "u": 25,
+            "v": 27,
+            "mutations": 15.0,
+            "branch_length": 0.007389,
+            "mdl_gain_nats": 4.702,
+            "mdl_support": 0.991,
+            "num_synapomorphies": 15
+          },
+          {
+            "u": 27,
+            "v": 28,
+            "mutations": 14.65,
+            "branch_length": 0.016354,
+            "mdl_gain_nats": 13.183,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 10
+          },
+          {
+            "u": 28,
+            "v": 30,
+            "mutations": 27.0,
+            "branch_length": 0.011974,
+            "mdl_gain_nats": 1.512,
+            "mdl_support": 0.8193,
+            "num_synapomorphies": 27
+          },
+          {
+            "u": 29,
+            "v": 30,
+            "mutations": 40.48,
+            "branch_length": 0.045194,
+            "mdl_gain_nats": 63.32,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 28
+          },
+          {
+            "u": 29,
+            "v": 33,
+            "mutations": 24.0,
+            "branch_length": 0.014339,
+            "mdl_gain_nats": 3.548,
+            "mdl_support": 0.972,
+            "num_synapomorphies": 24
+          },
+          {
+            "u": 31,
+            "v": 33,
+            "mutations": 19.0,
+            "branch_length": 0.01967,
+            "mdl_gain_nats": 28.319,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 19
+          }
+        ],
+        "shunts": [
+          {
+            "node_u": 8,
+            "node_v": 16,
+            "label_u": "P016_Dog",
+            "label_v": "P031_Marmoset",
+            "clade_size_u": 1,
+            "clade_size_v": 1,
+            "leaves_u": [
+              "P016_Dog"
+            ],
+            "leaves_v": [
+              "P031_Marmoset"
+            ],
+            "mode": "SPARSE",
+            "shared_mutations": 3,
+            "sites_0based": [
+              223,
+              224,
+              225
+            ],
+            "codons_1based": [
+              75,
+              75,
+              76
+            ],
+            "residues_1based": [
+              75,
+              75,
+              76
+            ],
+            "interval_span": null,
+            "data_savings_nats": 23.507,
+            "mask_cost_nats": 15.229,
+            "endpoint_cost_nats": 6.931,
+            "net_mdl_gain_nats": 1.346,
+            "posterior_prob": 0.7935
+          }
+        ]
+      }
+    },
+    "ENSG00000184731": {
+      "ml_best_observed_newick": "(P001_Platypus:0.4058453084,P002_Opossum:0.2374231268,((P004_Tenrec:0.1977682961,((((((P010_Common_shrew:0.2068388221,P018_Megabat:0.1556593706):0.071160,((P020_Rabbit:0.0868133812,P021_Pika:0.2221216651):0.053581,P023_Guinea_pig:0.3202881126):0.031251):0.038146,P016_Dog:0.2486952568):0.035848,(((P031_Marmoset:0.1310585358,P032_Rhesus:0.0336560795):0.037249,(P034_Gorilla:0.0037791259,(P035_Chimp:0.0065434721,P036_Human:0.0056235418):0.001697):0.014086):0.004023,P033_Orangutan:0.0154935536):0.058495):0.021729,(P025_Mouse:0.0174180979,P026_Rat:0.0530497339):0.494016):0.033658,P028_Bushbaby:0.2479455407):0.080374):0.042125,P008_Sloth:0.0991489483):0.293237);",
+      "bw_json": {
+        "tool": "BUSHWHACKER",
+        "input": "rokas2018/single-gene_alignments/TarvD7/ENSG00000184731.nuc.ord.aln",
+        "alphabet": "nucleotide",
+        "n_taxa": 19,
+        "seq_len": 1947,
+        "raw_Description_Length_nats": 21759.28,
+        "star_tree_MDL_nats": 10193.93,
+        "tree_MDL_nats": 11305.79,
+        "network_MDL_nats": 11305.79,
+        "compression_ratio_vs_star": 1.1091,
+        "resolved_internal_splits": 9,
+        "max_binary_splits": 16,
+        "polytomy_nodes": 5,
+        "certified_shunts": 0,
+        "runtime_sec": 0.0224,
+        "newick": "(((P025_Mouse:0.017558,P026_Rat:0.047807)1.000:0.261876,P023_Guinea_pig:0.208169)0.628:0.065160,((P031_Marmoset:0.103871,P032_Rhesus:0.029525)0.997:0.026804,(P034_Gorilla:0.003152,P036_Human:0.005126,P035_Chimp:0.005936)1.000:0.013088,P033_Orangutan:0.015467)1.000:0.046100,P028_Bushbaby:0.188696,(P004_Tenrec:0.159373,P008_Sloth:0.100776,(P001_Platypus:0.245242,P002_Opossum:0.194398)1.000:0.185893)0.995:0.045642,(P020_Rabbit:0.074725,P021_Pika:0.175819)1.000:0.065683,(P010_Common_shrew:0.159373,P018_Megabat:0.114069,P016_Dog:0.160142)0.546:0.039904);",
+        "binary_newick": "((((((((P010_Common_shrew:0.159373,P018_Megabat:0.114069):0.025760,P016_Dog:0.160142):0.039904,(P020_Rabbit:0.074725,P021_Pika:0.175819):0.065683):0.023156,(((P025_Mouse:0.017558,P026_Rat:0.047807):0.261876,P023_Guinea_pig:0.208169):0.065160,(P028_Bushbaby:0.188696,((P004_Tenrec:0.159373,P008_Sloth:0.100776):0.006777,(P001_Platypus:0.245242,P002_Opossum:0.194398):0.185893):0.045642):0.019945):0.011875):0.046100,(P031_Marmoset:0.103871,P032_Rhesus:0.029525):0.026804):0.006682,P033_Orangutan:0.015467):0.013088,P034_Gorilla:0.003152):0.001426,P036_Human:0.005126,P035_Chimp:0.005936);",
+        "internal_branches": [
+          {
+            "u": 19,
+            "v": 23,
+            "mutations": 216.31,
+            "branch_length": 0.261876,
+            "mdl_gain_nats": 170.137,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 32
+          },
+          {
+            "u": 20,
+            "v": 24,
+            "mutations": 153.55,
+            "branch_length": 0.185893,
+            "mdl_gain_nats": 89.072,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 78
+          },
+          {
+            "u": 21,
+            "v": 22,
+            "mutations": 54.25,
+            "branch_length": 0.065683,
+            "mdl_gain_nats": 23.546,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 45
+          },
+          {
+            "u": 21,
+            "v": 23,
+            "mutations": 187.0,
+            "branch_length": 0.06516,
+            "mdl_gain_nats": 0.523,
+            "mdl_support": 0.6278,
+            "num_synapomorphies": 187
+          },
+          {
+            "u": 21,
+            "v": 24,
+            "mutations": 49.0,
+            "branch_length": 0.045642,
+            "mdl_gain_nats": 5.229,
+            "mdl_support": 0.9947,
+            "num_synapomorphies": 49
+          },
+          {
+            "u": 21,
+            "v": 25,
+            "mutations": 39.0,
+            "branch_length": 0.039904,
+            "mdl_gain_nats": 0.186,
+            "mdl_support": 0.5463,
+            "num_synapomorphies": 39
+          },
+          {
+            "u": 21,
+            "v": 32,
+            "mutations": 66.0,
+            "branch_length": 0.0461,
+            "mdl_gain_nats": 25.347,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 66
+          },
+          {
+            "u": 31,
+            "v": 32,
+            "mutations": 22.14,
+            "branch_length": 0.026804,
+            "mdl_gain_nats": 5.694,
+            "mdl_support": 0.9966,
+            "num_synapomorphies": 4
+          },
+          {
+            "u": 32,
+            "v": 34,
+            "mutations": 25.0,
+            "branch_length": 0.013088,
+            "mdl_gain_nats": 11.761,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 25
+          }
+        ],
+        "shunts": []
+      }
+    },
+    "ENSG00000117472": {
+      "ml_best_observed_newick": "(P003_Wallaby:0.16643623175167573947,(P006_Elephant:0.11648299252167057527,((((P033_Orangutan:0.01818355398788359598,(P035_Chimp:0.00000100000050002909,P036_Human:0.00276633290751210304):0.00596429488658887369):0.00908160903551738508,P032_Rhesus:0.01583093914109326081):0.01626122407362311922,P031_Marmoset:0.04175669352142192398):0.02432234086461322262,(P029_Mouse_lemur:0.07720221810189152600,(((P015_Horse:0.11750993387652541866,((P017_Cat:0.05502929959570018043,P018_Megabat:0.06654681504334090947):0.00896028416439087830,(P019_Microbat:0.06333276126673155482,P027_Tree_shrew:0.12421635941258360458):0.00137906444424531561):0.00629146130743138063):0.00780345089881212452,(P013_Pig:0.11777959689141340172,P011_Dolphin:0.07477187366414174419):0.02013101532648543107):0.01110644768188276052,(P008_Sloth:0.10061512232958153001,(((P025_Mouse:0.03241059790770257909,P026_Rat:0.04238805381274326350):0.14025531997623841285,P024_Kangaroo_rat:0.08938134751485429796):0.02202992761224659146,P021_Pika:0.24813734536950418641):0.01363771593447176203):0.00909093719747915835):0.01062941686549570899):0.01035867793560386364):0.04629243544046953568):0.37599270004266455159,P002_Opossum:0.12803530145633096327):0.0;",
+      "bw_json": {
+        "tool": "BUSHWHACKER",
+        "input": "rokas2018/single-gene_alignments/TarvD7/ENSG00000117472.nuc.ord.aln",
+        "alphabet": "nucleotide",
+        "n_taxa": 21,
+        "seq_len": 798,
+        "raw_Description_Length_nats": 19272.26,
+        "star_tree_MDL_nats": 7369.13,
+        "tree_MDL_nats": 6986.89,
+        "network_MDL_nats": 6986.89,
+        "compression_ratio_vs_star": 0.9481,
+        "resolved_internal_splits": 7,
+        "max_binary_splits": 18,
+        "polytomy_nodes": 1,
+        "certified_shunts": 0,
+        "runtime_sec": 0.0175,
+        "newick": "(P013_Pig:0.095703,P011_Dolphin:0.074546,P015_Horse:0.101831,P018_Megabat:0.064138,P019_Microbat:0.055080,P017_Cat:0.047105,P027_Tree_shrew:0.096715,(P002_Opossum:0.103744,P003_Wallaby:0.140623)1.000:0.237152,P006_Elephant:0.092593,P008_Sloth:0.077706,P021_Pika:0.186805,(P024_Kangaroo_rat:0.079108,(P025_Mouse:0.028704,P026_Rat:0.039481)1.000:0.114429)1.000:0.035220,P029_Mouse_lemur:0.074784,(P031_Marmoset:0.038286,(P032_Rhesus:0.014145,(P033_Orangutan:0.015926,(P035_Chimp:0.000302,P036_Human:0.002475)0.999:0.005519)1.000:0.008229)1.000:0.014965)1.000:0.027881);",
+        "binary_newick": "(((P024_Kangaroo_rat:0.079108,(P025_Mouse:0.028704,P026_Rat:0.039481):0.114429):0.035220,((((P002_Opossum:0.103744,P003_Wallaby:0.140623):0.237152,P006_Elephant:0.092593):0.026147,P021_Pika:0.186805):0.013399,P008_Sloth:0.077706):0.012490):0.007016,(P029_Mouse_lemur:0.074784,((((P013_Pig:0.095703,P011_Dolphin:0.074546):0.016354,P015_Horse:0.101831):0.007841,(P018_Megabat:0.064138,P019_Microbat:0.055080):0.007669):0.007350,(P017_Cat:0.047105,P027_Tree_shrew:0.096715):0.009798):0.016354):0.006963,(P031_Marmoset:0.038286,(P032_Rhesus:0.014145,(P033_Orangutan:0.015926,(P035_Chimp:0.000302,P036_Human:0.002475):0.005519):0.008229):0.014965):0.027881);",
+        "internal_branches": [
+          {
+            "u": 21,
+            "v": 23,
+            "mutations": 156.99,
+            "branch_length": 0.237152,
+            "mdl_gain_nats": 154.378,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 87
+          },
+          {
+            "u": 22,
+            "v": 28,
+            "mutations": 75.75,
+            "branch_length": 0.114429,
+            "mdl_gain_nats": 167.464,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 69
+          },
+          {
+            "u": 23,
+            "v": 28,
+            "mutations": 26.0,
+            "branch_length": 0.03522,
+            "mdl_gain_nats": 8.296,
+            "mdl_support": 0.9998,
+            "num_synapomorphies": 26
+          },
+          {
+            "u": 23,
+            "v": 29,
+            "mutations": 31.0,
+            "branch_length": 0.027881,
+            "mdl_gain_nats": 32.424,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 31
+          },
+          {
+            "u": 24,
+            "v": 25,
+            "mutations": 5.0,
+            "branch_length": 0.005519,
+            "mdl_gain_nats": 7.161,
+            "mdl_support": 0.9992,
+            "num_synapomorphies": 5
+          },
+          {
+            "u": 25,
+            "v": 27,
+            "mutations": 7.0,
+            "branch_length": 0.008229,
+            "mdl_gain_nats": 13.581,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 7
+          },
+          {
+            "u": 27,
+            "v": 29,
+            "mutations": 12.0,
+            "branch_length": 0.014965,
+            "mdl_gain_nats": 11.656,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 12
+          }
+        ],
+        "shunts": []
+      }
+    },
+    "ENSG00000213920": {
+      "ml_best_observed_newick": "(P002_Opossum:0.0627039004,P003_Wallaby:0.0448580339,(((P005_Rock_hyrax:0.1042331195,(P007_Armadillo:0.0517422989,P008_Sloth:0.0686356986):0.029721):0.023724,((P023_Guinea_pig:0.1395236898,(P030_Tarsier:0.0231697013,(P031_Marmoset:0.0280612375,((P034_Gorilla:0.0000022602,P036_Human:0.0000027418):0.000002,P035_Chimp:0.0038160888):0.019253):0.037687):0.017175):0.000549,(P024_Kangaroo_rat:0.0803446415,(P025_Mouse:0.0288882634,P026_Rat:0.0312963119):0.110612):0.012030):0.004997):0.006995,(((((P011_Dolphin:0.0337288477,P013_Pig:0.0712747517):0.005012,P012_Cow:0.0651872628):0.009588,P016_Dog:0.0967129472):0.000002,P018_Megabat:0.0591831939):0.003094,P015_Horse:0.0496410604):0.003574):0.305734);",
+      "bw_json": {
+        "tool": "BUSHWHACKER",
+        "input": "rokas2018/single-gene_alignments/TarvD7/ENSG00000213920.nuc.ord.aln",
+        "alphabet": "nucleotide",
+        "n_taxa": 20,
+        "seq_len": 561,
+        "raw_Description_Length_nats": 13237.72,
+        "star_tree_MDL_nats": 4512.98,
+        "tree_MDL_nats": 4306.57,
+        "network_MDL_nats": 4306.57,
+        "compression_ratio_vs_star": 0.9543,
+        "resolved_internal_splits": 8,
+        "max_binary_splits": 17,
+        "polytomy_nodes": 3,
+        "certified_shunts": 0,
+        "runtime_sec": 0.0136,
+        "newick": "((P002_Opossum:0.064332,P003_Wallaby:0.040393)1.000:0.233672,P024_Kangaroo_rat:0.065303,(P005_Rock_hyrax:0.097413,(P007_Armadillo:0.047800,P008_Sloth:0.063872)0.985:0.030893)0.614:0.026461,(P030_Tarsier:0.021272,(P031_Marmoset:0.026740,(P034_Gorilla:0.000419,P036_Human:0.000419,P035_Chimp:0.003537)1.000:0.018393)1.000:0.038659)0.998:0.017422,P023_Guinea_pig:0.130193,(P025_Mouse:0.026712,P026_Rat:0.033053)1.000:0.111225,P018_Megabat:0.057281,(P012_Cow:0.057453,P013_Pig:0.068893,P011_Dolphin:0.036501)0.730:0.010140,P016_Dog:0.085094,P015_Horse:0.042229);",
+        "binary_newick": "((((P011_Dolphin:0.036501,(P012_Cow:0.057453,P013_Pig:0.068893):0.007273):0.010140,P018_Megabat:0.057281):0.000419,(((((P002_Opossum:0.064332,P003_Wallaby:0.040393):0.233672,P024_Kangaroo_rat:0.065303):0.023559,((P005_Rock_hyrax:0.097413,(P007_Armadillo:0.047800,P008_Sloth:0.063872):0.030893):0.026461,(P030_Tarsier:0.021272,(P031_Marmoset:0.026740,((P034_Gorilla:0.000419,P036_Human:0.000419):0.000419,P035_Chimp:0.003537):0.018393):0.038659):0.017422):0.000419):0.001947,P023_Guinea_pig:0.130193):0.002610,(P025_Mouse:0.026712,P026_Rat:0.033053):0.111225):0.011087):0.006727,P016_Dog:0.085094,P015_Horse:0.042229);",
+        "internal_branches": [
+          {
+            "u": 20,
+            "v": 26,
+            "mutations": 111.57,
+            "branch_length": 0.233672,
+            "mdl_gain_nats": 165.152,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 39
+          },
+          {
+            "u": 21,
+            "v": 26,
+            "mutations": 53.1,
+            "branch_length": 0.111225,
+            "mdl_gain_nats": 165.988,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 48
+          },
+          {
+            "u": 22,
+            "v": 24,
+            "mutations": 10.0,
+            "branch_length": 0.018393,
+            "mdl_gain_nats": 14.081,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 10
+          },
+          {
+            "u": 24,
+            "v": 29,
+            "mutations": 18.46,
+            "branch_length": 0.038659,
+            "mdl_gain_nats": 42.122,
+            "mdl_support": 1.0,
+            "num_synapomorphies": 17
+          },
+          {
+            "u": 25,
+            "v": 30,
+            "mutations": 16.0,
+            "branch_length": 0.030893,
+            "mdl_gain_nats": 4.217,
+            "mdl_support": 0.9855,
+            "num_synapomorphies": 16
+          },
+          {
+            "u": 26,
+            "v": 27,
+            "mutations": 8.0,
+            "branch_length": 0.01014,
+            "mdl_gain_nats": 0.995,
+            "mdl_support": 0.73,
+            "num_synapomorphies": 8
+          },
+          {
+            "u": 26,
+            "v": 29,
+            "mutations": 10.0,
+            "branch_length": 0.017422,
+            "mdl_gain_nats": 6.072,
+            "mdl_support": 0.9977,
+            "num_synapomorphies": 10
+          },
+          {
+            "u": 26,
+            "v": 30,
+            "mutations": 12.63,
+            "branch_length": 0.026461,
+            "mdl_gain_nats": 0.463,
+            "mdl_support": 0.6138,
+            "num_synapomorphies": 6
+          }
+        ],
+        "shunts": []
+      }
+    }
+  }
+}

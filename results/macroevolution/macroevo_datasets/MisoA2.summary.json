@@ -1,0 +1,338 @@
+{
+  "dataset": "MisoA2",
+  "alphabet": "protein",
+  "total_files": 1478,
+  "ok_loci": 1478,
+  "error_loci": 0,
+  "wall_sec": 41.33,
+  "sum_cpu_runtime_sec": 458.8,
+  "mean_taxa": 131.57,
+  "mean_seq_len": 402.6,
+  "total_max_binary_splits": 190030,
+  "total_mdl_resolved_splits": 79118,
+  "polytomy_contracted_frac": 0.5837,
+  "sp_tree_total_splits": 190030,
+  "sp_tree_mdl_supported_splits": 68871,
+  "sp_tree_hard_polytomy_frac": 0.6376,
+  "forced_binary_sp_shared": 51314,
+  "forced_binary_sp_conflict": 138716,
+  "mdl_sp_shared": 29413,
+  "mdl_sp_conflict": 49705,
+  "spurious_discordance_eliminated_frac": 0.6417,
+  "loci_with_sp_shunts": 992,
+  "total_sp_shunts": 5141,
+  "total_sp_interval": 936,
+  "total_sp_sparse": 4205,
+  "total_free_shunts": 8035,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "EOG59P8D8.aln",
+      "mode": "SPARSE",
+      "gain_nats": 484.59,
+      "m": 110,
+      "u": [
+        "Thermobia_domestica"
+      ],
+      "v": [
+        "ZOOTERMOPSIS_NEVADENSIS"
+      ]
+    },
+    {
+      "locus": "EOG5FFBGP.aln",
+      "mode": "SPARSE",
+      "gain_nats": 473.98,
+      "m": 187,
+      "u": [
+        "Cryptocercus_wrighti"
+      ],
+      "v": [
+        "Ctenocephalides_felis"
+      ]
+    },
+    {
+      "locus": "EOG5DV425.aln",
+      "mode": "SPARSE",
+      "gain_nats": 465.1,
+      "m": 112,
+      "u": [
+        "Acanthosoma_haemorrhoidale"
+      ],
+      "v": [
+        "Periplaneta_americana"
+      ]
+    },
+    {
+      "locus": "EOG5QZ623.aln",
+      "mode": "SPARSE",
+      "gain_nats": 426.04,
+      "m": 87,
+      "u": [
+        "Aposthonia_japonica"
+      ],
+      "v": [
+        "Carabus_granulatus"
+      ]
+    },
+    {
+      "locus": "EOG58PK1K.aln",
+      "mode": "SPARSE",
+      "gain_nats": 383.95,
+      "m": 118,
+      "u": [
+        "Prosarthria_teretrirostris"
+      ],
+      "v": [
+        "Timema_cristinae"
+      ]
+    },
+    {
+      "locus": "EOG56T1GG.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 359.53,
+      "m": 93,
+      "u": [
+        "Periplaneta_americana"
+      ],
+      "v": [
+        "Prorhinotermes_simplex"
+      ]
+    },
+    {
+      "locus": "EOG52BVQF.aln",
+      "mode": "SPARSE",
+      "gain_nats": 350.04,
+      "m": 87,
+      "u": [
+        "Carabus_granulatus"
+      ],
+      "v": [
+        "Peruphasma_schultei"
+      ]
+    },
+    {
+      "locus": "EOG50ZPCD.aln",
+      "mode": "SPARSE",
+      "gain_nats": 347.45,
+      "m": 107,
+      "u": [
+        "Cheumatopsyche_sp"
+      ],
+      "v": [
+        "Mastotermes_darwiniensis"
+      ]
+    },
+    {
+      "locus": "EOG50ZPCD.aln",
+      "mode": "SPARSE",
+      "gain_nats": 336.27,
+      "m": 94,
+      "u": [
+        "Epiophlebia_superstes"
+      ],
+      "v": [
+        "Panorpa_vulgaris"
+      ]
+    },
+    {
+      "locus": "EOG5CRJDT.aln",
+      "mode": "SPARSE",
+      "gain_nats": 315.18,
+      "m": 64,
+      "u": [
+        "Nilaparvata_lugens"
+      ],
+      "v": [
+        "Sialis_lutaria"
+      ]
+    },
+    {
+      "locus": "EOG5HHMHJ.aln",
+      "mode": "SPARSE",
+      "gain_nats": 302.94,
+      "m": 169,
+      "u": [
+        "Aretaon_asperrimus"
+      ],
+      "v": [
+        "Galloisiana_yuasai",
+        "Grylloblatta_bifratrilecta"
+      ]
+    },
+    {
+      "locus": "EOG5JDFNX.aln",
+      "mode": "SPARSE",
+      "gain_nats": 277.57,
+      "m": 111,
+      "u": [
+        "Aposthonia_japonica"
+      ],
+      "v": [
+        "Dichochrysa_prasina"
+      ]
+    },
+    {
+      "locus": "EOG5KD526.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 276.59,
+      "m": 66,
+      "u": [
+        "Mantis_religiosa"
+      ],
+      "v": [
+        "Periplaneta_americana"
+      ]
+    },
+    {
+      "locus": "EOG5F7M0T.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 270.94,
+      "m": 54,
+      "u": [
+        "Triodia_sylvina"
+      ],
+      "v": [
+        "Mengenilla_moldrzyki",
+        "Stylops_melittae"
+      ]
+    },
+    {
+      "locus": "EOG52FQZ9.aln",
+      "mode": "SPARSE",
+      "gain_nats": 265.87,
+      "m": 117,
+      "u": [
+        "Cordulegaster_boltonii"
+      ],
+      "v": [
+        "Zorotypus_caudelli"
+      ]
+    },
+    {
+      "locus": "EOG5BG7B3.aln",
+      "mode": "SPARSE",
+      "gain_nats": 260.5,
+      "m": 85,
+      "u": [
+        "Aphis_gossypii"
+      ],
+      "v": [
+        "Haploembia_palaui"
+      ]
+    },
+    {
+      "locus": "EOG5CFXQ8.aln",
+      "mode": "SPARSE",
+      "gain_nats": 258.28,
+      "m": 114,
+      "u": [
+        "Peruphasma_schultei"
+      ],
+      "v": [
+        "Zygaena_fausta"
+      ]
+    },
+    {
+      "locus": "EOG5NGF2H.aln",
+      "mode": "SPARSE",
+      "gain_nats": 257.79,
+      "m": 56,
+      "u": [
+        "Galloisiana_yuasai",
+        "Grylloblatta_bifratrilecta"
+      ],
+      "v": [
+        "Folsomia_candida",
+        "Pogonognathellus_lon_fla",
+        "Sminthurus_vir_nig"
+      ]
+    },
+    {
+      "locus": "EOG5MKKX2.aln",
+      "mode": "SPARSE",
+      "gain_nats": 254.41,
+      "m": 107,
+      "u": [
+        "Aedes_AEGYpti"
+      ],
+      "v": [
+        "Lipara_lucens"
+      ]
+    },
+    {
+      "locus": "EOG5BCC2W.aln",
+      "mode": "SPARSE",
+      "gain_nats": 253.93,
+      "m": 92,
+      "u": [
+        "Ephemera_danica"
+      ],
+      "v": [
+        "Liposcelis_bostrychophila"
+      ]
+    },
+    {
+      "locus": "EOG5B2RC0.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 247.81,
+      "m": 42,
+      "u": [
+        "Eriocrania_subpurpurella"
+      ],
+      "v": [
+        "BOMBYX_MORI",
+        "Parides_arcas",
+        "Polyommatus_icarus"
+      ]
+    },
+    {
+      "locus": "EOG57SQVX.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 245.33,
+      "m": 58,
+      "u": [
+        "Blaberus_atropos"
+      ],
+      "v": [
+        "ZOOTERMOPSIS_NEVADENSIS"
+      ]
+    },
+    {
+      "locus": "EOG5X95Z0.aln",
+      "mode": "SPARSE",
+      "gain_nats": 243.41,
+      "m": 95,
+      "u": [
+        "Acanthocasuarina_muellerianae"
+      ],
+      "v": [
+        "Frankliniella_cephalica"
+      ]
+    },
+    {
+      "locus": "EOG57D7X7.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 234.19,
+      "m": 70,
+      "u": [
+        "Chrysis_viridula"
+      ],
+      "v": [
+        "Nannochorista_philpotti"
+      ]
+    },
+    {
+      "locus": "EOG5SQVBN.aln",
+      "mode": "SPARSE",
+      "gain_nats": 233.3,
+      "m": 115,
+      "u": [
+        "Gryllotalpa_sp"
+      ],
+      "v": [
+        "Cordulegaster_boltonii",
+        "Epiophlebia_superstes"
+      ]
+    }
+  ]
+}

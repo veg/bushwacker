@@ -37,7 +37,7 @@ Every proposed evolutionary structure—an internal tree split `e = (u, v)`, a m
 
 BUSHWHACKER ships with a zero-server, 100% client-side **Rust + WebAssembly** web application ([`docs/index.html`](docs/index.html)) built with the Dieter Rams / Braun industrial functionalist design language (`RhizType`) and high-DPI HTML5 `<canvas>` large-tree rendering inspired by `bigtreeviewer.net`:
 
-- **Alignment $\to$ MDL Graph Mode (Rust WASM):** Drag-and-drop any **FASTA**, **PHYLIP** (strict/relaxed, sequential/interleaved), or **NEXUS** alignment or load built-in presets (*Mammalian Prestin `N = 116`*, *Vertebrate β-Globin `N = 17`*, *Adaptive Polytomy Radiation `N = 64`*, *HGT / Recombination Mosaic `N = 24`*, *Large Radiation Stress `N = 512`*) to induce the MDL tree and reticulate shunts in milliseconds directly in the browser.
+- **Alignment & Character Matrix $\to$ MDL Graph Mode (Rust WASM):** Drag-and-drop any **Nucleotide**, **Protein (`20-state AA` or in-frame CDS `--translate`)**, or **Binary / Discrete / Ordered (`0/1` somatic mutations, copy-number states, morphological traits)** dataset in **FASTA/FAA**, **PHYLIP**, **NEXUS**, or **CSV/TSV** format—or load built-in presets (*Mammalian Prestin CDS & 20-State Protein `N = 116`*, *Human AML Single-Cell Clones Binary CSV `N = 256 × 31 genes`*, *Vertebrate β-Globin `N = 17`*, *Adaptive Polytomy Radiation `N = 64`*, *HGT / Recombination Mosaic `N = 24`*)—to induce the MDL tree, reticulate shunts, and lossless `.bwz` archive in milliseconds directly in the browser.
 - **Big-Tree Newick / NEXUS Explorer Mode:** Paste or upload arbitrary Newick or NEXUS (`BEGIN TREES;` + `TRANSLATE`) trees (or load synthetic 250 / 1,000 / 2,500-tip super-trees) with optional zero-branch-length ($\ell \le \epsilon$) polytomy contraction.
 - **Multi-Scale Visual Encoding:**
   - **Phylogram**, **Cladogram (Equal)**, and **Circular Ring** layouts with smooth pan/zoom, viewport culling, semantic Level-of-Detail (LOD) label thinning, and a live minimap navigator.
@@ -58,16 +58,25 @@ cargo build --release
 ### Usage
 
 ```text
-./target/release/bushwhacker <input.fasta|phylip|nexus> [options]
+./target/release/bushwhacker <input.fasta|faa|phy|nex|csv|tsv> [options]
 
-Supported Input Formats (auto-detected):
-  - FASTA   (.fa, .fasta, .fna)
-  - PHYLIP  (.phy, .phylip; strict 10-char or relaxed, sequential or interleaved)
-  - NEXUS   (.nex, .nexus, .nxs; DATA or CHARACTERS blocks, sequential or interleaved)
+Supported Input Formats & Alphabets (auto-detected):
+  - FASTA / FAA (.fa, .fasta, .fna, .faa; DNA, RNA, 20-state Protein, or 0/1/0-9 discrete states)
+  - PHYLIP      (.phy, .phylip; strict 10-char or relaxed, sequential or interleaved)
+  - NEXUS       (.nex, .nexus, .nxs; DATA or CHARACTERS blocks, sequential or interleaved)
+  - CSV / TSV   (.csv, .tsv; binary 0/1 somatic mutations, unordered K-state traits, ordered copy numbers)
 
 Options:
   -o, --out-newick <PATH>      Output Newick file path (with MDL branch supports & lengths)
   -j, --out-json <PATH>        Output JSON report path (full MDL ledger, splits, & shunts)
+  --protein                    Force 20-state amino-acid Dayhoff-6 MDL (or continuous LG08+CAT8 with --lg-cat)
+  --translate                  Translate in-frame coding nucleotide alignment to 20-state AA
+  --binary                     Force 2-state binary (0/1) character MDL
+  --discrete                   Force unordered K-state discrete character MDL
+  --ordered                    Force ordered Wagner L1 integer state MDL (e.g. single-cell CNAs)
+  --gtr-cat / --lg-cat         Continuous-time reversible rate-mixture MDL (GTR+CAT8 / LG08+CAT8)
+  --compress <PATH.bwz>        Lossless phylogenetic .bwz archive compression across any alphabet
+  --decompress <PATH.bwz>      Bit-identical .bwz archive decompression
   --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting
   --no-shunts                  Disable Stage 4 reticulate shunt peeling
   --min-shunt-sites <N>        Minimum parallel mutations to evaluate a shunt (default: 2)

@@ -227,9 +227,11 @@ def run_bushwhacker(bw_bin: str, fa_path: Path, L: int):
     return mdl_info, bin_info, dt, n_shunts
 
 
-def run_iqtree(iqtree_bin: str, fa_path: Path, prefix: Path, extra_args: list, L: int):
+def run_iqtree(iqtree_bin: str, fa_path: Path, prefix: Path, extra_args: list, L: int, seed: int | None = None):
     t0 = time.time()
     cmd = [iqtree_bin, "-s", str(fa_path), "-pre", str(prefix), "-nt", "1", "-quiet", "-redo"] + extra_args
+    if seed is not None:
+        cmd.extend(["-seed", str(seed)])
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=300)
     dt = time.time() - t0
     tf = Path(str(prefix) + ".treefile")
@@ -251,7 +253,7 @@ def run_fasttree(fasttree_bin: str, fa_path: Path, out_tree: Path, L: int):
     return info, dt
 
 
-def process_dataset(ds_id: int, base_dir: Path, run_ml: bool = True):
+def process_dataset(ds_id: int, base_dir: Path, run_ml: bool = True, seed: int | None = None):
     abadi_dir = base_dir / "abadi_gerth"
     emp_phy = abadi_dir / "empirical" / f"dataset_{ds_id}.phy"
     if not emp_phy.exists():
@@ -328,8 +330,8 @@ def process_dataset(ds_id: int, base_dir: Path, run_ml: bool = True):
                     result[f"{c_set}_bw_time_s"] = c_bw_t
                     result[f"{c_set}_ft_time_s"] = c_ft_t
                     if run_ml:
-                        c_gtr, c_gtr_t = run_iqtree(iqtree_bin, c_fa, tmp_path / f"{c_set}_gtr", ["-m", "GTR+F+I+G4", "-fast"], cL)
-                        c_poly, c_poly_t = run_iqtree(iqtree_bin, c_fa, tmp_path / f"{c_set}_poly", ["-m", "GTR+F+I+G4", "--polytomy", "-fast"], cL)
+                        c_gtr, c_gtr_t = run_iqtree(iqtree_bin, c_fa, tmp_path / f"{c_set}_gtr", ["-m", "GTR+F+I+G4", "-fast"], cL, seed=seed)
+                        c_poly, c_poly_t = run_iqtree(iqtree_bin, c_fa, tmp_path / f"{c_set}_poly", ["-m", "GTR+F+I+G4", "--polytomy", "-fast"], cL, seed=seed)
                         result[f"{c_set}_iqtree_gtr"] = evaluate_against_ref(phyml_tree_info, c_gtr, cL)
                         result[f"{c_set}_iqtree_poly"] = evaluate_against_ref(phyml_tree_info, c_poly, cL)
                         result[f"{c_set}_iqtree_time_s"] = c_gtr_t
@@ -349,15 +351,16 @@ def process_dataset(ds_id: int, base_dir: Path, run_ml: bool = True):
             bic_pre,
             ["-m", "MFP", "-mset", "JC,F81,K80,HKY,SYM,GTR", "-mrate", "E,I,G,I+G", "-cmax", "4"] + ml_Args,
             L,
+            seed=seed,
         )
         emp_gtr_info, emp_gtr_time = run_iqtree(
-            iqtree_bin, emp_fa, tmp_path / "emp_gtr", ["-m", "GTR+F+I+G4"] + ml_Args, L
+            iqtree_bin, emp_fa, tmp_path / "emp_gtr", ["-m", "GTR+F+I+G4"] + ml_Args, L, seed=seed
         )
         emp_poly_info, emp_poly_time = run_iqtree(
-            iqtree_bin, emp_fa, tmp_path / "emp_poly", ["-m", "GTR+F+I+G4", "--polytomy"] + ml_Args, L
+            iqtree_bin, emp_fa, tmp_path / "emp_poly", ["-m", "GTR+F+I+G4", "--polytomy"] + ml_Args, L, seed=seed
         )
         emp_jc_info, emp_jc_time = run_iqtree(
-            iqtree_bin, emp_fa, tmp_path / "emp_jc", ["-m", "JC"] + ml_Args, L
+            iqtree_bin, emp_fa, tmp_path / "emp_jc", ["-m", "JC"] + ml_Args, L, seed=seed
         )
         emp_ft_info, emp_ft_time = run_fasttree(fasttree_bin, emp_fa, tmp_path / "emp.ft.tree", L)
 
@@ -424,10 +427,10 @@ def process_dataset(ds_id: int, base_dir: Path, run_ml: bool = True):
                 sim_fa = Path(str(sim_pre) + ".fa")
                 if sim_fa.exists():
                     s_bw_mdl, s_bw_bin, s_bw_t, s_bw_shunts = run_bushwhacker(bw_bin, sim_fa, L)
-                    s_gtr, s_gtr_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_gtr", ["-m", "GTR+F+I+G4"] + ml_Args, L)
-                    s_poly, s_poly_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_poly", ["-m", "GTR+F+I+G4", "--polytomy"] + ml_Args, L)
-                    s_bic, s_bic_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_bic", ["-m", best_bic_model] + ml_Args, L)
-                    s_jc, s_jc_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_jc", ["-m", "JC"] + ml_Args, L)
+                    s_gtr, s_gtr_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_gtr", ["-m", "GTR+F+I+G4"] + ml_Args, L, seed=seed)
+                    s_poly, s_poly_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_poly", ["-m", "GTR+F+I+G4", "--polytomy"] + ml_Args, L, seed=seed)
+                    s_bic, s_bic_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_bic", ["-m", best_bic_model] + ml_Args, L, seed=seed)
+                    s_jc, s_jc_t = run_iqtree(iqtree_bin, sim_fa, tmp_path / "s_jc", ["-m", "JC"] + ml_Args, L, seed=seed)
                     s_ft, s_ft_t = run_fasttree(fasttree_bin, sim_fa, tmp_path / "s.ft.tree", L)
                     s_bionj_path = tmp_path / "s_gtr.bionj"
                     s_bionj = get_unrooted_splits(s_bionj_path, is_path=True, L=L) if s_bionj_path.exists() else None
@@ -460,6 +463,7 @@ def main():
     parser.add_argument("--end", type=int, required=True)
     parser.add_argument("--base-dir", type=str, default="/home/sergei/bushwhacker_sims")
     parser.add_argument("--fast-only", action="store_true")
+    parser.add_argument("--seed", type=int, default=None, help="Optional fixed random seed passed to IQ-TREE 2 (-seed)")
     args = parser.parse_args()
 
     base_dir = Path(args.base_dir)
@@ -468,7 +472,7 @@ def main():
         if out_json.exists():
             continue
         try:
-            process_dataset(ds_id, base_dir, run_ml=not args.fast_only)
+            process_dataset(ds_id, base_dir, run_ml=not args.fast_only, seed=args.seed)
         except Exception as e:
             sys.stderr.write(f"Dataset {ds_id} error: {e}\n")
 
