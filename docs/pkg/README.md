@@ -3,7 +3,7 @@
 **B**ipartition **U**nification, **S**hunt **H**unting, & **W**eighted **H**ub **A**ggregation via **C**ombinadic **K**olmogorov **E**ntropy **R**eduction
 
 [![Language: Rust](https://img.shields.io/badge/Language-Rust%20%28Edition%202021%29-DEA584.svg)](#installation--rust-cli)
-[![WebApp: Rust WASM](https://img.shields.io/badge/WebApp-GitHub%20Pages%20%28WASM%29-ff4f00.svg)](https://veg.github.io/bushwacker/)
+[![WebApp: Rust WASM](https://img.shields.io/badge/WebApp-GitHub%20Pages%20%28WASM%29-ff4f00.svg)](https://veg.github.io/bushwhacker/)
 [![Technical Report](https://img.shields.io/badge/Technical%20Report-PDF%20%2817%20pp.%29-blue.svg)](paper/bushwhacker_report.pdf)
 
 > *"Clear the statistical underbrush."*
@@ -33,7 +33,7 @@ Every proposed evolutionary structure—an internal tree split `e = (u, v)`, a m
 
 ## Interactive WebApp (Rust + SIMD WebAssembly)
 
-**Live GitHub Pages App:** **[https://veg.github.io/bushwacker/](https://veg.github.io/bushwacker/)**
+**Live GitHub Pages App:** **[https://veg.github.io/bushwhacker/](https://veg.github.io/bushwhacker/)**
 
 BUSHWHACKER ships with a zero-server, 100% client-side **Rust + WebAssembly** web application ([`docs/index.html`](docs/index.html)) built with the Dieter Rams / Braun industrial functionalist design language (`RhizType`) and high-DPI HTML5 `<canvas>` large-tree rendering inspired by `bigtreeviewer.net`:
 
@@ -184,7 +184,7 @@ Full derivations, proofs, and multi-panel figures are available in [`paper/bushw
 ## Repository Structure
 
 ```text
-bushwacker/
+bushwhacker/
 ├── Cargo.toml                             # Rust crate manifest (native rayon + wasm32 wasm-bindgen)
 ├── README.md                              # Project documentation
 ├── .github/workflows/deploy-pages.yml     # GitHub Pages CI/CD workflow for docs/

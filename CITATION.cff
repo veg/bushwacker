@@ -3,7 +3,7 @@ message: "If you use this replication package or Bushwhacker software, please ci
 title: "Evolutionary history from genomes to single cells by lossless compression (Replication Package)"
 version: "1.0.0"
 date-released: "2026-11-12"
-url: "https://github.com/veg/bushwacker"
+url: "https://github.com/veg/bushwhacker"
 license: "MIT"
 authors:
   - family-names: "Kosakovsky Pond"

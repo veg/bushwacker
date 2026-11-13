@@ -45,12 +45,12 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/veg/bushwacker",
+      "identifier": "https://github.com/veg/bushwhacker",
       "relation": "isSupplementTo",
       "scheme": "url"
     },
     {
-      "identifier": "https://veg.github.io/bushwacker/",
+      "identifier": "https://veg.github.io/bushwhacker/",
       "relation": "isDocumentedBy",
       "scheme": "url"
     }
