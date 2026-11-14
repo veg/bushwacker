@@ -1,7 +1,7 @@
 {
   "package": "bushwhacker_science_zenodo_v1.0",
   "total_files": 527,
-  "total_bytes": 92159687,
+  "total_bytes": 92152030,
   "files": {
     ".zenodo.json": {
       "bytes": 2288,
@@ -597,55 +597,55 @@
     },
     "paper/fig1_synthetic_benchmarks.pdf": {
       "bytes": 41559,
-      "sha256": "1278c31cec46e08ef8ef2cd8350d1ea66edab40257ac02ec462e057f01d8fab5"
+      "sha256": "c95aea01952149f6daddc9c1fab52116b088d2c2755ef9e44bdf9bf7b37e68aa"
     },
     "paper/fig3_stress_tests.pdf": {
       "bytes": 46452,
-      "sha256": "422ebfc8a83ac1d33d9d674e9eb69a001d399955bc2b8bc5d7d0693884e63b22"
+      "sha256": "dfbd517d0fbedb29db6160f26afa6dc62a2c327ea793245ab23079816aee675f"
     },
     "paper/fig_didactic_mdl.pdf": {
       "bytes": 39996,
-      "sha256": "ee9208b90bea3b2644172f9aca65db55b987e9dd1735674371150c59c2bd879f"
+      "sha256": "73b0f30068e75c0c372b3fa1050ed37134583df69182979d1f65569a27d2ea0f"
     },
     "paper/fig_kingdom_synthesis.pdf": {
       "bytes": 70591,
-      "sha256": "d837b1b4f5101c04ed8765d063fc7939737341fb584b544e68fe74ef04d86d66"
+      "sha256": "d17b57d9cf98c80d2becfd5472604ae134cfa625338bdbb7d50995c7d3f506f0"
     },
     "paper/fig_prestin_convergence.pdf": {
       "bytes": 84708,
-      "sha256": "9758a1999270ac2da16d9dd1afc8ab68a7623007162fe9f2c09c49dea3deb673"
+      "sha256": "2de8d341c3ad8c4d98f07a7c4feb30a7d97244ae1b52869ec6c2c84527104e7c"
     },
     "paper/fig_science_cancer_singlecell.pdf": {
       "bytes": 80198,
-      "sha256": "864ccf9afbfcc3ba1b8f05ae58c16231e8daff817a23010e7d7dc64f80a60926"
+      "sha256": "572906d04883a7a27432c037212855a40fafec58a1c662a9615e1c49a47a3ae0"
     },
     "paper/fig_science_concept.pdf": {
       "bytes": 82812,
-      "sha256": "1fe502f982064fcd3780513d6e9ee3e9ed51938cd7e042105e41668421e14a33"
+      "sha256": "8167ec9adce4fc433c87f4ea58ebbad5f249bd5915660a318e5fd5508a47483d"
     },
     "paper/fig_science_macroevo_clean.pdf": {
-      "bytes": 80777,
-      "sha256": "ac9b4fe589d542e0a062765ed2f83b05525ea38e97d5509b3e8286c69a398f1e"
+      "bytes": 80786,
+      "sha256": "a21a7bd9d74fa331c46988675649b24f0f3a3abaf1b1fcdb451b1544366d5fea"
     },
     "paper/fig_science_mammalian_atlas.pdf": {
       "bytes": 86893,
-      "sha256": "73b24b1dc1404c62cac858b1f386b62db1f3739b304729de2312bec51992ffe1"
+      "sha256": "a810bccb8a7afbade30d97c0d55b3aaf8191fd6c6716c8ff35dc9add61f88ee8"
     },
     "paper/fig_science_microbial_viral.pdf": {
       "bytes": 85583,
-      "sha256": "61be7fdc711109ed887de130703947633d549ca89a88594d1cda8534e2400ef0"
+      "sha256": "c0c5d88d467b2d7c2cb7d6bf0407ee34f90e00d5c9cf134d44a26087c33120bb"
     },
     "paper/fig_science_performance_sota.pdf": {
       "bytes": 72481,
-      "sha256": "11e87f8c59c16cc88a09be10395a54df2e0c02f407dac09fbc9118470e204268"
+      "sha256": "bcea149aaa03df2c13a1068f1bd42a040c57232719f8d7b64a314a2d9778f389"
     },
     "paper/fig_science_tree_scales.pdf": {
       "bytes": 81639,
-      "sha256": "2b3153ac1bf2d7e042c3cbde76bb64c06492aec211ff3b14795e0b504455fba1"
+      "sha256": "7b28dcc2606728373c07233e29d4834818b70829edc78a7d20e0941cd160c666"
     },
     "paper/fig_supp_chst13_bootstrap.pdf": {
       "bytes": 74528,
-      "sha256": "5cead5f324a6bae0a0ba5eb0230e0e438657340e7b0e304dcc7ea30a8f815930"
+      "sha256": "aab0bea47c07e1a888b3baa7c912dedeb1b46677e9a5f270ab5b99dc343f36e1"
     },
     "paper/references.bib": {
       "bytes": 35192,
@@ -656,16 +656,16 @@
       "sha256": "8030d7867d4094da12e59f3f0a6bc1d646d9c8454518872086d34bf25bbf2a99"
     },
     "paper/science_main.pdf": {
-      "bytes": 706007,
-      "sha256": "88a7d68597d62f61982057fba55d64888d88de2ee0e737c070a174a857c3bb94"
+      "bytes": 701490,
+      "sha256": "0e653941e7d486e47224db5dc0f7c4c91c16a4663acb73ccf91c001313a1b8e8"
     },
     "paper/science_main.tex": {
-      "bytes": 43838,
-      "sha256": "6a67f9d00055cb9f3039876cad6487b34afc6094e55ab98cbc0042560330b9c5"
+      "bytes": 40694,
+      "sha256": "75e29b035ec412e8a80617969de5df1425b3253a30338027574a00518f86fc30"
     },
     "paper/science_supplement.pdf": {
-      "bytes": 789629,
-      "sha256": "62a1509fb9bd6e0440baaf2c8b503a88d72c19329b0044571c60702a70b8495c"
+      "bytes": 789630,
+      "sha256": "a0e2c9807de9c216f6e9e31b02cc746e3ef8cf3423b0d1b75671ccab616ce1eb"
     },
     "paper/science_supplement.tex": {
       "bytes": 103875,
@@ -688,8 +688,8 @@
       "sha256": "0916b618e642e2d295e8b52850378e28c94164316ccf61299b7a1066ab6e74d3"
     },
     "results/fig_science_macroevo_clean.png": {
-      "bytes": 886004,
-      "sha256": "52b96219165a3c393b4118bbc4647e4a1a2ec241fd2acb9da8666ae2be7b394a"
+      "bytes": 885998,
+      "sha256": "0e6dae2adc0f9d1e3623d5f5d36a47ea282738b157b4135957f37be34d547b76"
     },
     "results/fig_science_mammalian_atlas.png": {
       "bytes": 820187,
