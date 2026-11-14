@@ -143,6 +143,679 @@
             "posterior_prob": 0.7935
           }
         ]
+      },
+      "bootstrap_comparison": {
+        "alignment": "data/specimens/CHST13_ENSG00000180767_22mammals.fasta",
+        "iqtree_ufboot_alrt_abayes_newick": "(P001_Platypus:0.0860323075,(P002_Opossum:0.0563088865,P003_Wallaby:0.1028675547)100/1/100:0.1840703617,(((P005_Rock_hyrax:0.1565836410,(P031_Marmoset:0.0597392403,(P032_Rhesus:0.0431697111,(P033_Orangutan:0.0217213131,((P034_Gorilla:0.0044410000,P035_Chimp:0.0055105769)0/0.333/75:0.0000010000,P036_Human:0.0044033635)87.6/0.997/97:0.0084747533)96.3/1/98:0.0189694235)87.6/0.964/93:0.0155503888)99.6/1/98:0.0522256563)1.4/0.469/31:0.0077339788,(((P008_Sloth:0.0615774317,P021_Pika:0.1335215714)60.1/0.825/62:0.0150773006,P023_Guinea_pig:0.1498815828)56.6/0.379/39:0.0023574975,(((((P011_Dolphin:0.0388884772,P012_Cow:0.0720154496)60.8/0.399/91:0.0024164688,P013_Pig:0.0754651423)99/1/100:0.0267477908,P016_Dog:0.0827817441)95.9/1/99:0.0171185282,P018_Megabat:0.1365373877)47.1/0.402/70:0.0051756101,P024_Kangaroo_rat:0.3745900046)81.7/0.74/50:0.0111626212)38.3/0.756/31:0.0049617295)76.2/0.665/32:0.0163909937,((P025_Mouse:0.0385450225,P026_Rat:0.0473050522)100/1/100:0.1590130291,P028_Bushbaby:0.0730630723)72.2/0.523/63:0.0102417696)100/1/100:0.5687467617);",
+        "iqtree_ufboot_contree_newick": "(P001_Platypus:0.0862145387,(P002_Opossum:0.0563205165,P003_Wallaby:0.1028117661)100:0.1838269493,(((P005_Rock_hyrax:0.1564985788,(P031_Marmoset:0.0597042985,(P032_Rhesus:0.0431458459,(P033_Orangutan:0.0217090381,((P034_Gorilla:0.0044390461,P035_Chimp:0.0055078396)75:0.0000026615,P036_Human:0.0044013994)97:0.0084752997)98:0.0189606560)93:0.0155557162)98:0.0521849534)31:0.0077334749,(((P008_Sloth:0.0615553636,P021_Pika:0.1334752080)62:0.0150825771,P023_Guinea_pig:0.1498284719)39:0.0023593200,(((((P011_Dolphin:0.0388799343,P012_Cow:0.0719994783)91:0.0024176725,P013_Pig:0.0754493558)100:0.0267417016,P016_Dog:0.0827610103)99:0.0171162943,P018_Megabat:0.1365008379)70:0.0051690479,P024_Kangaroo_rat:0.3744597167)50:0.0111706910)31:0.0049613944)32:0.0164077704,((P025_Mouse:0.0385356486,P026_Rat:0.0472795037)100:0.1589224937,P028_Bushbaby:0.0730133309)63:0.0102358018)100:0.5683899140);",
+        "iqtree_polytomy_newick": "(P001_Platypus:0.0860323075,(P002_Opossum:0.0563088865,P003_Wallaby:0.1028675547):0.1840703617,(((P005_Rock_hyrax:0.1565836410,(P031_Marmoset:0.0597392403,(P032_Rhesus:0.0431697111,(P033_Orangutan:0.0217213131,(P034_Gorilla:0.0044410000,P035_Chimp:0.0055105769,P036_Human:0.0044033635):0.0084747533):0.0189694235):0.0155503888):0.0522256563):0.0077339788,(((P008_Sloth:0.0615774317,P021_Pika:0.1335215714):0.0150773006,P023_Guinea_pig:0.1498815828):0.0023574975,(((((P011_Dolphin:0.0388884772,P012_Cow:0.0720154496):0.0024164688,P013_Pig:0.0754651423):0.0267477908,P016_Dog:0.0827817441):0.0171185282,P018_Megabat:0.1365373877):0.0051756101,P024_Kangaroo_rat:0.3745900046):0.0111626212):0.0049617295):0.0163909937,((P025_Mouse:0.0385450225,P026_Rat:0.0473050522):0.1590130291,P028_Bushbaby:0.0730630723):0.0102417697):0.5687467617);",
+        "iqtree_raw_newick": "(P001_Platypus:0.0860323075,(P002_Opossum:0.0563088865,P003_Wallaby:0.1028675547):0.1840703617,(((P005_Rock_hyrax:0.1565836410,(P031_Marmoset:0.0597392403,(P032_Rhesus:0.0431697111,(P033_Orangutan:0.0217213131,((P034_Gorilla:0.0044410000,P035_Chimp:0.0055105769):0.0000010000,P036_Human:0.0044033635):0.0084747533):0.0189694235):0.0155503888):0.0522256563):0.0077339788,(((P008_Sloth:0.0615774317,P021_Pika:0.1335215714):0.0150773006,P023_Guinea_pig:0.1498815828):0.0023574975,(((((P011_Dolphin:0.0388884772,P012_Cow:0.0720154496):0.0024164688,P013_Pig:0.0754651423):0.0267477908,P016_Dog:0.0827817441):0.0171185282,P018_Megabat:0.1365373877):0.0051756101,P024_Kangaroo_rat:0.3745900046):0.0111626212):0.0049617295):0.0163909937,((P025_Mouse:0.0385450225,P026_Rat:0.0473050522):0.1590130291,P028_Bushbaby:0.0730630723):0.0102417697):0.5687467617);",
+        "iqtree_std_bs100_newick": "(P001_Platypus:0.0860323075,(P002_Opossum:0.0563088865,P003_Wallaby:0.1028675547)100:0.1840703617,(((P005_Rock_hyrax:0.1565836410,(P031_Marmoset:0.0597392403,(P032_Rhesus:0.0431697111,(P033_Orangutan:0.0217213131,((P034_Gorilla:0.0044410000,P035_Chimp:0.0055105769)84:0.0000010000,P036_Human:0.0044033635)100:0.0084747533)97:0.0189694235)93:0.0155503888)97:0.0522256563)21:0.0077339788,(((P008_Sloth:0.0615774317,P021_Pika:0.1335215714)38:0.0150773006,P023_Guinea_pig:0.1498815828)17:0.0023574975,(((((P011_Dolphin:0.0388884772,P012_Cow:0.0720154496)66:0.0024164688,P013_Pig:0.0754651423)99:0.0267477908,P016_Dog:0.0827817441)93:0.0171185282,P018_Megabat:0.1365373877)35:0.0051756101,P024_Kangaroo_rat:0.3745900046)25:0.0111626212)11:0.0049617295)11:0.0163909937,((P025_Mouse:0.0385450225,P026_Rat:0.0473050522)100:0.1590130291,P028_Bushbaby:0.0730630723)34:0.0102417697)100:0.5687467617);",
+        "iqtree_std_bs100_contree_newick": "(P001_Platypus:0.0857779630,(P002_Opossum:0.0559307831,P003_Wallaby:0.1026677877)100:0.1832281150,((((P005_Rock_hyrax:0.1541415512,(P031_Marmoset:0.0600481693,(P032_Rhesus:0.0427749697,(P033_Orangutan:0.0217322876,((P034_Gorilla:0.0044284425,P035_Chimp:0.0054948062)84:0.0000026615,P036_Human:0.0043910564)100:0.0084932087)97:0.0191275297)93:0.0149948129)97:0.0531227968)21:0.0115315302,((P008_Sloth:0.0615295373,P021_Pika:0.1336227841)38:0.0157268178,P023_Guinea_pig:0.1502430029)17:0.0001292757)16:0.0069975179,(((((P011_Dolphin:0.0387137150,P012_Cow:0.0720641951)66:0.0024183097,P013_Pig:0.0752657984)99:0.0263703375,P016_Dog:0.0832351254)93:0.0175581760,P018_Megabat:0.1361403157)35:0.0037963786,P024_Kangaroo_rat:0.3754430808)25:0.0075238303)11:0.0152428527,((P025_Mouse:0.0411208283,P026_Rat:0.0449551290)100:0.1599150175,P028_Bushbaby:0.0732026151)34:0.0107098180)100:0.5715555514);",
+        "fasttree_sh_newick": "(((P018_Megabat:0.14053,(P016_Dog:0.08157,(P013_Pig:0.07800,(P011_Dolphin:0.04017,P012_Cow:0.07385)0.732:0.00344)1.000:0.02592)0.955:0.01709)0.944:0.01595,(P023_Guinea_pig:0.13957,((P001_Platypus:0.09026,(P002_Opossum:0.06510,P003_Wallaby:0.10424)1.000:0.16262)1.000:0.38330,(P024_Kangaroo_rat:0.29393,(P025_Mouse:0.04460,P026_Rat:0.05193)1.000:0.13000)0.441:0.01584)0.677:0.01232)0.819:0.01770)0.395:0.00125,(P005_Rock_hyrax:0.15012,(P031_Marmoset:0.06110,(P032_Rhesus:0.04756,(P033_Orangutan:0.02427,(P036_Human:0.00498,(P034_Gorilla:0.00501,P035_Chimp:0.00612)0.864:0.00055)0.924:0.00974)0.965:0.02056)0.867:0.01493)0.999:0.05096)0.857:0.01308,((P008_Sloth:0.06038,P021_Pika:0.12841)0.752:0.00940,P028_Bushbaby:0.09350)0.851:0.01286);",
+        "runtimes_1core_sec": {
+          "bw_1core_sec": 0.0204,
+          "bw_live_1core_sec": 0.0188,
+          "bw_live_wall_sec": 0.0278,
+          "ml_raw_1core_sec": 2.9355,
+          "polytomy_1core_sec": 2.9508,
+          "ufboot1000_1core_sec": 3.8373,
+          "std_bs100_cpu_sec": 277.0766,
+          "std_bs100_wall_sec": 281.3153,
+          "fasttree_1core_sec": 0.204
+        },
+        "ml_splits": [
+          {
+            "clade": [
+              "P034_Gorilla",
+              "P035_Chimp"
+            ],
+            "clade_short": [
+              "Gorilla",
+              "Chimp"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": false,
+            "branch_length": 1e-06,
+            "sh_alrt": 0.0,
+            "abayes": 0.333,
+            "ufboot": 75,
+            "std_bs100": 84
+          },
+          {
+            "clade": [
+              "P008_Sloth",
+              "P021_Pika",
+              "P023_Guinea_pig"
+            ],
+            "clade_short": [
+              "Sloth",
+              "Pika",
+              "Guinea_pig"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.002357,
+            "sh_alrt": 56.6,
+            "abayes": 0.379,
+            "ufboot": 39,
+            "std_bs100": 17
+          },
+          {
+            "clade": [
+              "P008_Sloth",
+              "P011_Dolphin",
+              "P012_Cow",
+              "P013_Pig",
+              "P016_Dog",
+              "P018_Megabat",
+              "P021_Pika",
+              "P023_Guinea_pig",
+              "P024_Kangaroo_rat"
+            ],
+            "clade_short": [
+              "Sloth",
+              "Dolphin",
+              "Cow",
+              "Pig",
+              "Dog",
+              "Megabat",
+              "Pika",
+              "Guinea_pig",
+              "Kangaroo_rat"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.004962,
+            "sh_alrt": 38.3,
+            "abayes": 0.756,
+            "ufboot": 31,
+            "std_bs100": 11
+          },
+          {
+            "clade": [
+              "P005_Rock_hyrax",
+              "P031_Marmoset",
+              "P032_Rhesus",
+              "P033_Orangutan",
+              "P034_Gorilla",
+              "P035_Chimp",
+              "P036_Human"
+            ],
+            "clade_short": [
+              "Rock_hyrax",
+              "Marmoset",
+              "Rhesus",
+              "Orangutan",
+              "Gorilla",
+              "Chimp",
+              "Human"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.007734,
+            "sh_alrt": 1.4,
+            "abayes": 0.469,
+            "ufboot": 31,
+            "std_bs100": 21
+          },
+          {
+            "clade": [
+              "P025_Mouse",
+              "P026_Rat",
+              "P028_Bushbaby"
+            ],
+            "clade_short": [
+              "Mouse",
+              "Rat",
+              "Bushbaby"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.010242,
+            "sh_alrt": 72.2,
+            "abayes": 0.523,
+            "ufboot": 63,
+            "std_bs100": 34
+          },
+          {
+            "clade": [
+              "P011_Dolphin",
+              "P012_Cow",
+              "P013_Pig",
+              "P016_Dog",
+              "P018_Megabat",
+              "P024_Kangaroo_rat"
+            ],
+            "clade_short": [
+              "Dolphin",
+              "Cow",
+              "Pig",
+              "Dog",
+              "Megabat",
+              "Kangaroo_rat"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.011163,
+            "sh_alrt": 81.7,
+            "abayes": 0.74,
+            "ufboot": 50,
+            "std_bs100": 25
+          },
+          {
+            "clade": [
+              "P008_Sloth",
+              "P021_Pika"
+            ],
+            "clade_short": [
+              "Sloth",
+              "Pika"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.015077,
+            "sh_alrt": 60.1,
+            "abayes": 0.825,
+            "ufboot": 62,
+            "std_bs100": 38
+          },
+          {
+            "clade": [
+              "P001_Platypus",
+              "P002_Opossum",
+              "P003_Wallaby",
+              "P025_Mouse",
+              "P026_Rat",
+              "P028_Bushbaby"
+            ],
+            "clade_short": [
+              "Platypus",
+              "Opossum",
+              "Wallaby",
+              "Mouse",
+              "Rat",
+              "Bushbaby"
+            ],
+            "in_ref": false,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.016391,
+            "sh_alrt": 76.2,
+            "abayes": 0.665,
+            "ufboot": 32,
+            "std_bs100": 11
+          },
+          {
+            "clade": [
+              "P011_Dolphin",
+              "P012_Cow"
+            ],
+            "clade_short": [
+              "Dolphin",
+              "Cow"
+            ],
+            "in_ref": true,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.002416,
+            "sh_alrt": 60.8,
+            "abayes": 0.399,
+            "ufboot": 91,
+            "std_bs100": 66
+          },
+          {
+            "clade": [
+              "P011_Dolphin",
+              "P012_Cow",
+              "P013_Pig",
+              "P016_Dog",
+              "P018_Megabat"
+            ],
+            "clade_short": [
+              "Dolphin",
+              "Cow",
+              "Pig",
+              "Dog",
+              "Megabat"
+            ],
+            "in_ref": true,
+            "in_bw_stored": false,
+            "in_polytomy": true,
+            "branch_length": 0.005176,
+            "sh_alrt": 47.1,
+            "abayes": 0.402,
+            "ufboot": 70,
+            "std_bs100": 35
+          },
+          {
+            "clade": [
+              "P034_Gorilla",
+              "P035_Chimp",
+              "P036_Human"
+            ],
+            "clade_short": [
+              "Gorilla",
+              "Chimp",
+              "Human"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.008475,
+            "sh_alrt": 87.6,
+            "abayes": 0.997,
+            "ufboot": 97,
+            "std_bs100": 100
+          },
+          {
+            "clade": [
+              "P032_Rhesus",
+              "P033_Orangutan",
+              "P034_Gorilla",
+              "P035_Chimp",
+              "P036_Human"
+            ],
+            "clade_short": [
+              "Rhesus",
+              "Orangutan",
+              "Gorilla",
+              "Chimp",
+              "Human"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.01555,
+            "sh_alrt": 87.6,
+            "abayes": 0.964,
+            "ufboot": 93,
+            "std_bs100": 93
+          },
+          {
+            "clade": [
+              "P011_Dolphin",
+              "P012_Cow",
+              "P013_Pig",
+              "P016_Dog"
+            ],
+            "clade_short": [
+              "Dolphin",
+              "Cow",
+              "Pig",
+              "Dog"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.017119,
+            "sh_alrt": 95.9,
+            "abayes": 1.0,
+            "ufboot": 99,
+            "std_bs100": 93
+          },
+          {
+            "clade": [
+              "P033_Orangutan",
+              "P034_Gorilla",
+              "P035_Chimp",
+              "P036_Human"
+            ],
+            "clade_short": [
+              "Orangutan",
+              "Gorilla",
+              "Chimp",
+              "Human"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.018969,
+            "sh_alrt": 96.3,
+            "abayes": 1.0,
+            "ufboot": 98,
+            "std_bs100": 97
+          },
+          {
+            "clade": [
+              "P011_Dolphin",
+              "P012_Cow",
+              "P013_Pig"
+            ],
+            "clade_short": [
+              "Dolphin",
+              "Cow",
+              "Pig"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.026748,
+            "sh_alrt": 99.0,
+            "abayes": 1.0,
+            "ufboot": 100,
+            "std_bs100": 99
+          },
+          {
+            "clade": [
+              "P031_Marmoset",
+              "P032_Rhesus",
+              "P033_Orangutan",
+              "P034_Gorilla",
+              "P035_Chimp",
+              "P036_Human"
+            ],
+            "clade_short": [
+              "Marmoset",
+              "Rhesus",
+              "Orangutan",
+              "Gorilla",
+              "Chimp",
+              "Human"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.052226,
+            "sh_alrt": 99.6,
+            "abayes": 1.0,
+            "ufboot": 98,
+            "std_bs100": 97
+          },
+          {
+            "clade": [
+              "P025_Mouse",
+              "P026_Rat"
+            ],
+            "clade_short": [
+              "Mouse",
+              "Rat"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.159013,
+            "sh_alrt": 100.0,
+            "abayes": 1.0,
+            "ufboot": 100,
+            "std_bs100": 100
+          },
+          {
+            "clade": [
+              "P002_Opossum",
+              "P003_Wallaby"
+            ],
+            "clade_short": [
+              "Opossum",
+              "Wallaby"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.18407,
+            "sh_alrt": 100.0,
+            "abayes": 1.0,
+            "ufboot": 100,
+            "std_bs100": 100
+          },
+          {
+            "clade": [
+              "P001_Platypus",
+              "P002_Opossum",
+              "P003_Wallaby"
+            ],
+            "clade_short": [
+              "Platypus",
+              "Opossum",
+              "Wallaby"
+            ],
+            "in_ref": true,
+            "in_bw_stored": true,
+            "in_polytomy": true,
+            "branch_length": 0.568747,
+            "sh_alrt": 100.0,
+            "abayes": 1.0,
+            "ufboot": 100,
+            "std_bs100": 100
+          }
+        ],
+        "methods_summary": {
+          "Raw_ML": {
+            "resolved_splits": 19,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 8,
+            "fn": 8,
+            "rf": 16,
+            "nrf": 0.421053,
+            "precision": 0.578947,
+            "recall": 0.578947,
+            "runtime_sec": 2.9355
+          },
+          "IQTREE_polytomy": {
+            "resolved_splits": 18,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 7,
+            "fn": 8,
+            "rf": 15,
+            "nrf": 0.405405,
+            "precision": 0.611111,
+            "recall": 0.578947,
+            "runtime_sec": 2.9508
+          },
+          "UFBoot_10": {
+            "resolved_splits": 19,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 8,
+            "fn": 8,
+            "rf": 16,
+            "nrf": 0.421053,
+            "precision": 0.578947,
+            "recall": 0.578947,
+            "runtime_sec": 3.8373
+          },
+          "UFBoot_30": {
+            "resolved_splits": 19,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 8,
+            "fn": 8,
+            "rf": 16,
+            "nrf": 0.421053,
+            "precision": 0.578947,
+            "recall": 0.578947,
+            "runtime_sec": 3.8373
+          },
+          "UFBoot_50": {
+            "resolved_splits": 15,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 4,
+            "fn": 8,
+            "rf": 12,
+            "nrf": 0.352941,
+            "precision": 0.733333,
+            "recall": 0.578947,
+            "runtime_sec": 3.8373
+          },
+          "UFBoot_70": {
+            "resolved_splits": 12,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 1,
+            "fn": 8,
+            "rf": 9,
+            "nrf": 0.290323,
+            "precision": 0.916667,
+            "recall": 0.578947,
+            "runtime_sec": 3.8373
+          },
+          "UFBoot_95": {
+            "resolved_splits": 8,
+            "max_binary_splits": 19,
+            "tp": 8,
+            "fp": 0,
+            "fn": 11,
+            "rf": 11,
+            "nrf": 0.407407,
+            "precision": 1.0,
+            "recall": 0.421053,
+            "runtime_sec": 3.8373
+          },
+          "SH_aLRT_80": {
+            "resolved_splits": 10,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 1,
+            "fn": 10,
+            "rf": 11,
+            "nrf": 0.37931,
+            "precision": 0.9,
+            "recall": 0.473684,
+            "runtime_sec": 3.8373
+          },
+          "aBayes_75": {
+            "resolved_splits": 11,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 2,
+            "fn": 10,
+            "rf": 12,
+            "nrf": 0.4,
+            "precision": 0.818182,
+            "recall": 0.473684,
+            "runtime_sec": 3.8373
+          },
+          "aBayes_95": {
+            "resolved_splits": 9,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 0,
+            "fn": 10,
+            "rf": 10,
+            "nrf": 0.357143,
+            "precision": 1.0,
+            "recall": 0.473684,
+            "runtime_sec": 3.8373
+          },
+          "SHaLRT80_UFBoot95": {
+            "resolved_splits": 8,
+            "max_binary_splits": 19,
+            "tp": 8,
+            "fp": 0,
+            "fn": 11,
+            "rf": 11,
+            "nrf": 0.407407,
+            "precision": 1.0,
+            "recall": 0.421053,
+            "runtime_sec": 3.8373
+          },
+          "StdBS_50": {
+            "resolved_splits": 11,
+            "max_binary_splits": 19,
+            "tp": 10,
+            "fp": 1,
+            "fn": 9,
+            "rf": 10,
+            "nrf": 0.333333,
+            "precision": 0.909091,
+            "recall": 0.526316,
+            "runtime_sec": 277.0766
+          },
+          "StdBS_70": {
+            "resolved_splits": 10,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 1,
+            "fn": 10,
+            "rf": 11,
+            "nrf": 0.37931,
+            "precision": 0.9,
+            "recall": 0.473684,
+            "runtime_sec": 277.0766
+          },
+          "StdBS_95": {
+            "resolved_splits": 7,
+            "max_binary_splits": 19,
+            "tp": 7,
+            "fp": 0,
+            "fn": 12,
+            "rf": 12,
+            "nrf": 0.461538,
+            "precision": 1.0,
+            "recall": 0.368421,
+            "runtime_sec": 277.0766
+          },
+          "FastTree_Raw": {
+            "resolved_splits": 19,
+            "max_binary_splits": 19,
+            "tp": 12,
+            "fp": 7,
+            "fn": 7,
+            "rf": 14,
+            "nrf": 0.368421,
+            "precision": 0.631579,
+            "recall": 0.631579,
+            "runtime_sec": 0.204
+          },
+          "FastTree_SH70": {
+            "resolved_splits": 16,
+            "max_binary_splits": 19,
+            "tp": 11,
+            "fp": 5,
+            "fn": 8,
+            "rf": 13,
+            "nrf": 0.371429,
+            "precision": 0.6875,
+            "recall": 0.578947,
+            "runtime_sec": 0.204
+          },
+          "FastTree_SH90": {
+            "resolved_splits": 9,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 0,
+            "fn": 10,
+            "rf": 10,
+            "nrf": 0.357143,
+            "precision": 1.0,
+            "recall": 0.473684,
+            "runtime_sec": 0.204
+          },
+          "Bushwhacker_MDL": {
+            "resolved_splits": 9,
+            "max_binary_splits": 19,
+            "tp": 9,
+            "fp": 0,
+            "fn": 10,
+            "rf": 10,
+            "nrf": 0.357143,
+            "precision": 1.0,
+            "recall": 0.473684,
+            "runtime_sec": 0.0204
+          },
+          "Bushwhacker_MDL_live_T1": {
+            "resolved_splits": 12,
+            "max_binary_splits": 19,
+            "tp": 10,
+            "fp": 2,
+            "fn": 9,
+            "rf": 11,
+            "nrf": 0.354839,
+            "precision": 0.833333,
+            "recall": 0.526316,
+            "runtime_sec": 0.0188
+          }
+        }
       }
     },
     "ENSG00000184731": {

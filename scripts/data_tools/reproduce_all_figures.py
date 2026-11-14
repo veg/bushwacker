@@ -25,6 +25,7 @@ SCRIPTS = [
     "figS4_prestin_convergence.py",
     "figS5_kingdom_synthesis.py",
     "figS6_cancer_singlecell.py",
+    "figS7_chst13_bootstrap.py",
 ]
 
 EXPECTED_PDFS = [
@@ -40,6 +41,7 @@ EXPECTED_PDFS = [
     "fig_prestin_convergence.pdf",
     "fig_kingdom_synthesis.pdf",
     "fig_science_cancer_singlecell.pdf",
+    "fig_supp_chst13_bootstrap.pdf",
 ]
 
 

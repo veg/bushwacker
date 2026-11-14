@@ -49,7 +49,7 @@ Expected pass invariants checked by `reproduce_specimens_and_verify.py`:
 ## 3. Claim-to-Artifact Traceability
 
 - **Benchmark Tables & Figures:** All plotted values in `scripts/figures/*.py` are read verbatim from JSON ledgers in `results/` or live `bushwhacker` outputs in `data/specimens/`.
-- **Main Text / Supplement Citations (`paper/`):** `science_supplement.bbl` contains `91` entries (`1..49` identical to `science_main.bbl`; `50..91` supplement-only). Cross-references cover `Eqs. 1–9`, `Figs. 1–6`, `Figs. S1–S6`, and `Tables S1–S11`.
+- **Main Text / Supplement Citations (`paper/`):** `science_supplement.bbl` contains `91` entries (`1..49` identical to `science_main.bbl`; `50..91` supplement-only). Cross-references cover `Eqs. 1–9`, `Figs. 1–6`, `Figs. S1–S7`, and `Tables S1–S11`.
 - **Single-Cell Benchmarks:** `scripts/benchmarks/run_cancer_singlecell_bench.py` enforces `assert_zero_leakage_csv()` and `FORBIDDEN_METADATA_TOKENS` so anonymized taxa (`T00000..`) never expose clinical labels, timepoints, sample compartments, or clone sizes prior to post-hoc enrichment.
 
 ---

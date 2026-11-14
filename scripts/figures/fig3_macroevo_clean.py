@@ -249,7 +249,7 @@ def draw_empirical_tanglegram(ax, gene_payload, ref_nwk, ink, subink, blue, rose
     ax.set_ylim(-1.85, 23.6)
     ax.axis("off")
 
-    x_ml0, x_ml1 = 0.010, 0.242
+    x_ml0, x_ml1 = 0.008, 0.280
     x_bw_tip, x_bw_root = 0.692, 0.985
 
     def map_ml_x(ux):
@@ -257,6 +257,15 @@ def draw_empirical_tanglegram(ax, gene_payload, ref_nwk, ink, subink, blue, rose
 
     def map_bw_x(ux):
         return x_bw_root - ux * (x_bw_root - x_bw_tip)
+
+    bc = gene_payload.get("bootstrap_comparison", {})
+    rt_bc = bc.get("runtimes_1core_sec", {})
+    ufboot_by_split = {}
+    for rec in bc.get("ml_splits", []):
+        lv = frozenset(rec["clade"])
+        if 1 < len(lv) < len(all_tips) - 1:
+            ufboot_by_split[frozenset([lv, frozenset(all_tips - lv)])] = int(rec["ufboot"])
+    conf_ufboots = []
 
     tips_list = list(all_tips)
     cross_counts = {nm: 0 for nm in tips_list}
@@ -273,14 +282,29 @@ def draw_empirical_tanglegram(ax, gene_payload, ref_nwk, ink, subink, blue, rose
         for c in u["children"]:
             cx, cy = map_ml_x(c["_x"]), c["_y"]
             is_conf = False
+            sp = None
             if c["children"] and 1 < len(c["_leaves"]) < len(all_tips) - 1:
                 sp = frozenset([frozenset(c["_leaves"]), frozenset(all_tips - c["_leaves"])])
                 is_conf = sp not in ref_splits
             col = rose if is_conf else "#64748B"
-            lw = 1.20 if is_conf else 0.72
+            uf = ufboot_by_split.get(sp) if (is_conf and sp is not None) else None
+            if is_conf and uf is not None:
+                conf_ufboots.append(uf)
+            is_low_uf = is_conf and (uf is not None) and (uf < 50)
+            lw = 1.12 if is_low_uf else (1.24 if is_conf else 0.72)
+            ls = (0, (2.2, 1.3)) if is_low_uf else "-"
             z = 4 if is_conf else 2
             ax.plot([ux, ux], [uy, cy], color="#64748B", lw=0.72, zorder=2)
-            ax.plot([ux, cx], [cy, cy], color=col, lw=lw, solid_capstyle="round", zorder=z)
+            ax.plot([ux, cx], [cy, cy], color=col, lw=lw, ls=ls, solid_capstyle="round", zorder=z)
+            if is_conf and uf is not None:
+                lbl_y = cy + 0.16 if cy > uy else cy - 0.16
+                va = "bottom" if cy > uy else "top"
+                ax.text(
+                    0.5 * (ux + cx), lbl_y, f"{uf}",
+                    fontsize=4.65, fontweight="bold", color=rose, ha="center", va=va,
+                    bbox=dict(boxstyle="square,pad=0.03", fc="white", ec="none", alpha=0.88),
+                    zorder=5,
+                )
             draw_ml(c)
 
     draw_ml(ml_tree)
@@ -331,17 +355,27 @@ def draw_empirical_tanglegram(ax, gene_payload, ref_nwk, ink, subink, blue, rose
 
     draw_bw(bw_tree)
 
-    ax.text(0.125, 22.9, "Standard ML (bifurcating)", fontsize=6.3, fontweight="bold", color=rose, ha="center")
-    ax.text(0.125, 21.8, "8 conflicting splits", fontsize=5.85, color=rose, ha="center")
+    t_uf = float(rt_bc.get("ufboot1000_1core_sec", 3.84))
+    t_bw = float(rt_bc.get("bw_1core_sec", 0.02))
+    uf_lo = min(conf_ufboots) if conf_ufboots else 31
+    uf_hi = max(conf_ufboots) if conf_ufboots else 75
 
-    ax.text(0.835, 22.9, "Bushwhacker (MDL)", fontsize=6.3, fontweight="bold", color=blue, ha="center")
-    ax.text(0.835, 21.8, r"0 conflicts · 9 clades ($P_{\mathrm{local}}$ = 0.82–1.0)", fontsize=5.85, color=blue, ha="center")
+    ax.text(0.140, 22.9, "Standard ML + UFBoot", fontsize=6.2, fontweight="bold", color=rose, ha="center")
+    ax.text(0.140, 21.8, f"8 conflicts (UFB {uf_lo}–{uf_hi}% · {t_uf:.1f} s)", fontsize=5.55, color=rose, ha="center")
 
-    ax.text(0.010, -1.22, r"$\it{CHST13}$ (1,176 bp, 22 mammals)",
-            fontsize=5.95, color=subink, ha="left", va="center", clip_on=False)
-    ax.scatter([0.675], [-1.22], s=16, facecolor="white", edgecolor=blue, linewidth=1.0, clip_on=False, zorder=6)
-    ax.text(0.695, -1.22, r"Mutation-free hub ($\Delta L \leq 0$)",
-            fontsize=5.95, fontweight="bold", color=blue, ha="left", va="center", clip_on=False)
+    ax.text(0.830, 22.9, "Bushwhacker (MDL)", fontsize=6.2, fontweight="bold", color=blue, ha="center")
+    ax.text(0.830, 21.8, rf"0 conflicts · 9 clades ($P_{{\mathrm{{local}}}}$ 0.82–1.0 · {t_bw:.2f} s)",
+            fontsize=5.45, color=blue, ha="center")
+
+    ax.text(0.008, -1.22, r"$\it{CHST13}$ (1,176 bp, 22 mammals)",
+            fontsize=5.55, color=subink, ha="left", va="center", clip_on=False)
+    ax.plot([0.360, 0.390], [-1.22, -1.22], color=rose, lw=1.18, clip_on=False)
+    ax.text(0.398, -1.22, r"UFB $\geq$50%", fontsize=5.35, color=rose, ha="left", va="center", clip_on=False)
+    ax.plot([0.514, 0.544], [-1.22, -1.22], color=rose, lw=1.08, ls=(0, (2.2, 1.3)), clip_on=False)
+    ax.text(0.552, -1.22, "<50%", fontsize=5.35, color=rose, ha="left", va="center", clip_on=False)
+    ax.scatter([0.662], [-1.22], s=15, facecolor="white", edgecolor=blue, linewidth=1.0, clip_on=False, zorder=6)
+    ax.text(0.680, -1.22, r"Mutation-free hub ($\Delta L \leq 0$)",
+            fontsize=5.65, fontweight="bold", color=blue, ha="left", va="center", clip_on=False)
 
 
 def draw_sync_quartet(ax, yc, title, tip_labels, color_win="#1D4ED8", color_base="#64748B", ink="#0F172A"):
