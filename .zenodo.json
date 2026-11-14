@@ -6,27 +6,33 @@
   "creators": [
     {
       "name": "Kosakovsky Pond, Sergei L.",
-      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA"
+      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA",
+      "orcid": "0000-0003-4817-4029"
     },
     {
       "name": "Martin, Darren P.",
-      "affiliation": "Institute of Infectious Disease and Molecular Medicine, Department of Integrative Biomedical Sciences, University of Cape Town, Cape Town, South Africa"
+      "affiliation": "Institute of Infectious Disease and Molecular Medicine, Department of Integrative Biomedical Sciences, University of Cape Town, Cape Town, South Africa",
+      "orcid": "0000-0002-8785-0870"
     },
     {
       "name": "Weaver, Steven",
-      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA"
+      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA",
+      "orcid": "0000-0002-6931-7191"
     },
     {
       "name": "Callan, Danielle",
-      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA"
+      "affiliation": "Institute for Genomics and Evolutionary Medicine, Department of Biology, Temple University, Philadelphia, PA, USA",
+      "orcid": "0009-0009-3690-8372"
     },
     {
       "name": "Pond, Stephanie J. K.",
-      "affiliation": "Bioinnovation and Genomic Sciences Division, Translational Genomics Research Institute, Phoenix, AZ, USA"
+      "affiliation": "Bioinnovation and Genomic Sciences Division, Translational Genomics Research Institute, Phoenix, AZ, USA",
+      "orcid": "0000-0002-8288-2232"
     },
     {
       "name": "Nekrutenko, Anton",
-      "affiliation": "Department of Biochemistry and Molecular Biology, The Pennsylvania State University, University Park, PA, USA"
+      "affiliation": "Department of Biochemistry and Molecular Biology, The Pennsylvania State University, University Park, PA, USA",
+      "orcid": "0000-0002-5987-8032"
     }
   ],
   "license": "mit",
@@ -45,6 +51,11 @@
   ],
   "related_identifiers": [
     {
+      "identifier": "10.5281/zenodo.24222787",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    },
+    {
       "identifier": "https://github.com/veg/bushwhacker",
       "relation": "isSupplementTo",
       "scheme": "url"
@@ -55,6 +66,6 @@
       "scheme": "url"
     }
   ],
-  "notes": "This work was supported in part by the US National Institutes of Health (grants R01GM151683, R01GM144468, U24AI183870, and R01HG009299 to S.L.K.P. and A.N.) and the US National Science Foundation (grants DBI-2419522 and DEB-2216289 to S.L.K.P.).",
+  "notes": "This work was supported in part by the US National Institutes of Health (grants R01GM151683, R01GM144468, U24AI183870, and R01HG009299 to S.L.K.P. and A.N.) and the US National Science Foundation (grant DBI-2419522 to S.L.K.P. and A.N.).",
   "version": "1.0.0"
 }
