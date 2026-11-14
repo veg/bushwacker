@@ -308,7 +308,7 @@ def draw_hair_cell_complex(ax, coch_4m, prestin_json, colors):
     # Subtitle & metric key at top
     ax.text(
         50, 96.5,
-        f"Cochlear complex ({n_sp_aa}/{len(coch_4m)} sp. · {n_free_aa}/{len(coch_4m)} free)",
+        f"Cochlear complex ({n_sp_aa}/{len(coch_4m)} sp.-tree · 50% echolocator links)",
         fontsize=6.4, fontweight="bold", color=INK, ha="center", va="center",
     )
     ax.text(
@@ -437,7 +437,7 @@ def main() -> None:
 
     n_prot = tp["n_proteins_completed"]
     draw_panel_header(fig, 0.012, 0.968, "A", r"$\it{Prestin}$ sonar network (116 mammals)")
-    draw_panel_header(fig, 0.552, 0.968, "B", f"Species-tree fit & ILS ({n_prot:,} proteins)")
+    draw_panel_header(fig, 0.552, 0.968, "B", f"Species-tree fit & discordance ({n_prot:,} proteins)")
     draw_panel_header(fig, 0.012, 0.472, "C", "Conversion vs. parallel sites (882 mammals)")
     draw_panel_header(fig, 0.398, 0.472, "D", "Guild neutrality vs. cochlear bundle")
 
@@ -467,11 +467,11 @@ def main() -> None:
     ax_b.plot(x, prot_ils, "-s", color=AMBER, lw=1.25, ms=3.1, zorder=4)
     ax_b.axhline(dna_base, color=TEAL, ls="--", lw=0.85, zorder=3)
 
-    ax_b.text(0.05, dna_base + 2.8, f"Coding-DNA ceiling ({dna_base:.1f}%)",
+    ax_b.text(0.05, dna_base + 2.8, f"Coding-DNA baseline ({dna_base:.1f}%)",
               fontsize=6.2, fontweight="bold", color=TEAL, ha="left", va="bottom")
     ax_b.text(2.45, 70.0, f"Species tree compresses better\nthan free gene tree ({overall_sp:.1f}% \u2192 {sp_pref[-1]:.1f}%)",
               fontsize=6.2, fontweight="bold", color=BLUE, ha="center", va="top")
-    ax_b.text(3.30, 11.2, f"Protein ILS ({overall_ils:.1f}%)",
+    ax_b.text(3.30, 11.2, f"Protein discordance ({overall_ils:.1f}%)",
               fontsize=6.2, fontweight="bold", color=AMBER, ha="center", va="top")
 
     ax_b.scatter([x[-1]], [sp_pref[-1]], s=26, color=BLUE, edgecolor="white", linewidth=0.65, zorder=6)

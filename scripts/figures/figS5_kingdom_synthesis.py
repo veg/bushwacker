@@ -160,8 +160,8 @@ def main() -> None:
     fam_map = {r["family"]: r for r in toga_sum.get("gene_family_shunt_enrichment", [])}
     hb = fam_map.get("Hemoglobin / Globin Clusters", {"interval_gene_pct": 40.0, "interval_fold_enrichment": 6.62})
     cyp = fam_map.get("Xenobiotic Detoxification (CYP/UGT/AKR/GST)", {"interval_gene_pct": 32.76, "interval_fold_enrichment": 5.42})
-    olf = fam_map.get("Olfactory & Chemosensory Receptors", {"interval_gene_pct": 26.35, "interval_fold_enrichment": 4.36})
-    znf = fam_map.get("KRAB-Zinc Finger (ZNF) Transcription Arrays", {"interval_gene_pct": 23.79, "interval_fold_enrichment": 3.94})
+    olf = fam_map.get("Olfactory Receptors (OR)", {"interval_gene_pct": 26.32, "interval_fold_enrichment": 4.36})
+    znf = fam_map.get("KRAB / C2H2 Zinc-Finger Arrays", {"interval_gene_pct": 23.80, "interval_fold_enrichment": 3.94})
     cad = fam_map.get("Cadherins, Keratins, Mucins & Extracellular Matrix", {"interval_gene_pct": 18.06, "interval_fold_enrichment": 2.99})
     oth = fam_map.get("Other Coding Loci", {"interval_gene_pct": 4.15, "interval_fold_enrichment": 0.69})
 
