@@ -122,7 +122,7 @@ python3 scripts/data_tools/reproduce_all_figures.py --compile-latex
 
 ## Summary of Benchmark & Stress-Test Results
 
-Full derivations, proofs, and multi-panel figures are available in [`paper/bushwhacker_report.pdf`](paper/bushwhacker_report.pdf).
+Full derivations, empirical cohorts, and multi-panel figures are available in [`paper/science_main.pdf`](paper/science_main.pdf) and [`paper/science_supplement.pdf`](paper/science_supplement.pdf).
 
 ### 1. Polytomy Calibration & Support-Threshold Comparison (`N = 20` Taxa, 16 Zero-Length Polytomy Branches)
 
@@ -195,26 +195,24 @@ Full derivations, proofs, and multi-panel figures are available in [`paper/bushw
 bushwhacker/
 ├── Cargo.toml                             # Rust crate manifest (native rayon + wasm32 wasm-bindgen)
 ├── README.md                              # Project documentation
-├── .github/workflows/deploy-pages.yml     # GitHub Pages CI/CD workflow for docs/
-├── src/
-│   ├── lib.rs                             # Native Rust + SIMD + WASM BUSHWHACKER core engine
-│   └── main.rs                            # Native Rust CLI binary
-├── docs/
-│   ├── index.html                         # Interactive WebApp (Dieter Rams / Braun UI + Big-Tree Canvas)
-│   ├── pkg/                               # Compiled Rust WebAssembly bundle (wasm-pack)
-│   └── examples/                          # Empirical alignments (prestin.fasta, bglobin.fasta)
+├── AGENTS.md                              # Automated verification & scientific audit contract
+├── DATA_SOURCES.md                        # Dataset accessions & external corpus provenance
+├── MANIFEST_SHA256.json                   # SHA-256 verification ledger across package files
+├── src/                                   # Native Rust + SIMD + WASM engine (CLI & core library)
+├── docs/                                  # Interactive WebApp (Rust WASM bundle & examples)
 ├── python/
 │   ├── bushwhacker.py                     # Reference Python CLI
 │   └── mdl_phylo.py                       # Reference Python/NumPy MDL engine
-├── benchmarks/
-│   ├── benchmark_first_principles.py      # 5-suite synthetic & empirical benchmark harness
-│   ├── benchmark_results.json             # Executed 5-suite benchmark outputs
-│   ├── stress_test_vs_paradigms.py        # 5-axis adversarial stress-test harness vs. ML/Bayesian/NJ/MP
-│   ├── stress_test_results.json           # Executed stress-test outputs
-│   └── generate_report_figures.py         # Publication vector PDF figure generator
+├── data/                                  # Curated specimen alignments & reproduction inputs
+├── results/                               # Precomputed benchmark JSON ledgers & figure PNGs
+├── scripts/
+│   ├── benchmarks/                        # Cross-domain & single-cell benchmark harnesses
+│   ├── figures/                           # Main (Figs. 1–6) & supplementary (Figs. S1–S7) figure generators
+│   └── data_tools/                        # Manifest, specimen, & LaTeX reproduction harnesses
 └── paper/
-    ├── bushwhacker_report.pdf             # Compiled 17-page technical report
-    ├── bushwhacker_report.tex             # LaTeX source manuscript
-    ├── fig1_synthetic_benchmarks.pdf      # Figure 1 (4-regime synthetic benchmarks)
-    └── fig3_stress_tests.pdf              # Figure 3 (5-axis ruthless stress tests)
+    ├── science_main.tex                   # Main Science manuscript LaTeX source
+    ├── science_main.pdf                   # Compiled main Science manuscript
+    ├── science_supplement.tex             # Supplementary Materials LaTeX source
+    ├── science_supplement.pdf             # Compiled Supplementary Materials
+    └── fig*.pdf                           # Publication vector PDF figures (Figs. 1–6 & S1–S7)
 ```

@@ -1,7 +1,7 @@
 {
   "package": "bushwhacker_science_zenodo_v1.0",
   "total_files": 527,
-  "total_bytes": 92152030,
+  "total_bytes": 92152138,
   "files": {
     ".zenodo.json": {
       "bytes": 2288,
@@ -32,8 +32,8 @@
       "sha256": "2541240f6ae94575d0c5cc5cd3f64c43876145208094f27be595f8737e63d61f"
     },
     "README.md": {
-      "bytes": 17424,
-      "sha256": "db95c08ffe9b2547ded7fa357ea004768f2fae2470b019283660139a14144b9a"
+      "bytes": 17532,
+      "sha256": "e7fce03605948605db0dc2ce8e81b77e01e356c2f8989be659ff2286aa2786bb"
     },
     "data/DATA_MANIFEST.json": {
       "bytes": 26471,
@@ -657,7 +657,7 @@
     },
     "paper/science_main.pdf": {
       "bytes": 701490,
-      "sha256": "0e653941e7d486e47224db5dc0f7c4c91c16a4663acb73ccf91c001313a1b8e8"
+      "sha256": "95b6947786e0f8d8d988e4253989d6c4123c7c1303a6bee8d7b66e50dd8f4338"
     },
     "paper/science_main.tex": {
       "bytes": 40694,
