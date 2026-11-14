@@ -1,7 +1,7 @@
 {
   "package": "bushwhacker_science_zenodo_v1.0",
   "total_files": 527,
-  "total_bytes": 92168685,
+  "total_bytes": 92170673,
   "files": {
     ".zenodo.json": {
       "bytes": 2288,
@@ -656,20 +656,20 @@
       "sha256": "8030d7867d4094da12e59f3f0a6bc1d646d9c8454518872086d34bf25bbf2a99"
     },
     "paper/science_main.pdf": {
-      "bytes": 701479,
-      "sha256": "3be940e7a80922f8909dc0248d2fedae393a80287664044a1537191fa516255d"
+      "bytes": 701778,
+      "sha256": "77ed49d2fbb6f334440a17abf71d87fb93aa7cc509d2c7db9bb1ae4e077de018"
     },
     "paper/science_main.tex": {
-      "bytes": 40694,
-      "sha256": "866ee41e5a38afd91f48714fda42ef456accf206eeb83d6e3af74253e7473595"
+      "bytes": 41090,
+      "sha256": "7947834471f709867a485ef597196386823e2226b070890d59717d3ebc705749"
     },
     "paper/science_supplement.pdf": {
-      "bytes": 789641,
-      "sha256": "0c486c881df3bf4e632dc3ba01110988bac3d8607dce2db36f6eab872767d20e"
+      "bytes": 790256,
+      "sha256": "e4716a383c1effb7fc6c95c465240722c56e283909b092d8f523a4104d60ecfd"
     },
     "paper/science_supplement.tex": {
-      "bytes": 103875,
-      "sha256": "d7a1bbdac49cf9b0b76ebf75484502e7df1dcff1e64b9dd3571d3a84559ff39f"
+      "bytes": 104553,
+      "sha256": "7637290f5a2532472c7f36492c664d0b105ee52fb21978da8034f9e91819a973"
     },
     "paper/sciencemag.bst": {
       "bytes": 28804,
