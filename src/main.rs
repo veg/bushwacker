@@ -4,10 +4,14 @@ use std::fs;
 use std::path::Path;
 use std::process;
 
-use bushwhacker::discrete::{infer_discrete_mdl, parse_discrete_file, DiscreteMode};
+use bushwhacker::discrete::{
+    encode_discrete_sequences, infer_discrete_mdl, parse_discrete_file, parse_discrete_str,
+    DiscreteMode,
+};
 use bushwhacker::{
     compress_alignment_to_bwz, configure_thread_pool, decompress_alignment_from_bwz,
-    parse_alignment_file, BushwhackerEngine, BushwhackerResult,
+    detect_sequence_alphabet_kind, looks_like_csv_or_tsv_matrix, parse_alignment_str,
+    BushwhackerEngine, BushwhackerResult,
 };
 
 fn print_usage(prog: &str) {
@@ -32,6 +36,7 @@ fn print_usage(prog: &str) {
            -d, --decompress <PATH>      Decompress input .bwz archive into FASTA at <PATH>\n  \
            --protein                    Force 20-state amino-acid MDL mode (auto-detected by default)\n  \
            --translate                  Translate in-frame nucleotide CDS to 20-state protein before MDL\n  \
+           --binary                     Force unordered 2-state (0/1) discrete character MDL\n  \
            --discrete                   Unordered K-state discrete character-matrix MDL (2 <= K <= 32)\n  \
            --ordered                    Ordered Wagner K-state copy-number / genotype MDL (0..K-1)\n  \
            --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting\n  \
@@ -40,7 +45,8 @@ fn print_usage(prog: &str) {
            --no-mult-pen                Ablation: omit Rissanen branch multiplicity penalty\n  \
            --empirical-alpha            Ablation: estimate Gamma(alpha, alpha) rate shape from Fitch steps\n  \
            -T, --threads <N>            Worker threads for parallel MDL induction (default: all cores)\n  \
-           -h, --help                   Print this help message"
+           -h, --help                   Print this help message\n  \
+           -V, --version                Print version information"
     );
 }
 
@@ -280,6 +286,9 @@ fn main() {
     let mut force_protein = false;
     let mut translate_coding = false;
     let mut discrete_mode: Option<DiscreteMode> = None;
+    // Output `alphabet` label for the flagged discrete path; matches the
+    // `alphabet_mode` vocabulary emitted by the WASM dispatcher.
+    let mut discrete_label: &str = "discrete";
     let mut min_shunt_sites: usize = 2;
     let mut no_mult_pen = false;
     let mut empirical_alpha = false;
@@ -290,6 +299,10 @@ fn main() {
         match args[i].as_str() {
             "-h" | "--help" => {
                 print_usage(prog);
+                process::exit(0);
+            }
+            "-V" | "--version" => {
+                println!("bushwhacker {}", env!("CARGO_PKG_VERSION"));
                 process::exit(0);
             }
             "-o" | "--out-newick" => {
@@ -346,11 +359,16 @@ fn main() {
             "--translate" => {
                 translate_coding = true;
             }
+            "--binary" => {
+                discrete_mode = Some(DiscreteMode::Unordered);
+                discrete_label = "binary";
+            }
             "--discrete" => {
                 discrete_mode = Some(DiscreteMode::Unordered);
             }
             "--ordered" => {
                 discrete_mode = Some(DiscreteMode::Ordered);
+                discrete_label = "ordered";
             }
             "--no-coding" => {
                 no_coding = true;
@@ -462,61 +480,98 @@ fn main() {
     engine.no_mult_pen = no_mult_pen;
     engine.empirical_alpha = empirical_alpha;
 
+    // The contract-tree input is shared by every inference path below; read it
+    // once instead of duplicating the load in each branch.
+    let starting_tree: Option<String> = contract_tree.as_ref().map(|p| {
+        fs::read_to_string(p).unwrap_or_else(|e| {
+            eprintln!("Error reading input tree '{p}': {e}");
+            process::exit(1);
+        })
+    });
+    let starting_newick: Option<(&str, bool)> = starting_tree.as_deref().map(|s| (s, false));
+
     let (names, seqs_opt, alphabet_label, res) = if let Some(d_mode) = discrete_mode {
         let cm = parse_discrete_file(Path::new(&fasta)).unwrap_or_else(|e| {
             eprintln!("Error reading discrete character matrix '{fasta}': {e}");
             process::exit(1);
         });
-        let r = if let Some(ref in_tree_path) = contract_tree {
-            let in_nwk = fs::read_to_string(in_tree_path).unwrap_or_else(|e| {
-                eprintln!("Error reading input tree '{in_tree_path}': {e}");
-                process::exit(1);
-            });
-            infer_discrete_mdl(&engine, &cm, d_mode, Some((&in_nwk, false))).unwrap_or_else(|e| {
-                eprintln!("Error contracting tree '{in_tree_path}' on '{fasta}': {e}");
-                process::exit(1);
-            })
-        } else {
-            infer_discrete_mdl(&engine, &cm, d_mode, None).unwrap_or_else(|e| {
-                eprintln!("Error running discrete BUSHWHACKER on '{fasta}': {e}");
-                process::exit(1);
-            })
-        };
-        let alpha_lbl = match d_mode {
-            DiscreteMode::Unordered => "discrete_unordered",
-            DiscreteMode::Ordered => "discrete_ordered",
-        };
-        (cm.names, None, alpha_lbl, r)
+        let r = infer_discrete_mdl(&engine, &cm, d_mode, starting_newick).unwrap_or_else(|e| {
+            eprintln!("Error running discrete BUSHWHACKER on '{fasta}': {e}");
+            process::exit(1);
+        });
+        (cm.names, None, discrete_label, r)
     } else {
-        let (nms, sqs) = parse_alignment_file(Path::new(&fasta)).unwrap_or_else(|e| {
+        // Mirror the WASM `auto` dispatch in `infer_any_alignment_json`: CSV/TSV
+        // character matrices and 0/1 or 0..K-1 alignment-format inputs route to
+        // the discrete engine; protein and nucleotide stay on the primary engine.
+        let input_text = fs::read_to_string(&fasta).unwrap_or_else(|e| {
             eprintln!("Error reading alignment '{fasta}': {e}");
             process::exit(1);
         });
-        let is_prot =
-            force_protein || translate_coding || bushwhacker::protein::is_protein_alignment(&sqs);
-        let r = if let Some(ref in_tree_path) = contract_tree {
-            let in_nwk = fs::read_to_string(in_tree_path).unwrap_or_else(|e| {
-                eprintln!("Error reading input tree '{in_tree_path}': {e}");
+        if looks_like_csv_or_tsv_matrix(&input_text) {
+            let cm = parse_discrete_str(&input_text).unwrap_or_else(|e| {
+                eprintln!("Error reading discrete character matrix '{fasta}': {e}");
                 process::exit(1);
             });
-            engine
-                .infer_with_starting_newick(&nms, &sqs, &in_nwk, false)
-                .unwrap_or_else(|e| {
-                    eprintln!("Error contracting tree '{in_tree_path}' on '{fasta}': {e}");
-                    process::exit(1);
-                })
-        } else {
-            engine.infer(&nms, &sqs).unwrap_or_else(|e| {
-                eprintln!("Error running BUSHWHACKER on '{fasta}': {e}");
+            let (d_mode, lbl) = if cm.k_states <= 2 {
+                (DiscreteMode::Unordered, "binary")
+            } else {
+                (DiscreteMode::Ordered, "ordered")
+            };
+            engine.discrete_mode = Some(d_mode);
+            let r = infer_discrete_mdl(&engine, &cm, d_mode, starting_newick).unwrap_or_else(|e| {
+                eprintln!("Error running discrete BUSHWHACKER on '{fasta}': {e}");
                 process::exit(1);
-            })
-        };
-        (
-            nms,
-            Some(sqs),
-            if is_prot { "protein" } else { "nucleotide" },
-            r,
-        )
+            });
+            (cm.names, None, lbl, r)
+        } else {
+            let (nms, sqs) = parse_alignment_str(&input_text).unwrap_or_else(|e| {
+                eprintln!("Error reading alignment '{fasta}': {e}");
+                process::exit(1);
+            });
+            let alphabet_kind = detect_sequence_alphabet_kind(&sqs);
+            let is_prot = force_protein || translate_coding || alphabet_kind == "protein";
+            if !is_prot && matches!(alphabet_kind, "binary" | "ordered") {
+                let cm = encode_discrete_sequences(&nms, &sqs).unwrap_or_else(|e| {
+                    eprintln!("Error encoding discrete characters in '{fasta}': {e}");
+                    process::exit(1);
+                });
+                let d_mode = if alphabet_kind == "ordered" {
+                    DiscreteMode::Ordered
+                } else {
+                    DiscreteMode::Unordered
+                };
+                engine.discrete_mode = Some(d_mode);
+                let r = infer_discrete_mdl(&engine, &cm, d_mode, starting_newick).unwrap_or_else(|e| {
+                    eprintln!("Error running discrete BUSHWHACKER on '{fasta}': {e}");
+                    process::exit(1);
+                });
+                (cm.names, None, alphabet_kind, r)
+            } else {
+                let r = if let Some((in_nwk, unrooted)) = starting_newick {
+                    engine
+                        .infer_with_starting_newick(&nms, &sqs, in_nwk, unrooted)
+                        .unwrap_or_else(|e| {
+                            eprintln!(
+                                "Error contracting tree '{}' on '{fasta}': {e}",
+                                contract_tree.as_deref().unwrap_or_default()
+                            );
+                            process::exit(1);
+                        })
+                } else {
+                    engine.infer(&nms, &sqs).unwrap_or_else(|e| {
+                        eprintln!("Error running BUSHWHACKER on '{fasta}': {e}");
+                        process::exit(1);
+                    })
+                };
+                (
+                    nms,
+                    Some(sqs),
+                    if is_prot { "protein" } else { "nucleotide" },
+                    r,
+                )
+            }
+        }
     };
     let one_to_one_sites = alphabet_label != "nucleotide";
 

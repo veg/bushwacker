@@ -9628,7 +9628,7 @@ pub fn decompress_alignment_from_bwz(
 // Unified Multi-Alphabet Dispatch & WebAssembly Bindings (wasm32-unknown-unknown)
 // ---------------------------------------------------------------------------
 
-fn looks_like_csv_or_tsv_matrix(text: &str) -> bool {
+pub fn looks_like_csv_or_tsv_matrix(text: &str) -> bool {
     let Some(first) = text
         .lines()
         .map(str::trim)
@@ -9653,7 +9653,11 @@ fn looks_like_csv_or_tsv_matrix(text: &str) -> bool {
     first.contains(',') || first.contains('\t')
 }
 
-fn detect_sequence_alphabet_kind(seqs: &[String]) -> &'static str {
+/// Classify alignment rows as `binary`, `ordered`, `protein`, or `nucleotide`.
+///
+/// Shared by the WASM dispatcher and the native CLI so that all entry points
+/// auto-detect data modality identically.
+pub fn detect_sequence_alphabet_kind(seqs: &[String]) -> &'static str {
     let mut digits_01 = 0usize;
     let mut digits_2_9 = 0usize;
     let mut letters_non_nx = 0usize;

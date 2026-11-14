@@ -9,6 +9,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Python packaging
+dist/
+*.egg-info/
+
 # LaTeX build artifacts
 *.aux
 *.log

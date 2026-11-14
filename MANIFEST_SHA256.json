@@ -675,13 +675,13 @@
       "bytes": 28804,
       "sha256": "2ce0f9f1dad69ab331fbf1a8d0210d757f85043025f777ba01e53533c3b659c3"
     },
-    "python/bushwhacker.py": {
-      "bytes": 998,
-      "sha256": "0e19ae4ed73ad2ec02332a1d9ba6bae9935413410b45aca0aebf3224033e88e3"
+    "python/bushwhacker/__init__.py": {
+      "bytes": 1794,
+      "sha256": "b1efbe4b00a72365fa7a0f83d4881a138fc9d325f31a76b7f048a65986f6099e"
     },
-    "python/mdl_phylo.py": {
-      "bytes": 107026,
-      "sha256": "35d1c651f8416bf265d1955df14b63bc607b8e2b6fca529a2bd396f94a144c8e"
+    "python/bushwhacker/__main__.py": {
+      "bytes": 140,
+      "sha256": "f2ff90a96c10b16da7e6aad802c1e4afd636604632c0eac52ddc2051642310b4"
     },
     "results/fig_science_concept.png": {
       "bytes": 778131,

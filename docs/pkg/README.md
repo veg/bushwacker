@@ -8,7 +8,7 @@
 
 > *"Clear the statistical underbrush."*
 
-**BUSHWHACKER** is a first-principles **Minimum Description Length (MDL) / algorithmic Kolmogorov complexity** engine for phylogenetic graph induction, implemented natively in zero-dependency **Rust** ([`src/lib.rs`](src/lib.rs), [`src/main.rs`](src/main.rs)) with a reference **Python/NumPy** implementation ([`python/mdl_phylo.py`](python/mdl_phylo.py), [`python/bushwhacker.py`](python/bushwhacker.py)).
+**BUSHWHACKER** is a first-principles **Minimum Description Length (MDL) / algorithmic Kolmogorov complexity** engine for phylogenetic graph induction, implemented natively in **Rust** ([`src/lib.rs`](src/lib.rs), [`src/main.rs`](src/main.rs)).
 
 Instead of forcing every multiple sequence alignment onto a strictly bifurcating tree and evaluating it by in-sample point-estimate maximum likelihood `ln L(X | T, θ)`, **BUSHWHACKER** treats an alignment `X` (`N` taxa × `L` sites) as a discrete data table to be transmitted losslessly over a noiseless two-part Rissanen–Wallace sender–receiver channel:
 
@@ -51,6 +51,18 @@ BUSHWHACKER ships with a zero-server, 100% client-side **Rust + WebAssembly** we
 
 BUSHWHACKER is written in native Rust (`Edition 2021`) with 64-site bit-plane SIMD (`POPCNT` / `TZCNT` / 64-bit SWAR Fitch) and multi-threaded `rayon` parallelism (`0.015s` on 17-taxon β-globin; `0.123s` on 116-taxon mammalian *Prestin*; `0.923s` on 4,096 taxa).
 
+### Via `pip` (prebuilt wheels — no Rust toolchain needed)
+
+```bash
+pip install bushwhacker
+bushwhacker --help          # native binary installed on PATH
+python -m bushwhacker --help  # or via the Python shim
+```
+
+The wheel bundles the compiled Rust binary plus a thin `bushwhacker` Python package (`bushwhacker.binary_path()`, `bushwhacker.main()`); all inference runs in Rust.
+
+### From source (Rust)
+
 ```bash
 cargo build --release
 ```
@@ -67,21 +79,25 @@ Supported Input Formats & Alphabets (auto-detected):
   - CSV / TSV   (.csv, .tsv; binary 0/1 somatic mutations, unordered K-state traits, ordered copy numbers)
 
 Options:
-  -o, --out-newick <PATH>         Output Newick file path (with MDL branch supports & lengths)
-  -b, --out-binary <PATH>         Output strictly binary Newick file path (for iqtree3 -t)
-  -t, --contract-tree <PATH>      Contract unsupported splits & peel shunts on an input Newick tree
-  -j, --out-json <PATH>           Output JSON report path (full MDL ledger, splits, & shunts)
-  -c, --compress <PATH.bwz>       Lossless phylogenetic .bwz archive (`bushwhacker <in.fa> -c <out.bwz>`)
-  -d, --decompress <PATH.bwz>     Bit-identical decompression (`bushwhacker <in.bwz> -d <out.fa>`)
-  --protein                       Force 20-state amino-acid LG08+CAT8 / Dayhoff-6 MDL
-  --translate                     Translate in-frame coding nucleotide alignment to 20-state AA
-  --discrete                      Force unordered K-state discrete character MDL (including 0/1 binary)
-  --ordered                       Force ordered Wagner L1 integer state MDL (e.g. single-cell CNAs)
-  --no-coding                     Disable automatic coding-frame 3rd-position entropy weighting
-  --no-shunts                     Disable Stage 4 reticulate shunt peeling
-  --min-shunt-sites <N>           Minimum parallel mutations to evaluate a shunt (default: 2)
-  -T, --threads <N>               Worker threads for deterministic parallel execution (default: all cores)
-  -h, --help                      Print help message
+  -o, --out-newick <PATH>      Output Newick file path (with MDL branch supports & lengths)
+  -b, --out-binary <PATH>      Output strictly binary Newick file path (for iqtree3 -t)
+  -t, --contract-tree <PATH>   Contract unsupported splits & peel shunts on an input Newick tree
+  -j, --out-json <PATH>        Output JSON report path (full MDL ledger, splits, & shunts)
+  -c, --compress <PATH>        Write lossless .bwz phylogenetic archive to <PATH>
+  -d, --decompress <PATH>      Decompress input .bwz archive into FASTA at <PATH>
+  --protein                    Force 20-state amino-acid MDL mode (auto-detected by default)
+  --translate                  Translate in-frame nucleotide CDS to 20-state protein before MDL
+  --binary                     Force unordered 2-state (0/1) discrete character MDL
+  --discrete                   Unordered K-state discrete character-matrix MDL (2 <= K <= 32)
+  --ordered                    Ordered Wagner K-state copy-number / genotype MDL (0..K-1)
+  --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting
+  --no-shunts                  Disable Stage 4 reticulate shunt peeling
+  --min-shunt-sites <N>        Minimum parallel mutations to evaluate a shunt (default: 2)
+  --no-mult-pen                Ablation: omit Rissanen branch multiplicity penalty
+  --empirical-alpha            Ablation: estimate Gamma(alpha, alpha) rate shape from Fitch steps
+  -T, --threads <N>            Worker threads for parallel MDL induction (default: all cores)
+  -h, --help                   Print help message
+  -V, --version                Print version information
 ```
 
 ### Example: Mammalian *Prestin* (`prestin.fasta`, 116 Mammals, 2,235 bp)
@@ -186,22 +202,30 @@ Full derivations, proofs, and multi-panel figures are available in [`paper/bushw
 ```text
 bushwhacker/
 ├── Cargo.toml                             # Rust crate manifest (native rayon + wasm32 wasm-bindgen)
+├── pyproject.toml                         # maturin packaging (pip-installable CLI wheel)
+├── LICENSE                                # MIT
 ├── README.md                              # Project documentation
-├── .github/workflows/deploy-pages.yml     # GitHub Pages CI/CD workflow for docs/
+├── .github/workflows/
+│   ├── deploy-pages.yml                   # GitHub Pages CI/CD workflow for docs/
+│   └── publish-python.yml                 # Tag-driven PyPI wheel/sdist build & publish
 ├── src/
 │   ├── lib.rs                             # Native Rust + SIMD + WASM BUSHWHACKER core engine
+│   ├── protein.rs                         # 20-state amino-acid MDL engine (LG08+CAT8, Dayhoff-6)
+│   ├── discrete.rs                        # K-state discrete / ordered / binary character MDL engine
+│   ├── nt_gtr.rs                          # GTR+CAT8 continuous-time nucleotide rate-mixture MDL
 │   └── main.rs                            # Native Rust CLI binary
+├── python/
+│   └── bushwhacker/                       # Thin Python shim (binary_path(), `python -m bushwhacker`)
 ├── docs/
 │   ├── index.html                         # Interactive WebApp (Dieter Rams / Braun UI + Big-Tree Canvas)
+│   ├── worker.js                          # Web Worker for non-blocking WASM inference
 │   ├── pkg/                               # Compiled Rust WebAssembly bundle (wasm-pack)
-│   └── examples/                          # Empirical alignments (prestin.fasta, bglobin.fasta)
-├── python/
-│   ├── bushwhacker.py                     # Reference Python CLI
-│   └── mdl_phylo.py                       # Reference Python/NumPy MDL engine
+│   └── examples/                          # Empirical datasets (prestin CDS/protein, bglobin, AML clones)
+├── scripts/                               # Benchmark & figure-generation harnesses (Rust binary-driven)
+├── results/                               # Executed benchmark outputs (GTDB, cancer single-cell, TOL)
+├── sim_results/                           # Synthetic simulation replicate outputs
 ├── benchmarks/
-│   ├── benchmark_first_principles.py      # 5-suite synthetic & empirical benchmark harness
 │   ├── benchmark_results.json             # Executed 5-suite benchmark outputs
-│   ├── stress_test_vs_paradigms.py        # 5-axis adversarial stress-test harness vs. ML/Bayesian/NJ/MP
 │   ├── stress_test_results.json           # Executed stress-test outputs
 │   └── generate_report_figures.py         # Publication vector PDF figure generator
 └── paper/
