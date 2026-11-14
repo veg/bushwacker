@@ -5,7 +5,7 @@
   "files": {
     ".zenodo.json": {
       "bytes": 2288,
-      "sha256": "8eb229da38d60069f1eb54756fd6010137b4e6c7262910805af4aba7432c81cd"
+      "sha256": "647c8de1b55519226b492086dbb1d3d807fe4c454382c2b3f7e600c2a259c748"
     },
     "AGENTS.md": {
       "bytes": 4767,
@@ -13,7 +13,7 @@
     },
     "CITATION.cff": {
       "bytes": 943,
-      "sha256": "5cbd42d60ac40646050218f04ed287a2968fc063c6c1b0161aaff81cad8e1b41"
+      "sha256": "c21234dd95f65ec42fd6a82048472cc482aa04322d35b3ebc44980334a1ff035"
     },
     "Cargo.lock": {
       "bytes": 5748,
@@ -649,27 +649,27 @@
     },
     "paper/references.bib": {
       "bytes": 35192,
-      "sha256": "f39b9556a86644903322edc3749662d36310431d2f937c6e8f0f3565884b96c3"
+      "sha256": "c0a157d79dba4f606272c658f257d25a55949d1f7514bf75304e83d5223b63cc"
     },
     "paper/scicite.sty": {
       "bytes": 22015,
       "sha256": "8030d7867d4094da12e59f3f0a6bc1d646d9c8454518872086d34bf25bbf2a99"
     },
     "paper/science_main.pdf": {
-      "bytes": 701490,
-      "sha256": "95b6947786e0f8d8d988e4253989d6c4123c7c1303a6bee8d7b66e50dd8f4338"
+      "bytes": 701479,
+      "sha256": "3be940e7a80922f8909dc0248d2fedae393a80287664044a1537191fa516255d"
     },
     "paper/science_main.tex": {
       "bytes": 40694,
-      "sha256": "75e29b035ec412e8a80617969de5df1425b3253a30338027574a00518f86fc30"
+      "sha256": "866ee41e5a38afd91f48714fda42ef456accf206eeb83d6e3af74253e7473595"
     },
     "paper/science_supplement.pdf": {
-      "bytes": 789630,
-      "sha256": "a0e2c9807de9c216f6e9e31b02cc746e3ef8cf3423b0d1b75671ccab616ce1eb"
+      "bytes": 789641,
+      "sha256": "0c486c881df3bf4e632dc3ba01110988bac3d8607dce2db36f6eab872767d20e"
     },
     "paper/science_supplement.tex": {
       "bytes": 103875,
-      "sha256": "0214a82010e3dc6d50daa2a70ad8f87a9447cd69fc6b1a7b3bf14b0422387bbb"
+      "sha256": "d7a1bbdac49cf9b0b76ebf75484502e7df1dcff1e64b9dd3571d3a84559ff39f"
     },
     "paper/sciencemag.bst": {
       "bytes": 28804,
