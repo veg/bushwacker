@@ -1,7 +1,7 @@
 {
   "package": "bushwhacker_science_zenodo_v1.0",
   "total_files": 527,
-  "total_bytes": 92152138,
+  "total_bytes": 92168685,
   "files": {
     ".zenodo.json": {
       "bytes": 2288,
@@ -564,8 +564,8 @@
       "sha256": "0d4742379db2222538bf80a593d22a0390beb3e73a2d61b6efb2264e71558fc5"
     },
     "docs/index.html": {
-      "bytes": 299467,
-      "sha256": "4424c60473d478792c1a0caa34e213e29f87ea8618e8e01d36a6adff6549decd"
+      "bytes": 316014,
+      "sha256": "fdf1b099c9c955e3c777c2a3fd92e69033f325b49a1ccc8044e524ee8aa49ba2"
     },
     "docs/pkg/README.md": {
       "bytes": 17402,

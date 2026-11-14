@@ -905,14 +905,45 @@
       position: absolute;
       right: 14px;
       bottom: 14px;
-      width: 170px;
-      height: 116px;
-      background: rgba(255, 255, 255, 0.92);
+      width: 196px;
+      height: 140px;
+      z-index: 18;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(22, 22, 21, 0.08);
+      border-radius: 9px;
+      box-shadow: 0 6px 18px rgba(22, 22, 21, 0.12);
       overflow: hidden;
       pointer-events: auto;
+      user-select: none;
+    }
+    .minimap-header {
+      height: 19px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(22, 22, 21, 0.07);
+      background: rgba(248, 247, 244, 0.9);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+    }
+    .minimap-box canvas#minimapCanvas {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: block;
+      cursor: grab;
+      touch-action: none;
+    }
+    .minimap-box.dragging canvas#minimapCanvas {
+      cursor: grabbing;
     }
     .canvas-hud-tooltip {
       position: absolute;
@@ -1728,8 +1759,12 @@
             <button class="btn btn-sm" style="padding:2px 8px; font-size:11.5px;" onclick="exitFocusedSubtree()">← Return to Full Tree</button>
           </div>
           <canvas id="treeCanvas"></canvas>
-          <div class="minimap-box">
-            <canvas id="minimapCanvas" style="width:100%; height:100%; display:block;"></canvas>
+          <div class="minimap-box" id="minimapBox" title="Click or drag to pan • Scroll to zoom • Double-click to fit">
+            <div class="minimap-header">
+              <span>TREE MAP</span>
+              <span id="minimapRangeLabel">—</span>
+            </div>
+            <canvas id="minimapCanvas"></canvas>
           </div>
           <div id="canvasTooltip" class="canvas-hud-tooltip"></div>
         </div>
@@ -4852,7 +4887,7 @@
       const rect = canvas.getBoundingClientRect();
       const cx = centerX !== null ? centerX : rect.width * 0.5;
       const cy = centerY !== null ? centerY : rect.height * 0.5;
-      const newScale = Math.max(0.15, Math.min(45.0, cam.scale * factor));
+      const newScale = Math.max(0.08, Math.min(45.0, cam.scale * factor));
       const ratio = newScale / cam.scale;
       cam.x = cx - (cx - cam.x) * ratio;
       cam.y = cy - (cy - cam.y) * ratio;
@@ -5010,7 +5045,7 @@
       }
 
       // Polytomy Diamonds & Collapsed Wedges
-      const labelStep = Math.max(1, Math.ceil(13 / Math.max(0.5, rowH)));
+      const labelStep = Math.max(1, Math.ceil(13 / Math.max(0.05, rowH)));
       const qLower = searchQuery.toLowerCase();
 
       for (const nd of layout.visibleNodes) {
@@ -5038,16 +5073,17 @@
           continue;
         }
 
-        if (!nd.isLeaf && nd.degree >= 4 && opts.showPolyBadges) {
+        if (!nd.isLeaf && nd.degree >= 4 && opts.showPolyBadges && rowH >= 1.2) {
+          const dr = Math.min(5.5, Math.max(3.2, rowH * 2.0));
           ctx.save();
           ctx.fillStyle = '#FEF4E6';
           ctx.strokeStyle = '#B45309';
-          ctx.lineWidth = 1.8;
+          ctx.lineWidth = rowH >= 3 ? 1.8 : 1.3;
           ctx.beginPath();
-          ctx.moveTo(x, y - 5.5);
-          ctx.lineTo(x + 5.5, y);
-          ctx.lineTo(x, y + 5.5);
-          ctx.lineTo(x - 5.5, y);
+          ctx.moveTo(x, y - dr);
+          ctx.lineTo(x + dr, y);
+          ctx.lineTo(x, y + dr);
+          ctx.lineTo(x - dr, y);
           ctx.closePath();
           ctx.fill();
           ctx.stroke();
@@ -5164,41 +5200,340 @@
       }
     }
 
+    const minimapState = {
+      valid: false,
+      mode: 'phylogram',
+      mainW: 0,
+      mainH: 0,
+      miniW: 0,
+      miniH: 0,
+      worldMinX: 0,
+      worldMaxX: 1,
+      worldMinY: 0,
+      worldMaxY: 1,
+      offX: 0,
+      offY: 0,
+      scaleX: 1,
+      scaleY: 1,
+      lensX: 0,
+      lensY: 0,
+      lensW: 0,
+      lensH: 0,
+      rawLensCX: 0,
+      rawLensCY: 0
+    };
+
     function renderMinimap(layout) {
       const mini = document.getElementById('minimapCanvas');
-      if (!mini || !layout.visibleNodes || layout.visibleNodes.length === 0) return;
+      const mainCanvas = document.getElementById('treeCanvas');
+      const rangeLbl = document.getElementById('minimapRangeLabel');
+      if (!mini || !mainCanvas || !layout.visibleNodes || layout.visibleNodes.length === 0) {
+        minimapState.valid = false;
+        if (rangeLbl) rangeLbl.textContent = '—';
+        return;
+      }
+
       const dpr = window.devicePixelRatio || 1;
       const rect = mini.getBoundingClientRect();
-      if (rect.width < 10) return;
-      mini.width = Math.floor(rect.width * dpr);
-      mini.height = Math.floor(rect.height * dpr);
+      const mainRect = mainCanvas.getBoundingClientRect();
+      if (rect.width < 10 || rect.height < 10 || mainRect.width < 10 || mainRect.height < 10) {
+        minimapState.valid = false;
+        return;
+      }
+
+      const targetW = Math.floor(rect.width * dpr);
+      const targetH = Math.floor(rect.height * dpr);
+      if (mini.width !== targetW || mini.height !== targetH) {
+        mini.width = targetW;
+        mini.height = targetH;
+      }
+
       const ctx = mini.getContext('2d');
       ctx.save();
       ctx.scale(dpr, dpr);
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      const pad = 8;
-      const w = rect.width - pad * 2;
-      const h = rect.height - pad * 2;
       const nLeaves = layout.nVisibleLeaves;
+      const branchBatches = new Map();
+      const addBranch = (col, a, b, c, d, e) => {
+        let arr = branchBatches.get(col);
+        if (!arr) {
+          arr = [];
+          branchBatches.set(col, arr);
+        }
+        arr.push(a, b, c, d);
+        if (e !== undefined) arr.push(e);
+      };
 
-      ctx.strokeStyle = '#85837D';
-      ctx.lineWidth = 0.85;
-      ctx.beginPath();
-      for (const nd of layout.visibleNodes) {
-        if (nd === layout.root) continue;
-        const p = nodeById.get(nd.parentId);
-        if (!p) continue;
-        const x0 = pad + p._normX * w;
-        const y0 = pad + (p._y / nLeaves) * h;
-        const x1 = pad + nd._normX * w;
-        const y1 = pad + (nd._y / nLeaves) * h;
-        ctx.moveTo(x0, y0);
-        ctx.lineTo(x0, y1);
-        ctx.lineTo(x1, y1);
+      let worldMinX, worldMaxX, worldMinY, worldMaxY;
+      let offX, offY, scaleX, scaleY;
+      let baseRowH = 1, baseTreeW = 1;
+
+      if (layoutMode === 'circular') {
+        const baseMaxR = Math.min(mainRect.width, mainRect.height) * 0.36;
+        const worldR = Math.max(10, baseMaxR * 1.24);
+        worldMinX = -worldR;
+        worldMaxX = worldR;
+        worldMinY = -worldR;
+        worldMaxY = worldR;
+        const iso = Math.min((rect.width - 14) / (2 * worldR), (rect.height - 10) / (2 * worldR));
+        scaleX = iso;
+        scaleY = iso;
+        offX = (rect.width - 2 * worldR * iso) * 0.5;
+        offY = (rect.height - 2 * worldR * iso) * 0.5;
+        const cxMini = offX + worldR * iso;
+        const cyMini = offY + worldR * iso;
+        const rScale = baseMaxR * iso;
+
+        for (const nd of layout.visibleNodes) {
+          if (nd === layout.root) continue;
+          const p = nodeById.get(nd.parentId);
+          if (!p) continue;
+          const rp = (p._normX || 0) * rScale;
+          const r1 = (nd._normX || 0) * rScale;
+          addBranch(getBranchColor(nd), rp, p._theta || 0, nd._theta || 0, r1, nd._theta < p._theta ? 1 : 0);
+        }
+
+        ctx.lineWidth = nLeaves > 800 ? 0.55 : (nLeaves > 200 ? 0.75 : 0.95);
+        ctx.globalAlpha = nLeaves > 800 ? 0.65 : (nLeaves > 200 ? 0.78 : 0.9);
+        for (const [col, segs] of branchBatches) {
+          ctx.strokeStyle = col;
+          ctx.beginPath();
+          for (let i = 0; i < segs.length; i += 5) {
+            const rp = segs[i], t0 = segs[i + 1], t1 = segs[i + 2], r1 = segs[i + 3], ccw = segs[i + 4] === 1;
+            ctx.moveTo(cxMini + rp * Math.cos(t0), cyMini + rp * Math.sin(t0));
+            ctx.arc(cxMini, cyMini, rp, t0, t1, ccw);
+            ctx.lineTo(cxMini + r1 * Math.cos(t1), cyMini + r1 * Math.sin(t1));
+          }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1.0;
+
+        if (document.getElementById('chkShowShunts')?.checked && currentResult && currentResult.shunts) {
+          ctx.save();
+          for (const sh of currentResult.shunts) {
+            const nu = nodeById.get(sh.node_u);
+            const nv = nodeById.get(sh.node_v);
+            if (!nu || !nv || nu._theta === undefined || nv._theta === undefined) continue;
+            const x1 = cxMini + (nu._normX || 0) * rScale * Math.cos(nu._theta);
+            const y1 = cyMini + (nu._normX || 0) * rScale * Math.sin(nu._theta);
+            const x2 = cxMini + (nv._normX || 0) * rScale * Math.cos(nv._theta);
+            const y2 = cyMini + (nv._normX || 0) * rScale * Math.sin(nv._theta);
+            ctx.strokeStyle = sh.mode === 'SPARSE' ? '#E04F16' : '#1D4ED8';
+            ctx.lineWidth = 1.1;
+            ctx.setLineDash([3, 2]);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.quadraticCurveTo(cxMini, cyMini, x2, y2);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      } else {
+        baseRowH = cam._rowH || Math.max(2.2, Math.min(18, (mainRect.height - 56) / nLeaves));
+        baseTreeW = cam._treeW || Math.max(240, mainRect.width - 360);
+        const ribbonOffsetW = (document.getElementById('chkShowRibbons')?.checked && groupColorMap.size > 0) ? 230 : 120;
+        worldMinX = 0;
+        worldMaxX = baseTreeW + ribbonOffsetW;
+        if (nLeaves > 1) {
+          worldMinY = 0;
+          worldMaxY = (nLeaves - 1) * baseRowH;
+        } else {
+          worldMinY = -baseRowH * 0.5;
+          worldMaxY = baseRowH * 0.5;
+        }
+
+        const padL = 7, padR = 8, padT = 5, padB = 5;
+        const plotW = Math.max(20, rect.width - padL - padR);
+        const plotH = Math.max(20, rect.height - padT - padB);
+        scaleX = plotW / Math.max(1e-6, worldMaxX - worldMinX);
+        scaleY = plotH / Math.max(1e-6, worldMaxY - worldMinY);
+        offX = padL;
+        offY = padT;
+
+        const treeSpanMiniW = baseTreeW * scaleX;
+        const yDenom = Math.max(1, nLeaves - 1);
+
+        for (const nd of layout.visibleNodes) {
+          if (nd === layout.root) continue;
+          const p = nodeById.get(nd.parentId);
+          if (!p) continue;
+          const x0 = offX + p._normX * treeSpanMiniW;
+          const y0 = nLeaves > 1 ? offY + (p._y / yDenom) * plotH : offY + plotH * 0.5;
+          const x1 = offX + nd._normX * treeSpanMiniW;
+          const y1 = nLeaves > 1 ? offY + (nd._y / yDenom) * plotH : offY + plotH * 0.5;
+          addBranch(getBranchColor(nd), x0, y0, x1, y1);
+        }
+
+        ctx.lineWidth = nLeaves > 800 ? 0.55 : (nLeaves > 200 ? 0.75 : 0.95);
+        ctx.globalAlpha = nLeaves > 800 ? 0.62 : (nLeaves > 200 ? 0.78 : 0.9);
+        for (const [col, segs] of branchBatches) {
+          ctx.strokeStyle = col;
+          ctx.beginPath();
+          for (let i = 0; i < segs.length; i += 4) {
+            const x0 = segs[i], y0 = segs[i + 1], x1 = segs[i + 2], y1 = segs[i + 3];
+            ctx.moveTo(x0, y0);
+            ctx.lineTo(x0, y1);
+            ctx.lineTo(x1, y1);
+          }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1.0;
+
+        // Right-edge clade sector guide strip on the minimap
+        if (document.getElementById('chkShowRibbons')?.checked && groupColorMap.size > 0 && layout.visibleLeaves.length > 0) {
+          const stripX = Math.min(rect.width - 7, offX + (baseTreeW + 190 - worldMinX) * scaleX);
+          let runStart = 0;
+          const leaves = layout.visibleLeaves;
+          while (runStart < leaves.length) {
+            const grp = leaves[runStart].cladeGroup;
+            let runEnd = runStart;
+            while (runEnd + 1 < leaves.length && leaves[runEnd + 1].cladeGroup === grp) runEnd++;
+            if (grp && groupColorMap.has(grp)) {
+              const y0 = nLeaves > 1 ? offY + (leaves[runStart]._y / yDenom) * plotH : offY;
+              const y1 = nLeaves > 1 ? offY + (leaves[runEnd]._y / yDenom) * plotH : offY + plotH;
+              ctx.fillStyle = groupColorMap.get(grp);
+              ctx.fillRect(stripX, y0 - 0.5, 3.5, Math.max(1.5, y1 - y0 + 1));
+            }
+            runStart = runEnd + 1;
+          }
+        }
+
+        // Reticulate shunt arcs on minimap
+        if (document.getElementById('chkShowShunts')?.checked && currentResult && currentResult.shunts) {
+          ctx.save();
+          for (const sh of currentResult.shunts) {
+            const nu = nodeById.get(sh.node_u);
+            const nv = nodeById.get(sh.node_v);
+            if (!nu || !nv || nu._normX === undefined || nv._normX === undefined) continue;
+            const x1 = offX + nu._normX * treeSpanMiniW;
+            const y1 = nLeaves > 1 ? offY + (nu._y / yDenom) * plotH : offY + plotH * 0.5;
+            const x2 = offX + nv._normX * treeSpanMiniW;
+            const y2 = nLeaves > 1 ? offY + (nv._y / yDenom) * plotH : offY + plotH * 0.5;
+            const midX = Math.max(x1, x2) + Math.max(8, 0.14 * Math.abs(y2 - y1));
+            const midY = 0.5 * (y1 + y2);
+            ctx.strokeStyle = sh.mode === 'SPARSE' ? '#E04F16' : '#1D4ED8';
+            ctx.lineWidth = 1.1;
+            ctx.setLineDash([3, 2]);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.quadraticCurveTo(midX, midY, x2, y2);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
       }
-      ctx.stroke();
+
+      // Project visible main-canvas viewport into minimap coordinates
+      const vx0 = -cam.x / cam.scale;
+      const vx1 = (mainRect.width - cam.x) / cam.scale;
+      const vy0 = -cam.y / cam.scale;
+      const vy1 = (mainRect.height - cam.y) / cam.scale;
+
+      const rawLx0 = offX + (vx0 - worldMinX) * scaleX;
+      const rawLx1 = offX + (vx1 - worldMinX) * scaleX;
+      const rawLy0 = offY + (vy0 - worldMinY) * scaleY;
+      const rawLy1 = offY + (vy1 - worldMinY) * scaleY;
+
+      let lx0 = Math.max(1.5, Math.min(rect.width - 1.5, rawLx0));
+      let ly0 = Math.max(1.5, Math.min(rect.height - 1.5, rawLy0));
+      let lx1 = Math.max(1.5, Math.min(rect.width - 1.5, rawLx1));
+      let ly1 = Math.max(1.5, Math.min(rect.height - 1.5, rawLy1));
+      const lw = Math.max(10, lx1 - lx0);
+      const lh = Math.max(7, ly1 - ly0);
+      if (lx0 + lw > rect.width - 1.5) lx0 = Math.max(1.5, rect.width - 1.5 - lw);
+      if (ly0 + lh > rect.height - 1.5) ly0 = Math.max(1.5, rect.height - 1.5 - lh);
+
+      const treeLeftMini = offX;
+      const treeRightMini = offX + (worldMaxX - worldMinX) * scaleX;
+      const treeTopMini = offY;
+      const treeBottomMini = offY + (worldMaxY - worldMinY) * scaleY;
+      const coversFullW = rawLx0 <= treeLeftMini + 1 && rawLx1 >= treeRightMini - 1;
+      const coversFullH = rawLy0 <= treeTopMini + 1 && rawLy1 >= treeBottomMini - 1;
+
+      if (!coversFullW || !coversFullH) {
+        ctx.fillStyle = 'rgba(22, 22, 21, 0.11)';
+        if (ly0 > 0) ctx.fillRect(0, 0, rect.width, ly0);
+        if (ly0 + lh < rect.height) ctx.fillRect(0, ly0 + lh, rect.width, rect.height - (ly0 + lh));
+        if (lx0 > 0) ctx.fillRect(0, ly0, lx0, lh);
+        if (lx0 + lw < rect.width) ctx.fillRect(lx0 + lw, ly0, rect.width - (lx0 + lw), lh);
+      }
+
+      ctx.fillStyle = 'rgba(224, 79, 22, 0.12)';
+      ctx.fillRect(lx0, ly0, lw, lh);
+      ctx.strokeStyle = '#E04F16';
+      ctx.lineWidth = 1.6;
+      ctx.strokeRect(lx0 + 0.5, ly0 + 0.5, Math.max(1, lw - 1), Math.max(1, lh - 1));
       ctx.restore();
+
+      if (rangeLbl) {
+        if (layoutMode === 'circular') {
+          rangeLbl.textContent = `${cam.scale.toFixed(1)}×`;
+        } else {
+          const i0 = Math.max(1, Math.min(nLeaves, Math.floor(vy0 / Math.max(1e-6, baseRowH)) + 1));
+          const i1 = Math.max(i0, Math.min(nLeaves, Math.floor(vy1 / Math.max(1e-6, baseRowH)) + 1));
+          rangeLbl.textContent = (i0 === 1 && i1 === nLeaves)
+            ? `${nLeaves.toLocaleString()} tips`
+            : `${i0.toLocaleString()}–${i1.toLocaleString()} / ${nLeaves.toLocaleString()}`;
+        }
+      }
+
+      minimapState.valid = true;
+      minimapState.mode = layoutMode;
+      minimapState.mainW = mainRect.width;
+      minimapState.mainH = mainRect.height;
+      minimapState.miniW = rect.width;
+      minimapState.miniH = rect.height;
+      minimapState.worldMinX = worldMinX;
+      minimapState.worldMaxX = worldMaxX;
+      minimapState.worldMinY = worldMinY;
+      minimapState.worldMaxY = worldMaxY;
+      minimapState.offX = offX;
+      minimapState.offY = offY;
+      minimapState.scaleX = scaleX;
+      minimapState.scaleY = scaleY;
+      minimapState.lensX = lx0;
+      minimapState.lensY = ly0;
+      minimapState.lensW = lw;
+      minimapState.lensH = lh;
+      minimapState.rawLensCX = 0.5 * (rawLx0 + rawLx1);
+      minimapState.rawLensCY = 0.5 * (rawLy0 + rawLy1);
+    }
+
+    function panCameraFromMinimap(targetMiniX, targetMiniY) {
+      if (!minimapState.valid) return;
+      const s = minimapState;
+      const wxRaw = s.worldMinX + (targetMiniX - s.offX) / s.scaleX;
+      const wyRaw = s.worldMinY + (targetMiniY - s.offY) / s.scaleY;
+      const viewW = s.mainW / cam.scale;
+      const viewH = s.mainH / cam.scale;
+      const spanX = s.worldMaxX - s.worldMinX;
+      const spanY = s.worldMaxY - s.worldMinY;
+
+      if (s.mode === 'circular') {
+        const wx = Math.max(s.worldMinX, Math.min(s.worldMaxX, wxRaw));
+        const wy = Math.max(s.worldMinY, Math.min(s.worldMaxY, wyRaw));
+        cam.x = s.mainW * 0.5 - wx * cam.scale;
+        cam.y = s.mainH * 0.5 - wy * cam.scale;
+      } else {
+        const padWorldX = 36 / Math.max(0.25, cam.scale);
+        const padWorldY = 26 / Math.max(0.25, cam.scale);
+        if (spanX + padWorldX * 2 > viewW) {
+          const minWX = s.worldMinX - padWorldX + viewW * 0.5;
+          const maxWX = s.worldMaxX + padWorldX - viewW * 0.5;
+          const wx = Math.max(minWX, Math.min(maxWX, wxRaw));
+          cam.x = s.mainW * 0.5 - wx * cam.scale;
+        }
+        if (spanY + padWorldY * 2 > viewH) {
+          const minWY = s.worldMinY - padWorldY + viewH * 0.5;
+          const maxWY = s.worldMaxY + padWorldY - viewH * 0.5;
+          const wy = Math.max(minWY, Math.min(maxWY, wyRaw));
+          cam.y = s.mainH * 0.5 - wy * cam.scale;
+        } else {
+          cam.y = (s.mainH - spanY * cam.scale) * 0.5;
+        }
+      }
+      renderCanvas();
     }
 
     function hitTestCanvas(mx, my) {
@@ -5256,6 +5591,14 @@
           renderCanvas();
           return;
         }
+        if (e.target && e.target.closest && e.target.closest('.minimap-box')) {
+          document.getElementById('canvasTooltip').style.display = 'none';
+          if (hoveredElement) {
+            hoveredElement = null;
+            renderCanvas();
+          }
+          return;
+        }
         if (mx < 0 || my < 0 || mx > rect.width || my > rect.height) {
           document.getElementById('canvasTooltip').style.display = 'none';
           return;
@@ -5305,6 +5648,70 @@
         const my = e.clientY - rect.top;
         zoomBy(e.deltaY < 0 ? 1.14 : 0.88, mx, my);
       }, { passive: false });
+
+      const mini = document.getElementById('minimapCanvas');
+      const miniBox = document.getElementById('minimapBox');
+      if (mini) {
+        let miniDragging = false, grabDX = 0, grabDY = 0;
+
+        mini.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0 || !minimapState.valid) return;
+          e.preventDefault();
+          e.stopPropagation();
+          const r = mini.getBoundingClientRect();
+          const mx = e.clientX - r.left;
+          const my = e.clientY - r.top;
+          const insideLens = (
+            mx >= minimapState.lensX - 2 &&
+            mx <= minimapState.lensX + minimapState.lensW + 2 &&
+            my >= minimapState.lensY - 2 &&
+            my <= minimapState.lensY + minimapState.lensH + 2
+          );
+          if (insideLens) {
+            grabDX = minimapState.rawLensCX - mx;
+            grabDY = minimapState.rawLensCY - my;
+          } else {
+            grabDX = 0;
+            grabDY = 0;
+            panCameraFromMinimap(mx, my);
+          }
+          miniDragging = true;
+          if (miniBox) miniBox.classList.add('dragging');
+          if (mini.setPointerCapture) mini.setPointerCapture(e.pointerId);
+        });
+
+        mini.addEventListener('pointermove', (e) => {
+          if (!miniDragging || !minimapState.valid) return;
+          e.preventDefault();
+          const r = mini.getBoundingClientRect();
+          const mx = e.clientX - r.left;
+          const my = e.clientY - r.top;
+          panCameraFromMinimap(mx + grabDX, my + grabDY);
+        });
+
+        const endMiniDrag = (e) => {
+          if (!miniDragging) return;
+          miniDragging = false;
+          if (miniBox) miniBox.classList.remove('dragging');
+          if (mini.releasePointerCapture && e.pointerId !== undefined) {
+            try { mini.releasePointerCapture(e.pointerId); } catch (_) {}
+          }
+        };
+        mini.addEventListener('pointerup', endMiniDrag);
+        mini.addEventListener('pointercancel', endMiniDrag);
+
+        mini.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          zoomBy(e.deltaY < 0 ? 1.14 : 0.88);
+        }, { passive: false });
+
+        mini.addEventListener('dblclick', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          fitTreeToScreen();
+        });
+      }
     }
 
     // =========================================================================
