@@ -1,11 +1,11 @@
 {
   "package": "bushwhacker_science_zenodo_v1.0",
   "total_files": 527,
-  "total_bytes": 92197730,
+  "total_bytes": 92198212,
   "files": {
     ".zenodo.json": {
-      "bytes": 2288,
-      "sha256": "647c8de1b55519226b492086dbb1d3d807fe4c454382c2b3f7e600c2a259c748"
+      "bytes": 2548,
+      "sha256": "f4e3e7942354f86e9b4224e632a7c8d28e63e1109b8f90ba9117a578a57d261d"
     },
     "AGENTS.md": {
       "bytes": 4767,
@@ -597,55 +597,55 @@
     },
     "paper/fig1_synthetic_benchmarks.pdf": {
       "bytes": 41559,
-      "sha256": "42a24d62ff4cfe41d693c778420c73d5fe2c9139ac63dc306d45d3bc4672852e"
+      "sha256": "88ecae2d65e27ff76429268ff9dfd71eaf05c3806aaa43adaf9e0b6a9ed6288e"
     },
     "paper/fig3_stress_tests.pdf": {
       "bytes": 46452,
-      "sha256": "16d3fba7f5b68432f464412b469ca8690c6741b9e8e78b70cbe830458c3a5f70"
+      "sha256": "177206a48bbfec97fea2754d84e48f546b19aba53a154de0b71bfbef4b053481"
     },
     "paper/fig_didactic_mdl.pdf": {
       "bytes": 39996,
-      "sha256": "9649ca15b5b1b22cc6499c3babc1c2dc5265213be4da728302c5a8c092660e87"
+      "sha256": "133807aaab5b7916b96a82a4bdfb3264bba80020b1386aaa8b84c12f23a8b12d"
     },
     "paper/fig_kingdom_synthesis.pdf": {
       "bytes": 70591,
-      "sha256": "e492b331db653a651fccb59d538b194eb581c3e4f5a3445ccac08de1b6675ac6"
+      "sha256": "e86261f39f847ad5e2d023e76b5e59fad6ca8c08809744e91df6d061c3745bca"
     },
     "paper/fig_prestin_convergence.pdf": {
       "bytes": 84708,
-      "sha256": "0b90e4c4ec3839e96eaf54b93a151419cd382718870cf24b47aae9fe80e3f3d0"
+      "sha256": "9098707a3be93b2e0fac81db38375a77c5083d6b3ea14fd6d404223146cfae49"
     },
     "paper/fig_science_cancer_singlecell.pdf": {
       "bytes": 80198,
-      "sha256": "5402758769e2747b7d91790bc70445617a4bfd9826ffccd560c93cd76dcd3196"
+      "sha256": "ad244cccb9dcc4af94e198511381d0d277c90284cdc96bc9806495c51ba935b9"
     },
     "paper/fig_science_concept.pdf": {
       "bytes": 82812,
-      "sha256": "22faa129843afa671b2364a24fea26c021644e796b8af6e9b85329186742490d"
+      "sha256": "9f3591ad96d784d2cf1198da89ad4461c26b71e7d3849f33cb890418b6b57eec"
     },
     "paper/fig_science_macroevo_clean.pdf": {
-      "bytes": 80782,
-      "sha256": "6b3056173538aaab0750980131c37acf5a88cb9436b7c821406384f68bbc6978"
+      "bytes": 80775,
+      "sha256": "90882fc8a4c555740ee5f75ed1c1d46adf1ace0e2d953503a0d2808c4ebd372b"
     },
     "paper/fig_science_mammalian_atlas.pdf": {
       "bytes": 86838,
-      "sha256": "d82c748319475e7e9cc8a7aac193ca0b4346b7b8173f9d5dc504af837c31a531"
+      "sha256": "97357f66bc2e00f350ab8d0511cb3555d35dce5d4c795c78c74bd1c18cc850d5"
     },
     "paper/fig_science_microbial_viral.pdf": {
       "bytes": 85583,
-      "sha256": "ae5ce168aba942e70ca1cfd4e1a002de06b0ce27e13d0dd261517df4843d692f"
+      "sha256": "5e93eefa69aad590376e31046e14a009a8c77a1aeb17e73d1d6493e063e8bc2d"
     },
     "paper/fig_science_performance_sota.pdf": {
       "bytes": 72481,
-      "sha256": "e268b80dcf391a0e9d17ccbac7b89a71e7207158ab016297b5161c9459dfaa37"
+      "sha256": "d1d893057e89580998d3d2468f470fa7d06c082907252da9b6885a9b7877fcf0"
     },
     "paper/fig_science_tree_scales.pdf": {
       "bytes": 81639,
-      "sha256": "7ce263bb2a4cbbce8ce7c3a2c4172002f43dc1be6583fc4fc27508ecfd175a60"
+      "sha256": "612a585f8e10565127d7f6ab219d9096017fbeb84b2889778e7982ea286add0c"
     },
     "paper/fig_supp_chst13_bootstrap.pdf": {
       "bytes": 74528,
-      "sha256": "98fe1be8f523f4c4d24bff1be5cdf115bd9688cd8850325f5d3fa3c88836b5f1"
+      "sha256": "b7ab01887dd3019e1c1b12db228a40e580983d8814d7ef57c2a37c9269642799"
     },
     "paper/references.bib": {
       "bytes": 35187,
@@ -656,16 +656,16 @@
       "sha256": "8030d7867d4094da12e59f3f0a6bc1d646d9c8454518872086d34bf25bbf2a99"
     },
     "paper/science_main.pdf": {
-      "bytes": 703016,
-      "sha256": "40fc700448f0711c068bb76708931b29565749814722a348efb3ed00db8e817b"
+      "bytes": 703120,
+      "sha256": "2df83af2b949841db9715da12e00721fcfb4927b0cb22ef0e3fc05a69e6daa63"
     },
     "paper/science_main.tex": {
-      "bytes": 41789,
-      "sha256": "21093715d172786e3650343502646b58d9bc53368aa52822d7e8797c62234197"
+      "bytes": 41919,
+      "sha256": "fbe5392beedb0f3ade6f3ff02781750437bf996dd5fe9748dd8c040954533378"
     },
     "paper/science_supplement.pdf": {
-      "bytes": 796729,
-      "sha256": "c757f06d2e747cc48d82ada3bde17a8ee9a4505b1ee8af09a9169d8c45271c5a"
+      "bytes": 796724,
+      "sha256": "805e86c38d73997541c2b87f70dbe9785749f725762224a0e0773706170478c7"
     },
     "paper/science_supplement.tex": {
       "bytes": 109939,
