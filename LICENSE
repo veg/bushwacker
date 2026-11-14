@@ -1,6 +1,7 @@
-MIT License
+MIT License (Software and Original Scripts)
 
-Copyright (c) 2026 Sergei L. Kosakovsky Pond and BUSHWHACKER Contributors
+Copyright (c) 2026 Sergei L. Kosakovsky Pond, Darren P. Martin,
+Stephanie J. Kosakovsky Pond, and Anton Nekrutenko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +20,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+Original manuscripts, figures, and documentation in `paper/` and `DATA_SOURCES.md`
+are licensed under CC-BY-4.0. All third-party empirical datasets bundled in
+`data/` or referenced in `DATA_SOURCES.md` retain the original licenses and
+citations of their respective authors and public repositories.

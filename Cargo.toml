@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["Sergei L. Kosakovsky Pond <spond@temple.edu>"]
 description = "BUSHWHACKER: Bipartition Unification, Shunt Hunting, & Weighted Hub Aggregation via Combinadic Kolmogorov Entropy Reduction"
 license = "MIT"
-repository = "https://github.com/veg/bushwacker"
+repository = "https://github.com/veg/bushwhacker"
 
 [lib]
 name = "bushwhacker"

@@ -42,6 +42,8 @@ fn print_usage(prog: &str) {
            --no-coding                  Disable automatic coding-frame 3rd-position entropy weighting\n  \
            --no-shunts                  Disable Stage 4 reticulate shunt peeling\n  \
            --min-shunt-sites <N>        Minimum parallel mutations to evaluate a shunt (default: 2)\n  \
+           --no-mult-pen                Ablation: omit Rissanen branch multiplicity penalty\n  \
+           --empirical-alpha            Ablation: estimate Gamma(alpha, alpha) rate shape from Fitch steps\n  \
            -T, --threads <N>            Worker threads for parallel MDL induction (default: all cores)\n  \
            -h, --help                   Print this help message\n  \
            -V, --version                Print version information"
@@ -288,6 +290,8 @@ fn main() {
     // `alphabet_mode` vocabulary emitted by the WASM dispatcher.
     let mut discrete_label: &str = "discrete";
     let mut min_shunt_sites: usize = 2;
+    let mut no_mult_pen = false;
+    let mut empirical_alpha = false;
     let mut num_threads: Option<usize> = None;
 
     let mut i = 1;
@@ -371,6 +375,12 @@ fn main() {
             }
             "--no-shunts" => {
                 no_shunts = true;
+            }
+            "--no-mult-pen" => {
+                no_mult_pen = true;
+            }
+            "--empirical-alpha" => {
+                empirical_alpha = true;
             }
             "--min-shunt-sites" => {
                 i += 1;
@@ -467,6 +477,8 @@ fn main() {
     engine.force_protein = force_protein;
     engine.translate_coding = translate_coding;
     engine.discrete_mode = discrete_mode;
+    engine.no_mult_pen = no_mult_pen;
+    engine.empirical_alpha = empirical_alpha;
 
     // The contract-tree input is shared by every inference path below; read it
     // once instead of duplicating the load in each branch.

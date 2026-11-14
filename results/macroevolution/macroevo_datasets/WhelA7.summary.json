@@ -1,0 +1,373 @@
+{
+  "dataset": "WhelA7",
+  "alphabet": "protein",
+  "total_files": 210,
+  "ok_loci": 210,
+  "error_loci": 0,
+  "wall_sec": 2.33,
+  "sum_cpu_runtime_sec": 20.12,
+  "mean_taxa": 53.16,
+  "mean_seq_len": 284.4,
+  "total_max_binary_splits": 10534,
+  "total_mdl_resolved_splits": 4133,
+  "polytomy_contracted_frac": 0.6077,
+  "sp_tree_total_splits": 10534,
+  "sp_tree_mdl_supported_splits": 3624,
+  "sp_tree_hard_polytomy_frac": 0.656,
+  "forced_binary_sp_shared": 4280,
+  "forced_binary_sp_conflict": 6254,
+  "mdl_sp_shared": 2329,
+  "mdl_sp_conflict": 1804,
+  "spurious_discordance_eliminated_frac": 0.7115,
+  "loci_with_sp_shunts": 145,
+  "total_sp_shunts": 332,
+  "total_sp_interval": 42,
+  "total_sp_sparse": 290,
+  "total_free_shunts": 416,
+  "focal_hypotheses": {
+    "Ctenophora_sister": {
+      "informative_loci": 203,
+      "mdl_resolved": 9,
+      "mdl_polytomy": 22,
+      "mdl_conflicted": 172,
+      "forced_binary_count": 14,
+      "cumulative_mdl_nats": 248.67
+    },
+    "Porifera_sister": {
+      "informative_loci": 203,
+      "mdl_resolved": 4,
+      "mdl_polytomy": 8,
+      "mdl_conflicted": 191,
+      "forced_binary_count": 5,
+      "cumulative_mdl_nats": 84.49
+    },
+    "Ctenophora_plus_Porifera": {
+      "informative_loci": 203,
+      "mdl_resolved": 1,
+      "mdl_polytomy": 7,
+      "mdl_conflicted": 195,
+      "forced_binary_count": 2,
+      "cumulative_mdl_nats": 27.63
+    }
+  },
+  "top_sp_shunts": [
+    {
+      "locus": "Gene_0604.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 66.92,
+      "m": 15,
+      "u": [
+        "Mnemiopsis_leidyi"
+      ],
+      "v": [
+        "Vallicula_sp"
+      ]
+    },
+    {
+      "locus": "Gene_0674.aln",
+      "mode": "SPARSE",
+      "gain_nats": 56.89,
+      "m": 31,
+      "u": [
+        "Nanomia_bijuga"
+      ],
+      "v": [
+        "Hydra_oligactis"
+      ]
+    },
+    {
+      "locus": "Gene_0314.aln",
+      "mode": "SPARSE",
+      "gain_nats": 52.79,
+      "m": 38,
+      "u": [
+        "Platygyra_carnosa"
+      ],
+      "v": [
+        "Salpingoeca_rosetta"
+      ]
+    },
+    {
+      "locus": "Gene_0020.aln",
+      "mode": "SPARSE",
+      "gain_nats": 32.21,
+      "m": 12,
+      "u": [
+        "Mnemiopsis_leidyi"
+      ],
+      "v": [
+        "Vallicula_sp"
+      ]
+    },
+    {
+      "locus": "Gene_0123.aln",
+      "mode": "SPARSE",
+      "gain_nats": 31.83,
+      "m": 20,
+      "u": [
+        "Strongylocentrotus_purpuratus"
+      ],
+      "v": [
+        "Allomyces_macrogynus",
+        "Mortierella_verticillata",
+        "Rhizopus_oryzae",
+        "Spizellomyces_punctatus"
+      ]
+    },
+    {
+      "locus": "Gene_0741.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 29.43,
+      "m": 13,
+      "u": [
+        "Mnemiopsis_leidyi"
+      ],
+      "v": [
+        "Vallicula_sp"
+      ]
+    },
+    {
+      "locus": "Gene_0314.aln",
+      "mode": "SPARSE",
+      "gain_nats": 25.17,
+      "m": 15,
+      "u": [
+        "Platygyra_carnosa"
+      ],
+      "v": [
+        "Monosiga_ovata",
+        "Salpingoeca_rosetta"
+      ]
+    },
+    {
+      "locus": "Gene_0328.aln",
+      "mode": "SPARSE",
+      "gain_nats": 24.8,
+      "m": 24,
+      "u": [
+        "Platygyra_carnosa"
+      ],
+      "v": [
+        "Beroe_abyssicola"
+      ]
+    },
+    {
+      "locus": "Gene_0384.aln",
+      "mode": "SPARSE",
+      "gain_nats": 23.95,
+      "m": 9,
+      "u": [
+        "Mnemiopsis_leidyi"
+      ],
+      "v": [
+        "Vallicula_sp"
+      ]
+    },
+    {
+      "locus": "Gene_0802.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 20.83,
+      "m": 11,
+      "u": [
+        "Spongilla_alba"
+      ],
+      "v": [
+        "Ephydatia_muelleri"
+      ]
+    },
+    {
+      "locus": "Gene_0315.aln",
+      "mode": "SPARSE",
+      "gain_nats": 20.41,
+      "m": 16,
+      "u": [
+        "Bolocera_tuediae"
+      ],
+      "v": [
+        "Spongilla_alba"
+      ]
+    },
+    {
+      "locus": "Gene_0401.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 20.3,
+      "m": 12,
+      "u": [
+        "Euplokamis_dunlapae"
+      ],
+      "v": [
+        "Beroe_abyssicola",
+        "Dryodora_glandiformis",
+        "Mnemiopsis_leidyi",
+        "Pleurobrachia_atlantica"
+      ]
+    },
+    {
+      "locus": "Gene_1021.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 19.95,
+      "m": 8,
+      "u": [
+        "Pleurobrachia_atlantica"
+      ],
+      "v": [
+        "Pleurobrachia_bachei"
+      ]
+    },
+    {
+      "locus": "Gene_0016.aln",
+      "mode": "SPARSE",
+      "gain_nats": 19.5,
+      "m": 13,
+      "u": [
+        "Acropora_digitifera",
+        "Nematostella_vectensis",
+        "Platygyra_carnosa"
+      ],
+      "v": [
+        "Capitella_teleta",
+        "Daphnia_pulex",
+        "Drosophila_melanogaster",
+        "Hemithiris_psittacea"
+      ]
+    },
+    {
+      "locus": "Gene_0143.aln",
+      "mode": "SPARSE",
+      "gain_nats": 19.21,
+      "m": 18,
+      "u": [
+        "Corticium_candelabrum"
+      ],
+      "v": [
+        "Priapulus_caudatus"
+      ]
+    },
+    {
+      "locus": "Gene_0090.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 18.48,
+      "m": 20,
+      "u": [
+        "Spongilla_alba"
+      ],
+      "v": [
+        "Crella_elegans"
+      ]
+    },
+    {
+      "locus": "Gene_0557.aln",
+      "mode": "SPARSE",
+      "gain_nats": 18.2,
+      "m": 24,
+      "u": [
+        "Platygyra_carnosa"
+      ],
+      "v": [
+        "Allomyces_macrogynus",
+        "Amoebidium_parasiticum",
+        "Capsaspora_owczarzaki",
+        "Ministeria_vibrans"
+      ]
+    },
+    {
+      "locus": "Gene_0135.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 17.61,
+      "m": 7,
+      "u": [
+        "Hydra_vulgaris"
+      ],
+      "v": [
+        "Hydra_oligactis"
+      ]
+    },
+    {
+      "locus": "Gene_0651.aln",
+      "mode": "SPARSE",
+      "gain_nats": 17.27,
+      "m": 5,
+      "u": [
+        "Dryodora_glandiformis"
+      ],
+      "v": [
+        "Coeloplana_astericola"
+      ]
+    },
+    {
+      "locus": "Gene_0503.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 16.72,
+      "m": 13,
+      "u": [
+        "Sycon_ciliatum"
+      ],
+      "v": [
+        "Sycon_coactum"
+      ]
+    },
+    {
+      "locus": "Gene_0152.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 15.73,
+      "m": 7,
+      "u": [
+        "Ministeria_vibrans"
+      ],
+      "v": [
+        "Salpingoeca_rosetta"
+      ]
+    },
+    {
+      "locus": "Gene_0848.aln",
+      "mode": "SPARSE",
+      "gain_nats": 15.45,
+      "m": 10,
+      "u": [
+        "Pleurobrachia_atlantica"
+      ],
+      "v": [
+        "Capitella_teleta",
+        "Danio_rerio",
+        "Daphnia_pulex",
+        "Drosophila_melanogaster"
+      ]
+    },
+    {
+      "locus": "Gene_0120.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 15.12,
+      "m": 6,
+      "u": [
+        "Mnemiopsis_leidyi"
+      ],
+      "v": [
+        "Vallicula_sp"
+      ]
+    },
+    {
+      "locus": "Gene_0348.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 13.33,
+      "m": 7,
+      "u": [
+        "Pleurobrachia_atlantica"
+      ],
+      "v": [
+        "Pleurobrachia_bachei"
+      ]
+    },
+    {
+      "locus": "Gene_0690.aln",
+      "mode": "SPARSE",
+      "gain_nats": 12.95,
+      "m": 3,
+      "u": [
+        "Vallicula_sp"
+      ],
+      "v": [
+        "Mertensiidae_sp"
+      ]
+    }
+  ]
+}

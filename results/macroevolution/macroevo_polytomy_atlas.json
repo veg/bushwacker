@@ -1,0 +1,6490 @@
+{
+  "generated_at": "2026-11-10T20:31:04Z",
+  "n_datasets_completed": 19,
+  "total_loci": 45205,
+  "total_max_binary_splits": 2299563,
+  "total_mdl_resolved_splits": 1186381,
+  "total_forced_binary_conflict": 1522139,
+  "total_mdl_conflict": 585973,
+  "overall_spurious_discordance_eliminated_frac": 0.615,
+  "datasets": [
+    {
+      "dataset": "BoroA6",
+      "alphabet": "protein",
+      "total_files": 1080,
+      "ok_loci": 1080,
+      "error_loci": 0,
+      "wall_sec": 9.22,
+      "sum_cpu_runtime_sec": 101.1,
+      "mean_taxa": 31.18,
+      "mean_seq_len": 356.5,
+      "total_max_binary_splits": 30433,
+      "total_mdl_resolved_splits": 7755,
+      "polytomy_contracted_frac": 0.7452,
+      "sp_tree_total_splits": 30433,
+      "sp_tree_mdl_supported_splits": 6901,
+      "sp_tree_hard_polytomy_frac": 0.7732,
+      "forced_binary_sp_shared": 8849,
+      "forced_binary_sp_conflict": 21584,
+      "mdl_sp_shared": 3987,
+      "mdl_sp_conflict": 3768,
+      "spurious_discordance_eliminated_frac": 0.8254,
+      "loci_with_sp_shunts": 648,
+      "total_sp_shunts": 1458,
+      "total_sp_interval": 149,
+      "total_sp_sparse": 1309,
+      "total_free_shunts": 1697,
+      "focal_hypotheses": {
+        "Ctenophora_sister": {
+          "informative_loci": 601,
+          "mdl_resolved": 4,
+          "mdl_polytomy": 366,
+          "mdl_conflicted": 231,
+          "forced_binary_count": 69,
+          "cumulative_mdl_nats": 38.67
+        },
+        "Porifera_sister": {
+          "informative_loci": 601,
+          "mdl_resolved": 1,
+          "mdl_polytomy": 345,
+          "mdl_conflicted": 255,
+          "forced_binary_count": 47,
+          "cumulative_mdl_nats": 5.52
+        },
+        "Ctenophora_plus_Porifera": {
+          "informative_loci": 601,
+          "mdl_resolved": 0,
+          "mdl_polytomy": 365,
+          "mdl_conflicted": 236,
+          "forced_binary_count": 43,
+          "cumulative_mdl_nats": 0.0
+        }
+      },
+      "top_sp_shunts": [
+        {
+          "locus": "OG288_gene337.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 242.41,
+          "m": 72,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG1160_gene154.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 140.1,
+          "m": 92,
+          "u": [
+            "Trichoplax"
+          ],
+          "v": [
+            "Strigamia"
+          ]
+        },
+        {
+          "locus": "OG539_gene602.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 99.29,
+          "m": 30,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG891_gene975.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 97.02,
+          "m": 41,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG100_gene9.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 60.95,
+          "m": 61,
+          "u": [
+            "Drosophila"
+          ],
+          "v": [
+            "Caenorhabditis"
+          ]
+        },
+        {
+          "locus": "OG159_gene199.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 40.21,
+          "m": 37,
+          "u": [
+            "Xenopus"
+          ],
+          "v": [
+            "Ixodes"
+          ]
+        },
+        {
+          "locus": "OG1003_gene3.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 37.09,
+          "m": 26,
+          "u": [
+            "Fugu"
+          ],
+          "v": [
+            "Gasterosteus"
+          ]
+        },
+        {
+          "locus": "OG238_gene283.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 34.54,
+          "m": 42,
+          "u": [
+            "Oikopleura"
+          ],
+          "v": [
+            "Ciona"
+          ]
+        },
+        {
+          "locus": "OG869_gene950.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 34.25,
+          "m": 14,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG1143_gene135.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 33.83,
+          "m": 11,
+          "u": [
+            "Hydra"
+          ],
+          "v": [
+            "Ixodes"
+          ]
+        },
+        {
+          "locus": "OG1040_gene37.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 33.54,
+          "m": 24,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG812_gene891.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 32.98,
+          "m": 22,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG470_gene532.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 30.4,
+          "m": 14,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG332_gene384.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 30.3,
+          "m": 25,
+          "u": [
+            "Anolis"
+          ],
+          "v": [
+            "Latimeria"
+          ]
+        },
+        {
+          "locus": "OG255_gene302.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 29.05,
+          "m": 12,
+          "u": [
+            "Tribolium"
+          ],
+          "v": [
+            "Danaus"
+          ]
+        },
+        {
+          "locus": "OG467_gene528.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 28.77,
+          "m": 42,
+          "u": [
+            "Oikopleura"
+          ],
+          "v": [
+            "Ciona"
+          ]
+        },
+        {
+          "locus": "OG416_gene475.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 26.69,
+          "m": 25,
+          "u": [
+            "Lottia"
+          ],
+          "v": [
+            "Anolis",
+            "Branchiostoma",
+            "Ciona",
+            "Fugu"
+          ]
+        },
+        {
+          "locus": "OG317_gene369.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 26.53,
+          "m": 24,
+          "u": [
+            "Oikopleura"
+          ],
+          "v": [
+            "Ciona"
+          ]
+        },
+        {
+          "locus": "OG350_gene404.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 26.4,
+          "m": 10,
+          "u": [
+            "Xenopus"
+          ],
+          "v": [
+            "Nematostella"
+          ]
+        },
+        {
+          "locus": "OG185_gene226.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 24.13,
+          "m": 12,
+          "u": [
+            "Brugia"
+          ],
+          "v": [
+            "Caenorhabditis"
+          ]
+        },
+        {
+          "locus": "OG68_gene759.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 23.12,
+          "m": 14,
+          "u": [
+            "Caenorhabditis"
+          ],
+          "v": [
+            "Mnemiopsis"
+          ]
+        },
+        {
+          "locus": "OG151_gene191.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 21.58,
+          "m": 57,
+          "u": [
+            "Mnemiopsis"
+          ],
+          "v": [
+            "Ciona"
+          ]
+        },
+        {
+          "locus": "OG765_gene840.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 21.42,
+          "m": 26,
+          "u": [
+            "Hydra"
+          ],
+          "v": [
+            "Rhodnius"
+          ]
+        },
+        {
+          "locus": "OG208_gene251.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 21.33,
+          "m": 14,
+          "u": [
+            "Apis"
+          ],
+          "v": [
+            "Bombus"
+          ]
+        },
+        {
+          "locus": "OG761_gene836.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 20.36,
+          "m": 15,
+          "u": [
+            "Gallus"
+          ],
+          "v": [
+            "Homo"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "WhelA7",
+      "alphabet": "protein",
+      "total_files": 210,
+      "ok_loci": 210,
+      "error_loci": 0,
+      "wall_sec": 2.33,
+      "sum_cpu_runtime_sec": 20.12,
+      "mean_taxa": 53.16,
+      "mean_seq_len": 284.4,
+      "total_max_binary_splits": 10534,
+      "total_mdl_resolved_splits": 4133,
+      "polytomy_contracted_frac": 0.6077,
+      "sp_tree_total_splits": 10534,
+      "sp_tree_mdl_supported_splits": 3624,
+      "sp_tree_hard_polytomy_frac": 0.656,
+      "forced_binary_sp_shared": 4280,
+      "forced_binary_sp_conflict": 6254,
+      "mdl_sp_shared": 2329,
+      "mdl_sp_conflict": 1804,
+      "spurious_discordance_eliminated_frac": 0.7115,
+      "loci_with_sp_shunts": 145,
+      "total_sp_shunts": 332,
+      "total_sp_interval": 42,
+      "total_sp_sparse": 290,
+      "total_free_shunts": 416,
+      "focal_hypotheses": {
+        "Ctenophora_sister": {
+          "informative_loci": 203,
+          "mdl_resolved": 9,
+          "mdl_polytomy": 22,
+          "mdl_conflicted": 172,
+          "forced_binary_count": 14,
+          "cumulative_mdl_nats": 248.67
+        },
+        "Porifera_sister": {
+          "informative_loci": 203,
+          "mdl_resolved": 4,
+          "mdl_polytomy": 8,
+          "mdl_conflicted": 191,
+          "forced_binary_count": 5,
+          "cumulative_mdl_nats": 84.49
+        },
+        "Ctenophora_plus_Porifera": {
+          "informative_loci": 203,
+          "mdl_resolved": 1,
+          "mdl_polytomy": 7,
+          "mdl_conflicted": 195,
+          "forced_binary_count": 2,
+          "cumulative_mdl_nats": 27.63
+        }
+      },
+      "top_sp_shunts": [
+        {
+          "locus": "Gene_0604.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 66.92,
+          "m": 15,
+          "u": [
+            "Mnemiopsis_leidyi"
+          ],
+          "v": [
+            "Vallicula_sp"
+          ]
+        },
+        {
+          "locus": "Gene_0674.aln",
+          "mode": "SPARSE",
+          "gain_nats": 56.89,
+          "m": 31,
+          "u": [
+            "Nanomia_bijuga"
+          ],
+          "v": [
+            "Hydra_oligactis"
+          ]
+        },
+        {
+          "locus": "Gene_0314.aln",
+          "mode": "SPARSE",
+          "gain_nats": 52.79,
+          "m": 38,
+          "u": [
+            "Platygyra_carnosa"
+          ],
+          "v": [
+            "Salpingoeca_rosetta"
+          ]
+        },
+        {
+          "locus": "Gene_0020.aln",
+          "mode": "SPARSE",
+          "gain_nats": 32.21,
+          "m": 12,
+          "u": [
+            "Mnemiopsis_leidyi"
+          ],
+          "v": [
+            "Vallicula_sp"
+          ]
+        },
+        {
+          "locus": "Gene_0123.aln",
+          "mode": "SPARSE",
+          "gain_nats": 31.83,
+          "m": 20,
+          "u": [
+            "Strongylocentrotus_purpuratus"
+          ],
+          "v": [
+            "Allomyces_macrogynus",
+            "Mortierella_verticillata",
+            "Rhizopus_oryzae",
+            "Spizellomyces_punctatus"
+          ]
+        },
+        {
+          "locus": "Gene_0741.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 29.43,
+          "m": 13,
+          "u": [
+            "Mnemiopsis_leidyi"
+          ],
+          "v": [
+            "Vallicula_sp"
+          ]
+        },
+        {
+          "locus": "Gene_0314.aln",
+          "mode": "SPARSE",
+          "gain_nats": 25.17,
+          "m": 15,
+          "u": [
+            "Platygyra_carnosa"
+          ],
+          "v": [
+            "Monosiga_ovata",
+            "Salpingoeca_rosetta"
+          ]
+        },
+        {
+          "locus": "Gene_0328.aln",
+          "mode": "SPARSE",
+          "gain_nats": 24.8,
+          "m": 24,
+          "u": [
+            "Platygyra_carnosa"
+          ],
+          "v": [
+            "Beroe_abyssicola"
+          ]
+        },
+        {
+          "locus": "Gene_0384.aln",
+          "mode": "SPARSE",
+          "gain_nats": 23.95,
+          "m": 9,
+          "u": [
+            "Mnemiopsis_leidyi"
+          ],
+          "v": [
+            "Vallicula_sp"
+          ]
+        },
+        {
+          "locus": "Gene_0802.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 20.83,
+          "m": 11,
+          "u": [
+            "Spongilla_alba"
+          ],
+          "v": [
+            "Ephydatia_muelleri"
+          ]
+        },
+        {
+          "locus": "Gene_0315.aln",
+          "mode": "SPARSE",
+          "gain_nats": 20.41,
+          "m": 16,
+          "u": [
+            "Bolocera_tuediae"
+          ],
+          "v": [
+            "Spongilla_alba"
+          ]
+        },
+        {
+          "locus": "Gene_0401.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 20.3,
+          "m": 12,
+          "u": [
+            "Euplokamis_dunlapae"
+          ],
+          "v": [
+            "Beroe_abyssicola",
+            "Dryodora_glandiformis",
+            "Mnemiopsis_leidyi",
+            "Pleurobrachia_atlantica"
+          ]
+        },
+        {
+          "locus": "Gene_1021.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 19.95,
+          "m": 8,
+          "u": [
+            "Pleurobrachia_atlantica"
+          ],
+          "v": [
+            "Pleurobrachia_bachei"
+          ]
+        },
+        {
+          "locus": "Gene_0016.aln",
+          "mode": "SPARSE",
+          "gain_nats": 19.5,
+          "m": 13,
+          "u": [
+            "Acropora_digitifera",
+            "Nematostella_vectensis",
+            "Platygyra_carnosa"
+          ],
+          "v": [
+            "Capitella_teleta",
+            "Daphnia_pulex",
+            "Drosophila_melanogaster",
+            "Hemithiris_psittacea"
+          ]
+        },
+        {
+          "locus": "Gene_0143.aln",
+          "mode": "SPARSE",
+          "gain_nats": 19.21,
+          "m": 18,
+          "u": [
+            "Corticium_candelabrum"
+          ],
+          "v": [
+            "Priapulus_caudatus"
+          ]
+        },
+        {
+          "locus": "Gene_0090.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 18.48,
+          "m": 20,
+          "u": [
+            "Spongilla_alba"
+          ],
+          "v": [
+            "Crella_elegans"
+          ]
+        },
+        {
+          "locus": "Gene_0557.aln",
+          "mode": "SPARSE",
+          "gain_nats": 18.2,
+          "m": 24,
+          "u": [
+            "Platygyra_carnosa"
+          ],
+          "v": [
+            "Allomyces_macrogynus",
+            "Amoebidium_parasiticum",
+            "Capsaspora_owczarzaki",
+            "Ministeria_vibrans"
+          ]
+        },
+        {
+          "locus": "Gene_0135.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 17.61,
+          "m": 7,
+          "u": [
+            "Hydra_vulgaris"
+          ],
+          "v": [
+            "Hydra_oligactis"
+          ]
+        },
+        {
+          "locus": "Gene_0651.aln",
+          "mode": "SPARSE",
+          "gain_nats": 17.27,
+          "m": 5,
+          "u": [
+            "Dryodora_glandiformis"
+          ],
+          "v": [
+            "Coeloplana_astericola"
+          ]
+        },
+        {
+          "locus": "Gene_0503.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 16.72,
+          "m": 13,
+          "u": [
+            "Sycon_ciliatum"
+          ],
+          "v": [
+            "Sycon_coactum"
+          ]
+        },
+        {
+          "locus": "Gene_0152.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 15.73,
+          "m": 7,
+          "u": [
+            "Ministeria_vibrans"
+          ],
+          "v": [
+            "Salpingoeca_rosetta"
+          ]
+        },
+        {
+          "locus": "Gene_0848.aln",
+          "mode": "SPARSE",
+          "gain_nats": 15.45,
+          "m": 10,
+          "u": [
+            "Pleurobrachia_atlantica"
+          ],
+          "v": [
+            "Capitella_teleta",
+            "Danio_rerio",
+            "Daphnia_pulex",
+            "Drosophila_melanogaster"
+          ]
+        },
+        {
+          "locus": "Gene_0120.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 15.12,
+          "m": 6,
+          "u": [
+            "Mnemiopsis_leidyi"
+          ],
+          "v": [
+            "Vallicula_sp"
+          ]
+        },
+        {
+          "locus": "Gene_0348.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 13.33,
+          "m": 7,
+          "u": [
+            "Pleurobrachia_atlantica"
+          ],
+          "v": [
+            "Pleurobrachia_bachei"
+          ]
+        },
+        {
+          "locus": "Gene_0690.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.95,
+          "m": 3,
+          "u": [
+            "Vallicula_sp"
+          ],
+          "v": [
+            "Mertensiidae_sp"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "ChenA4",
+      "alphabet": "protein",
+      "total_files": 4682,
+      "ok_loci": 4682,
+      "error_loci": 0,
+      "wall_sec": 25.81,
+      "sum_cpu_runtime_sec": 239.07,
+      "mean_taxa": 49.03,
+      "mean_seq_len": 385.7,
+      "total_max_binary_splits": 215494,
+      "total_mdl_resolved_splits": 117110,
+      "polytomy_contracted_frac": 0.4566,
+      "sp_tree_total_splits": 215494,
+      "sp_tree_mdl_supported_splits": 103710,
+      "sp_tree_hard_polytomy_frac": 0.5187,
+      "forced_binary_sp_shared": 110783,
+      "forced_binary_sp_conflict": 104711,
+      "mdl_sp_shared": 81419,
+      "mdl_sp_conflict": 35691,
+      "spurious_discordance_eliminated_frac": 0.6591,
+      "loci_with_sp_shunts": 3617,
+      "total_sp_shunts": 9850,
+      "total_sp_interval": 275,
+      "total_sp_sparse": 9575,
+      "total_free_shunts": 12309,
+      "focal_hypotheses": {
+        "Lungfish_sister_to_Tetrapods": {
+          "informative_loci": 3656,
+          "mdl_resolved": 407,
+          "mdl_polytomy": 1015,
+          "mdl_conflicted": 2234,
+          "forced_binary_count": 676,
+          "cumulative_mdl_nats": 6977.26
+        },
+        "Coelacanth_sister_to_Tetrapods": {
+          "informative_loci": 3656,
+          "mdl_resolved": 344,
+          "mdl_polytomy": 1186,
+          "mdl_conflicted": 2126,
+          "forced_binary_count": 665,
+          "cumulative_mdl_nats": 5780.61
+        },
+        "Lungfish_plus_Coelacanth": {
+          "informative_loci": 3656,
+          "mdl_resolved": 244,
+          "mdl_polytomy": 1341,
+          "mdl_conflicted": 2071,
+          "forced_binary_count": 651,
+          "cumulative_mdl_nats": 2682.4
+        },
+        "Archelosauria_Turtles_plus_Archosaurs": {
+          "informative_loci": 4648,
+          "mdl_resolved": 955,
+          "mdl_polytomy": 1417,
+          "mdl_conflicted": 2276,
+          "forced_binary_count": 1584,
+          "cumulative_mdl_nats": 16234.8
+        },
+        "Ankylopoda_Turtles_plus_Lepidosaurs": {
+          "informative_loci": 4648,
+          "mdl_resolved": 157,
+          "mdl_polytomy": 1163,
+          "mdl_conflicted": 3328,
+          "forced_binary_count": 396,
+          "cumulative_mdl_nats": 1596.34
+        },
+        "Archosaurs_plus_Lepidosaurs_Turtles_basal": {
+          "informative_loci": 4648,
+          "mdl_resolved": 104,
+          "mdl_polytomy": 965,
+          "mdl_conflicted": 3579,
+          "forced_binary_count": 238,
+          "cumulative_mdl_nats": 1160.62
+        }
+      },
+      "top_sp_shunts": [
+        {
+          "locus": "Pro_ENSG00000111530.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 535.3,
+          "m": 208,
+          "u": [
+            "TGE"
+          ],
+          "v": [
+            "falco"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000165458.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 526.09,
+          "m": 174,
+          "u": [
+            "Anas"
+          ],
+          "v": [
+            "Taeniopygia"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000092148.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 398.12,
+          "m": 86,
+          "u": [
+            "Osteoglossum"
+          ],
+          "v": [
+            "Sca"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000042429.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 312.58,
+          "m": 62,
+          "u": [
+            "Dasypus"
+          ],
+          "v": [
+            "Protopterus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000151458.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 283.81,
+          "m": 120,
+          "u": [
+            "XGLY"
+          ],
+          "v": [
+            "Protopterus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000173011.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 281.46,
+          "m": 70,
+          "u": [
+            "Monodelphis"
+          ],
+          "v": [
+            "Ler"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000118257.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 271.34,
+          "m": 53,
+          "u": [
+            "Pelodiscus"
+          ],
+          "v": [
+            "Taeniopygia"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000170537.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 270.78,
+          "m": 123,
+          "u": [
+            "Takifugu"
+          ],
+          "v": [
+            "Astyanax"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000083799.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 259.64,
+          "m": 109,
+          "u": [
+            "Anguilla"
+          ],
+          "v": [
+            "Ictalurus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000138823.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 258.93,
+          "m": 199,
+          "u": [
+            "TGE"
+          ],
+          "v": [
+            "Sparrow"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000158321.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 238.22,
+          "m": 80,
+          "u": [
+            "Melopsittacus"
+          ],
+          "v": [
+            "Sparrow"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000120802.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 234.62,
+          "m": 55,
+          "u": [
+            "Canis"
+          ],
+          "v": [
+            "Monodelphis"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000186575.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 229.96,
+          "m": 106,
+          "u": [
+            "Ostrich"
+          ],
+          "v": [
+            "Ornithorhynchus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000164099.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 227.99,
+          "m": 101,
+          "u": [
+            "Ostrich"
+          ],
+          "v": [
+            "falco"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000137501.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 213.94,
+          "m": 81,
+          "u": [
+            "ICH"
+          ],
+          "v": [
+            "python"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000115677.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 174.31,
+          "m": 87,
+          "u": [
+            "Sphenodon"
+          ],
+          "v": [
+            "Gecko"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000011114.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 172.33,
+          "m": 27,
+          "u": [
+            "Ficedula"
+          ],
+          "v": [
+            "falco"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000162878.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 166.16,
+          "m": 79,
+          "u": [
+            "Melopsittacus"
+          ],
+          "v": [
+            "Trachemys"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000196083.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 164.23,
+          "m": 51,
+          "u": [
+            "Ostrich"
+          ],
+          "v": [
+            "Sparrow"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000164099.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 164.17,
+          "m": 76,
+          "u": [
+            "Oryzias"
+          ],
+          "v": [
+            "Anguilla",
+            "Osteoglossum"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000196083.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 160.23,
+          "m": 51,
+          "u": [
+            "Melopsittacus"
+          ],
+          "v": [
+            "Taeniopygia"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000196083.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 159.78,
+          "m": 55,
+          "u": [
+            "Loxodonta"
+          ],
+          "v": [
+            "Human",
+            "Mus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000083097.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 159.19,
+          "m": 32,
+          "u": [
+            "Gadus"
+          ],
+          "v": [
+            "Gasterosteus"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000131653.refined.fas",
+          "mode": "SPARSE",
+          "gain_nats": 154.6,
+          "m": 40,
+          "u": [
+            "Anolis"
+          ],
+          "v": [
+            "ICH"
+          ]
+        },
+        {
+          "locus": "Pro_ENSG00000164099.refined.fas",
+          "mode": "INTERVAL",
+          "gain_nats": 153.5,
+          "m": 33,
+          "u": [
+            "Loxodonta"
+          ],
+          "v": [
+            "Human",
+            "Mus"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "MisoA2",
+      "alphabet": "protein",
+      "total_files": 1478,
+      "ok_loci": 1478,
+      "error_loci": 0,
+      "wall_sec": 41.33,
+      "sum_cpu_runtime_sec": 458.8,
+      "mean_taxa": 131.57,
+      "mean_seq_len": 402.6,
+      "total_max_binary_splits": 190030,
+      "total_mdl_resolved_splits": 79118,
+      "polytomy_contracted_frac": 0.5837,
+      "sp_tree_total_splits": 190030,
+      "sp_tree_mdl_supported_splits": 68871,
+      "sp_tree_hard_polytomy_frac": 0.6376,
+      "forced_binary_sp_shared": 51314,
+      "forced_binary_sp_conflict": 138716,
+      "mdl_sp_shared": 29413,
+      "mdl_sp_conflict": 49705,
+      "spurious_discordance_eliminated_frac": 0.6417,
+      "loci_with_sp_shunts": 992,
+      "total_sp_shunts": 5141,
+      "total_sp_interval": 936,
+      "total_sp_sparse": 4205,
+      "total_free_shunts": 8035,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "EOG59P8D8.aln",
+          "mode": "SPARSE",
+          "gain_nats": 484.59,
+          "m": 110,
+          "u": [
+            "Thermobia_domestica"
+          ],
+          "v": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ]
+        },
+        {
+          "locus": "EOG5FFBGP.aln",
+          "mode": "SPARSE",
+          "gain_nats": 473.98,
+          "m": 187,
+          "u": [
+            "Cryptocercus_wrighti"
+          ],
+          "v": [
+            "Ctenocephalides_felis"
+          ]
+        },
+        {
+          "locus": "EOG5DV425.aln",
+          "mode": "SPARSE",
+          "gain_nats": 465.1,
+          "m": 112,
+          "u": [
+            "Acanthosoma_haemorrhoidale"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG5QZ623.aln",
+          "mode": "SPARSE",
+          "gain_nats": 426.04,
+          "m": 87,
+          "u": [
+            "Aposthonia_japonica"
+          ],
+          "v": [
+            "Carabus_granulatus"
+          ]
+        },
+        {
+          "locus": "EOG58PK1K.aln",
+          "mode": "SPARSE",
+          "gain_nats": 383.95,
+          "m": 118,
+          "u": [
+            "Prosarthria_teretrirostris"
+          ],
+          "v": [
+            "Timema_cristinae"
+          ]
+        },
+        {
+          "locus": "EOG56T1GG.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 359.53,
+          "m": 93,
+          "u": [
+            "Periplaneta_americana"
+          ],
+          "v": [
+            "Prorhinotermes_simplex"
+          ]
+        },
+        {
+          "locus": "EOG52BVQF.aln",
+          "mode": "SPARSE",
+          "gain_nats": 350.04,
+          "m": 87,
+          "u": [
+            "Carabus_granulatus"
+          ],
+          "v": [
+            "Peruphasma_schultei"
+          ]
+        },
+        {
+          "locus": "EOG50ZPCD.aln",
+          "mode": "SPARSE",
+          "gain_nats": 347.45,
+          "m": 107,
+          "u": [
+            "Cheumatopsyche_sp"
+          ],
+          "v": [
+            "Mastotermes_darwiniensis"
+          ]
+        },
+        {
+          "locus": "EOG50ZPCD.aln",
+          "mode": "SPARSE",
+          "gain_nats": 336.27,
+          "m": 94,
+          "u": [
+            "Epiophlebia_superstes"
+          ],
+          "v": [
+            "Panorpa_vulgaris"
+          ]
+        },
+        {
+          "locus": "EOG5CRJDT.aln",
+          "mode": "SPARSE",
+          "gain_nats": 315.18,
+          "m": 64,
+          "u": [
+            "Nilaparvata_lugens"
+          ],
+          "v": [
+            "Sialis_lutaria"
+          ]
+        },
+        {
+          "locus": "EOG5HHMHJ.aln",
+          "mode": "SPARSE",
+          "gain_nats": 302.94,
+          "m": 169,
+          "u": [
+            "Aretaon_asperrimus"
+          ],
+          "v": [
+            "Galloisiana_yuasai",
+            "Grylloblatta_bifratrilecta"
+          ]
+        },
+        {
+          "locus": "EOG5JDFNX.aln",
+          "mode": "SPARSE",
+          "gain_nats": 277.57,
+          "m": 111,
+          "u": [
+            "Aposthonia_japonica"
+          ],
+          "v": [
+            "Dichochrysa_prasina"
+          ]
+        },
+        {
+          "locus": "EOG5KD526.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 276.59,
+          "m": 66,
+          "u": [
+            "Mantis_religiosa"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG5F7M0T.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 270.94,
+          "m": 54,
+          "u": [
+            "Triodia_sylvina"
+          ],
+          "v": [
+            "Mengenilla_moldrzyki",
+            "Stylops_melittae"
+          ]
+        },
+        {
+          "locus": "EOG52FQZ9.aln",
+          "mode": "SPARSE",
+          "gain_nats": 265.87,
+          "m": 117,
+          "u": [
+            "Cordulegaster_boltonii"
+          ],
+          "v": [
+            "Zorotypus_caudelli"
+          ]
+        },
+        {
+          "locus": "EOG5BG7B3.aln",
+          "mode": "SPARSE",
+          "gain_nats": 260.5,
+          "m": 85,
+          "u": [
+            "Aphis_gossypii"
+          ],
+          "v": [
+            "Haploembia_palaui"
+          ]
+        },
+        {
+          "locus": "EOG5CFXQ8.aln",
+          "mode": "SPARSE",
+          "gain_nats": 258.28,
+          "m": 114,
+          "u": [
+            "Peruphasma_schultei"
+          ],
+          "v": [
+            "Zygaena_fausta"
+          ]
+        },
+        {
+          "locus": "EOG5NGF2H.aln",
+          "mode": "SPARSE",
+          "gain_nats": 257.79,
+          "m": 56,
+          "u": [
+            "Galloisiana_yuasai",
+            "Grylloblatta_bifratrilecta"
+          ],
+          "v": [
+            "Folsomia_candida",
+            "Pogonognathellus_lon_fla",
+            "Sminthurus_vir_nig"
+          ]
+        },
+        {
+          "locus": "EOG5MKKX2.aln",
+          "mode": "SPARSE",
+          "gain_nats": 254.41,
+          "m": 107,
+          "u": [
+            "Aedes_AEGYpti"
+          ],
+          "v": [
+            "Lipara_lucens"
+          ]
+        },
+        {
+          "locus": "EOG5BCC2W.aln",
+          "mode": "SPARSE",
+          "gain_nats": 253.93,
+          "m": 92,
+          "u": [
+            "Ephemera_danica"
+          ],
+          "v": [
+            "Liposcelis_bostrychophila"
+          ]
+        },
+        {
+          "locus": "EOG5B2RC0.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 247.81,
+          "m": 42,
+          "u": [
+            "Eriocrania_subpurpurella"
+          ],
+          "v": [
+            "BOMBYX_MORI",
+            "Parides_arcas",
+            "Polyommatus_icarus"
+          ]
+        },
+        {
+          "locus": "EOG57SQVX.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 245.33,
+          "m": 58,
+          "u": [
+            "Blaberus_atropos"
+          ],
+          "v": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ]
+        },
+        {
+          "locus": "EOG5X95Z0.aln",
+          "mode": "SPARSE",
+          "gain_nats": 243.41,
+          "m": 95,
+          "u": [
+            "Acanthocasuarina_muellerianae"
+          ],
+          "v": [
+            "Frankliniella_cephalica"
+          ]
+        },
+        {
+          "locus": "EOG57D7X7.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 234.19,
+          "m": 70,
+          "u": [
+            "Chrysis_viridula"
+          ],
+          "v": [
+            "Nannochorista_philpotti"
+          ]
+        },
+        {
+          "locus": "EOG5SQVBN.aln",
+          "mode": "SPARSE",
+          "gain_nats": 233.3,
+          "m": 115,
+          "u": [
+            "Gryllotalpa_sp"
+          ],
+          "v": [
+            "Cordulegaster_boltonii",
+            "Epiophlebia_superstes"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "MisoD2a",
+      "alphabet": "nucleotide",
+      "total_files": 1478,
+      "ok_loci": 1478,
+      "error_loci": 0,
+      "wall_sec": 830.88,
+      "sum_cpu_runtime_sec": 6527.39,
+      "mean_taxa": 131.57,
+      "mean_seq_len": 1207.8,
+      "total_max_binary_splits": 190030,
+      "total_mdl_resolved_splits": 111609,
+      "polytomy_contracted_frac": 0.4127,
+      "sp_tree_total_splits": 190030,
+      "sp_tree_mdl_supported_splits": 104061,
+      "sp_tree_hard_polytomy_frac": 0.4524,
+      "forced_binary_sp_shared": 33193,
+      "forced_binary_sp_conflict": 156837,
+      "mdl_sp_shared": 24710,
+      "mdl_sp_conflict": 86899,
+      "spurious_discordance_eliminated_frac": 0.4459,
+      "loci_with_sp_shunts": 238,
+      "total_sp_shunts": 398,
+      "total_sp_interval": 39,
+      "total_sp_sparse": 359,
+      "total_free_shunts": 396,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "EOG5S7H5D.aln",
+          "mode": "SPARSE",
+          "gain_nats": 104.19,
+          "m": 56,
+          "u": [
+            "Prosarthria_teretrirostris"
+          ],
+          "v": [
+            "Cryptocercus_wrighti"
+          ]
+        },
+        {
+          "locus": "EOG59P8D8.aln",
+          "mode": "SPARSE",
+          "gain_nats": 74.79,
+          "m": 30,
+          "u": [
+            "Mantis_religiosa"
+          ],
+          "v": [
+            "Peruphasma_schultei"
+          ]
+        },
+        {
+          "locus": "EOG5KSN0P.aln",
+          "mode": "SPARSE",
+          "gain_nats": 72.92,
+          "m": 33,
+          "u": [
+            "Priacma_serrata"
+          ],
+          "v": [
+            "Tipula_maxima"
+          ]
+        },
+        {
+          "locus": "EOG5G1JXT.aln",
+          "mode": "SPARSE",
+          "gain_nats": 69.41,
+          "m": 32,
+          "u": [
+            "Sialis_lutaria"
+          ],
+          "v": [
+            "Bittacus_pilicornis"
+          ]
+        },
+        {
+          "locus": "EOG5MCVFT.aln",
+          "mode": "SPARSE",
+          "gain_nats": 68.1,
+          "m": 41,
+          "u": [
+            "Timema_cristinae"
+          ],
+          "v": [
+            "Philopotamus_ludificatus"
+          ]
+        },
+        {
+          "locus": "EOG5CNP75.aln",
+          "mode": "SPARSE",
+          "gain_nats": 61.02,
+          "m": 39,
+          "u": [
+            "Empusa_pennata"
+          ],
+          "v": [
+            "Celuca_puligator"
+          ]
+        },
+        {
+          "locus": "EOG5547DW.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 59.55,
+          "m": 21,
+          "u": [
+            "Empusa_pennata"
+          ],
+          "v": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ]
+        },
+        {
+          "locus": "EOG5RBP1S.aln",
+          "mode": "SPARSE",
+          "gain_nats": 57.73,
+          "m": 29,
+          "u": [
+            "Prosarthria_teretrirostris",
+            "Stenobothrus_lineatus",
+            "Tetrix_subulata"
+          ],
+          "v": [
+            "Blaberus_atropos",
+            "Cryptocercus_wrighti",
+            "Empusa_pennata",
+            "Mantis_religiosa"
+          ]
+        },
+        {
+          "locus": "EOG55DV4M.aln",
+          "mode": "SPARSE",
+          "gain_nats": 56.63,
+          "m": 24,
+          "u": [
+            "Speleonectes_tulumensis"
+          ],
+          "v": [
+            "Tipula_maxima"
+          ]
+        },
+        {
+          "locus": "EOG5CFXQB.aln",
+          "mode": "SPARSE",
+          "gain_nats": 55.93,
+          "m": 70,
+          "u": [
+            "Ceuthophilus_sp"
+          ],
+          "v": [
+            "Xenophysella_greensladeae"
+          ]
+        },
+        {
+          "locus": "EOG52NGFN.aln",
+          "mode": "SPARSE",
+          "gain_nats": 53.3,
+          "m": 44,
+          "u": [
+            "Sialis_lutaria"
+          ],
+          "v": [
+            "Manduca_sexta"
+          ]
+        },
+        {
+          "locus": "EOG5K6DKC.aln",
+          "mode": "SPARSE",
+          "gain_nats": 53.3,
+          "m": 47,
+          "u": [
+            "Yponomeuta_evonymella"
+          ],
+          "v": [
+            "Platycentropus_radiatus"
+          ]
+        },
+        {
+          "locus": "EOG5DV431.aln",
+          "mode": "SPARSE",
+          "gain_nats": 52.43,
+          "m": 23,
+          "u": [
+            "Metallyticus_splendidus"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG5RN8RS.aln",
+          "mode": "SPARSE",
+          "gain_nats": 49.0,
+          "m": 24,
+          "u": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ],
+          "v": [
+            "Velia_caprai"
+          ]
+        },
+        {
+          "locus": "EOG57H451.aln",
+          "mode": "SPARSE",
+          "gain_nats": 48.75,
+          "m": 48,
+          "u": [
+            "Gyrinus_marinus"
+          ],
+          "v": [
+            "Mastotermes_darwiniensis"
+          ]
+        },
+        {
+          "locus": "EOG58PK16.aln",
+          "mode": "SPARSE",
+          "gain_nats": 48.53,
+          "m": 32,
+          "u": [
+            "Sarcophaga_crassipalpis"
+          ],
+          "v": [
+            "Litopenaeus_vannamei"
+          ]
+        },
+        {
+          "locus": "EOG55X69W.aln",
+          "mode": "SPARSE",
+          "gain_nats": 47.91,
+          "m": 62,
+          "u": [
+            "Calopteryx_splendens"
+          ],
+          "v": [
+            "Zorotypus_caudelli"
+          ]
+        },
+        {
+          "locus": "EOG56HDSV.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 45.72,
+          "m": 19,
+          "u": [
+            "APIS_MELLIFERA"
+          ],
+          "v": [
+            "Exoneura_robusta"
+          ]
+        },
+        {
+          "locus": "EOG58PK10.aln",
+          "mode": "SPARSE",
+          "gain_nats": 45.27,
+          "m": 52,
+          "u": [
+            "Yponomeuta_evonymella"
+          ],
+          "v": [
+            "Prosarthria_teretrirostris"
+          ]
+        },
+        {
+          "locus": "EOG5BRV2T.aln",
+          "mode": "SPARSE",
+          "gain_nats": 44.85,
+          "m": 39,
+          "u": [
+            "Cosmioperla_kuna"
+          ],
+          "v": [
+            "Gynaikothrips_ficorum"
+          ]
+        },
+        {
+          "locus": "EOG5JM650.aln",
+          "mode": "SPARSE",
+          "gain_nats": 43.85,
+          "m": 43,
+          "u": [
+            "Cosmioperla_kuna"
+          ],
+          "v": [
+            "Exoneura_robusta"
+          ]
+        },
+        {
+          "locus": "EOG5P8D0N.aln",
+          "mode": "SPARSE",
+          "gain_nats": 42.62,
+          "m": 36,
+          "u": [
+            "Thermobia_domestica"
+          ],
+          "v": [
+            "Sminthurus_vir_nig"
+          ]
+        },
+        {
+          "locus": "EOG5J6Q5Z.aln",
+          "mode": "SPARSE",
+          "gain_nats": 42.04,
+          "m": 31,
+          "u": [
+            "Notostira_elongata"
+          ],
+          "v": [
+            "Platycentropus_radiatus"
+          ]
+        },
+        {
+          "locus": "EOG5J0ZPX.aln",
+          "mode": "SPARSE",
+          "gain_nats": 41.13,
+          "m": 38,
+          "u": [
+            "Exoneura_robusta"
+          ],
+          "v": [
+            "Litopenaeus_vannamei"
+          ]
+        },
+        {
+          "locus": "EOG50P2QM.aln",
+          "mode": "SPARSE",
+          "gain_nats": 40.81,
+          "m": 21,
+          "u": [
+            "Epiophlebia_superstes",
+            "Thermobia_domestica",
+            "Tricholepidion_gertschi"
+          ],
+          "v": [
+            "Campodea_augens",
+            "Occasjapyx_japonicus"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "MisoD2b",
+      "alphabet": "nucleotide",
+      "total_files": 1478,
+      "ok_loci": 1478,
+      "error_loci": 0,
+      "wall_sec": 144.63,
+      "sum_cpu_runtime_sec": 1131.81,
+      "mean_taxa": 131.57,
+      "mean_seq_len": 805.2,
+      "total_max_binary_splits": 190030,
+      "total_mdl_resolved_splits": 134220,
+      "polytomy_contracted_frac": 0.2937,
+      "sp_tree_total_splits": 190030,
+      "sp_tree_mdl_supported_splits": 118028,
+      "sp_tree_hard_polytomy_frac": 0.3789,
+      "forced_binary_sp_shared": 46017,
+      "forced_binary_sp_conflict": 144013,
+      "mdl_sp_shared": 40182,
+      "mdl_sp_conflict": 94038,
+      "spurious_discordance_eliminated_frac": 0.347,
+      "loci_with_sp_shunts": 70,
+      "total_sp_shunts": 98,
+      "total_sp_interval": 84,
+      "total_sp_sparse": 14,
+      "total_free_shunts": 34,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "EOG5547DW.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 60.0,
+          "m": 18,
+          "u": [
+            "Empusa_pennata"
+          ],
+          "v": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ]
+        },
+        {
+          "locus": "EOG5612JW.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 49.48,
+          "m": 18,
+          "u": [
+            "Orussus_abietinus"
+          ],
+          "v": [
+            "APIS_MELLIFERA",
+            "Bombus_terrestris"
+          ]
+        },
+        {
+          "locus": "EOG5H18B5.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 40.94,
+          "m": 32,
+          "u": [
+            "Empusa_pennata"
+          ],
+          "v": [
+            "Perla_marginata"
+          ]
+        },
+        {
+          "locus": "EOG56Q57P.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 38.36,
+          "m": 15,
+          "u": [
+            "Acanthosoma_haemorrhoidale"
+          ],
+          "v": [
+            "Gyrinus_marinus"
+          ]
+        },
+        {
+          "locus": "EOG5PNVZM.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 30.51,
+          "m": 23,
+          "u": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ],
+          "v": [
+            "Empusa_pennata"
+          ]
+        },
+        {
+          "locus": "EOG58PK10.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 28.77,
+          "m": 15,
+          "u": [
+            "ZOOTERMOPSIS_NEVADENSIS"
+          ],
+          "v": [
+            "Leuctra_sp",
+            "Perla_marginata"
+          ]
+        },
+        {
+          "locus": "EOG56Q57P.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 28.17,
+          "m": 13,
+          "u": [
+            "Ranatra_linearis"
+          ],
+          "v": [
+            "Gryllotalpa_sp"
+          ]
+        },
+        {
+          "locus": "EOG5C5B07.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 24.27,
+          "m": 18,
+          "u": [
+            "Zygaena_fausta"
+          ],
+          "v": [
+            "Aposthonia_japonica",
+            "Aretaon_asperrimus",
+            "Blaberus_atropos",
+            "Ceuthophilus_sp"
+          ]
+        },
+        {
+          "locus": "EOG57M0F1.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 22.59,
+          "m": 9,
+          "u": [
+            "Essigella_californica"
+          ],
+          "v": [
+            "ACYRTOSIPHON_PISUM"
+          ]
+        },
+        {
+          "locus": "EOG5TMPHF.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 22.5,
+          "m": 23,
+          "u": [
+            "Essigella_californica"
+          ],
+          "v": [
+            "ACYRTOSIPHON_PISUM"
+          ]
+        },
+        {
+          "locus": "EOG5S7H64.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 21.69,
+          "m": 11,
+          "u": [
+            "Ceuthophilus_sp"
+          ],
+          "v": [
+            "Cryptocercus_wrighti"
+          ]
+        },
+        {
+          "locus": "EOG57D7Z3.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 20.83,
+          "m": 12,
+          "u": [
+            "Eurylophella_sp"
+          ],
+          "v": [
+            "Isonychia_bicolor"
+          ]
+        },
+        {
+          "locus": "EOG5DV431.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 20.77,
+          "m": 16,
+          "u": [
+            "Metallyticus_splendidus"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG5PRR5Q.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 20.3,
+          "m": 17,
+          "u": [
+            "Tricholepidion_gertschi"
+          ],
+          "v": [
+            "Cryptocercus_wrighti"
+          ]
+        },
+        {
+          "locus": "EOG537PW4.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 19.88,
+          "m": 19,
+          "u": [
+            "Apachyus_charteceus"
+          ],
+          "v": [
+            "Thrips_palmi"
+          ]
+        },
+        {
+          "locus": "EOG5F7M1Z.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 18.47,
+          "m": 19,
+          "u": [
+            "Empusa_pennata"
+          ],
+          "v": [
+            "Ceuthophilus_sp"
+          ]
+        },
+        {
+          "locus": "EOG51JWVM.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 18.41,
+          "m": 17,
+          "u": [
+            "Cercopis_vulnerata",
+            "Nilaparvata_lugens",
+            "Okanagana_villosa",
+            "Xenophysella_greensladeae"
+          ],
+          "v": [
+            "Aposthonia_japonica",
+            "Aretaon_asperrimus",
+            "Blaberus_atropos",
+            "Ceuthophilus_sp"
+          ]
+        },
+        {
+          "locus": "EOG5X95Z0.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 17.91,
+          "m": 12,
+          "u": [
+            "Acanthosoma_haemorrhoidale",
+            "Cercopis_vulnerata",
+            "Nilaparvata_lugens",
+            "Notostira_elongata"
+          ],
+          "v": [
+            "Apachyus_charteceus",
+            "Aposthonia_japonica",
+            "Aretaon_asperrimus",
+            "Blaberus_atropos"
+          ]
+        },
+        {
+          "locus": "EOG5Q83CW.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 16.7,
+          "m": 12,
+          "u": [
+            "Mantis_religiosa"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG5CZ8XH.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 16.57,
+          "m": 10,
+          "u": [
+            "Sminthurus_vir_nig"
+          ],
+          "v": [
+            "Tetrodontophora_bielanensis"
+          ]
+        },
+        {
+          "locus": "EOG5W9GJS.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 16.28,
+          "m": 15,
+          "u": [
+            "Ceratophyllus_gallinae"
+          ],
+          "v": [
+            "Ctenocephalides_felis"
+          ]
+        },
+        {
+          "locus": "EOG51ZCS9.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 15.8,
+          "m": 17,
+          "u": [
+            "Galloisiana_yuasai"
+          ],
+          "v": [
+            "Periplaneta_americana"
+          ]
+        },
+        {
+          "locus": "EOG56Q57P.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 15.39,
+          "m": 11,
+          "u": [
+            "Prosarthria_teretrirostris"
+          ],
+          "v": [
+            "Frankliniella_cephalica"
+          ]
+        },
+        {
+          "locus": "EOG5612JW.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 15.01,
+          "m": 13,
+          "u": [
+            "Cotesia_vestalis"
+          ],
+          "v": [
+            "Tenthredo_koehleri"
+          ]
+        },
+        {
+          "locus": "EOG59CNQ4.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 14.22,
+          "m": 20,
+          "u": [
+            "Mengenilla_moldrzyki"
+          ],
+          "v": [
+            "Prosarthria_teretrirostris"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "WickA3",
+      "alphabet": "protein",
+      "total_files": 844,
+      "ok_loci": 844,
+      "error_loci": 0,
+      "wall_sec": 9.43,
+      "sum_cpu_runtime_sec": 102.84,
+      "mean_taxa": 48.78,
+      "mean_seq_len": 651.9,
+      "total_max_binary_splits": 38638,
+      "total_mdl_resolved_splits": 16560,
+      "polytomy_contracted_frac": 0.5714,
+      "sp_tree_total_splits": 38638,
+      "sp_tree_mdl_supported_splits": 14756,
+      "sp_tree_hard_polytomy_frac": 0.6181,
+      "forced_binary_sp_shared": 14964,
+      "forced_binary_sp_conflict": 23674,
+      "mdl_sp_shared": 8653,
+      "mdl_sp_conflict": 7907,
+      "spurious_discordance_eliminated_frac": 0.666,
+      "loci_with_sp_shunts": 630,
+      "total_sp_shunts": 2098,
+      "total_sp_interval": 131,
+      "total_sp_sparse": 1967,
+      "total_free_shunts": 2551,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "6810.aln",
+          "mode": "SPARSE",
+          "gain_nats": 643.25,
+          "m": 285,
+          "u": [
+            "Kochia_scoparia"
+          ],
+          "v": [
+            "Inula_helenium",
+            "Tanacetum_parthenium"
+          ]
+        },
+        {
+          "locus": "5172.aln",
+          "mode": "SPARSE",
+          "gain_nats": 519.86,
+          "m": 176,
+          "u": [
+            "Aquilegia_formosa"
+          ],
+          "v": [
+            "Taxus_baccata"
+          ]
+        },
+        {
+          "locus": "5096.aln",
+          "mode": "SPARSE",
+          "gain_nats": 487.38,
+          "m": 162,
+          "u": [
+            "Kadsura_heteroclita"
+          ],
+          "v": [
+            "Diospyros_malabarica"
+          ]
+        },
+        {
+          "locus": "5326.aln",
+          "mode": "SPARSE",
+          "gain_nats": 413.85,
+          "m": 120,
+          "u": [
+            "Smilax_bona"
+          ],
+          "v": [
+            "Klebsormidium_subtile"
+          ]
+        },
+        {
+          "locus": "4524.aln",
+          "mode": "SPARSE",
+          "gain_nats": 335.56,
+          "m": 101,
+          "u": [
+            "Mougeotia_sp"
+          ],
+          "v": [
+            "Coleochaete_irregularis"
+          ]
+        },
+        {
+          "locus": "5248.aln",
+          "mode": "SPARSE",
+          "gain_nats": 327.78,
+          "m": 119,
+          "u": [
+            "Metzgeria_crassipilis"
+          ],
+          "v": [
+            "Anomodon_attenuatus"
+          ]
+        },
+        {
+          "locus": "6810.aln",
+          "mode": "SPARSE",
+          "gain_nats": 286.81,
+          "m": 226,
+          "u": [
+            "Bryum_argenteum"
+          ],
+          "v": [
+            "Acorus_americanus",
+            "Amborella_trichopoda",
+            "Arabidopsis_thaliana",
+            "Carica_papaya"
+          ]
+        },
+        {
+          "locus": "6010.aln",
+          "mode": "SPARSE",
+          "gain_nats": 269.19,
+          "m": 92,
+          "u": [
+            "Acorus_americanus"
+          ],
+          "v": [
+            "Podophyllum_peltatum"
+          ]
+        },
+        {
+          "locus": "6379.aln",
+          "mode": "SPARSE",
+          "gain_nats": 249.11,
+          "m": 96,
+          "u": [
+            "Thuidium_delicatulum"
+          ],
+          "v": [
+            "Hedwigia_ciliata"
+          ]
+        },
+        {
+          "locus": "5769.aln",
+          "mode": "SPARSE",
+          "gain_nats": 240.59,
+          "m": 82,
+          "u": [
+            "Aquilegia_formosa"
+          ],
+          "v": [
+            "Anomodon_attenuatus",
+            "Bazzania_trilobata",
+            "Marchantia_polymorpha",
+            "Metzgeria_crassipilis"
+          ]
+        },
+        {
+          "locus": "6476.aln",
+          "mode": "SPARSE",
+          "gain_nats": 205.72,
+          "m": 60,
+          "u": [
+            "Amborella_trichopoda"
+          ],
+          "v": [
+            "Anomodon_attenuatus"
+          ]
+        },
+        {
+          "locus": "4955.aln",
+          "mode": "SPARSE",
+          "gain_nats": 193.19,
+          "m": 73,
+          "u": [
+            "Mesotaenium_endlicherianum"
+          ],
+          "v": [
+            "Chlorokybus_atmophyticus",
+            "Nephroselmis_pyriformis",
+            "Pyramimonas_parkeae",
+            "Spirotaenia_minuta"
+          ]
+        },
+        {
+          "locus": "5463.aln",
+          "mode": "SPARSE",
+          "gain_nats": 181.91,
+          "m": 57,
+          "u": [
+            "Bazzania_trilobata",
+            "Ceratodon_purpureus",
+            "Marchantia_polymorpha",
+            "Riccia_sp"
+          ],
+          "v": [
+            "Catharanthus_roseus",
+            "Rosmarinus_officinalis"
+          ]
+        },
+        {
+          "locus": "5925.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 170.14,
+          "m": 49,
+          "u": [
+            "Thuidium_delicatulum"
+          ],
+          "v": [
+            "Rhynchostegium_serrulatum"
+          ]
+        },
+        {
+          "locus": "6010.aln",
+          "mode": "SPARSE",
+          "gain_nats": 169.92,
+          "m": 77,
+          "u": [
+            "Dioscorea_villosa"
+          ],
+          "v": [
+            "Taxus_baccata"
+          ]
+        },
+        {
+          "locus": "6810.aln",
+          "mode": "SPARSE",
+          "gain_nats": 167.54,
+          "m": 120,
+          "u": [
+            "Polytrichum_commune"
+          ],
+          "v": [
+            "Cylindrocystis_cushleckae",
+            "Mougeotia_sp"
+          ]
+        },
+        {
+          "locus": "6948.aln",
+          "mode": "SPARSE",
+          "gain_nats": 167.22,
+          "m": 59,
+          "u": [
+            "Metzgeria_crassipilis"
+          ],
+          "v": [
+            "Selaginella_moellendorffii_1kp"
+          ]
+        },
+        {
+          "locus": "5294.aln",
+          "mode": "SPARSE",
+          "gain_nats": 145.24,
+          "m": 101,
+          "u": [
+            "Allamanda_cathartica"
+          ],
+          "v": [
+            "Liriodendron_tulipifera",
+            "Sarcandra_glabra"
+          ]
+        },
+        {
+          "locus": "6948.aln",
+          "mode": "SPARSE",
+          "gain_nats": 137.95,
+          "m": 64,
+          "u": [
+            "Cedrus_libani"
+          ],
+          "v": [
+            "Colchicum_autumnale"
+          ]
+        },
+        {
+          "locus": "6916.aln",
+          "mode": "SPARSE",
+          "gain_nats": 137.53,
+          "m": 136,
+          "u": [
+            "Dioscorea_villosa"
+          ],
+          "v": [
+            "Allamanda_cathartica"
+          ]
+        },
+        {
+          "locus": "6916.aln",
+          "mode": "SPARSE",
+          "gain_nats": 130.9,
+          "m": 67,
+          "u": [
+            "Bryum_argenteum"
+          ],
+          "v": [
+            "Pseudolycopodiella_caroliniana",
+            "Selaginella_moellendorffii_1kp"
+          ]
+        },
+        {
+          "locus": "6810.aln",
+          "mode": "SPARSE",
+          "gain_nats": 119.25,
+          "m": 41,
+          "u": [
+            "Tanacetum_parthenium"
+          ],
+          "v": [
+            "Arabidopsis_thaliana",
+            "Carica_papaya",
+            "Kochia_scoparia",
+            "Larrea_tridentata"
+          ]
+        },
+        {
+          "locus": "5294.aln",
+          "mode": "SPARSE",
+          "gain_nats": 111.99,
+          "m": 116,
+          "u": [
+            "Rosmarinus_officinalis"
+          ],
+          "v": [
+            "Sabal_bermudana"
+          ]
+        },
+        {
+          "locus": "7924.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 111.52,
+          "m": 33,
+          "u": [
+            "Medicago_truncatula"
+          ],
+          "v": [
+            "Arabidopsis_thaliana",
+            "Carica_papaya",
+            "Hibiscus_cannabinus",
+            "Populus_trichocarpa"
+          ]
+        },
+        {
+          "locus": "5573.aln",
+          "mode": "SPARSE",
+          "gain_nats": 111.19,
+          "m": 37,
+          "u": [
+            "Nothoceros_vincentianus"
+          ],
+          "v": [
+            "Ceratodon_purpureus"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "WickD3a",
+      "alphabet": "nucleotide",
+      "total_files": 844,
+      "ok_loci": 844,
+      "error_loci": 0,
+      "wall_sec": 189.95,
+      "sum_cpu_runtime_sec": 1501.09,
+      "mean_taxa": 48.78,
+      "mean_seq_len": 1999.9,
+      "total_max_binary_splits": 38638,
+      "total_mdl_resolved_splits": 16818,
+      "polytomy_contracted_frac": 0.5647,
+      "sp_tree_total_splits": 38638,
+      "sp_tree_mdl_supported_splits": 16542,
+      "sp_tree_hard_polytomy_frac": 0.5719,
+      "forced_binary_sp_shared": 10116,
+      "forced_binary_sp_conflict": 28522,
+      "mdl_sp_shared": 7317,
+      "mdl_sp_conflict": 9501,
+      "spurious_discordance_eliminated_frac": 0.6669,
+      "loci_with_sp_shunts": 31,
+      "total_sp_shunts": 35,
+      "total_sp_interval": 17,
+      "total_sp_sparse": 18,
+      "total_free_shunts": 60,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "6262.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 34.17,
+          "m": 15,
+          "u": [
+            "Anomodon_attenuatus"
+          ],
+          "v": [
+            "Leucodon_brachypus"
+          ]
+        },
+        {
+          "locus": "6476.aln",
+          "mode": "SPARSE",
+          "gain_nats": 22.89,
+          "m": 11,
+          "u": [
+            "Boehmeria_nivea"
+          ],
+          "v": [
+            "Catharanthus_roseus"
+          ]
+        },
+        {
+          "locus": "7298.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 16.46,
+          "m": 27,
+          "u": [
+            "Nothoceros_aenigmaticus"
+          ],
+          "v": [
+            "Nothoceros_vincentianus"
+          ]
+        },
+        {
+          "locus": "6246.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 14.09,
+          "m": 8,
+          "u": [
+            "Pinus_taeda"
+          ],
+          "v": [
+            "Cycas_micholitzii"
+          ]
+        },
+        {
+          "locus": "7857.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 13.31,
+          "m": 10,
+          "u": [
+            "Oryza_sativa"
+          ],
+          "v": [
+            "Zea_mays"
+          ]
+        },
+        {
+          "locus": "6694.aln",
+          "mode": "SPARSE",
+          "gain_nats": 11.16,
+          "m": 23,
+          "u": [
+            "Anomodon_attenuatus"
+          ],
+          "v": [
+            "Leucodon_brachypus"
+          ]
+        },
+        {
+          "locus": "6713.aln",
+          "mode": "SPARSE",
+          "gain_nats": 8.89,
+          "m": 34,
+          "u": [
+            "Pyramimonas_parkeae"
+          ],
+          "v": [
+            "Brachypodium_distachyon",
+            "Oryza_sativa",
+            "Sorghum_bicolor",
+            "Zea_mays"
+          ]
+        },
+        {
+          "locus": "7765.aln",
+          "mode": "SPARSE",
+          "gain_nats": 8.46,
+          "m": 17,
+          "u": [
+            "Metzgeria_crassipilis"
+          ],
+          "v": [
+            "Rosulabryum_cf._capillare_sp",
+            "Thuidium_delicatulum"
+          ]
+        },
+        {
+          "locus": "7481.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 8.31,
+          "m": 11,
+          "u": [
+            "Sorghum_bicolor",
+            "Zea_mays"
+          ],
+          "v": [
+            "Brachypodium_distachyon",
+            "Oryza_sativa"
+          ]
+        },
+        {
+          "locus": "5075.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 6.24,
+          "m": 9,
+          "u": [
+            "Rhynchostegium_serrulatum"
+          ],
+          "v": [
+            "Leucodon_brachypus"
+          ]
+        },
+        {
+          "locus": "6476.aln",
+          "mode": "SPARSE",
+          "gain_nats": 5.62,
+          "m": 11,
+          "u": [
+            "Marchantia_polymorpha"
+          ],
+          "v": [
+            "Pteridium_aquilinum"
+          ]
+        },
+        {
+          "locus": "6476.aln",
+          "mode": "SPARSE",
+          "gain_nats": 5.48,
+          "m": 5,
+          "u": [
+            "Sabal_bermudana"
+          ],
+          "v": [
+            "Medicago_truncatula"
+          ]
+        },
+        {
+          "locus": "7705.aln",
+          "mode": "SPARSE",
+          "gain_nats": 4.34,
+          "m": 6,
+          "u": [
+            "Oryza_sativa"
+          ],
+          "v": [
+            "Sorghum_bicolor"
+          ]
+        },
+        {
+          "locus": "6436.aln",
+          "mode": "SPARSE",
+          "gain_nats": 4.16,
+          "m": 13,
+          "u": [
+            "Pteridium_aquilinum"
+          ],
+          "v": [
+            "Allamanda_cathartica",
+            "Arabidopsis_thaliana",
+            "Carica_papaya",
+            "Catharanthus_roseus"
+          ]
+        },
+        {
+          "locus": "6594.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.7,
+          "m": 11,
+          "u": [
+            "Ipomoea_purpurea"
+          ],
+          "v": [
+            "Brachypodium_distachyon",
+            "Oryza_sativa"
+          ]
+        },
+        {
+          "locus": "6680.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.31,
+          "m": 8,
+          "u": [
+            "Acorus_americanus",
+            "Brachypodium_distachyon",
+            "Oryza_sativa",
+            "Smilax_bona"
+          ],
+          "v": [
+            "Arabidopsis_thaliana",
+            "Carica_papaya",
+            "Hibiscus_cannabinus"
+          ]
+        },
+        {
+          "locus": "6532.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 3.04,
+          "m": 15,
+          "u": [
+            "Rhynchostegium_serrulatum"
+          ],
+          "v": [
+            "Hedwigia_ciliata"
+          ]
+        },
+        {
+          "locus": "7041.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 2.88,
+          "m": 12,
+          "u": [
+            "Nothoceros_aenigmaticus"
+          ],
+          "v": [
+            "Nothoceros_vincentianus"
+          ]
+        },
+        {
+          "locus": "7629.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 2.29,
+          "m": 8,
+          "u": [
+            "Sorghum_bicolor"
+          ],
+          "v": [
+            "Zea_mays"
+          ]
+        },
+        {
+          "locus": "7324.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.09,
+          "m": 8,
+          "u": [
+            "Ginkgo_biloba"
+          ],
+          "v": [
+            "Cedrus_libani",
+            "Pinus_taeda"
+          ]
+        },
+        {
+          "locus": "7389.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.04,
+          "m": 9,
+          "u": [
+            "Cycas_micholitzii",
+            "Ginkgo_biloba"
+          ],
+          "v": [
+            "Cunninghamia_lanceolata",
+            "Taxus_baccata"
+          ]
+        },
+        {
+          "locus": "7771.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 1.82,
+          "m": 7,
+          "u": [
+            "Hedwigia_ciliata"
+          ],
+          "v": [
+            "Anomodon_attenuatus",
+            "Bryum_argenteum",
+            "Rhynchostegium_serrulatum",
+            "Rosulabryum_cf._capillare_sp"
+          ]
+        },
+        {
+          "locus": "7705.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 1.68,
+          "m": 4,
+          "u": [
+            "Sorghum_bicolor",
+            "Zea_mays"
+          ],
+          "v": [
+            "Brachypodium_distachyon",
+            "Oryza_sativa"
+          ]
+        },
+        {
+          "locus": "5858.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 1.66,
+          "m": 10,
+          "u": [
+            "Rhynchostegium_serrulatum"
+          ],
+          "v": [
+            "Anomodon_attenuatus"
+          ]
+        },
+        {
+          "locus": "5696.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.65,
+          "m": 15,
+          "u": [
+            "Thuidium_delicatulum"
+          ],
+          "v": [
+            "Hedwigia_ciliata"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "WickD3b",
+      "alphabet": "nucleotide",
+      "total_files": 844,
+      "ok_loci": 844,
+      "error_loci": 0,
+      "wall_sec": 36.05,
+      "sum_cpu_runtime_sec": 284.27,
+      "mean_taxa": 48.78,
+      "mean_seq_len": 1333.3,
+      "total_max_binary_splits": 38638,
+      "total_mdl_resolved_splits": 20559,
+      "polytomy_contracted_frac": 0.4679,
+      "sp_tree_total_splits": 38638,
+      "sp_tree_mdl_supported_splits": 19234,
+      "sp_tree_hard_polytomy_frac": 0.5022,
+      "forced_binary_sp_shared": 11591,
+      "forced_binary_sp_conflict": 27047,
+      "mdl_sp_shared": 8929,
+      "mdl_sp_conflict": 11630,
+      "spurious_discordance_eliminated_frac": 0.57,
+      "loci_with_sp_shunts": 4,
+      "total_sp_shunts": 7,
+      "total_sp_interval": 2,
+      "total_sp_sparse": 5,
+      "total_free_shunts": 7,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "7412.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 8.04,
+          "m": 6,
+          "u": [
+            "Sorghum_bicolor"
+          ],
+          "v": [
+            "Zea_mays"
+          ]
+        },
+        {
+          "locus": "7288.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.47,
+          "m": 12,
+          "u": [
+            "Nuphar_advena"
+          ],
+          "v": [
+            "Brachypodium_distachyon",
+            "Oryza_sativa"
+          ]
+        },
+        {
+          "locus": "6016.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.68,
+          "m": 9,
+          "u": [
+            "Colchicum_autumnale"
+          ],
+          "v": [
+            "Pteridium_aquilinum"
+          ]
+        },
+        {
+          "locus": "7518.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 1.37,
+          "m": 5,
+          "u": [
+            "Sabal_bermudana"
+          ],
+          "v": [
+            "Cedrus_libani",
+            "Ceratodon_purpureus",
+            "Huperzia_squarrosa"
+          ]
+        },
+        {
+          "locus": "7288.aln",
+          "mode": "SPARSE",
+          "gain_nats": 0.92,
+          "m": 6,
+          "u": [
+            "Inula_helenium"
+          ],
+          "v": [
+            "Acorus_americanus",
+            "Brachypodium_distachyon",
+            "Dioscorea_villosa",
+            "Oryza_sativa"
+          ]
+        },
+        {
+          "locus": "7288.aln",
+          "mode": "SPARSE",
+          "gain_nats": 0.68,
+          "m": 9,
+          "u": [
+            "Amborella_trichopoda"
+          ],
+          "v": [
+            "Vitis_vinifera"
+          ]
+        },
+        {
+          "locus": "6016.aln",
+          "mode": "SPARSE",
+          "gain_nats": 0.49,
+          "m": 7,
+          "u": [
+            "Eschscholzia_californica"
+          ],
+          "v": [
+            "Sabal_bermudana"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "XiD4",
+      "alphabet": "nucleotide",
+      "total_files": 310,
+      "ok_loci": 310,
+      "error_loci": 0,
+      "wall_sec": 22.81,
+      "sum_cpu_runtime_sec": 153.74,
+      "mean_taxa": 33.18,
+      "mean_seq_len": 773.4,
+      "total_max_binary_splits": 9357,
+      "total_mdl_resolved_splits": 5253,
+      "polytomy_contracted_frac": 0.4386,
+      "sp_tree_total_splits": 9357,
+      "sp_tree_mdl_supported_splits": 4940,
+      "sp_tree_hard_polytomy_frac": 0.4721,
+      "forced_binary_sp_shared": 3574,
+      "forced_binary_sp_conflict": 5783,
+      "mdl_sp_shared": 2932,
+      "mdl_sp_conflict": 2321,
+      "spurious_discordance_eliminated_frac": 0.5987,
+      "loci_with_sp_shunts": 46,
+      "total_sp_shunts": 65,
+      "total_sp_interval": 2,
+      "total_sp_sparse": 63,
+      "total_free_shunts": 107,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "Cluster3618.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 7.97,
+          "m": 9,
+          "u": [
+            "Solanum"
+          ],
+          "v": [
+            "Gossypium",
+            "Theobroma"
+          ]
+        },
+        {
+          "locus": "Cluster5461.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 6.89,
+          "m": 7,
+          "u": [
+            "Lactuca"
+          ],
+          "v": [
+            "Populus"
+          ]
+        },
+        {
+          "locus": "Cluster5461.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 6.83,
+          "m": 8,
+          "u": [
+            "Medicago"
+          ],
+          "v": [
+            "Arabidopsis",
+            "Brassica"
+          ]
+        },
+        {
+          "locus": "Cluster3282.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 5.98,
+          "m": 9,
+          "u": [
+            "Dioscorea",
+            "Musa",
+            "Sorghum"
+          ],
+          "v": [
+            "Mimulus",
+            "Sesamum",
+            "Striga"
+          ]
+        },
+        {
+          "locus": "Cluster2803.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 5.35,
+          "m": 6,
+          "u": [
+            "Solanum"
+          ],
+          "v": [
+            "Liriodendron",
+            "Persea"
+          ]
+        },
+        {
+          "locus": "Cluster4791.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 4.51,
+          "m": 5,
+          "u": [
+            "Oryza"
+          ],
+          "v": [
+            "Amborella",
+            "Picea",
+            "Pinus",
+            "Selaginella"
+          ]
+        },
+        {
+          "locus": "Cluster1808.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 4.28,
+          "m": 6,
+          "u": [
+            "Fragaria"
+          ],
+          "v": [
+            "Selaginella"
+          ]
+        },
+        {
+          "locus": "Cluster5309.nt.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 3.75,
+          "m": 9,
+          "u": [
+            "Picea"
+          ],
+          "v": [
+            "Pinus"
+          ]
+        },
+        {
+          "locus": "Cluster2703.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.45,
+          "m": 7,
+          "u": [
+            "Mimulus"
+          ],
+          "v": [
+            "Ipomoea",
+            "Solanum"
+          ]
+        },
+        {
+          "locus": "Cluster3371.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.11,
+          "m": 5,
+          "u": [
+            "Liriodendron",
+            "Persea"
+          ],
+          "v": [
+            "Citrus",
+            "Gossypium",
+            "Theobroma"
+          ]
+        },
+        {
+          "locus": "Cluster2900.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 3.02,
+          "m": 9,
+          "u": [
+            "Vitis"
+          ],
+          "v": [
+            "Arabidopsis",
+            "Brassica"
+          ]
+        },
+        {
+          "locus": "Cluster8101.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.42,
+          "m": 7,
+          "u": [
+            "Fragaria"
+          ],
+          "v": [
+            "Mimulus",
+            "Sesamum"
+          ]
+        },
+        {
+          "locus": "Cluster3361.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.37,
+          "m": 6,
+          "u": [
+            "Glycine"
+          ],
+          "v": [
+            "Lactuca"
+          ]
+        },
+        {
+          "locus": "Cluster2803.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.28,
+          "m": 7,
+          "u": [
+            "Oryza",
+            "Sorghum"
+          ],
+          "v": [
+            "Citrus",
+            "Gossypium",
+            "Manihot",
+            "Populus"
+          ]
+        },
+        {
+          "locus": "Cluster4276.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.25,
+          "m": 8,
+          "u": [
+            "Camellia"
+          ],
+          "v": [
+            "Coffea"
+          ]
+        },
+        {
+          "locus": "Cluster7458.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.22,
+          "m": 7,
+          "u": [
+            "Nuphar"
+          ],
+          "v": [
+            "Fragaria",
+            "Malus"
+          ]
+        },
+        {
+          "locus": "Cluster2421.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.16,
+          "m": 7,
+          "u": [
+            "Picea",
+            "Pinus",
+            "Selaginella",
+            "Zamia"
+          ],
+          "v": [
+            "Arabidopsis",
+            "Brassica"
+          ]
+        },
+        {
+          "locus": "Cluster1883.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 2.06,
+          "m": 5,
+          "u": [
+            "Glycine",
+            "Medicago"
+          ],
+          "v": [
+            "Coffea",
+            "Helianthus",
+            "Ipomoea",
+            "Lactuca"
+          ]
+        },
+        {
+          "locus": "Cluster3368.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.99,
+          "m": 6,
+          "u": [
+            "Fragaria"
+          ],
+          "v": [
+            "Helianthus",
+            "Lactuca"
+          ]
+        },
+        {
+          "locus": "Cluster3339.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.95,
+          "m": 9,
+          "u": [
+            "Eucalyptus"
+          ],
+          "v": [
+            "Solanum"
+          ]
+        },
+        {
+          "locus": "Cluster5751.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.73,
+          "m": 7,
+          "u": [
+            "Manihot"
+          ],
+          "v": [
+            "Amborella",
+            "Aquilegia",
+            "Liriodendron",
+            "Musa"
+          ]
+        },
+        {
+          "locus": "Cluster5461.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.64,
+          "m": 5,
+          "u": [
+            "Glycine"
+          ],
+          "v": [
+            "Liriodendron"
+          ]
+        },
+        {
+          "locus": "Cluster4828.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.52,
+          "m": 5,
+          "u": [
+            "Medicago"
+          ],
+          "v": [
+            "Persea"
+          ]
+        },
+        {
+          "locus": "Cluster5378.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.51,
+          "m": 3,
+          "u": [
+            "Picea",
+            "Pinus",
+            "Selaginella",
+            "Zamia"
+          ],
+          "v": [
+            "Mimulus",
+            "Sesamum"
+          ]
+        },
+        {
+          "locus": "Cluster5564.nt.aln",
+          "mode": "SPARSE",
+          "gain_nats": 1.45,
+          "m": 9,
+          "u": [
+            "Arabidopsis",
+            "Brassica"
+          ],
+          "v": [
+            "Coffea",
+            "Ipomoea",
+            "Mimulus",
+            "Solanum"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "YangA8",
+      "alphabet": "protein",
+      "total_files": 1122,
+      "ok_loci": 1122,
+      "error_loci": 0,
+      "wall_sec": 15.75,
+      "sum_cpu_runtime_sec": 158.57,
+      "mean_taxa": 87.47,
+      "mean_seq_len": 450.0,
+      "total_max_binary_splits": 94772,
+      "total_mdl_resolved_splits": 58652,
+      "polytomy_contracted_frac": 0.3811,
+      "sp_tree_total_splits": 94772,
+      "sp_tree_mdl_supported_splits": 53964,
+      "sp_tree_hard_polytomy_frac": 0.4306,
+      "forced_binary_sp_shared": 48177,
+      "forced_binary_sp_conflict": 46595,
+      "mdl_sp_shared": 37399,
+      "mdl_sp_conflict": 21253,
+      "spurious_discordance_eliminated_frac": 0.5439,
+      "loci_with_sp_shunts": 961,
+      "total_sp_shunts": 2997,
+      "total_sp_interval": 80,
+      "total_sp_sparse": 2917,
+      "total_free_shunts": 5038,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "cc6151-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 133.87,
+          "m": 35,
+          "u": [
+            "Ccle"
+          ],
+          "v": [
+            "Pper"
+          ]
+        },
+        {
+          "locus": "cc6173-1.inclade1.ortho2.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 132.3,
+          "m": 41,
+          "u": [
+            "Thal"
+          ],
+          "v": [
+            "Alyr",
+            "Atha",
+            "Crub"
+          ]
+        },
+        {
+          "locus": "cc393-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 124.8,
+          "m": 26,
+          "u": [
+            "ILU1"
+          ],
+          "v": [
+            "HMFE"
+          ]
+        },
+        {
+          "locus": "cc6994-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 73.41,
+          "m": 19,
+          "u": [
+            "ILU5"
+          ],
+          "v": [
+            "ILU4"
+          ]
+        },
+        {
+          "locus": "cc2678-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 72.27,
+          "m": 27,
+          "u": [
+            "WGET"
+          ],
+          "v": [
+            "FZQN",
+            "OLES",
+            "RXEN",
+            "SHEZ"
+          ]
+        },
+        {
+          "locus": "cc5121-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 71.03,
+          "m": 15,
+          "u": [
+            "BLWH"
+          ],
+          "v": [
+            "BWRK",
+            "CUTE",
+            "EYRD",
+            "HDSY"
+          ]
+        },
+        {
+          "locus": "cc7026-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 69.62,
+          "m": 12,
+          "u": [
+            "ILU1"
+          ],
+          "v": [
+            "ILU5"
+          ]
+        },
+        {
+          "locus": "cc4568-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 67.53,
+          "m": 21,
+          "u": [
+            "BLWH",
+            "CPKP",
+            "CPLT",
+            "CTYH"
+          ],
+          "v": [
+            "AZBL",
+            "BKQU",
+            "EGOS",
+            "GIWN"
+          ]
+        },
+        {
+          "locus": "cc6309-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 52.18,
+          "m": 13,
+          "u": [
+            "ILU6"
+          ],
+          "v": [
+            "ILU3"
+          ]
+        },
+        {
+          "locus": "cc6536-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 50.97,
+          "m": 19,
+          "u": [
+            "Slyc"
+          ],
+          "v": [
+            "Stub"
+          ]
+        },
+        {
+          "locus": "cc5191-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 47.71,
+          "m": 19,
+          "u": [
+            "Slyc"
+          ],
+          "v": [
+            "Stub"
+          ]
+        },
+        {
+          "locus": "cc943-1.inclade1.ortho2.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 46.45,
+          "m": 10,
+          "u": [
+            "GJNX"
+          ],
+          "v": [
+            "BERS"
+          ]
+        },
+        {
+          "locus": "cc8317-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 38.66,
+          "m": 16,
+          "u": [
+            "ILU2"
+          ],
+          "v": [
+            "Ccle",
+            "Csin"
+          ]
+        },
+        {
+          "locus": "cc6108-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 38.57,
+          "m": 16,
+          "u": [
+            "BLWH"
+          ],
+          "v": [
+            "AAXJ",
+            "BVGI",
+            "BWRK",
+            "CBJR"
+          ]
+        },
+        {
+          "locus": "cc5533-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 34.9,
+          "m": 9,
+          "u": [
+            "ZBPY"
+          ],
+          "v": [
+            "BWRK"
+          ]
+        },
+        {
+          "locus": "cc8361-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 33.69,
+          "m": 21,
+          "u": [
+            "Stub"
+          ],
+          "v": [
+            "Slyc"
+          ]
+        },
+        {
+          "locus": "cc7027-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 32.88,
+          "m": 15,
+          "u": [
+            "OMYK"
+          ],
+          "v": [
+            "BWRK",
+            "CUTE",
+            "EYRD",
+            "HDSY"
+          ]
+        },
+        {
+          "locus": "cc7112-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 32.51,
+          "m": 10,
+          "u": [
+            "Slyc"
+          ],
+          "v": [
+            "Stub"
+          ]
+        },
+        {
+          "locus": "cc4924-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 31.25,
+          "m": 17,
+          "u": [
+            "BLWH"
+          ],
+          "v": [
+            "BWRK",
+            "CUTE",
+            "EYRD",
+            "HDSY"
+          ]
+        },
+        {
+          "locus": "cc1156-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 31.1,
+          "m": 9,
+          "u": [
+            "BVGI"
+          ],
+          "v": [
+            "FVXD"
+          ]
+        },
+        {
+          "locus": "cc5711-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 29.9,
+          "m": 12,
+          "u": [
+            "PDQH"
+          ],
+          "v": [
+            "BLWH"
+          ]
+        },
+        {
+          "locus": "cc8009-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 27.97,
+          "m": 10,
+          "u": [
+            "Stub"
+          ],
+          "v": [
+            "Slyc"
+          ]
+        },
+        {
+          "locus": "cc5638-1.inclade1.ortho1.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 26.85,
+          "m": 13,
+          "u": [
+            "Stub"
+          ],
+          "v": [
+            "Slyc"
+          ]
+        },
+        {
+          "locus": "cc5647-1.inclade1.ortho1.aln-cln",
+          "mode": "SPARSE",
+          "gain_nats": 26.84,
+          "m": 12,
+          "u": [
+            "AAXJ",
+            "BWRK",
+            "CBJR",
+            "CUTE"
+          ],
+          "v": [
+            "BERS",
+            "GJNX",
+            "HZTS",
+            "OMYK"
+          ]
+        },
+        {
+          "locus": "cc812-1.inclade1.ortho2.aln-cln",
+          "mode": "INTERVAL",
+          "gain_nats": 26.43,
+          "m": 11,
+          "u": [
+            "Slyc"
+          ],
+          "v": [
+            "Stub"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "NagyA1",
+      "alphabet": "protein",
+      "total_files": 594,
+      "ok_loci": 594,
+      "error_loci": 0,
+      "wall_sec": 3.2,
+      "sum_cpu_runtime_sec": 26.28,
+      "mean_taxa": 27.25,
+      "mean_seq_len": 289.7,
+      "total_max_binary_splits": 14407,
+      "total_mdl_resolved_splits": 6191,
+      "polytomy_contracted_frac": 0.5703,
+      "sp_tree_total_splits": 14407,
+      "sp_tree_mdl_supported_splits": 5461,
+      "sp_tree_hard_polytomy_frac": 0.6209,
+      "forced_binary_sp_shared": 7737,
+      "forced_binary_sp_conflict": 6670,
+      "mdl_sp_shared": 4426,
+      "mdl_sp_conflict": 1765,
+      "spurious_discordance_eliminated_frac": 0.7354,
+      "loci_with_sp_shunts": 349,
+      "total_sp_shunts": 843,
+      "total_sp_interval": 29,
+      "total_sp_sparse": 814,
+      "total_free_shunts": 1013,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "Cluster1028.aln",
+          "mode": "SPARSE",
+          "gain_nats": 75.82,
+          "m": 41,
+          "u": [
+            "Fusgr"
+          ],
+          "v": [
+            "Hisca"
+          ]
+        },
+        {
+          "locus": "Cluster4991.aln",
+          "mode": "SPARSE",
+          "gain_nats": 50.04,
+          "m": 25,
+          "u": [
+            "CocheC5_3"
+          ],
+          "v": [
+            "Fusgr"
+          ]
+        },
+        {
+          "locus": "Cluster1227.aln",
+          "mode": "SPARSE",
+          "gain_nats": 47.93,
+          "m": 21,
+          "u": [
+            "Antlo"
+          ],
+          "v": [
+            "Canal",
+            "Debha",
+            "Picst3"
+          ]
+        },
+        {
+          "locus": "Cluster4530.aln",
+          "mode": "SPARSE",
+          "gain_nats": 40.9,
+          "m": 33,
+          "u": [
+            "Cryne_H99_1"
+          ],
+          "v": [
+            "Symko1"
+          ]
+        },
+        {
+          "locus": "Cluster4979.aln",
+          "mode": "SPARSE",
+          "gain_nats": 20.15,
+          "m": 22,
+          "u": [
+            "Symko1"
+          ],
+          "v": [
+            "Botci",
+            "Botfu"
+          ]
+        },
+        {
+          "locus": "Cluster8952.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 19.91,
+          "m": 10,
+          "u": [
+            "Mucci2"
+          ],
+          "v": [
+            "Phybl2"
+          ]
+        },
+        {
+          "locus": "Cluster4991.aln",
+          "mode": "SPARSE",
+          "gain_nats": 18.68,
+          "m": 9,
+          "u": [
+            "Galma1",
+            "Plicr1"
+          ],
+          "v": [
+            "Botci",
+            "Botfu",
+            "Crypa1",
+            "Fusgr"
+          ]
+        },
+        {
+          "locus": "Cluster10050.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 17.88,
+          "m": 14,
+          "u": [
+            "Mucci2"
+          ],
+          "v": [
+            "Phybl2"
+          ]
+        },
+        {
+          "locus": "Cluster7927.aln",
+          "mode": "SPARSE",
+          "gain_nats": 16.41,
+          "m": 19,
+          "u": [
+            "Coere1"
+          ],
+          "v": [
+            "Phybl2"
+          ]
+        },
+        {
+          "locus": "Cluster3846.aln",
+          "mode": "SPARSE",
+          "gain_nats": 14.52,
+          "m": 40,
+          "u": [
+            "Batde5"
+          ],
+          "v": [
+            "Schpo1"
+          ]
+        },
+        {
+          "locus": "Cluster5176.aln",
+          "mode": "SPARSE",
+          "gain_nats": 14.07,
+          "m": 9,
+          "u": [
+            "Fusgr"
+          ],
+          "v": [
+            "Neucr"
+          ]
+        },
+        {
+          "locus": "Cluster1128.aln",
+          "mode": "SPARSE",
+          "gain_nats": 13.38,
+          "m": 16,
+          "u": [
+            "Coere1"
+          ],
+          "v": [
+            "Canal",
+            "Cangl",
+            "Debha",
+            "Dekbr2"
+          ]
+        },
+        {
+          "locus": "Cluster5197.aln",
+          "mode": "SPARSE",
+          "gain_nats": 13.12,
+          "m": 7,
+          "u": [
+            "CocheC5_3"
+          ],
+          "v": [
+            "Crypa1",
+            "Neucr"
+          ]
+        },
+        {
+          "locus": "Cluster8716.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 13.03,
+          "m": 6,
+          "u": [
+            "Mucci2"
+          ],
+          "v": [
+            "Phybl2"
+          ]
+        },
+        {
+          "locus": "Cluster8273.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.99,
+          "m": 4,
+          "u": [
+            "Monbr"
+          ],
+          "v": [
+            "Batde5",
+            "Spipu"
+          ]
+        },
+        {
+          "locus": "Cluster7115.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.93,
+          "m": 18,
+          "u": [
+            "Crypa1"
+          ],
+          "v": [
+            "Pench1"
+          ]
+        },
+        {
+          "locus": "Cluster4140.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.87,
+          "m": 14,
+          "u": [
+            "Cangl"
+          ],
+          "v": [
+            "Klula"
+          ]
+        },
+        {
+          "locus": "Cluster1029.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.43,
+          "m": 15,
+          "u": [
+            "Aurde1"
+          ],
+          "v": [
+            "Conpu1"
+          ]
+        },
+        {
+          "locus": "Cluster3275.aln",
+          "mode": "SPARSE",
+          "gain_nats": 12.35,
+          "m": 12,
+          "u": [
+            "CocheC5_3"
+          ],
+          "v": [
+            "Fusgr",
+            "Trire2"
+          ]
+        },
+        {
+          "locus": "Cluster3438.aln",
+          "mode": "SPARSE",
+          "gain_nats": 11.43,
+          "m": 28,
+          "u": [
+            "Symko1"
+          ],
+          "v": [
+            "Botci",
+            "Botfu"
+          ]
+        },
+        {
+          "locus": "Cluster9319.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 10.64,
+          "m": 8,
+          "u": [
+            "Mucci2"
+          ],
+          "v": [
+            "Phybl2"
+          ]
+        },
+        {
+          "locus": "Cluster1058.aln",
+          "mode": "SPARSE",
+          "gain_nats": 10.57,
+          "m": 14,
+          "u": [
+            "Botbo1"
+          ],
+          "v": [
+            "Fompi3"
+          ]
+        },
+        {
+          "locus": "Cluster6518.aln",
+          "mode": "SPARSE",
+          "gain_nats": 10.57,
+          "m": 7,
+          "u": [
+            "Crypa1"
+          ],
+          "v": [
+            "Botci",
+            "Botfu"
+          ]
+        },
+        {
+          "locus": "Cluster3156.aln",
+          "mode": "SPARSE",
+          "gain_nats": 10.42,
+          "m": 22,
+          "u": [
+            "Cangl",
+            "Erego",
+            "Klula",
+            "Sacce1"
+          ],
+          "v": [
+            "Aspfu1",
+            "Botci",
+            "Botfu",
+            "CocheC5_3"
+          ]
+        },
+        {
+          "locus": "Cluster4854.aln",
+          "mode": "SPARSE",
+          "gain_nats": 10.27,
+          "m": 12,
+          "u": [
+            "Cryne_H99_1"
+          ],
+          "v": [
+            "Pucgr1"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "ShenA9",
+      "alphabet": "protein",
+      "total_files": 1233,
+      "ok_loci": 1233,
+      "error_loci": 0,
+      "wall_sec": 29.23,
+      "sum_cpu_runtime_sec": 325.83,
+      "mean_taxa": 86.49,
+      "mean_seq_len": 494.6,
+      "total_max_binary_splits": 102946,
+      "total_mdl_resolved_splits": 49279,
+      "polytomy_contracted_frac": 0.5213,
+      "sp_tree_total_splits": 102946,
+      "sp_tree_mdl_supported_splits": 45757,
+      "sp_tree_hard_polytomy_frac": 0.5555,
+      "forced_binary_sp_shared": 61751,
+      "forced_binary_sp_conflict": 41195,
+      "mdl_sp_shared": 36553,
+      "mdl_sp_conflict": 12726,
+      "spurious_discordance_eliminated_frac": 0.6911,
+      "loci_with_sp_shunts": 808,
+      "total_sp_shunts": 1727,
+      "total_sp_interval": 560,
+      "total_sp_sparse": 1167,
+      "total_free_shunts": 1673,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "BUSCOfEOG71GB3B.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 511.52,
+          "m": 140,
+          "u": [
+            "Nakaseomyces_bacillisporus"
+          ],
+          "v": [
+            "Saccharomyces_cerevisiae"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7TXKRS.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 431.37,
+          "m": 152,
+          "u": [
+            "Cyberlindnera_fabianii"
+          ],
+          "v": [
+            "Nakaseomyces_bacillisporus"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7VB2QQ.domain.aa.aln.trimmed.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 324.76,
+          "m": 89,
+          "u": [
+            "Kluyveromyces_dobzhanskii"
+          ],
+          "v": [
+            "Kluyveromyces_wickerhamii"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7N63XC.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 294.49,
+          "m": 121,
+          "u": [
+            "Eremothecium_cymbalariae"
+          ],
+          "v": [
+            "Stagonospora_nodorum"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG74BK23.domain.aa.aln.trimmed.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 293.99,
+          "m": 80,
+          "u": [
+            "Hansenula_polymorpha"
+          ],
+          "v": [
+            "Ogataea_parapolymorpha"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG79930D.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 251.85,
+          "m": 115,
+          "u": [
+            "Ascoidea_rubescens"
+          ],
+          "v": [
+            "Candida_albicans"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7FR7S6.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 248.54,
+          "m": 105,
+          "u": [
+            "Kluyveromyces_aestuarii"
+          ],
+          "v": [
+            "Tetrapisispora_phaffii"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7QG4G3.domain.aa.aln.trimmed.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 232.8,
+          "m": 86,
+          "u": [
+            "Candida_dubliniensis"
+          ],
+          "v": [
+            "Candida_sojae"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7XH70W.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 225.31,
+          "m": 108,
+          "u": [
+            "Hyphopichia_burtonii"
+          ],
+          "v": [
+            "Candida_maltosa",
+            "Candida_sojae"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG72RN6D.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 225.28,
+          "m": 105,
+          "u": [
+            "Geotrichum_candidum_CLIB918"
+          ],
+          "v": [
+            "Lachancea_lanzarotensis"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7GXPKZ.domain.aa.aln.trimmed.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 206.84,
+          "m": 80,
+          "u": [
+            "Candida_sojae"
+          ],
+          "v": [
+            "Lodderomyces_elongisporus"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG783N4B.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 201.73,
+          "m": 92,
+          "u": [
+            "Pichia_kudriavzevii"
+          ],
+          "v": [
+            "Candida_sojae",
+            "Candida_tropicalis"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7FR7S6.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 194.43,
+          "m": 88,
+          "u": [
+            "Debaryomyces_hansenii"
+          ],
+          "v": [
+            "Pichia_membranifaciens"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG76TB15.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 186.83,
+          "m": 84,
+          "u": [
+            "Stagonospora_nodorum"
+          ],
+          "v": [
+            "Tortispora_caseinolytica"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG71VT2Q.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 184.57,
+          "m": 97,
+          "u": [
+            "Hyphopichia_burtonii"
+          ],
+          "v": [
+            "Pichia_kudriavzevii"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG79PJXZ.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 181.35,
+          "m": 115,
+          "u": [
+            "Kluyveromyces_wickerhamii"
+          ],
+          "v": [
+            "Saccharomyces_uvarum"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7DC2CX.domain.aa.aln.trimmed.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 174.8,
+          "m": 53,
+          "u": [
+            "Hansenula_polymorpha"
+          ],
+          "v": [
+            "Ogataea_parapolymorpha"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7SXWBR.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 166.49,
+          "m": 118,
+          "u": [
+            "Lachancea_waltii"
+          ],
+          "v": [
+            "Naumovozyma_castellii"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG73NGD9.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 163.56,
+          "m": 71,
+          "u": [
+            "Candida_albicans"
+          ],
+          "v": [
+            "Hanseniaspora_uvarum",
+            "Hanseniaspora_valbyensis"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG757D5X.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 159.87,
+          "m": 68,
+          "u": [
+            "Candida_sojae"
+          ],
+          "v": [
+            "Dekkera_bruxellensis"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7B05NZ.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 159.53,
+          "m": 119,
+          "u": [
+            "Candida_auris"
+          ],
+          "v": [
+            "Hansenula_polymorpha",
+            "Ogataea_parapolymorpha"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7HB5JW.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 147.0,
+          "m": 68,
+          "u": [
+            "Saccharomyces_uvarum"
+          ],
+          "v": [
+            "Tetrapisispora_phaffii"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7HB5JW.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 141.96,
+          "m": 94,
+          "u": [
+            "Candida_albicans"
+          ],
+          "v": [
+            "Candida_arabinofermentans"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7380FJ.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 133.37,
+          "m": 68,
+          "u": [
+            "Candida_glabrata"
+          ],
+          "v": [
+            "Hanseniaspora_uvarum"
+          ]
+        },
+        {
+          "locus": "BUSCOfEOG7WQ856.domain.aa.aln.trimmed.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 131.61,
+          "m": 49,
+          "u": [
+            "Kazachstania_naganishii"
+          ],
+          "v": [
+            "Dekkera_bruxellensis",
+            "Pichia_kudriavzevii",
+            "Pichia_membranifaciens"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "StruA5",
+      "alphabet": "protein",
+      "total_files": 679,
+      "ok_loci": 679,
+      "error_loci": 0,
+      "wall_sec": 4.56,
+      "sum_cpu_runtime_sec": 41.01,
+      "mean_taxa": 54.47,
+      "mean_seq_len": 278.6,
+      "total_max_binary_splits": 34951,
+      "total_mdl_resolved_splits": 14127,
+      "polytomy_contracted_frac": 0.5958,
+      "sp_tree_total_splits": 34951,
+      "sp_tree_mdl_supported_splits": 10553,
+      "sp_tree_hard_polytomy_frac": 0.6981,
+      "forced_binary_sp_shared": 7263,
+      "forced_binary_sp_conflict": 27688,
+      "mdl_sp_shared": 4954,
+      "mdl_sp_conflict": 9173,
+      "spurious_discordance_eliminated_frac": 0.6687,
+      "loci_with_sp_shunts": 480,
+      "total_sp_shunts": 1884,
+      "total_sp_interval": 179,
+      "total_sp_sparse": 1705,
+      "total_free_shunts": 1940,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "gene281_22161.aln",
+          "mode": "SPARSE",
+          "gain_nats": 363.12,
+          "m": 159,
+          "u": [
+            "Arabella_sp"
+          ],
+          "v": [
+            "Ridgeia_sp"
+          ]
+        },
+        {
+          "locus": "gene1819_23701.aln",
+          "mode": "SPARSE",
+          "gain_nats": 360.89,
+          "m": 198,
+          "u": [
+            "Riftia_only"
+          ],
+          "v": [
+            "Ophryotrocha_globopalpata"
+          ]
+        },
+        {
+          "locus": "gene623_22503.aln",
+          "mode": "SPARSE",
+          "gain_nats": 306.9,
+          "m": 153,
+          "u": [
+            "Dinophilus_gyrociliatus"
+          ],
+          "v": [
+            "Polygordius_lacteus",
+            "Polygordius_sp10",
+            "Polygordius_sp3"
+          ]
+        },
+        {
+          "locus": "gene1793_23675.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 300.85,
+          "m": 68,
+          "u": [
+            "Polygordius_sp3"
+          ],
+          "v": [
+            "Saccocirrus_papillocercus"
+          ]
+        },
+        {
+          "locus": "gene414_22294.aln",
+          "mode": "SPARSE",
+          "gain_nats": 265.43,
+          "m": 116,
+          "u": [
+            "Phylo_Feb-2-12"
+          ],
+          "v": [
+            "Polygordius_lacteus",
+            "Polygordius_sp10",
+            "Polygordius_sp3",
+            "Saccocirrus_papillocercus"
+          ]
+        },
+        {
+          "locus": "gene1856_23738.aln",
+          "mode": "SPARSE",
+          "gain_nats": 264.35,
+          "m": 138,
+          "u": [
+            "Diopatra_Wormnet"
+          ],
+          "v": [
+            "Glycera_tridactyla_Neu"
+          ]
+        },
+        {
+          "locus": "gene281_22161.aln",
+          "mode": "SPARSE",
+          "gain_nats": 257.56,
+          "m": 114,
+          "u": [
+            "Polygordius_sp3"
+          ],
+          "v": [
+            "Tubifex_tubifex"
+          ]
+        },
+        {
+          "locus": "gene1199_23081.aln",
+          "mode": "SPARSE",
+          "gain_nats": 257.34,
+          "m": 70,
+          "u": [
+            "Diopatra_Wormnet"
+          ],
+          "v": [
+            "Lumbricus_rubellus"
+          ]
+        },
+        {
+          "locus": "gene281_22161.aln",
+          "mode": "SPARSE",
+          "gain_nats": 256.67,
+          "m": 134,
+          "u": [
+            "Tubulanus"
+          ],
+          "v": [
+            "Alvinella_pompejana"
+          ]
+        },
+        {
+          "locus": "gene553_22433.aln",
+          "mode": "SPARSE",
+          "gain_nats": 223.03,
+          "m": 85,
+          "u": [
+            "Owenia_Feb-1-12"
+          ],
+          "v": [
+            "Sthenelais_boa"
+          ]
+        },
+        {
+          "locus": "gene1349_23231.aln",
+          "mode": "SPARSE",
+          "gain_nats": 222.01,
+          "m": 64,
+          "u": [
+            "Magelona_beckleyi_Trim_CLC"
+          ],
+          "v": [
+            "Pectinaria"
+          ]
+        },
+        {
+          "locus": "gene1416_23298.aln",
+          "mode": "SPARSE",
+          "gain_nats": 220.31,
+          "m": 91,
+          "u": [
+            "Protodrilus_adherens"
+          ],
+          "v": [
+            "Euprymna_scolopes"
+          ]
+        },
+        {
+          "locus": "gene623_22503.aln",
+          "mode": "SPARSE",
+          "gain_nats": 210.5,
+          "m": 115,
+          "u": [
+            "Ophryotrocha_globopalpata"
+          ],
+          "v": [
+            "Eunice_pennata"
+          ]
+        },
+        {
+          "locus": "gene1934_23816.aln",
+          "mode": "SPARSE",
+          "gain_nats": 193.76,
+          "m": 53,
+          "u": [
+            "Crassostrea_gigas"
+          ],
+          "v": [
+            "Ridgeia_piscesae"
+          ]
+        },
+        {
+          "locus": "gene1998_23880.aln",
+          "mode": "SPARSE",
+          "gain_nats": 185.06,
+          "m": 71,
+          "u": [
+            "Protodriloides_symbioticus"
+          ],
+          "v": [
+            "Arabella_sp"
+          ]
+        },
+        {
+          "locus": "gene1801_23683.aln",
+          "mode": "SPARSE",
+          "gain_nats": 183.88,
+          "m": 43,
+          "u": [
+            "Protodorvillea_kefersteinii"
+          ],
+          "v": [
+            "Polygordius_lacteus"
+          ]
+        },
+        {
+          "locus": "gene553_22433.aln",
+          "mode": "SPARSE",
+          "gain_nats": 181.69,
+          "m": 93,
+          "u": [
+            "Protodorvillea_kefersteinii"
+          ],
+          "v": [
+            "Pedicellina_cernua",
+            "Pedicellina_sp"
+          ]
+        },
+        {
+          "locus": "gene1026_22908.aln",
+          "mode": "SPARSE",
+          "gain_nats": 168.69,
+          "m": 67,
+          "u": [
+            "Paramphinome_jeffreysii_Trim_CLC"
+          ],
+          "v": [
+            "Alvinella_pompejana"
+          ]
+        },
+        {
+          "locus": "gene530_22410.aln",
+          "mode": "SPARSE",
+          "gain_nats": 138.0,
+          "m": 54,
+          "u": [
+            "Apharyngtus_punicus"
+          ],
+          "v": [
+            "Ophelina"
+          ]
+        },
+        {
+          "locus": "gene1856_23738.aln",
+          "mode": "SPARSE",
+          "gain_nats": 137.23,
+          "m": 37,
+          "u": [
+            "Mesonerilla_fagei"
+          ],
+          "v": [
+            "Perionyx_excavatus"
+          ]
+        },
+        {
+          "locus": "gene1997_23879.aln",
+          "mode": "SPARSE",
+          "gain_nats": 135.03,
+          "m": 86,
+          "u": [
+            "Protodriloides_symbioticus"
+          ],
+          "v": [
+            "Paramphinome_jeffreysii_Trim_CLC"
+          ]
+        },
+        {
+          "locus": "gene1513_23395.aln",
+          "mode": "SPARSE",
+          "gain_nats": 132.69,
+          "m": 54,
+          "u": [
+            "Ophelia_rathkei"
+          ],
+          "v": [
+            "Eunice_pennata"
+          ]
+        },
+        {
+          "locus": "gene1819_23701.aln",
+          "mode": "SPARSE",
+          "gain_nats": 127.99,
+          "m": 129,
+          "u": [
+            "Spiochaetopterus_Feb-2-12"
+          ],
+          "v": [
+            "Phylo_Feb-2-12"
+          ]
+        },
+        {
+          "locus": "gene518_22398.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 126.3,
+          "m": 46,
+          "u": [
+            "Oenone_fulgida"
+          ],
+          "v": [
+            "Eunice_pennata"
+          ]
+        },
+        {
+          "locus": "gene956_22838.aln",
+          "mode": "SPARSE",
+          "gain_nats": 122.55,
+          "m": 50,
+          "u": [
+            "Ophryotrocha_globopalpata"
+          ],
+          "v": [
+            "Lumbricus_rubellus"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "PrumD6",
+      "alphabet": "nucleotide",
+      "total_files": 259,
+      "ok_loci": 259,
+      "error_loci": 0,
+      "wall_sec": 51.8,
+      "sum_cpu_runtime_sec": 344.42,
+      "mean_taxa": 198.99,
+      "mean_seq_len": 1523.9,
+      "total_max_binary_splits": 50762,
+      "total_mdl_resolved_splits": 36623,
+      "polytomy_contracted_frac": 0.2785,
+      "sp_tree_total_splits": 50762,
+      "sp_tree_mdl_supported_splits": 31060,
+      "sp_tree_hard_polytomy_frac": 0.3881,
+      "forced_binary_sp_shared": 28517,
+      "forced_binary_sp_conflict": 22245,
+      "mdl_sp_shared": 25877,
+      "mdl_sp_conflict": 10746,
+      "spurious_discordance_eliminated_frac": 0.5169,
+      "loci_with_sp_shunts": 24,
+      "total_sp_shunts": 71,
+      "total_sp_interval": 16,
+      "total_sp_sparse": 55,
+      "total_free_shunts": 46,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "L120.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 86.77,
+          "m": 37,
+          "u": [
+            "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+          ],
+          "v": [
+            "I0219_1489_Trochilidae_Topaza_pella",
+            "I0220_1514_Trochilidae_Phaethornis_superciliosus",
+            "I0277_5465_Trochilidae_Archilochus_colubris"
+          ]
+        },
+        {
+          "locus": "L131.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 60.64,
+          "m": 35,
+          "u": [
+            "I0245_2800_Ardeidae_Ardea_herodias"
+          ],
+          "v": [
+            "I0429_3677_Grallariidae_Myrmothera_campanisona"
+          ]
+        },
+        {
+          "locus": "L58.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 42.7,
+          "m": 14,
+          "u": [
+            "I0267_3690_Bucconidae_Bucco_capensis"
+          ],
+          "v": [
+            "I0211_1232_Columbidae_Columba_livia",
+            "I0221_1526_Columbidae_Leptotila_rufaxilla",
+            "I0243_2275_Columbidae_Columbina_minuta"
+          ]
+        },
+        {
+          "locus": "L120.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 30.58,
+          "m": 16,
+          "u": [
+            "I0220_1514_Trochilidae_Phaethornis_superciliosus"
+          ],
+          "v": [
+            "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+          ]
+        },
+        {
+          "locus": "L306.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 29.45,
+          "m": 16,
+          "u": [
+            "I0212_1289_Charadriidae_Charadrius_hiaticula"
+          ],
+          "v": [
+            "I0363_345610_Mesitornithidae_Mesitornis_unicolor"
+          ]
+        },
+        {
+          "locus": "L50.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 28.59,
+          "m": 12,
+          "u": [
+            "I0204_1174_Threskiornithidae_Harpiprion_caerulescens"
+          ],
+          "v": [
+            "I0230_1770_Tinamidae_Crypturellus_tataupa"
+          ]
+        },
+        {
+          "locus": "L288.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 22.74,
+          "m": 11,
+          "u": [
+            "I0230_1770_Tinamidae_Crypturellus_tataupa"
+          ],
+          "v": [
+            "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae"
+          ]
+        },
+        {
+          "locus": "L202.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 21.74,
+          "m": 9,
+          "u": [
+            "I0185_86_Accipitridae_Buteo_jamaicensis",
+            "I0268_3790_Accipitridae_Accipiter_superciliosus",
+            "I0361_9545_Sagittariidae_Sagittarius_serpentarius",
+            "I0385_9309_Accipitridae_Elanus_leucurus"
+          ],
+          "v": [
+            "I0410_52764_Coliidae_Colius_colius",
+            "I0413_67124_Coliidae_Colius_indicus"
+          ]
+        },
+        {
+          "locus": "L337.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 20.28,
+          "m": 9,
+          "u": [
+            "I0223_1586_Furnariidae_Sclerurus_mexicanus"
+          ],
+          "v": [
+            "I0242_2273_Furnariidae_Lepidocolaptes_angustirostris"
+          ]
+        },
+        {
+          "locus": "L306.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 18.22,
+          "m": 13,
+          "u": [
+            "I0284_6031_Coraciidae_Coracias_cyanogaster"
+          ],
+          "v": [
+            "I0368_21_Recurvirostridae_Recurvirostra_americana"
+          ]
+        },
+        {
+          "locus": "L239.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 18.08,
+          "m": 12,
+          "u": [
+            "I0230_1770_Tinamidae_Crypturellus_tataupa",
+            "I0231_1774_Tinamidae_Tinamus_major"
+          ],
+          "v": [
+            "I0200_988_Furnariidae_Furnarius_rufus",
+            "I0242_2273_Furnariidae_Lepidocolaptes_angustirostris"
+          ]
+        },
+        {
+          "locus": "L131.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 14.02,
+          "m": 14,
+          "u": [
+            "I0278_5642_Phasianidae_Bonasa_umbellus"
+          ],
+          "v": [
+            "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae",
+            "I0378_3087_Heliornithidae_Heliornis_fulica"
+          ]
+        },
+        {
+          "locus": "L271.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 13.18,
+          "m": 7,
+          "u": [
+            "I0289_6295_Haematopodidae_Haematopus_palliatus"
+          ],
+          "v": [
+            "I0384_9129_Fregatidae_Fregata_magnificens"
+          ]
+        },
+        {
+          "locus": "L24.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 11.71,
+          "m": 19,
+          "u": [
+            "I0204_1174_Threskiornithidae_Harpiprion_caerulescens"
+          ],
+          "v": [
+            "I0230_1770_Tinamidae_Crypturellus_tataupa"
+          ]
+        },
+        {
+          "locus": "L131.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 11.61,
+          "m": 13,
+          "u": [
+            "I0256_3178_Megapodiidae_Leipoa_ocellata"
+          ],
+          "v": [
+            "I0425_2961_Rallidae_Micropygia_schomburgkii"
+          ]
+        },
+        {
+          "locus": "L178.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 11.0,
+          "m": 21,
+          "u": [
+            "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+          ],
+          "v": [
+            "I0219_1489_Trochilidae_Topaza_pella",
+            "I0220_1514_Trochilidae_Phaethornis_superciliosus",
+            "I0277_5465_Trochilidae_Archilochus_colubris"
+          ]
+        },
+        {
+          "locus": "L288.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 10.96,
+          "m": 11,
+          "u": [
+            "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae"
+          ],
+          "v": [
+            "I0460_HERP_14722_Crocodylidae_Crocodylus_porosus",
+            "I0461_HERP_15451_Alligatoridae_Caiman_croccodilus"
+          ]
+        },
+        {
+          "locus": "L163.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 10.35,
+          "m": 8,
+          "u": [
+            "I0267_3690_Bucconidae_Bucco_capensis",
+            "I0273_5315_Galbulidae_Galbula_dea",
+            "I0274_5339_Bucconidae_Chelidoptera_tenebrosa"
+          ],
+          "v": [
+            "I0362_3175_Hydrobatidae_Oceanites_oceanicus",
+            "I0412_62853_Hydrobatidae_Pelagodroma_marina"
+          ]
+        },
+        {
+          "locus": "L131.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 10.32,
+          "m": 9,
+          "u": [
+            "I0289_6295_Haematopodidae_Haematopus_palliatus"
+          ],
+          "v": [
+            "I0425_2961_Rallidae_Micropygia_schomburgkii"
+          ]
+        },
+        {
+          "locus": "L94.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 10.15,
+          "m": 8,
+          "u": [
+            "I0252_3154_Anatidae_Anas_superciliosa",
+            "I0288_6097_Anatidae_Aythya_valisineria"
+          ],
+          "v": [
+            "I0226_1619_Odontophoridae_Odontophorus_gujanensis",
+            "I0250_2944_Odontophoridae_Colinus_cristatus",
+            "I0278_5642_Phasianidae_Bonasa_umbellus",
+            "I0371_1587_Phasianidae_Rollulus_rouloul"
+          ]
+        },
+        {
+          "locus": "L288.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 8.34,
+          "m": 7,
+          "u": [
+            "I0284_6031_Coraciidae_Coracias_cyanogaster"
+          ],
+          "v": [
+            "I0387_12368_Eurylaimidae_Eurylaimus_ochromalus",
+            "I0438_345711_Eurylaimidae_Neodrepanis_coruscans"
+          ]
+        },
+        {
+          "locus": "L271.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 8.25,
+          "m": 15,
+          "u": [
+            "I0409_25985_Turnicidae_Turnix_ocellata"
+          ],
+          "v": [
+            "I0224_1607_Cracidae_Crax_alector",
+            "I0226_1619_Odontophoridae_Odontophorus_gujanensis",
+            "I0250_2944_Odontophoridae_Colinus_cristatus",
+            "I0256_3178_Megapodiidae_Leipoa_ocellata"
+          ]
+        },
+        {
+          "locus": "L194.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 7.73,
+          "m": 7,
+          "u": [
+            "I0391_15014_Pelecanidae_Pelecanus_occidentalis"
+          ],
+          "v": [
+            "I0418_89784_Scopidae_Scopus_umbretta"
+          ]
+        },
+        {
+          "locus": "L108.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 7.0,
+          "m": 8,
+          "u": [
+            "I0220_1514_Trochilidae_Phaethornis_superciliosus"
+          ],
+          "v": [
+            "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+          ]
+        },
+        {
+          "locus": "L288.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 6.57,
+          "m": 6,
+          "u": [
+            "I0233_1920_Upupidae_Upupa_epops"
+          ],
+          "v": [
+            "I0398_17932_Cuculidae_Centropus_bengalensis"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "SongD1",
+      "alphabet": "nucleotide",
+      "total_files": 424,
+      "ok_loci": 424,
+      "error_loci": 0,
+      "wall_sec": 35.03,
+      "sum_cpu_runtime_sec": 243.07,
+      "mean_taxa": 37.0,
+      "mean_seq_len": 3157.3,
+      "total_max_binary_splits": 14416,
+      "total_mdl_resolved_splits": 9469,
+      "polytomy_contracted_frac": 0.3432,
+      "sp_tree_total_splits": 14416,
+      "sp_tree_mdl_supported_splits": 9366,
+      "sp_tree_hard_polytomy_frac": 0.3503,
+      "forced_binary_sp_shared": 7732,
+      "forced_binary_sp_conflict": 6684,
+      "mdl_sp_shared": 6576,
+      "mdl_sp_conflict": 2893,
+      "spurious_discordance_eliminated_frac": 0.5672,
+      "loci_with_sp_shunts": 67,
+      "total_sp_shunts": 158,
+      "total_sp_interval": 37,
+      "total_sp_sparse": 121,
+      "total_free_shunts": 165,
+      "focal_hypotheses": {
+        "Atlantogenata_Afro_plus_Xena": {
+          "informative_loci": 424,
+          "mdl_resolved": 98,
+          "mdl_polytomy": 105,
+          "mdl_conflicted": 221,
+          "forced_binary_count": 134,
+          "cumulative_mdl_nats": 2364.79
+        },
+        "Exafroplacentalia_Boreo_plus_Xena": {
+          "informative_loci": 424,
+          "mdl_resolved": 35,
+          "mdl_polytomy": 75,
+          "mdl_conflicted": 314,
+          "forced_binary_count": 52,
+          "cumulative_mdl_nats": 769.61
+        },
+        "Epitheria_Boreo_plus_Afro": {
+          "informative_loci": 424,
+          "mdl_resolved": 21,
+          "mdl_polytomy": 77,
+          "mdl_conflicted": 326,
+          "forced_binary_count": 38,
+          "cumulative_mdl_nats": 354.37
+        }
+      },
+      "top_sp_shunts": [
+        {
+          "locus": "gene144.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 289.18,
+          "m": 74,
+          "u": [
+            "Mus"
+          ],
+          "v": [
+            "Pon"
+          ]
+        },
+        {
+          "locus": "gene428.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 147.11,
+          "m": 32,
+          "u": [
+            "New"
+          ],
+          "v": [
+            "Pon"
+          ]
+        },
+        {
+          "locus": "gene429.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 103.76,
+          "m": 26,
+          "u": [
+            "Gor"
+          ],
+          "v": [
+            "Hom"
+          ]
+        },
+        {
+          "locus": "gene300.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 103.05,
+          "m": 31,
+          "u": [
+            "Tar"
+          ],
+          "v": [
+            "Pan"
+          ]
+        },
+        {
+          "locus": "gene281.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 102.08,
+          "m": 31,
+          "u": [
+            "Sus"
+          ],
+          "v": [
+            "Can",
+            "Equ",
+            "Fel"
+          ]
+        },
+        {
+          "locus": "gene107.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 94.56,
+          "m": 38,
+          "u": [
+            "Can"
+          ],
+          "v": [
+            "Mon"
+          ]
+        },
+        {
+          "locus": "gene419.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 94.19,
+          "m": 27,
+          "u": [
+            "Hom"
+          ],
+          "v": [
+            "Equ"
+          ]
+        },
+        {
+          "locus": "gene281.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 86.81,
+          "m": 34,
+          "u": [
+            "Cal"
+          ],
+          "v": [
+            "New"
+          ]
+        },
+        {
+          "locus": "gene300.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 86.78,
+          "m": 30,
+          "u": [
+            "Tur"
+          ],
+          "v": [
+            "Cho",
+            "Das"
+          ]
+        },
+        {
+          "locus": "gene26.aln",
+          "mode": "SPARSE",
+          "gain_nats": 78.19,
+          "m": 52,
+          "u": [
+            "New"
+          ],
+          "v": [
+            "Ech"
+          ]
+        },
+        {
+          "locus": "gene300.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 77.0,
+          "m": 29,
+          "u": [
+            "Vic"
+          ],
+          "v": [
+            "Lox",
+            "Pro"
+          ]
+        },
+        {
+          "locus": "gene107.aln",
+          "mode": "SPARSE",
+          "gain_nats": 64.76,
+          "m": 37,
+          "u": [
+            "Cal"
+          ],
+          "v": [
+            "Bos"
+          ]
+        },
+        {
+          "locus": "gene300.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 64.11,
+          "m": 31,
+          "u": [
+            "Gor"
+          ],
+          "v": [
+            "Pte"
+          ]
+        },
+        {
+          "locus": "gene291.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 60.08,
+          "m": 17,
+          "u": [
+            "New"
+          ],
+          "v": [
+            "Bos"
+          ]
+        },
+        {
+          "locus": "gene132.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 36.21,
+          "m": 42,
+          "u": [
+            "Bos"
+          ],
+          "v": [
+            "Pon"
+          ]
+        },
+        {
+          "locus": "gene435.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 33.69,
+          "m": 12,
+          "u": [
+            "Equ"
+          ],
+          "v": [
+            "Pon"
+          ]
+        },
+        {
+          "locus": "gene123.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 30.3,
+          "m": 8,
+          "u": [
+            "Cal"
+          ],
+          "v": [
+            "New"
+          ]
+        },
+        {
+          "locus": "gene332.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 28.94,
+          "m": 11,
+          "u": [
+            "New"
+          ],
+          "v": [
+            "Pan"
+          ]
+        },
+        {
+          "locus": "gene388.aln",
+          "mode": "SPARSE",
+          "gain_nats": 28.73,
+          "m": 16,
+          "u": [
+            "Mus"
+          ],
+          "v": [
+            "Gal",
+            "Orn"
+          ]
+        },
+        {
+          "locus": "gene291.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 26.73,
+          "m": 16,
+          "u": [
+            "Mon"
+          ],
+          "v": [
+            "Gal",
+            "Orn"
+          ]
+        },
+        {
+          "locus": "gene262.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 26.12,
+          "m": 9,
+          "u": [
+            "Gor"
+          ],
+          "v": [
+            "Hom"
+          ]
+        },
+        {
+          "locus": "gene235.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 25.74,
+          "m": 20,
+          "u": [
+            "Lox"
+          ],
+          "v": [
+            "Cho"
+          ]
+        },
+        {
+          "locus": "gene309.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 24.64,
+          "m": 10,
+          "u": [
+            "Bos"
+          ],
+          "v": [
+            "Equ"
+          ]
+        },
+        {
+          "locus": "gene435.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 21.31,
+          "m": 10,
+          "u": [
+            "Och"
+          ],
+          "v": [
+            "Fel"
+          ]
+        },
+        {
+          "locus": "gene419.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 19.06,
+          "m": 8,
+          "u": [
+            "Mus"
+          ],
+          "v": [
+            "Hom"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "JarvD5b",
+      "alphabet": "nucleotide",
+      "total_files": 4044,
+      "ok_loci": 2022,
+      "error_loci": 2022,
+      "wall_sec": 859.74,
+      "sum_cpu_runtime_sec": 7006.23,
+      "mean_taxa": 48.0,
+      "mean_seq_len": 18472.9,
+      "total_max_binary_splits": 90990,
+      "total_mdl_resolved_splits": 60028,
+      "polytomy_contracted_frac": 0.3403,
+      "sp_tree_total_splits": 90990,
+      "sp_tree_mdl_supported_splits": 54622,
+      "sp_tree_hard_polytomy_frac": 0.3997,
+      "forced_binary_sp_shared": 26606,
+      "forced_binary_sp_conflict": 64384,
+      "mdl_sp_shared": 25101,
+      "mdl_sp_conflict": 34927,
+      "spurious_discordance_eliminated_frac": 0.4575,
+      "loci_with_sp_shunts": 666,
+      "total_sp_shunts": 3655,
+      "total_sp_interval": 962,
+      "total_sp_sparse": 2693,
+      "total_free_shunts": 2847,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "bin.134.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 415.86,
+          "m": 93,
+          "u": [
+            "ACACH",
+            "APAVI",
+            "BUCRH",
+            "CARCR"
+          ],
+          "v": [
+            "APTFO",
+            "EGRGA",
+            "FULGL",
+            "GAVST"
+          ]
+        },
+        {
+          "locus": "bin.1192.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 397.34,
+          "m": 101,
+          "u": [
+            "ACACH",
+            "APAVI",
+            "BUCRH",
+            "CARCR"
+          ],
+          "v": [
+            "APTFO",
+            "EGRGA",
+            "FULGL",
+            "GAVST"
+          ]
+        },
+        {
+          "locus": "bin.1611.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 377.35,
+          "m": 141,
+          "u": [
+            "CHAPE"
+          ],
+          "v": [
+            "NESNO"
+          ]
+        },
+        {
+          "locus": "bin.1950.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 344.16,
+          "m": 95,
+          "u": [
+            "CAPCA"
+          ],
+          "v": [
+            "TAUER"
+          ]
+        },
+        {
+          "locus": "bin.1009.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 321.89,
+          "m": 67,
+          "u": [
+            "CHLUN",
+            "COLLI",
+            "CUCCA",
+            "MESUN"
+          ],
+          "v": [
+            "APTFO",
+            "EGRGA",
+            "FULGL",
+            "GAVST"
+          ]
+        },
+        {
+          "locus": "bin.338.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 309.83,
+          "m": 128,
+          "u": [
+            "GAVST"
+          ],
+          "v": [
+            "PHALE"
+          ]
+        },
+        {
+          "locus": "bin.1413.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 303.63,
+          "m": 63,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "bin.1950.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 280.34,
+          "m": 54,
+          "u": [
+            "CHAVO"
+          ],
+          "v": [
+            "EURHE",
+            "PHALE"
+          ]
+        },
+        {
+          "locus": "bin.1521.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 279.53,
+          "m": 67,
+          "u": [
+            "EGRGA"
+          ],
+          "v": [
+            "GEOFO"
+          ]
+        },
+        {
+          "locus": "bin.1950.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 269.51,
+          "m": 71,
+          "u": [
+            "BALRE"
+          ],
+          "v": [
+            "GAVST"
+          ]
+        },
+        {
+          "locus": "bin.338.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 266.95,
+          "m": 125,
+          "u": [
+            "PELCR"
+          ],
+          "v": [
+            "PHACA"
+          ]
+        },
+        {
+          "locus": "bin.1950.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 261.06,
+          "m": 92,
+          "u": [
+            "APTFO"
+          ],
+          "v": [
+            "FALPE"
+          ]
+        },
+        {
+          "locus": "bin.1188.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 257.51,
+          "m": 92,
+          "u": [
+            "HALLE"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "bin.338.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 246.81,
+          "m": 109,
+          "u": [
+            "PELCR"
+          ],
+          "v": [
+            "PHORU",
+            "PODCR"
+          ]
+        },
+        {
+          "locus": "bin.1632.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 236.18,
+          "m": 77,
+          "u": [
+            "ANAPL"
+          ],
+          "v": [
+            "PYGAD"
+          ]
+        },
+        {
+          "locus": "bin.984.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 225.06,
+          "m": 142,
+          "u": [
+            "LEPDI"
+          ],
+          "v": [
+            "TINMA"
+          ]
+        },
+        {
+          "locus": "bin.667.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 223.59,
+          "m": 68,
+          "u": [
+            "CALAN",
+            "CAPCA",
+            "CHAPE"
+          ],
+          "v": [
+            "ACACH",
+            "CORBR",
+            "FALPE",
+            "GEOFO"
+          ]
+        },
+        {
+          "locus": "bin.40.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 222.66,
+          "m": 67,
+          "u": [
+            "MANVI"
+          ],
+          "v": [
+            "PYGAD"
+          ]
+        },
+        {
+          "locus": "bin.984.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 217.32,
+          "m": 43,
+          "u": [
+            "CAPCA"
+          ],
+          "v": [
+            "MERNU"
+          ]
+        },
+        {
+          "locus": "bin.984.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 213.22,
+          "m": 41,
+          "u": [
+            "CARCR"
+          ],
+          "v": [
+            "CHLUN"
+          ]
+        },
+        {
+          "locus": "bin.88.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 208.06,
+          "m": 75,
+          "u": [
+            "GAVST"
+          ],
+          "v": [
+            "BALRE",
+            "CHAVO"
+          ]
+        },
+        {
+          "locus": "bin.1415.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 204.97,
+          "m": 54,
+          "u": [
+            "FULGL"
+          ],
+          "v": [
+            "APAVI",
+            "BUCRH",
+            "LEPDI",
+            "MERNU"
+          ]
+        },
+        {
+          "locus": "bin.984.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 203.94,
+          "m": 42,
+          "u": [
+            "CHLUN"
+          ],
+          "v": [
+            "GALGA"
+          ]
+        },
+        {
+          "locus": "bin.59.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 201.99,
+          "m": 44,
+          "u": [
+            "CATAU",
+            "HALAL",
+            "HALLE",
+            "TYTAL"
+          ],
+          "v": [
+            "APAVI",
+            "BUCRH",
+            "LEPDI",
+            "MERNU"
+          ]
+        },
+        {
+          "locus": "bin.923.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 194.63,
+          "m": 72,
+          "u": [
+            "BALRE"
+          ],
+          "v": [
+            "COLST"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "TarvD7",
+      "alphabet": "nucleotide",
+      "total_files": 11178,
+      "ok_loci": 11178,
+      "error_loci": 0,
+      "wall_sec": 966.87,
+      "sum_cpu_runtime_sec": 7753.08,
+      "mean_taxa": 31.45,
+      "mean_seq_len": 2267.7,
+      "total_max_binary_splits": 318026,
+      "total_mdl_resolved_splits": 195259,
+      "polytomy_contracted_frac": 0.386,
+      "sp_tree_total_splits": 318026,
+      "sp_tree_mdl_supported_splits": 181922,
+      "sp_tree_hard_polytomy_frac": 0.428,
+      "forced_binary_sp_shared": 153707,
+      "forced_binary_sp_conflict": 164319,
+      "mdl_sp_shared": 127910,
+      "mdl_sp_conflict": 67349,
+      "spurious_discordance_eliminated_frac": 0.5901,
+      "loci_with_sp_shunts": 6001,
+      "total_sp_shunts": 11389,
+      "total_sp_interval": 452,
+      "total_sp_sparse": 10937,
+      "total_free_shunts": 12557,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "ENSG00000116604.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 408.97,
+          "m": 57,
+          "u": [
+            "P002_Opossum"
+          ],
+          "v": [
+            "P013_Pig"
+          ]
+        },
+        {
+          "locus": "ENSG00000151150.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 345.72,
+          "m": 131,
+          "u": [
+            "P015_Horse"
+          ],
+          "v": [
+            "P031_Marmoset"
+          ]
+        },
+        {
+          "locus": "ENSG00000005483.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 337.54,
+          "m": 87,
+          "u": [
+            "P007_Armadillo"
+          ],
+          "v": [
+            "P029_Mouse_lemur"
+          ]
+        },
+        {
+          "locus": "ENSG00000175764.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 292.26,
+          "m": 215,
+          "u": [
+            "P008_Sloth"
+          ],
+          "v": [
+            "P014_Alpaca"
+          ]
+        },
+        {
+          "locus": "ENSG00000161533.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 267.66,
+          "m": 48,
+          "u": [
+            "P032_Rhesus"
+          ],
+          "v": [
+            "P035_Chimp"
+          ]
+        },
+        {
+          "locus": "ENSG00000066468.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 263.82,
+          "m": 55,
+          "u": [
+            "P012_Cow"
+          ],
+          "v": [
+            "P015_Horse"
+          ]
+        },
+        {
+          "locus": "ENSG00000105663.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 257.7,
+          "m": 103,
+          "u": [
+            "P006_Elephant"
+          ],
+          "v": [
+            "P028_Bushbaby"
+          ]
+        },
+        {
+          "locus": "ENSG00000181408.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 240.63,
+          "m": 174,
+          "u": [
+            "P008_Sloth"
+          ],
+          "v": [
+            "P027_Tree_shrew"
+          ]
+        },
+        {
+          "locus": "ENSG00000074803.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 239.39,
+          "m": 37,
+          "u": [
+            "P031_Marmoset"
+          ],
+          "v": [
+            "P035_Chimp",
+            "P036_Human"
+          ]
+        },
+        {
+          "locus": "ENSG00000127241.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 228.1,
+          "m": 217,
+          "u": [
+            "P015_Horse"
+          ],
+          "v": [
+            "P033_Orangutan"
+          ]
+        },
+        {
+          "locus": "ENSG00000066468.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 223.27,
+          "m": 54,
+          "u": [
+            "P025_Mouse"
+          ],
+          "v": [
+            "P031_Marmoset"
+          ]
+        },
+        {
+          "locus": "ENSG00000079739.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 215.46,
+          "m": 74,
+          "u": [
+            "P031_Marmoset"
+          ],
+          "v": [
+            "P034_Gorilla"
+          ]
+        },
+        {
+          "locus": "ENSG00000128595.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 211.76,
+          "m": 59,
+          "u": [
+            "P032_Rhesus"
+          ],
+          "v": [
+            "P009_Hedgehog",
+            "P010_Common_shrew"
+          ]
+        },
+        {
+          "locus": "ENSG00000112062.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 210.12,
+          "m": 37,
+          "u": [
+            "P032_Rhesus"
+          ],
+          "v": [
+            "P011_Dolphin",
+            "P012_Cow",
+            "P013_Pig"
+          ]
+        },
+        {
+          "locus": "ENSG00000179603.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 205.13,
+          "m": 29,
+          "u": [
+            "P020_Rabbit"
+          ],
+          "v": [
+            "P027_Tree_shrew"
+          ]
+        },
+        {
+          "locus": "ENSG00000120802.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 205.12,
+          "m": 289,
+          "u": [
+            "P013_Pig"
+          ],
+          "v": [
+            "P033_Orangutan"
+          ]
+        },
+        {
+          "locus": "ENSG00000196159.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 198.68,
+          "m": 69,
+          "u": [
+            "P027_Tree_shrew"
+          ],
+          "v": [
+            "P028_Bushbaby"
+          ]
+        },
+        {
+          "locus": "ENSG00000176692.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 190.71,
+          "m": 185,
+          "u": [
+            "P003_Wallaby"
+          ],
+          "v": [
+            "P031_Marmoset"
+          ]
+        },
+        {
+          "locus": "ENSG00000165185.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 190.41,
+          "m": 52,
+          "u": [
+            "P016_Dog"
+          ],
+          "v": [
+            "P031_Marmoset"
+          ]
+        },
+        {
+          "locus": "ENSG00000154217.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 189.33,
+          "m": 38,
+          "u": [
+            "P015_Horse"
+          ],
+          "v": [
+            "P033_Orangutan"
+          ]
+        },
+        {
+          "locus": "ENSG00000100678.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 185.94,
+          "m": 33,
+          "u": [
+            "P032_Rhesus"
+          ],
+          "v": [
+            "P025_Mouse",
+            "P026_Rat"
+          ]
+        },
+        {
+          "locus": "ENSG00000128595.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 183.85,
+          "m": 62,
+          "u": [
+            "P019_Microbat"
+          ],
+          "v": [
+            "P020_Rabbit"
+          ]
+        },
+        {
+          "locus": "ENSG00000079102.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 180.44,
+          "m": 39,
+          "u": [
+            "P003_Wallaby"
+          ],
+          "v": [
+            "P021_Pika"
+          ]
+        },
+        {
+          "locus": "ENSG00000133135.nuc.ord.aln",
+          "mode": "SPARSE",
+          "gain_nats": 173.26,
+          "m": 119,
+          "u": [
+            "P023_Guinea_pig"
+          ],
+          "v": [
+            "P035_Chimp"
+          ]
+        },
+        {
+          "locus": "ENSG00000024048.nuc.ord.aln",
+          "mode": "INTERVAL",
+          "gain_nats": 172.51,
+          "m": 32,
+          "u": [
+            "P011_Dolphin",
+            "P012_Cow",
+            "P013_Pig",
+            "P014_Alpaca"
+          ],
+          "v": [
+            "P035_Chimp",
+            "P036_Human"
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "JarvD5a",
+      "alphabet": "nucleotide",
+      "total_files": 22698,
+      "ok_loci": 14446,
+      "error_loci": 8252,
+      "wall_sec": 784.68,
+      "sum_cpu_runtime_sec": 6540.4,
+      "mean_taxa": 46.37,
+      "mean_seq_len": 2585.6,
+      "total_max_binary_splits": 626471,
+      "total_mdl_resolved_splits": 243618,
+      "polytomy_contracted_frac": 0.6111,
+      "sp_tree_total_splits": 626471,
+      "sp_tree_mdl_supported_splits": 176373,
+      "sp_tree_hard_polytomy_frac": 0.7185,
+      "forced_binary_sp_shared": 141253,
+      "forced_binary_sp_conflict": 485218,
+      "mdl_sp_shared": 121741,
+      "mdl_sp_conflict": 121877,
+      "spurious_discordance_eliminated_frac": 0.7488,
+      "loci_with_sp_shunts": 2718,
+      "total_sp_shunts": 6101,
+      "total_sp_interval": 1416,
+      "total_sp_sparse": 4685,
+      "total_free_shunts": 5304,
+      "focal_hypotheses": {},
+      "top_sp_shunts": [
+        {
+          "locus": "exon_10120.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 380.38,
+          "m": 95,
+          "u": [
+            "CAPCA"
+          ],
+          "v": [
+            "TAUER"
+          ]
+        },
+        {
+          "locus": "exon_6463.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 352.7,
+          "m": 55,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_10120.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 259.44,
+          "m": 53,
+          "u": [
+            "CHAVO"
+          ],
+          "v": [
+            "EURHE",
+            "PHALE"
+          ]
+        },
+        {
+          "locus": "exon_10120.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 199.1,
+          "m": 92,
+          "u": [
+            "APTFO"
+          ],
+          "v": [
+            "FALPE"
+          ]
+        },
+        {
+          "locus": "uce_chr6_4956_s.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 194.7,
+          "m": 84,
+          "u": [
+            "APTFO",
+            "EGRGA",
+            "FULGL",
+            "GAVST"
+          ],
+          "v": [
+            "ACACH",
+            "APAVI",
+            "BUCRH",
+            "CARCR"
+          ]
+        },
+        {
+          "locus": "exon_3135.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 194.06,
+          "m": 43,
+          "u": [
+            "CAPCA"
+          ],
+          "v": [
+            "MERNU"
+          ]
+        },
+        {
+          "locus": "exon_3135.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 192.91,
+          "m": 41,
+          "u": [
+            "CARCR"
+          ],
+          "v": [
+            "CHLUN"
+          ]
+        },
+        {
+          "locus": "exon_10120.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 192.39,
+          "m": 51,
+          "u": [
+            "ANAPL"
+          ],
+          "v": [
+            "PHACA"
+          ]
+        },
+        {
+          "locus": "exon_4281.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 189.32,
+          "m": 50,
+          "u": [
+            "NESNO"
+          ],
+          "v": [
+            "ANAPL",
+            "GALGA",
+            "MELGA",
+            "STRCA"
+          ]
+        },
+        {
+          "locus": "exon_3135.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 187.85,
+          "m": 142,
+          "u": [
+            "LEPDI"
+          ],
+          "v": [
+            "TINMA"
+          ]
+        },
+        {
+          "locus": "exon_498.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 184.57,
+          "m": 31,
+          "u": [
+            "MELGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_3135.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 180.08,
+          "m": 39,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "MERNU"
+          ]
+        },
+        {
+          "locus": "exon_10939.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 174.75,
+          "m": 31,
+          "u": [
+            "NIPNI"
+          ],
+          "v": [
+            "PYGAD"
+          ]
+        },
+        {
+          "locus": "exon_4614.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 161.69,
+          "m": 77,
+          "u": [
+            "ANAPL"
+          ],
+          "v": [
+            "PYGAD"
+          ]
+        },
+        {
+          "locus": "exon_4783.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 160.33,
+          "m": 39,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_10840.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 150.56,
+          "m": 48,
+          "u": [
+            "MANVI"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_4281.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 142.05,
+          "m": 39,
+          "u": [
+            "LEPDI"
+          ],
+          "v": [
+            "GEOFO",
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_3721.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 141.32,
+          "m": 22,
+          "u": [
+            "NIPNI"
+          ],
+          "v": [
+            "PYGAD"
+          ]
+        },
+        {
+          "locus": "exon_4576.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 141.21,
+          "m": 29,
+          "u": [
+            "COLLI"
+          ],
+          "v": [
+            "GEOFO"
+          ]
+        },
+        {
+          "locus": "exon_2553.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 137.52,
+          "m": 35,
+          "u": [
+            "HALLE"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_3033.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 134.66,
+          "m": 23,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "uce_chr10_2044_s.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 128.92,
+          "m": 50,
+          "u": [
+            "FALPE"
+          ],
+          "v": [
+            "HALAL",
+            "HALLE"
+          ]
+        },
+        {
+          "locus": "exon_9307.fasta",
+          "mode": "SPARSE",
+          "gain_nats": 127.27,
+          "m": 36,
+          "u": [
+            "APTFO"
+          ],
+          "v": [
+            "FALPE"
+          ]
+        },
+        {
+          "locus": "exon_5037.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 124.76,
+          "m": 29,
+          "u": [
+            "GALGA"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        },
+        {
+          "locus": "exon_6320.fasta",
+          "mode": "INTERVAL",
+          "gain_nats": 119.91,
+          "m": 25,
+          "u": [
+            "HALLE"
+          ],
+          "v": [
+            "TAEGU"
+          ]
+        }
+      ]
+    }
+  ]
+}

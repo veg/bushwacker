@@ -1,0 +1,151 @@
+{
+  "dataset": "denv3_cds_nt",
+  "status": "ok",
+  "alphabet": "nucleotide",
+  "n_taxa": 855,
+  "seq_len": 10059,
+  "bushwhacker_runtime_sec": 11.8097,
+  "total_cli_wall_sec": 11.8729,
+  "fasttree_gtr_wall_sec": 200.288,
+  "speedup_vs_fasttree": 16.96,
+  "raw_dl_nats": 11888420.99,
+  "star_mdl_nats": 1422299.22,
+  "tree_mdl_nats": 158160.11,
+  "network_mdl_nats": 158129.63,
+  "resolved_splits": 554,
+  "max_binary_splits": 852,
+  "collapsed_zero_signal_splits": 298,
+  "collapsed_polytomy_frac": 0.3498,
+  "hub_topology_stats": {
+    "n_internal_nodes": 555,
+    "n_polytomy_hubs": 114,
+    "max_hub_degree": 19,
+    "hubs_deg_ge_10": 11,
+    "hubs_deg_ge_25": 0,
+    "hubs_deg_ge_50": 0,
+    "hubs_deg_ge_100": 0,
+    "top_15_hub_degrees": [
+      19,
+      19,
+      13,
+      13,
+      13,
+      13,
+      12,
+      10,
+      10,
+      10,
+      10,
+      9,
+      9,
+      9,
+      9
+    ]
+  },
+  "compression_benchmark": {
+    "raw_fasta_bytes": 8762010,
+    "bwz_bytes": 48915,
+    "gzip9_bytes": 269135,
+    "xz6_bytes": 68376,
+    "bwz_vs_raw_ratio": 179.13,
+    "bwz_vs_gzip9_ratio": 5.5,
+    "bwz_vs_xz6_ratio": 1.4
+  },
+  "n_shunts": 3,
+  "n_interval_shunts": 1,
+  "n_sparse_shunts": 2,
+  "n_shunts_involving_known_recombinants": 0,
+  "top_shunts": [
+    {
+      "mode": "INTERVAL",
+      "net_mdl_gain_nats": 26.23,
+      "shared_mutations": 6,
+      "interval_span": [
+        16,
+        230
+      ],
+      "clade_size_u": 1,
+      "clade_size_v": 4,
+      "u_sample": [
+        "OR394009.1|2019-10-21"
+      ],
+      "v_sample": [
+        "OR393932.1|2018-09-25",
+        "OR393958.1|2019-02-27",
+        "OR393966.1|2019-04-10",
+        "OR394032.1|2019-11-29"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        9,
+        10,
+        10,
+        13,
+        19,
+        22
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 2.49,
+      "shared_mutations": 3,
+      "interval_span": null,
+      "clade_size_u": 3,
+      "clade_size_v": 15,
+      "u_sample": [
+        "OR574470.1|2023-09-01",
+        "OR575180.1|2023-09-01",
+        "OR771184.1|2023-09-11"
+      ],
+      "v_sample": [
+        "OR616485.1|2023-08-06",
+        "OR616486.1|2023-08-09",
+        "OR616492.1|2023-08-15",
+        "OR616493.1|2023-08-16"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        737,
+        1815,
+        3329
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 1.76,
+      "shared_mutations": 4,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 3,
+      "u_sample": [
+        "OR821956.1|2023-10-07",
+        "OR977066.1|2023-07-09"
+      ],
+      "v_sample": [
+        "OR616484.1|2023-08-06",
+        "OR616499.1|2023-08-21",
+        "OR616510.1|2023-08-15"
+      ],
+      "u_posthoc_lineages": [],
+      "v_posthoc_lineages": [],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        1083,
+        1388,
+        2648,
+        2921
+      ]
+    }
+  ],
+  "bushwhacker_legacy_v1_sec": 25.4723,
+  "bushwhacker_t1_sec": 23.5218,
+  "bushwhacker_t8_sec": 13.7119,
+  "bushwhacker_t32_sec": 11.8097,
+  "bushwhacker_t64_sec": 11.6071,
+  "multithread_bit_exact_verified": true,
+  "speedup_vs_fasttree_t1": 8.51
+}

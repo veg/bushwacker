@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-11-13T13:40:47Z",
+  "n_genes_total": 19953,
+  "shunt_totals_on_species_tree": {
+    "proteins_with_any_shunt": 2872,
+    "proteins_with_sparse_shunt": 2374,
+    "proteins_with_interval_shunt": 1205,
+    "total_sparse_shunts": 6419,
+    "total_interval_shunts": 2251,
+    "inter_order_sparse_shunts": 2442,
+    "inter_order_interval_shunts": 263,
+    "inter_family_intra_order_sparse_shunts": 2429,
+    "inter_family_intra_order_interval_shunts": 437
+  },
+  "interval_tract_statistics": {
+    "total_tracts": 2251,
+    "median_tract_length_aa": 85,
+    "mean_tract_length_aa": 157.6,
+    "median_net_gain_nats": 9.35,
+    "max_net_gain_nats": 507.27
+  },
+  "gene_family_shunt_enrichment": [
+    {
+      "family": "Hemoglobin / Globin Clusters",
+      "n_genes": 10,
+      "genes_with_interval_shunt": 4,
+      "interval_gene_pct": 40.0,
+      "interval_fold_enrichment": 6.62,
+      "total_interval_events": 5,
+      "genes_with_sparse_shunt": 5,
+      "sparse_gene_pct": 50.0,
+      "total_sparse_events": 6
+    },
+    {
+      "family": "Xenobiotic Detoxification (CYP/UGT/AKR/GST)",
+      "n_genes": 116,
+      "genes_with_interval_shunt": 38,
+      "interval_gene_pct": 32.76,
+      "interval_fold_enrichment": 5.42,
+      "total_interval_events": 68,
+      "genes_with_sparse_shunt": 49,
+      "sparse_gene_pct": 42.24,
+      "total_sparse_events": 128
+    },
+    {
+      "family": "Taste & Vomeronasal Receptors (TASR/VNR)",
+      "n_genes": 31,
+      "genes_with_interval_shunt": 9,
+      "interval_gene_pct": 29.03,
+      "interval_fold_enrichment": 4.81,
+      "total_interval_events": 16,
+      "genes_with_sparse_shunt": 15,
+      "sparse_gene_pct": 48.39,
+      "total_sparse_events": 68
+    },
+    {
+      "family": "Olfactory Receptors (OR)",
+      "n_genes": 399,
+      "genes_with_interval_shunt": 105,
+      "interval_gene_pct": 26.32,
+      "interval_fold_enrichment": 4.36,
+      "total_interval_events": 166,
+      "genes_with_sparse_shunt": 226,
+      "sparse_gene_pct": 56.64,
+      "total_sparse_events": 596
+    },
+    {
+      "family": "KRAB / C2H2 Zinc-Finger Arrays",
+      "n_genes": 626,
+      "genes_with_interval_shunt": 149,
+      "interval_gene_pct": 23.8,
+      "interval_fold_enrichment": 3.94,
+      "total_interval_events": 298,
+      "genes_with_sparse_shunt": 259,
+      "sparse_gene_pct": 41.37,
+      "total_sparse_events": 726
+    },
+    {
+      "family": "Cadherins, Keratins, Mucins & Extracellular Matrix",
+      "n_genes": 288,
+      "genes_with_interval_shunt": 52,
+      "interval_gene_pct": 18.06,
+      "interval_fold_enrichment": 2.99,
+      "total_interval_events": 84,
+      "genes_with_sparse_shunt": 99,
+      "sparse_gene_pct": 34.38,
+      "total_sparse_events": 805
+    },
+    {
+      "family": "Primate/Mammalian Segmental Duplications",
+      "n_genes": 444,
+      "genes_with_interval_shunt": 71,
+      "interval_gene_pct": 15.99,
+      "interval_fold_enrichment": 2.65,
+      "total_interval_events": 105,
+      "genes_with_sparse_shunt": 109,
+      "sparse_gene_pct": 24.55,
+      "total_sparse_events": 405
+    },
+    {
+      "family": "Innate & Adaptive Immunity / Ig-Superfamily",
+      "n_genes": 530,
+      "genes_with_interval_shunt": 52,
+      "interval_gene_pct": 9.81,
+      "interval_fold_enrichment": 1.62,
+      "total_interval_events": 70,
+      "genes_with_sparse_shunt": 113,
+      "sparse_gene_pct": 21.32,
+      "total_sparse_events": 302
+    },
+    {
+      "family": "Other Coding Loci",
+      "n_genes": 17392,
+      "genes_with_interval_shunt": 722,
+      "interval_gene_pct": 4.15,
+      "interval_fold_enrichment": 0.69,
+      "total_interval_events": 1435,
+      "genes_with_sparse_shunt": 1488,
+      "sparse_gene_pct": 8.56,
+      "total_sparse_events": 3364
+    },
+    {
+      "family": "Replication-Dependent Histone Clusters",
+      "n_genes": 94,
+      "genes_with_interval_shunt": 3,
+      "interval_gene_pct": 3.19,
+      "interval_fold_enrichment": 0.53,
+      "total_interval_events": 4,
+      "genes_with_sparse_shunt": 5,
+      "sparse_gene_pct": 5.32,
+      "total_sparse_events": 7
+    },
+    {
+      "family": "Cochlear Hair-Cell & Auditory Mechanotransduction",
+      "n_genes": 23,
+      "genes_with_interval_shunt": 0,
+      "interval_gene_pct": 0.0,
+      "interval_fold_enrichment": 0.0,
+      "total_interval_events": 0,
+      "genes_with_sparse_shunt": 6,
+      "sparse_gene_pct": 26.09,
+      "total_sparse_events": 12
+    }
+  ]
+}

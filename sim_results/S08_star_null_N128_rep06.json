@@ -21,7 +21,7 @@
       "recall_ge2": 1.0,
       "f1": 1.0,
       "nrf": 0.0,
-      "runtime_s": 0.6458,
+      "runtime_s": 0.5028,
       "certified_shunts": 0,
       "shunt_modes": []
     },
@@ -103,7 +103,7 @@
       "recall_ge2": 1.0,
       "f1": 0.0,
       "nrf": 125.0,
-      "runtime_s": 0.6458
+      "runtime_s": 0.5028
     }
   }
 }

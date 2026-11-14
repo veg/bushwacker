@@ -1,0 +1,595 @@
+{
+  "wall_sec": 8213.96,
+  "part_1a_msc_simulations": [
+    {
+      "scenario": "MSC_Rapid32_L300",
+      "kind": "rapid",
+      "n_species": 32,
+      "n_loci": 200,
+      "seq_len_bp": 300,
+      "theta": 0.02,
+      "mean_bw_polytomy_contracted_frac": 0.7543,
+      "methods": {
+        "bw_mdl": {
+          "n_reps": 10,
+          "mean_nrf": 0.11724,
+          "mean_rf": 6.8,
+          "mean_fp": 3.4,
+          "mean_fn": 3.4,
+          "mean_gene_tree_cpu_sec": 3.61,
+          "mean_wall_64core_sec": 0.874,
+          "mean_astral_sec": 0.818,
+          "speedup_of_bw_over_method": 1.0
+        },
+        "bw_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.09655,
+          "mean_rf": 5.6,
+          "mean_fp": 2.8,
+          "mean_fn": 2.8,
+          "mean_gene_tree_cpu_sec": 3.61,
+          "mean_wall_64core_sec": 0.726,
+          "mean_astral_sec": 0.67,
+          "speedup_of_bw_over_method": 0.83
+        },
+        "ft_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.09655,
+          "mean_rf": 5.6,
+          "mean_fp": 2.8,
+          "mean_fn": 2.8,
+          "mean_gene_tree_cpu_sec": 41.07,
+          "mean_wall_64core_sec": 1.259,
+          "mean_astral_sec": 0.617,
+          "speedup_of_bw_over_method": 1.44
+        },
+        "ft_sh70": {
+          "n_reps": 10,
+          "mean_nrf": 0.09655,
+          "mean_rf": 5.6,
+          "mean_fp": 2.8,
+          "mean_fn": 2.8,
+          "mean_gene_tree_cpu_sec": 41.07,
+          "mean_wall_64core_sec": 1.272,
+          "mean_astral_sec": 0.63,
+          "speedup_of_bw_over_method": 1.46
+        },
+        "ft_sh90": {
+          "n_reps": 10,
+          "mean_nrf": 0.16207,
+          "mean_rf": 9.4,
+          "mean_fp": 4.7,
+          "mean_fn": 4.7,
+          "mean_gene_tree_cpu_sec": 41.07,
+          "mean_wall_64core_sec": 1.458,
+          "mean_astral_sec": 0.816,
+          "speedup_of_bw_over_method": 1.67
+        },
+        "iq_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.1,
+          "mean_rf": 5.8,
+          "mean_fp": 2.9,
+          "mean_fn": 2.9,
+          "mean_gene_tree_cpu_sec": 1192.6,
+          "mean_wall_64core_sec": 19.329,
+          "mean_astral_sec": 0.695,
+          "speedup_of_bw_over_method": 22.12
+        },
+        "iq_poly": {
+          "n_reps": 10,
+          "mean_nrf": 0.1,
+          "mean_rf": 5.8,
+          "mean_fp": 2.9,
+          "mean_fn": 2.9,
+          "mean_gene_tree_cpu_sec": 1184.61,
+          "mean_wall_64core_sec": 19.232,
+          "mean_astral_sec": 0.723,
+          "speedup_of_bw_over_method": 22.0
+        },
+        "iq_uf10": {
+          "n_reps": 5,
+          "mean_nrf": 0.11035,
+          "mean_rf": 6.4,
+          "mean_fp": 3.2,
+          "mean_fn": 3.2,
+          "mean_gene_tree_cpu_sec": 5191.05,
+          "mean_wall_64core_sec": 81.793,
+          "mean_astral_sec": 0.683,
+          "speedup_of_bw_over_method": 93.58
+        },
+        "iq_uf30": {
+          "n_reps": 5,
+          "mean_nrf": 0.10345,
+          "mean_rf": 6.0,
+          "mean_fp": 3.0,
+          "mean_fn": 3.0,
+          "mean_gene_tree_cpu_sec": 5191.05,
+          "mean_wall_64core_sec": 81.812,
+          "mean_astral_sec": 0.702,
+          "speedup_of_bw_over_method": 93.61
+        },
+        "iq_uf50": {
+          "n_reps": 5,
+          "mean_nrf": 0.08966,
+          "mean_rf": 5.2,
+          "mean_fp": 2.6,
+          "mean_fn": 2.6,
+          "mean_gene_tree_cpu_sec": 5191.05,
+          "mean_wall_64core_sec": 81.838,
+          "mean_astral_sec": 0.728,
+          "speedup_of_bw_over_method": 93.64
+        },
+        "iq_uf70": {
+          "n_reps": 5,
+          "mean_nrf": 0.08276,
+          "mean_rf": 4.8,
+          "mean_fp": 2.4,
+          "mean_fn": 2.4,
+          "mean_gene_tree_cpu_sec": 5191.05,
+          "mean_wall_64core_sec": 81.893,
+          "mean_astral_sec": 0.782,
+          "speedup_of_bw_over_method": 93.7
+        }
+      }
+    },
+    {
+      "scenario": "MSC_Rapid32_L800",
+      "kind": "rapid",
+      "n_species": 32,
+      "n_loci": 200,
+      "seq_len_bp": 800,
+      "theta": 0.02,
+      "mean_bw_polytomy_contracted_frac": 0.551,
+      "methods": {
+        "bw_mdl": {
+          "n_reps": 10,
+          "mean_nrf": 0.05862,
+          "mean_rf": 3.4,
+          "mean_fp": 1.7,
+          "mean_fn": 1.7,
+          "mean_gene_tree_cpu_sec": 6.45,
+          "mean_wall_64core_sec": 0.811,
+          "mean_astral_sec": 0.71,
+          "speedup_of_bw_over_method": 1.0
+        },
+        "bw_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.05862,
+          "mean_rf": 3.4,
+          "mean_fp": 1.7,
+          "mean_fn": 1.7,
+          "mean_gene_tree_cpu_sec": 6.45,
+          "mean_wall_64core_sec": 0.73,
+          "mean_astral_sec": 0.63,
+          "speedup_of_bw_over_method": 0.9
+        },
+        "ft_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.05517,
+          "mean_rf": 3.2,
+          "mean_fp": 1.6,
+          "mean_fn": 1.6,
+          "mean_gene_tree_cpu_sec": 109.25,
+          "mean_wall_64core_sec": 2.312,
+          "mean_astral_sec": 0.605,
+          "speedup_of_bw_over_method": 2.85
+        },
+        "ft_sh70": {
+          "n_reps": 10,
+          "mean_nrf": 0.05862,
+          "mean_rf": 3.4,
+          "mean_fp": 1.7,
+          "mean_fn": 1.7,
+          "mean_gene_tree_cpu_sec": 109.25,
+          "mean_wall_64core_sec": 2.317,
+          "mean_astral_sec": 0.61,
+          "speedup_of_bw_over_method": 2.86
+        },
+        "ft_sh90": {
+          "n_reps": 10,
+          "mean_nrf": 0.09655,
+          "mean_rf": 5.6,
+          "mean_fp": 2.8,
+          "mean_fn": 2.8,
+          "mean_gene_tree_cpu_sec": 109.25,
+          "mean_wall_64core_sec": 2.492,
+          "mean_astral_sec": 0.785,
+          "speedup_of_bw_over_method": 3.07
+        },
+        "iq_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.04483,
+          "mean_rf": 2.6,
+          "mean_fp": 1.3,
+          "mean_fn": 1.3,
+          "mean_gene_tree_cpu_sec": 1871.81,
+          "mean_wall_64core_sec": 29.879,
+          "mean_astral_sec": 0.632,
+          "speedup_of_bw_over_method": 36.84
+        },
+        "iq_poly": {
+          "n_reps": 10,
+          "mean_nrf": 0.05862,
+          "mean_rf": 3.4,
+          "mean_fp": 1.7,
+          "mean_fn": 1.7,
+          "mean_gene_tree_cpu_sec": 1880.99,
+          "mean_wall_64core_sec": 30.027,
+          "mean_astral_sec": 0.636,
+          "speedup_of_bw_over_method": 37.02
+        },
+        "iq_uf10": {
+          "n_reps": 5,
+          "mean_nrf": 0.05517,
+          "mean_rf": 3.2,
+          "mean_fp": 1.6,
+          "mean_fn": 1.6,
+          "mean_gene_tree_cpu_sec": 3397.71,
+          "mean_wall_64core_sec": 53.708,
+          "mean_astral_sec": 0.618,
+          "speedup_of_bw_over_method": 66.22
+        },
+        "iq_uf30": {
+          "n_reps": 5,
+          "mean_nrf": 0.07586,
+          "mean_rf": 4.4,
+          "mean_fp": 2.2,
+          "mean_fn": 2.2,
+          "mean_gene_tree_cpu_sec": 3397.71,
+          "mean_wall_64core_sec": 53.716,
+          "mean_astral_sec": 0.626,
+          "speedup_of_bw_over_method": 66.23
+        },
+        "iq_uf50": {
+          "n_reps": 5,
+          "mean_nrf": 0.06897,
+          "mean_rf": 4.0,
+          "mean_fp": 2.0,
+          "mean_fn": 2.0,
+          "mean_gene_tree_cpu_sec": 3397.71,
+          "mean_wall_64core_sec": 53.717,
+          "mean_astral_sec": 0.628,
+          "speedup_of_bw_over_method": 66.24
+        },
+        "iq_uf70": {
+          "n_reps": 5,
+          "mean_nrf": 0.05517,
+          "mean_rf": 3.2,
+          "mean_fp": 1.6,
+          "mean_fn": 1.6,
+          "mean_gene_tree_cpu_sec": 3397.71,
+          "mean_wall_64core_sec": 53.733,
+          "mean_astral_sec": 0.644,
+          "speedup_of_bw_over_method": 66.26
+        }
+      }
+    },
+    {
+      "scenario": "MSC_Anomaly24_L400",
+      "kind": "anomaly",
+      "n_species": 24,
+      "n_loci": 200,
+      "seq_len_bp": 400,
+      "theta": 0.025,
+      "mean_bw_polytomy_contracted_frac": 0.6216,
+      "methods": {
+        "bw_mdl": {
+          "n_reps": 10,
+          "mean_nrf": 0.20476,
+          "mean_rf": 8.6,
+          "mean_fp": 4.3,
+          "mean_fn": 4.3,
+          "mean_gene_tree_cpu_sec": 3.93,
+          "mean_wall_64core_sec": 0.465,
+          "mean_astral_sec": 0.404,
+          "speedup_of_bw_over_method": 1.0
+        },
+        "bw_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.23333,
+          "mean_rf": 9.8,
+          "mean_fp": 4.9,
+          "mean_fn": 4.9,
+          "mean_gene_tree_cpu_sec": 3.93,
+          "mean_wall_64core_sec": 0.442,
+          "mean_astral_sec": 0.381,
+          "speedup_of_bw_over_method": 0.95
+        },
+        "ft_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.24286,
+          "mean_rf": 10.2,
+          "mean_fp": 5.1,
+          "mean_fn": 5.1,
+          "mean_gene_tree_cpu_sec": 43.23,
+          "mean_wall_64core_sec": 1.045,
+          "mean_astral_sec": 0.369,
+          "speedup_of_bw_over_method": 2.25
+        },
+        "ft_sh70": {
+          "n_reps": 10,
+          "mean_nrf": 0.24286,
+          "mean_rf": 10.2,
+          "mean_fp": 5.1,
+          "mean_fn": 5.1,
+          "mean_gene_tree_cpu_sec": 43.23,
+          "mean_wall_64core_sec": 1.039,
+          "mean_astral_sec": 0.364,
+          "speedup_of_bw_over_method": 2.23
+        },
+        "ft_sh90": {
+          "n_reps": 10,
+          "mean_nrf": 0.27619,
+          "mean_rf": 11.6,
+          "mean_fp": 5.8,
+          "mean_fn": 5.8,
+          "mean_gene_tree_cpu_sec": 43.23,
+          "mean_wall_64core_sec": 1.1,
+          "mean_astral_sec": 0.425,
+          "speedup_of_bw_over_method": 2.37
+        },
+        "iq_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.18571,
+          "mean_rf": 7.8,
+          "mean_fp": 3.9,
+          "mean_fn": 3.9,
+          "mean_gene_tree_cpu_sec": 954.22,
+          "mean_wall_64core_sec": 15.337,
+          "mean_astral_sec": 0.428,
+          "speedup_of_bw_over_method": 32.98
+        },
+        "iq_poly": {
+          "n_reps": 10,
+          "mean_nrf": 0.17619,
+          "mean_rf": 7.4,
+          "mean_fp": 3.7,
+          "mean_fn": 3.7,
+          "mean_gene_tree_cpu_sec": 971.22,
+          "mean_wall_64core_sec": 15.604,
+          "mean_astral_sec": 0.428,
+          "speedup_of_bw_over_method": 33.56
+        },
+        "iq_uf10": {
+          "n_reps": 5,
+          "mean_nrf": 0.17143,
+          "mean_rf": 7.2,
+          "mean_fp": 3.6,
+          "mean_fn": 3.6,
+          "mean_gene_tree_cpu_sec": 2201.36,
+          "mean_wall_64core_sec": 34.827,
+          "mean_astral_sec": 0.431,
+          "speedup_of_bw_over_method": 74.9
+        },
+        "iq_uf30": {
+          "n_reps": 5,
+          "mean_nrf": 0.18095,
+          "mean_rf": 7.6,
+          "mean_fp": 3.8,
+          "mean_fn": 3.8,
+          "mean_gene_tree_cpu_sec": 2201.36,
+          "mean_wall_64core_sec": 34.831,
+          "mean_astral_sec": 0.435,
+          "speedup_of_bw_over_method": 74.91
+        },
+        "iq_uf50": {
+          "n_reps": 5,
+          "mean_nrf": 0.18095,
+          "mean_rf": 7.6,
+          "mean_fp": 3.8,
+          "mean_fn": 3.8,
+          "mean_gene_tree_cpu_sec": 2201.36,
+          "mean_wall_64core_sec": 34.819,
+          "mean_astral_sec": 0.422,
+          "speedup_of_bw_over_method": 74.88
+        },
+        "iq_uf70": {
+          "n_reps": 5,
+          "mean_nrf": 0.15238,
+          "mean_rf": 6.4,
+          "mean_fp": 3.2,
+          "mean_fn": 3.2,
+          "mean_gene_tree_cpu_sec": 2201.36,
+          "mean_wall_64core_sec": 34.835,
+          "mean_astral_sec": 0.439,
+          "speedup_of_bw_over_method": 74.91
+        }
+      }
+    },
+    {
+      "scenario": "MSC_Large64_L500",
+      "kind": "rapid",
+      "n_species": 64,
+      "n_loci": 200,
+      "seq_len_bp": 500,
+      "theta": 0.02,
+      "mean_bw_polytomy_contracted_frac": 0.7017,
+      "methods": {
+        "bw_mdl": {
+          "n_reps": 10,
+          "mean_nrf": 0.1082,
+          "mean_rf": 13.2,
+          "mean_fp": 6.6,
+          "mean_fn": 6.6,
+          "mean_gene_tree_cpu_sec": 13.32,
+          "mean_wall_64core_sec": 4.082,
+          "mean_astral_sec": 3.873,
+          "speedup_of_bw_over_method": 1.0
+        },
+        "bw_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.0918,
+          "mean_rf": 11.2,
+          "mean_fp": 5.6,
+          "mean_fn": 5.6,
+          "mean_gene_tree_cpu_sec": 13.32,
+          "mean_wall_64core_sec": 3.192,
+          "mean_astral_sec": 2.984,
+          "speedup_of_bw_over_method": 0.78
+        },
+        "ft_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.08361,
+          "mean_rf": 10.2,
+          "mean_fp": 5.1,
+          "mean_fn": 5.1,
+          "mean_gene_tree_cpu_sec": 153.28,
+          "mean_wall_64core_sec": 4.947,
+          "mean_astral_sec": 2.552,
+          "speedup_of_bw_over_method": 1.21
+        },
+        "ft_sh70": {
+          "n_reps": 10,
+          "mean_nrf": 0.08852,
+          "mean_rf": 10.8,
+          "mean_fp": 5.4,
+          "mean_fn": 5.4,
+          "mean_gene_tree_cpu_sec": 153.28,
+          "mean_wall_64core_sec": 5.001,
+          "mean_astral_sec": 2.606,
+          "speedup_of_bw_over_method": 1.23
+        },
+        "ft_sh90": {
+          "n_reps": 10,
+          "mean_nrf": 0.10984,
+          "mean_rf": 13.4,
+          "mean_fp": 6.7,
+          "mean_fn": 6.7,
+          "mean_gene_tree_cpu_sec": 153.28,
+          "mean_wall_64core_sec": 6.541,
+          "mean_astral_sec": 4.146,
+          "speedup_of_bw_over_method": 1.6
+        },
+        "iq_bin": {
+          "n_reps": 10,
+          "mean_nrf": 0.08197,
+          "mean_rf": 10.0,
+          "mean_fp": 5.0,
+          "mean_fn": 5.0,
+          "mean_gene_tree_cpu_sec": 6471.31,
+          "mean_wall_64core_sec": 103.981,
+          "mean_astral_sec": 2.867,
+          "speedup_of_bw_over_method": 25.47
+        },
+        "iq_poly": {
+          "n_reps": 10,
+          "mean_nrf": 0.06885,
+          "mean_rf": 8.4,
+          "mean_fp": 4.2,
+          "mean_fn": 4.2,
+          "mean_gene_tree_cpu_sec": 6594.24,
+          "mean_wall_64core_sec": 106.268,
+          "mean_astral_sec": 3.233,
+          "speedup_of_bw_over_method": 26.03
+        },
+        "iq_uf10": {
+          "n_reps": 4,
+          "mean_nrf": 0.06967,
+          "mean_rf": 8.5,
+          "mean_fp": 4.25,
+          "mean_fn": 4.25,
+          "mean_gene_tree_cpu_sec": 11094.54,
+          "mean_wall_64core_sec": 176.423,
+          "mean_astral_sec": 3.071,
+          "speedup_of_bw_over_method": 43.22
+        },
+        "iq_uf30": {
+          "n_reps": 4,
+          "mean_nrf": 0.08197,
+          "mean_rf": 10.0,
+          "mean_fp": 5.0,
+          "mean_fn": 5.0,
+          "mean_gene_tree_cpu_sec": 11094.54,
+          "mean_wall_64core_sec": 176.597,
+          "mean_astral_sec": 3.245,
+          "speedup_of_bw_over_method": 43.26
+        },
+        "iq_uf50": {
+          "n_reps": 4,
+          "mean_nrf": 0.07377,
+          "mean_rf": 9.0,
+          "mean_fp": 4.5,
+          "mean_fn": 4.5,
+          "mean_gene_tree_cpu_sec": 11094.54,
+          "mean_wall_64core_sec": 176.749,
+          "mean_astral_sec": 3.396,
+          "speedup_of_bw_over_method": 43.3
+        },
+        "iq_uf70": {
+          "n_reps": 4,
+          "mean_nrf": 0.07787,
+          "mean_rf": 9.5,
+          "mean_fp": 4.75,
+          "mean_fn": 4.75,
+          "mean_gene_tree_cpu_sec": 11094.54,
+          "mean_wall_64core_sec": 177.017,
+          "mean_astral_sec": 3.664,
+          "speedup_of_bw_over_method": 43.37
+        }
+      }
+    }
+  ],
+  "bars_eq9_and_collapsed_ml_baselines": {
+    "default": {
+      "n_reps": 10,
+      "mean_nrf": 0.3,
+      "mean_rf": 12.6,
+      "mean_fp": 6.3,
+      "mean_fn": 6.3,
+      "mean_gene_tree_cpu_sec": 6.23,
+      "mean_wall_64core_sec": 0.599,
+      "mean_astral_sec": 0.501
+    },
+    "no_mult_pen": {
+      "n_reps": 10,
+      "mean_nrf": 0.28571,
+      "mean_rf": 12.0,
+      "mean_fp": 6.0,
+      "mean_fn": 6.0,
+      "mean_gene_tree_cpu_sec": 6.19,
+      "mean_wall_64core_sec": 0.575,
+      "mean_astral_sec": 0.479
+    },
+    "empirical_alpha": {
+      "n_reps": 10,
+      "mean_nrf": 0.32857,
+      "mean_rf": 13.8,
+      "mean_fp": 6.9,
+      "mean_fn": 6.9,
+      "mean_gene_tree_cpu_sec": 6.17,
+      "mean_wall_64core_sec": 0.58,
+      "mean_astral_sec": 0.484
+    },
+    "no_mult_pen_empirical": {
+      "n_reps": 10,
+      "mean_nrf": 0.29048,
+      "mean_rf": 12.2,
+      "mean_fp": 6.1,
+      "mean_fn": 6.1,
+      "mean_gene_tree_cpu_sec": 6.14,
+      "mean_wall_64core_sec": 0.561,
+      "mean_astral_sec": 0.465
+    },
+    "iq_uf95": {
+      "n_reps": 5,
+      "mean_nrf": 0.32381,
+      "mean_rf": 13.6,
+      "mean_fp": 6.8,
+      "mean_fn": 6.8,
+      "mean_gene_tree_cpu_sec": 2371.95,
+      "mean_wall_64core_sec": 37.564,
+      "mean_astral_sec": 0.503
+    },
+    "iq_alrt80": {
+      "n_reps": 5,
+      "mean_nrf": 0.19048,
+      "mean_rf": 8.0,
+      "mean_fp": 4.0,
+      "mean_fn": 4.0,
+      "mean_gene_tree_cpu_sec": 2371.95,
+      "mean_wall_64core_sec": 37.492,
+      "mean_astral_sec": 0.431
+    }
+  }
+}

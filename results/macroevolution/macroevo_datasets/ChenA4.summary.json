@@ -1,0 +1,382 @@
+{
+  "dataset": "ChenA4",
+  "alphabet": "protein",
+  "total_files": 4682,
+  "ok_loci": 4682,
+  "error_loci": 0,
+  "wall_sec": 25.81,
+  "sum_cpu_runtime_sec": 239.07,
+  "mean_taxa": 49.03,
+  "mean_seq_len": 385.7,
+  "total_max_binary_splits": 215494,
+  "total_mdl_resolved_splits": 117110,
+  "polytomy_contracted_frac": 0.4566,
+  "sp_tree_total_splits": 215494,
+  "sp_tree_mdl_supported_splits": 103710,
+  "sp_tree_hard_polytomy_frac": 0.5187,
+  "forced_binary_sp_shared": 110783,
+  "forced_binary_sp_conflict": 104711,
+  "mdl_sp_shared": 81419,
+  "mdl_sp_conflict": 35691,
+  "spurious_discordance_eliminated_frac": 0.6591,
+  "loci_with_sp_shunts": 3617,
+  "total_sp_shunts": 9850,
+  "total_sp_interval": 275,
+  "total_sp_sparse": 9575,
+  "total_free_shunts": 12309,
+  "focal_hypotheses": {
+    "Lungfish_sister_to_Tetrapods": {
+      "informative_loci": 3656,
+      "mdl_resolved": 407,
+      "mdl_polytomy": 1015,
+      "mdl_conflicted": 2234,
+      "forced_binary_count": 676,
+      "cumulative_mdl_nats": 6977.26
+    },
+    "Coelacanth_sister_to_Tetrapods": {
+      "informative_loci": 3656,
+      "mdl_resolved": 344,
+      "mdl_polytomy": 1186,
+      "mdl_conflicted": 2126,
+      "forced_binary_count": 665,
+      "cumulative_mdl_nats": 5780.61
+    },
+    "Lungfish_plus_Coelacanth": {
+      "informative_loci": 3656,
+      "mdl_resolved": 244,
+      "mdl_polytomy": 1341,
+      "mdl_conflicted": 2071,
+      "forced_binary_count": 651,
+      "cumulative_mdl_nats": 2682.4
+    },
+    "Archelosauria_Turtles_plus_Archosaurs": {
+      "informative_loci": 4648,
+      "mdl_resolved": 955,
+      "mdl_polytomy": 1417,
+      "mdl_conflicted": 2276,
+      "forced_binary_count": 1584,
+      "cumulative_mdl_nats": 16234.8
+    },
+    "Ankylopoda_Turtles_plus_Lepidosaurs": {
+      "informative_loci": 4648,
+      "mdl_resolved": 157,
+      "mdl_polytomy": 1163,
+      "mdl_conflicted": 3328,
+      "forced_binary_count": 396,
+      "cumulative_mdl_nats": 1596.34
+    },
+    "Archosaurs_plus_Lepidosaurs_Turtles_basal": {
+      "informative_loci": 4648,
+      "mdl_resolved": 104,
+      "mdl_polytomy": 965,
+      "mdl_conflicted": 3579,
+      "forced_binary_count": 238,
+      "cumulative_mdl_nats": 1160.62
+    }
+  },
+  "top_sp_shunts": [
+    {
+      "locus": "Pro_ENSG00000111530.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 535.3,
+      "m": 208,
+      "u": [
+        "TGE"
+      ],
+      "v": [
+        "falco"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000165458.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 526.09,
+      "m": 174,
+      "u": [
+        "Anas"
+      ],
+      "v": [
+        "Taeniopygia"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000092148.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 398.12,
+      "m": 86,
+      "u": [
+        "Osteoglossum"
+      ],
+      "v": [
+        "Sca"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000042429.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 312.58,
+      "m": 62,
+      "u": [
+        "Dasypus"
+      ],
+      "v": [
+        "Protopterus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000151458.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 283.81,
+      "m": 120,
+      "u": [
+        "XGLY"
+      ],
+      "v": [
+        "Protopterus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000173011.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 281.46,
+      "m": 70,
+      "u": [
+        "Monodelphis"
+      ],
+      "v": [
+        "Ler"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000118257.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 271.34,
+      "m": 53,
+      "u": [
+        "Pelodiscus"
+      ],
+      "v": [
+        "Taeniopygia"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000170537.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 270.78,
+      "m": 123,
+      "u": [
+        "Takifugu"
+      ],
+      "v": [
+        "Astyanax"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000083799.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 259.64,
+      "m": 109,
+      "u": [
+        "Anguilla"
+      ],
+      "v": [
+        "Ictalurus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000138823.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 258.93,
+      "m": 199,
+      "u": [
+        "TGE"
+      ],
+      "v": [
+        "Sparrow"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000158321.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 238.22,
+      "m": 80,
+      "u": [
+        "Melopsittacus"
+      ],
+      "v": [
+        "Sparrow"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000120802.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 234.62,
+      "m": 55,
+      "u": [
+        "Canis"
+      ],
+      "v": [
+        "Monodelphis"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000186575.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 229.96,
+      "m": 106,
+      "u": [
+        "Ostrich"
+      ],
+      "v": [
+        "Ornithorhynchus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000164099.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 227.99,
+      "m": 101,
+      "u": [
+        "Ostrich"
+      ],
+      "v": [
+        "falco"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000137501.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 213.94,
+      "m": 81,
+      "u": [
+        "ICH"
+      ],
+      "v": [
+        "python"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000115677.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 174.31,
+      "m": 87,
+      "u": [
+        "Sphenodon"
+      ],
+      "v": [
+        "Gecko"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000011114.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 172.33,
+      "m": 27,
+      "u": [
+        "Ficedula"
+      ],
+      "v": [
+        "falco"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000162878.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 166.16,
+      "m": 79,
+      "u": [
+        "Melopsittacus"
+      ],
+      "v": [
+        "Trachemys"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000196083.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 164.23,
+      "m": 51,
+      "u": [
+        "Ostrich"
+      ],
+      "v": [
+        "Sparrow"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000164099.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 164.17,
+      "m": 76,
+      "u": [
+        "Oryzias"
+      ],
+      "v": [
+        "Anguilla",
+        "Osteoglossum"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000196083.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 160.23,
+      "m": 51,
+      "u": [
+        "Melopsittacus"
+      ],
+      "v": [
+        "Taeniopygia"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000196083.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 159.78,
+      "m": 55,
+      "u": [
+        "Loxodonta"
+      ],
+      "v": [
+        "Human",
+        "Mus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000083097.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 159.19,
+      "m": 32,
+      "u": [
+        "Gadus"
+      ],
+      "v": [
+        "Gasterosteus"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000131653.refined.fas",
+      "mode": "SPARSE",
+      "gain_nats": 154.6,
+      "m": 40,
+      "u": [
+        "Anolis"
+      ],
+      "v": [
+        "ICH"
+      ]
+    },
+    {
+      "locus": "Pro_ENSG00000164099.refined.fas",
+      "mode": "INTERVAL",
+      "gain_nats": 153.5,
+      "m": 33,
+      "u": [
+        "Loxodonta"
+      ],
+      "v": [
+        "Human",
+        "Mus"
+      ]
+    }
+  ]
+}

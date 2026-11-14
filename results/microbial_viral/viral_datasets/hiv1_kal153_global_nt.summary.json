@@ -1,0 +1,171 @@
+{
+  "dataset": "hiv1_kal153_global_nt",
+  "status": "ok",
+  "alphabet": "nucleotide",
+  "n_taxa": 9,
+  "seq_len": 9953,
+  "bushwhacker_runtime_sec": 0.1414,
+  "total_cli_wall_sec": 0.1495,
+  "fasttree_gtr_wall_sec": 1.32,
+  "speedup_vs_fasttree": 9.34,
+  "raw_dl_nats": 118787.4,
+  "star_mdl_nats": 41667.47,
+  "tree_mdl_nats": 41702.3,
+  "network_mdl_nats": 41657.79,
+  "resolved_splits": 6,
+  "max_binary_splits": 6,
+  "collapsed_zero_signal_splits": 0,
+  "collapsed_polytomy_frac": 0.0,
+  "hub_topology_stats": {
+    "n_internal_nodes": 7,
+    "n_polytomy_hubs": 0,
+    "max_hub_degree": 3,
+    "hubs_deg_ge_10": 0,
+    "hubs_deg_ge_25": 0,
+    "hubs_deg_ge_50": 0,
+    "hubs_deg_ge_100": 0,
+    "top_15_hub_degrees": []
+  },
+  "compression_benchmark": {
+    "raw_fasta_bytes": 89631,
+    "bwz_bytes": 15369,
+    "gzip9_bytes": 25363,
+    "xz6_bytes": 15412,
+    "bwz_vs_raw_ratio": 5.83,
+    "bwz_vs_gzip9_ratio": 1.65,
+    "bwz_vs_xz6_ratio": 1.0
+  },
+  "n_shunts": 3,
+  "n_interval_shunts": 0,
+  "n_sparse_shunts": 3,
+  "n_shunts_involving_known_recombinants": 0,
+  "top_shunts": [
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 29.23,
+      "shared_mutations": 95,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "u_sample": [
+        "B"
+      ],
+      "v_sample": [
+        "D"
+      ],
+      "u_posthoc_lineages": [
+        "B(1)"
+      ],
+      "v_posthoc_lineages": [
+        "D(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        2,
+        3,
+        8,
+        79,
+        79,
+        80,
+        95,
+        98,
+        121,
+        122,
+        125,
+        125,
+        158,
+        241,
+        264,
+        265,
+        307,
+        333,
+        335,
+        339
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 15.02,
+      "shared_mutations": 15,
+      "interval_span": null,
+      "clade_size_u": 1,
+      "clade_size_v": 2,
+      "u_sample": [
+        "B"
+      ],
+      "v_sample": [
+        "D",
+        "H"
+      ],
+      "u_posthoc_lineages": [
+        "B(1)"
+      ],
+      "v_posthoc_lineages": [
+        "D(1)",
+        "H(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        94,
+        625,
+        682,
+        849,
+        878,
+        1126,
+        1759,
+        2123,
+        2233,
+        2377,
+        3019,
+        3020,
+        3027,
+        3033,
+        3189
+      ]
+    },
+    {
+      "mode": "SPARSE",
+      "net_mdl_gain_nats": 0.26,
+      "shared_mutations": 7,
+      "interval_span": null,
+      "clade_size_u": 2,
+      "clade_size_v": 2,
+      "u_sample": [
+        "A",
+        "G"
+      ],
+      "v_sample": [
+        "D",
+        "H"
+      ],
+      "u_posthoc_lineages": [
+        "A(1)",
+        "G(1)"
+      ],
+      "v_posthoc_lineages": [
+        "D(1)",
+        "H(1)"
+      ],
+      "involves_known_recombinant": false,
+      "sites_1based": [
+        941,
+        1879,
+        1998,
+        2039,
+        2456,
+        2478,
+        2595
+      ]
+    }
+  ],
+  "gard_wall_sec": 10740.0,
+  "speedup_vs_gard": 75954.7,
+  "gard_reference_note": "GARD (kal153_rdp_gard.GARD.json) required 2h59m (10,740 s) on silverback vs Bushwhacker 0.28 s induction",
+  "bushwhacker_legacy_v1_sec": 0.2057,
+  "bushwhacker_t1_sec": 0.2107,
+  "bushwhacker_t8_sec": 0.1417,
+  "bushwhacker_t32_sec": 0.1414,
+  "bushwhacker_t64_sec": 0.1475,
+  "multithread_bit_exact_verified": true,
+  "speedup_vs_fasttree_t1": 6.26
+}

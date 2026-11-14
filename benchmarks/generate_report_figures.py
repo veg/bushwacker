@@ -41,7 +41,7 @@ def main() -> None:
     ax = axes[0, 0]
     t1 = data["test1_polytomy_calibration"]
     methods_t1 = ["MDL", "FastTree2", "IQTREE2"]
-    labels_t1 = ["MDLPhylo\n(Ours)", "FastTree 2\n(GTR+CAT)", "IQ-TREE 2\n(GTR+G)"]
+    labels_t1 = ["Bushwhacker\n(MDL)", "FastTree 2\n(GTR+CAT)", "IQ-TREE 2\n(GTR+G)"]
     tp_vals = [t1[m]["inferred"] - t1[m]["fp"] for m in methods_t1]
     fp_vals = [t1[m]["fp"] for m in methods_t1]
     rf_vals = [t1[m]["rf_error"] for m in methods_t1]
@@ -54,18 +54,18 @@ def main() -> None:
     ax.set_xticks(x)
     ax.set_xticklabels(labels_t1)
     ax.set_ylabel("Number of Internal Splits")
-    ax.set_ylim(0, 20.5)
+    ax.set_ylim(0, 24.0)
     ax.set_title("A. Test 1: Polytomy Calibration (13 True, 16 Zero-Length)")
     ax.legend(loc="upper left", frameon=False)
     for bar, rf in zip(b2, rf_vals):
         h = bar.get_height()
         ax.text(
-            bar.get_x() + bar.get_width() / 2,
+            bar.get_x() + bar.get_width() / 2 + (0.06 if h < 0.1 else 0.0),
             h + 0.4,
             f"FP={h:.2f}\n(RF={rf:.1f})",
             ha="center",
             va="bottom",
-            fontsize=7.8,
+            fontsize=7.6,
             fontweight="bold",
             color="#a50026" if h > 1.0 else "#1b7837",
         )
@@ -76,7 +76,7 @@ def main() -> None:
     methods_t2 = [
         ("Unweighted\nParsimony", t2["MP_true_pct"], t2["MP_lba_pct"], 0.0),
         ("Hamming\nNeighbor-Joining", t2["NJ_true_pct"], t2["NJ_lba_pct"], 0.0),
-        ("MDLPhylo\n(Ours)", t2["MDL_true_pct"], t2["MDL_lba_pct"], t2["MDL_polytomy_pct"]),
+        ("Bushwhacker\n(MDL)", t2["MDL_true_pct"], t2["MDL_lba_pct"], t2["MDL_polytomy_pct"]),
     ]
     x2 = np.arange(len(methods_t2))
     true_p = [m[1] for m in methods_t2]
@@ -89,7 +89,8 @@ def main() -> None:
     ax.set_xticks(x2)
     ax.set_xticklabels([m[0] for m in methods_t2])
     ax.set_ylabel("Replicates (%)")
-    ax.set_ylim(0, 115)
+    ax.set_ylim(0, 145)
+    ax.set_yticks([0, 20, 40, 60, 80, 100])
     ax.set_title("B. Test 2: Felsenstein Zone LBA (l_long=0.45, l_int=0.025)")
     ax.legend(loc="upper right", frameon=False)
     for idx_m, (tp_v, lba_v) in enumerate(zip(true_p, lba_p)):
@@ -106,8 +107,8 @@ def main() -> None:
     iq_r = [t3[k]["IQTREE2_pair_recall_pct"] for k in m_keys]
     sh_r = [t3[k]["MDL_shunt_accuracy_pct"] for k in m_keys]
 
-    ax.plot(m_x, mdl_r, marker="o", linewidth=2.4, color="#1b7837", label="MDLPhylo Host Recall")
-    ax.plot(m_x, sh_r, marker="s", linewidth=1.8, linestyle=":", color="#008837", label="MDL Shunt Site Recall")
+    ax.plot(m_x, mdl_r, marker="o", linewidth=2.4, color="#1b7837", label="Bushwhacker Host Recall")
+    ax.plot(m_x, sh_r, marker="s", linewidth=1.8, linestyle=":", color="#008837", label="Bushwhacker Shunt Site Recall")
     ax.plot(m_x, iq_r, marker="^", linewidth=2.0, linestyle="--", color="#d95f02", label="IQ-TREE 2 (GTR+G) Host Recall")
     ax.plot(m_x, ft_r, marker="v", linewidth=2.0, linestyle="-.", color="#7570b3", label="FastTree 2 Host Recall")
     ax.set_xticks(m_x)
@@ -209,8 +210,8 @@ def main() -> None:
         with open(stress_path, "r", encoding="utf-8") as f:
             sdata = json.load(f)
 
-        fig, axes = plt.subplots(2, 2, figsize=(11.4, 8.0))
-        fig.subplots_adjust(hspace=0.40, wspace=0.28)
+        fig, axes = plt.subplots(2, 2, figsize=(13.2, 8.2))
+        fig.subplots_adjust(hspace=0.40, wspace=0.30)
 
         # Panel A: Stress Test 1 - The Likelihood Overfitting Paradox
         ax = axes[0, 0]
@@ -254,8 +255,8 @@ def main() -> None:
         L_keys = ["150", "300", "600", "1500"]
         L_x = [150, 300, 600, 1500]
         m_specs = [
-            ("MDL", "MDLPhylo (Ours)", "#1b7837", "o", "-"),
-            ("IQTREE_aBayes95", "IQ-TREE (aBayes>=0.95)", "#045a8d", "P", "-."),
+            ("MDL", "Bushwhacker (MDL)", "#1b7837", "o", "-"),
+            ("IQTREE_aBayes95", "IQ-TREE 2 (aBayes>=0.95)", "#045a8d", "P", "-."),
             ("IQTREE_Raw", "IQ-TREE 2 (GTR+G Raw)", "#d95f02", "^", "--"),
             ("FastTree_Raw", "FastTree 2 (GTR+CAT)", "#7570b3", "v", "-."),
             ("NJ_JC", "Neighbor-Joining", "#e7298a", "s", ":"),
@@ -276,12 +277,12 @@ def main() -> None:
         ax = axes[1, 0]
         s3 = sdata["stress3_support_collapsed"]["polytomy_methods"]
         m3_order = [
-            ("MDL (No Bootstrap)", "MDLPhylo\n(No Boot)"),
-            ("IQTREE aBayes>=0.95", "IQ-TREE\naBayes>=.95"),
-            ("IQTREE SH-aLRT>=80", "IQ-TREE\nSH-aLRT>=80"),
-            ("IQTREE UFBoot>=95", "IQ-TREE\nUFBoot>=95"),
-            ("FastTree SH>=0.90", "FastTree\nSH>=0.90"),
-            ("FastTree SH>=0.95", "FastTree\nSH>=0.95"),
+            ("MDL (No Bootstrap)", "Bushwhacker\n(No Boot)"),
+            ("IQTREE aBayes>=0.95", "IQ-TREE 2\naBayes≥.95"),
+            ("IQTREE SH-aLRT>=80", "IQ-TREE 2\nSH-aLRT≥80"),
+            ("IQTREE UFBoot>=95", "IQ-TREE 2\nUFBoot≥95"),
+            ("FastTree SH>=0.90", "FastTree 2\nSH≥0.90"),
+            ("FastTree SH>=0.95", "FastTree 2\nSH≥0.95"),
         ]
         x3 = np.arange(len(m3_order))
         rf3 = [s3[k]["rf_error"] for k, _ in m3_order]
@@ -290,24 +291,32 @@ def main() -> None:
         b_rf = ax.bar(x3 - w3 / 2, rf3, width=w3, color="#2166ac", label="Robinson-Foulds Error (RF)")
         b_fp = ax.bar(x3 + w3 / 2, fp3, width=w3, color="#d73027", label="False Positive Splits (FP/16)")
         ax.set_xticks(x3)
-        ax.set_xticklabels([lbl for _, lbl in m3_order], fontsize=7.6)
+        ax.set_xticklabels([lbl for _, lbl in m3_order], fontsize=5.9)
         ax.set_ylabel("Mean Splits / RF Error")
         ax.set_ylim(0, 5.2)
-        ax.set_title("C. Stress Test 3: Support-Collapsed ML/Bayesian vs. MDL")
+        ax.set_title("C. Stress Test 3: Support-Collapsed ML/Bayesian vs. Bushwhacker")
         ax.legend(loc="upper left", frameon=False, fontsize=7.8)
         for bar in b_rf:
             h = bar.get_height()
             ax.text(bar.get_x() + bar.get_width() / 2, h + 0.10, f"{h:.2f}", ha="center", va="bottom", fontsize=7.5, fontweight="bold", color="#2166ac")
 
-        # Panel D: Stress Test 5 - Empirical Mammalian Prestin (116 Mammals)
+        # Panel D: Stress Test 4 - Empirical Mammalian Prestin (116 Mammals)
         ax = axes[1, 1]
-        s5 = sdata["stress5_prestin_head_to_head"]
+        s5 = dict(sdata["stress5_prestin_head_to_head"])
+        prestin_cmp_path = bench_dir.parent / "results" / "prestin_collapsed_ml_comparison.json"
+        if prestin_cmp_path.exists():
+            pcmp = json.loads(prestin_cmp_path.read_text(encoding="utf-8"))["models"]["Bushwhacker_MDL"]
+            s5["MDLPhyloEngine (Ours)"] = {
+                "true_positives": pcmp["tp"],
+                "false_positives": pcmp["fp"],
+                "rf_error": pcmp["fp"] + pcmp["fn"],
+            }
         m5_order = [
-            ("MDLPhyloEngine (Ours)", "MDLPhylo\n(Ours)"),
-            ("IQTREE2 (aBayes>=0.95)", "IQ-TREE\naBayes>=.95"),
-            ("IQTREE2 (SH-aLRT>=80)", "IQ-TREE\nSH-aLRT>=80"),
-            ("FastTree2 (SH>=0.90)", "FastTree\nSH>=0.90"),
-            ("IQTREE2 (GTR+G Raw)", "IQ-TREE\nRaw"),
+            ("MDLPhyloEngine (Ours)", "Bushwhacker\n(+2 shunts)"),
+            ("IQTREE2 (aBayes>=0.95)", "IQ-TREE 2\naBayes≥.95"),
+            ("IQTREE2 (SH-aLRT>=80)", "IQ-TREE 2\nSH-aLRT≥80"),
+            ("FastTree2 (SH>=0.90)", "FastTree 2\nSH≥0.90"),
+            ("IQTREE2 (GTR+G Raw)", "IQ-TREE 2\nRaw"),
             ("Max Parsimony (NNI)", "Max\nParsimony"),
             ("Neighbor-Joining (JC)", "Neighbor\nJoining"),
         ]
@@ -319,10 +328,10 @@ def main() -> None:
         ax.bar(x5_s - w5_s / 2, tp5, width=w5_s, color="#1b7837", label="True Positive Clades (TP)")
         b_fp5 = ax.bar(x5_s + w5_s / 2, fp5, width=w5_s, color="#d73027", label="False Positive Clades (FP)")
         ax.set_xticks(x5_s)
-        ax.set_xticklabels([lbl for _, lbl in m5_order], fontsize=7.4)
+        ax.set_xticklabels([lbl for _, lbl in m5_order], fontsize=5.9)
         ax.set_ylabel("Clade Count (103 Shared Mammals)")
         ax.set_ylim(0, 102)
-        ax.set_title("D. Stress Test 5: Empirical Mammalian Prestin vs. Species Tree")
+        ax.set_title("D. Stress Test 4: Empirical Mammalian Prestin vs. Species Tree")
         ax.legend(loc="upper right", frameon=False, fontsize=7.6)
         for idx_5, (t_v, f_v, r_v) in enumerate(zip(tp5, fp5, rf5)):
             ax.text(idx_5, max(t_v, f_v) + 2.0, f"RF={r_v}", ha="center", va="bottom", fontsize=7.4, fontweight="bold", color="#222222")

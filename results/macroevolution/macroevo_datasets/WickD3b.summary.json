@@ -1,0 +1,120 @@
+{
+  "dataset": "WickD3b",
+  "alphabet": "nucleotide",
+  "total_files": 844,
+  "ok_loci": 844,
+  "error_loci": 0,
+  "wall_sec": 36.05,
+  "sum_cpu_runtime_sec": 284.27,
+  "mean_taxa": 48.78,
+  "mean_seq_len": 1333.3,
+  "total_max_binary_splits": 38638,
+  "total_mdl_resolved_splits": 20559,
+  "polytomy_contracted_frac": 0.4679,
+  "sp_tree_total_splits": 38638,
+  "sp_tree_mdl_supported_splits": 19234,
+  "sp_tree_hard_polytomy_frac": 0.5022,
+  "forced_binary_sp_shared": 11591,
+  "forced_binary_sp_conflict": 27047,
+  "mdl_sp_shared": 8929,
+  "mdl_sp_conflict": 11630,
+  "spurious_discordance_eliminated_frac": 0.57,
+  "loci_with_sp_shunts": 4,
+  "total_sp_shunts": 7,
+  "total_sp_interval": 2,
+  "total_sp_sparse": 5,
+  "total_free_shunts": 7,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "7412.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 8.04,
+      "m": 6,
+      "u": [
+        "Sorghum_bicolor"
+      ],
+      "v": [
+        "Zea_mays"
+      ]
+    },
+    {
+      "locus": "7288.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.47,
+      "m": 12,
+      "u": [
+        "Nuphar_advena"
+      ],
+      "v": [
+        "Brachypodium_distachyon",
+        "Oryza_sativa"
+      ]
+    },
+    {
+      "locus": "6016.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.68,
+      "m": 9,
+      "u": [
+        "Colchicum_autumnale"
+      ],
+      "v": [
+        "Pteridium_aquilinum"
+      ]
+    },
+    {
+      "locus": "7518.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 1.37,
+      "m": 5,
+      "u": [
+        "Sabal_bermudana"
+      ],
+      "v": [
+        "Cedrus_libani",
+        "Ceratodon_purpureus",
+        "Huperzia_squarrosa"
+      ]
+    },
+    {
+      "locus": "7288.aln",
+      "mode": "SPARSE",
+      "gain_nats": 0.92,
+      "m": 6,
+      "u": [
+        "Inula_helenium"
+      ],
+      "v": [
+        "Acorus_americanus",
+        "Brachypodium_distachyon",
+        "Dioscorea_villosa",
+        "Oryza_sativa"
+      ]
+    },
+    {
+      "locus": "7288.aln",
+      "mode": "SPARSE",
+      "gain_nats": 0.68,
+      "m": 9,
+      "u": [
+        "Amborella_trichopoda"
+      ],
+      "v": [
+        "Vitis_vinifera"
+      ]
+    },
+    {
+      "locus": "6016.aln",
+      "mode": "SPARSE",
+      "gain_nats": 0.49,
+      "m": 7,
+      "u": [
+        "Eschscholzia_californica"
+      ],
+      "v": [
+        "Sabal_bermudana"
+      ]
+    }
+  ]
+}

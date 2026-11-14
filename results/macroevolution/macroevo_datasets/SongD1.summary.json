@@ -1,0 +1,361 @@
+{
+  "dataset": "SongD1",
+  "alphabet": "nucleotide",
+  "total_files": 424,
+  "ok_loci": 424,
+  "error_loci": 0,
+  "wall_sec": 35.03,
+  "sum_cpu_runtime_sec": 243.07,
+  "mean_taxa": 37.0,
+  "mean_seq_len": 3157.3,
+  "total_max_binary_splits": 14416,
+  "total_mdl_resolved_splits": 9469,
+  "polytomy_contracted_frac": 0.3432,
+  "sp_tree_total_splits": 14416,
+  "sp_tree_mdl_supported_splits": 9366,
+  "sp_tree_hard_polytomy_frac": 0.3503,
+  "forced_binary_sp_shared": 7732,
+  "forced_binary_sp_conflict": 6684,
+  "mdl_sp_shared": 6576,
+  "mdl_sp_conflict": 2893,
+  "spurious_discordance_eliminated_frac": 0.5672,
+  "loci_with_sp_shunts": 67,
+  "total_sp_shunts": 158,
+  "total_sp_interval": 37,
+  "total_sp_sparse": 121,
+  "total_free_shunts": 165,
+  "focal_hypotheses": {
+    "Atlantogenata_Afro_plus_Xena": {
+      "informative_loci": 424,
+      "mdl_resolved": 98,
+      "mdl_polytomy": 105,
+      "mdl_conflicted": 221,
+      "forced_binary_count": 134,
+      "cumulative_mdl_nats": 2364.79
+    },
+    "Exafroplacentalia_Boreo_plus_Xena": {
+      "informative_loci": 424,
+      "mdl_resolved": 35,
+      "mdl_polytomy": 75,
+      "mdl_conflicted": 314,
+      "forced_binary_count": 52,
+      "cumulative_mdl_nats": 769.61
+    },
+    "Epitheria_Boreo_plus_Afro": {
+      "informative_loci": 424,
+      "mdl_resolved": 21,
+      "mdl_polytomy": 77,
+      "mdl_conflicted": 326,
+      "forced_binary_count": 38,
+      "cumulative_mdl_nats": 354.37
+    }
+  },
+  "top_sp_shunts": [
+    {
+      "locus": "gene144.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 289.18,
+      "m": 74,
+      "u": [
+        "Mus"
+      ],
+      "v": [
+        "Pon"
+      ]
+    },
+    {
+      "locus": "gene428.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 147.11,
+      "m": 32,
+      "u": [
+        "New"
+      ],
+      "v": [
+        "Pon"
+      ]
+    },
+    {
+      "locus": "gene429.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 103.76,
+      "m": 26,
+      "u": [
+        "Gor"
+      ],
+      "v": [
+        "Hom"
+      ]
+    },
+    {
+      "locus": "gene300.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 103.05,
+      "m": 31,
+      "u": [
+        "Tar"
+      ],
+      "v": [
+        "Pan"
+      ]
+    },
+    {
+      "locus": "gene281.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 102.08,
+      "m": 31,
+      "u": [
+        "Sus"
+      ],
+      "v": [
+        "Can",
+        "Equ",
+        "Fel"
+      ]
+    },
+    {
+      "locus": "gene107.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 94.56,
+      "m": 38,
+      "u": [
+        "Can"
+      ],
+      "v": [
+        "Mon"
+      ]
+    },
+    {
+      "locus": "gene419.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 94.19,
+      "m": 27,
+      "u": [
+        "Hom"
+      ],
+      "v": [
+        "Equ"
+      ]
+    },
+    {
+      "locus": "gene281.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 86.81,
+      "m": 34,
+      "u": [
+        "Cal"
+      ],
+      "v": [
+        "New"
+      ]
+    },
+    {
+      "locus": "gene300.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 86.78,
+      "m": 30,
+      "u": [
+        "Tur"
+      ],
+      "v": [
+        "Cho",
+        "Das"
+      ]
+    },
+    {
+      "locus": "gene26.aln",
+      "mode": "SPARSE",
+      "gain_nats": 78.19,
+      "m": 52,
+      "u": [
+        "New"
+      ],
+      "v": [
+        "Ech"
+      ]
+    },
+    {
+      "locus": "gene300.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 77.0,
+      "m": 29,
+      "u": [
+        "Vic"
+      ],
+      "v": [
+        "Lox",
+        "Pro"
+      ]
+    },
+    {
+      "locus": "gene107.aln",
+      "mode": "SPARSE",
+      "gain_nats": 64.76,
+      "m": 37,
+      "u": [
+        "Cal"
+      ],
+      "v": [
+        "Bos"
+      ]
+    },
+    {
+      "locus": "gene300.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 64.11,
+      "m": 31,
+      "u": [
+        "Gor"
+      ],
+      "v": [
+        "Pte"
+      ]
+    },
+    {
+      "locus": "gene291.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 60.08,
+      "m": 17,
+      "u": [
+        "New"
+      ],
+      "v": [
+        "Bos"
+      ]
+    },
+    {
+      "locus": "gene132.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 36.21,
+      "m": 42,
+      "u": [
+        "Bos"
+      ],
+      "v": [
+        "Pon"
+      ]
+    },
+    {
+      "locus": "gene435.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 33.69,
+      "m": 12,
+      "u": [
+        "Equ"
+      ],
+      "v": [
+        "Pon"
+      ]
+    },
+    {
+      "locus": "gene123.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 30.3,
+      "m": 8,
+      "u": [
+        "Cal"
+      ],
+      "v": [
+        "New"
+      ]
+    },
+    {
+      "locus": "gene332.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 28.94,
+      "m": 11,
+      "u": [
+        "New"
+      ],
+      "v": [
+        "Pan"
+      ]
+    },
+    {
+      "locus": "gene388.aln",
+      "mode": "SPARSE",
+      "gain_nats": 28.73,
+      "m": 16,
+      "u": [
+        "Mus"
+      ],
+      "v": [
+        "Gal",
+        "Orn"
+      ]
+    },
+    {
+      "locus": "gene291.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 26.73,
+      "m": 16,
+      "u": [
+        "Mon"
+      ],
+      "v": [
+        "Gal",
+        "Orn"
+      ]
+    },
+    {
+      "locus": "gene262.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 26.12,
+      "m": 9,
+      "u": [
+        "Gor"
+      ],
+      "v": [
+        "Hom"
+      ]
+    },
+    {
+      "locus": "gene235.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 25.74,
+      "m": 20,
+      "u": [
+        "Lox"
+      ],
+      "v": [
+        "Cho"
+      ]
+    },
+    {
+      "locus": "gene309.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 24.64,
+      "m": 10,
+      "u": [
+        "Bos"
+      ],
+      "v": [
+        "Equ"
+      ]
+    },
+    {
+      "locus": "gene435.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 21.31,
+      "m": 10,
+      "u": [
+        "Och"
+      ],
+      "v": [
+        "Fel"
+      ]
+    },
+    {
+      "locus": "gene419.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 19.06,
+      "m": 8,
+      "u": [
+        "Mus"
+      ],
+      "v": [
+        "Hom"
+      ]
+    }
+  ]
+}

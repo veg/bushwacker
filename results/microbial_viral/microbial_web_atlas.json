@@ -1,0 +1,1556 @@
+{
+  "generated_at": "2026-11-13T13:38:40Z",
+  "klebsiella_core_nt_summary": {
+    "n_loci": 222,
+    "loci_with_free_shunts": 3,
+    "loci_with_ref_shunts": 4,
+    "total_free_shunts": 3,
+    "total_free_interval": 3,
+    "total_free_sparse": 0,
+    "total_ref_shunts": 5,
+    "total_ref_interval": 5,
+    "total_ref_sparse": 0,
+    "total_vertical_tree_savings_nats": 0.0,
+    "total_free_shunt_savings_nats": 23.28,
+    "total_ref_shunt_savings_nats": 63.37,
+    "mean_resolved_split_frac": 0.0942,
+    "total_runtime_sec": 4.27
+  },
+  "klebsiella_core_aa_summary": {
+    "n_loci": 222,
+    "loci_with_free_shunts": 0,
+    "loci_with_ref_shunts": 2,
+    "total_free_shunts": 0,
+    "total_free_interval": 0,
+    "total_free_sparse": 0,
+    "total_ref_shunts": 2,
+    "total_ref_interval": 2,
+    "total_ref_sparse": 0,
+    "total_vertical_tree_savings_nats": 0.0,
+    "total_free_shunt_savings_nats": 0,
+    "total_ref_shunt_savings_nats": 10.93,
+    "mean_resolved_split_frac": 0.0097,
+    "total_runtime_sec": 9.19
+  },
+  "klebsiella_special_benchmarks": {
+    "kleb_super_matrix_214kb": {
+      "label": "kleb_super_matrix_214kb",
+      "path": "klebsiella_amr/super_matrix/klebsiella_core_super_matrix_214kb.fna",
+      "status": "ok",
+      "alphabet": "nucleotide",
+      "n_taxa": 16,
+      "seq_len": 214038,
+      "runtime_sec": 0.6738,
+      "star_mdl_nats": 589272.18,
+      "tree_mdl_nats": 713549.4,
+      "network_mdl_nats": 713537.25,
+      "vertical_tree_savings_nats": 0.0,
+      "free_shunt_net_savings_nats": 12.144,
+      "ref_tree_mdl_nats": 573398.98,
+      "ref_network_mdl_nats": 573331.47,
+      "ref_shunt_net_savings_nats": 67.507,
+      "resolved_splits": 13,
+      "max_binary_splits": 13,
+      "ref_resolved_splits": 13,
+      "n_free_shunts": 3,
+      "n_free_interval": 1,
+      "n_free_sparse": 2,
+      "n_ref_shunts": 5,
+      "n_ref_interval": 3,
+      "n_ref_sparse": 2,
+      "free_shunts": [
+        {
+          "node_u": 13,
+          "node_v": 15,
+          "label_u": "MGH78578_ST38",
+          "label_v": "PMK1_ST15",
+          "clade_size_u": 1,
+          "clade_size_v": 1,
+          "leaves_u": [
+            "MGH78578_ST38"
+          ],
+          "leaves_v": [
+            "PMK1_ST15"
+          ],
+          "mode": "SPARSE",
+          "shared_mutations": 10,
+          "sites_0based": [
+            5544,
+            5583,
+            5696,
+            5702,
+            5803,
+            93759,
+            113113,
+            136154,
+            154581,
+            200195
+          ],
+          "codons_1based": [
+            1849,
+            1862,
+            1899,
+            1901,
+            1935,
+            31254,
+            37705,
+            45385,
+            51528,
+            66732
+          ],
+          "residues_1based": [
+            1849,
+            1862,
+            1899,
+            1901,
+            1935,
+            31254,
+            37705,
+            45385,
+            51528,
+            66732
+          ],
+          "interval_span": null,
+          "data_savings_nats": 109.734,
+          "mask_cost_nats": 95.427,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 7.505,
+          "posterior_prob": 0.9995
+        },
+        {
+          "node_u": 2,
+          "node_v": 10,
+          "label_u": "CAV1042",
+          "label_v": "K_quasipneumoniae",
+          "clade_size_u": 1,
+          "clade_size_v": 1,
+          "leaves_u": [
+            "CAV1042"
+          ],
+          "leaves_v": [
+            "K_quasipneumoniae"
+          ],
+          "mode": "INTERVAL",
+          "shared_mutations": 6,
+          "sites_0based": [
+            154580,
+            154581,
+            154586,
+            154595,
+            154598,
+            154601
+          ],
+          "codons_1based": [
+            51527,
+            51528,
+            51529,
+            51532,
+            51533,
+            51534
+          ],
+          "residues_1based": [
+            51527,
+            51528,
+            51529,
+            51532,
+            51533,
+            51534
+          ],
+          "interval_span": [
+            154370,
+            154680
+          ],
+          "data_savings_nats": 41.941,
+          "mask_cost_nats": 30.953,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 4.186,
+          "posterior_prob": 0.985
+        },
+        {
+          "node_u": 15,
+          "node_v": 25,
+          "label_u": "PMK1_ST15",
+          "label_v": "N25",
+          "clade_size_u": 1,
+          "clade_size_v": 2,
+          "leaves_u": [
+            "PMK1_ST15"
+          ],
+          "leaves_v": [
+            "CAV1016",
+            "MGH78578_ST38"
+          ],
+          "mode": "SPARSE",
+          "shared_mutations": 5,
+          "sites_0based": [
+            5287,
+            69054,
+            70311,
+            70313,
+            105270
+          ],
+          "codons_1based": [
+            1763,
+            23019,
+            23438,
+            23438,
+            35091
+          ],
+          "residues_1based": [
+            1763,
+            23019,
+            23438,
+            23438,
+            35091
+          ],
+          "interval_span": null,
+          "data_savings_nats": 58.977,
+          "mask_cost_nats": 51.722,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 0.453,
+          "posterior_prob": 0.6114
+        }
+      ],
+      "ref_shunts": [
+        {
+          "node_u": 1,
+          "node_v": 21,
+          "label_u": "CAV1016",
+          "label_v": "N21",
+          "clade_size_u": 1,
+          "clade_size_v": 7,
+          "leaves_u": [
+            "CAV1016"
+          ],
+          "leaves_v": [
+            "BAA2146_ST11",
+            "CAV1392",
+            "CAV1453",
+            "CAV1596",
+            "HS11286_ST11",
+            "K_variicola",
+            "NJST258_2"
+          ],
+          "mode": "INTERVAL",
+          "shared_mutations": 7,
+          "sites_0based": [
+            153965,
+            153966,
+            153967,
+            153968,
+            153969,
+            153970,
+            153971
+          ],
+          "codons_1based": [
+            51322,
+            51323,
+            51323,
+            51323,
+            51324,
+            51324,
+            51324
+          ],
+          "residues_1based": [
+            51322,
+            51323,
+            51323,
+            51323,
+            51324,
+            51324,
+            51324
+          ],
+          "interval_span": [
+            153888,
+            154365
+          ],
+          "data_savings_nats": 61.556,
+          "mask_cost_nats": 25.241,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 29.513,
+          "posterior_prob": 1.0
+        },
+        {
+          "node_u": 10,
+          "node_v": 21,
+          "label_u": "K_quasipneumoniae",
+          "label_v": "N21",
+          "clade_size_u": 1,
+          "clade_size_v": 7,
+          "leaves_u": [
+            "K_quasipneumoniae"
+          ],
+          "leaves_v": [
+            "BAA2146_ST11",
+            "CAV1392",
+            "CAV1453",
+            "CAV1596",
+            "HS11286_ST11",
+            "K_variicola",
+            "NJST258_2"
+          ],
+          "mode": "INTERVAL",
+          "shared_mutations": 8,
+          "sites_0based": [
+            70568,
+            70569,
+            70582,
+            70583,
+            70613,
+            70614,
+            70616,
+            70619
+          ],
+          "codons_1based": [
+            23523,
+            23524,
+            23528,
+            23528,
+            23538,
+            23539,
+            23539,
+            23540
+          ],
+          "residues_1based": [
+            23523,
+            23524,
+            23528,
+            23528,
+            23538,
+            23539,
+            23539,
+            23540
+          ],
+          "interval_span": [
+            70523,
+            70682
+          ],
+          "data_savings_nats": 71.743,
+          "mask_cost_nats": 38.913,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 26.028,
+          "posterior_prob": 1.0
+        },
+        {
+          "node_u": 13,
+          "node_v": 15,
+          "label_u": "MGH78578_ST38",
+          "label_v": "PMK1_ST15",
+          "clade_size_u": 1,
+          "clade_size_v": 1,
+          "leaves_u": [
+            "MGH78578_ST38"
+          ],
+          "leaves_v": [
+            "PMK1_ST15"
+          ],
+          "mode": "SPARSE",
+          "shared_mutations": 10,
+          "sites_0based": [
+            5544,
+            5583,
+            5696,
+            5702,
+            5803,
+            93759,
+            113113,
+            136154,
+            154581,
+            200195
+          ],
+          "codons_1based": [
+            1849,
+            1862,
+            1899,
+            1901,
+            1935,
+            31254,
+            37705,
+            45385,
+            51528,
+            66732
+          ],
+          "residues_1based": [
+            1849,
+            1862,
+            1899,
+            1901,
+            1935,
+            31254,
+            37705,
+            45385,
+            51528,
+            66732
+          ],
+          "interval_span": null,
+          "data_savings_nats": 109.7,
+          "mask_cost_nats": 95.427,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 7.471,
+          "posterior_prob": 0.9994
+        },
+        {
+          "node_u": 2,
+          "node_v": 10,
+          "label_u": "CAV1042",
+          "label_v": "K_quasipneumoniae",
+          "clade_size_u": 1,
+          "clade_size_v": 1,
+          "leaves_u": [
+            "CAV1042"
+          ],
+          "leaves_v": [
+            "K_quasipneumoniae"
+          ],
+          "mode": "INTERVAL",
+          "shared_mutations": 6,
+          "sites_0based": [
+            154580,
+            154581,
+            154586,
+            154595,
+            154598,
+            154601
+          ],
+          "codons_1based": [
+            51527,
+            51528,
+            51529,
+            51532,
+            51533,
+            51534
+          ],
+          "residues_1based": [
+            51527,
+            51528,
+            51529,
+            51532,
+            51533,
+            51534
+          ],
+          "interval_span": [
+            154370,
+            154680
+          ],
+          "data_savings_nats": 41.78,
+          "mask_cost_nats": 30.953,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 4.024,
+          "posterior_prob": 0.9824
+        },
+        {
+          "node_u": 15,
+          "node_v": 29,
+          "label_u": "PMK1_ST15",
+          "label_v": "N29",
+          "clade_size_u": 1,
+          "clade_size_v": 2,
+          "leaves_u": [
+            "PMK1_ST15"
+          ],
+          "leaves_v": [
+            "CAV1016",
+            "MGH78578_ST38"
+          ],
+          "mode": "SPARSE",
+          "shared_mutations": 5,
+          "sites_0based": [
+            5287,
+            69054,
+            70311,
+            70313,
+            105270
+          ],
+          "codons_1based": [
+            1763,
+            23019,
+            23438,
+            23438,
+            35091
+          ],
+          "residues_1based": [
+            1763,
+            23019,
+            23438,
+            23438,
+            35091
+          ],
+          "interval_span": null,
+          "data_savings_nats": 58.995,
+          "mask_cost_nats": 51.722,
+          "endpoint_cost_nats": 6.802,
+          "net_mdl_gain_nats": 0.471,
+          "posterior_prob": 0.6156
+        }
+      ]
+    },
+    "kleb_core_plus_blaKPC_composite": {
+      "label": "kleb_core_plus_blaKPC_composite",
+      "path": "klebsiella_amr/amr_hgt/klebsiella_core_plus_blaKPC_composite.fna",
+      "status": "ok",
+      "alphabet": "nucleotide",
+      "n_taxa": 9,
+      "seq_len": 9780,
+      "runtime_sec": 0.0443,
+      "star_mdl_nats": 14581.96,
+      "tree_mdl_nats": 14025.07,
+      "network_mdl_nats": 14018.61,
+      "vertical_tree_savings_nats": 556.89,
+      "free_shunt_net_savings_nats": 6.466,
+      "ref_tree_mdl_nats": 14019.15,
+      "ref_network_mdl_nats": 14014.94,
+      "ref_shunt_net_savings_nats": 4.214,
+      "resolved_splits": 5,
+      "max_binary_splits": 6,
+      "ref_resolved_splits": 6,
+      "n_free_shunts": 1,
+      "n_free_interval": 1,
+      "n_free_sparse": 0,
+      "n_ref_shunts": 1,
+      "n_ref_interval": 0,
+      "n_ref_sparse": 1,
+      "free_shunts": [
+        {
+          "node_u": 0,
+          "node_v": 1,
+          "label_u": "CAV1016",
+          "label_v": "CAV1042",
+          "clade_size_u": 1,
+          "clade_size_v": 1,
+          "leaves_u": [
+            "CAV1016"
+          ],
+          "leaves_v": [
+            "CAV1042"
+          ],
+          "mode": "INTERVAL",
+          "shared_mutations": 3,
+          "sites_0based": [
+            79,
+            80,
+            83
+          ],
+          "codons_1based": [
+            27,
+            27,
+            28
+          ],
+          "residues_1based": [
+            27,
+            27,
+            28
+          ],
+          "interval_span": [
+            73,
+            96
+          ],
+          "data_savings_nats": 30.951,
+          "mask_cost_nats": 19.069,
+          "endpoint_cost_nats": 5.416,
+          "net_mdl_gain_nats": 6.466,
+          "posterior_prob": 0.9984
+        }
+      ],
+      "ref_shunts": [
+        {
+          "node_u": 7,
+          "node_v": 16,
+          "label_u": "HS11286_ST11",
+          "label_v": "N16",
+          "clade_size_u": 1,
+          "clade_size_v": 2,
+          "leaves_u": [
+            "HS11286_ST11"
+          ],
+          "leaves_v": [
+            "CAV1193",
+            "CAV1344"
+          ],
+          "mode": "SPARSE",
+          "shared_mutations": 2,
+          "sites_0based": [
+            728,
+            729
+          ],
+          "codons_1based": [
+            243,
+            244
+          ],
+          "residues_1based": [
+            243,
+            244
+          ],
+          "interval_span": null,
+          "data_savings_nats": 16.058,
+          "mask_cost_nats": 6.299,
+          "endpoint_cost_nats": 5.545,
+          "net_mdl_gain_nats": 4.214,
+          "posterior_prob": 0.9854
+        }
+      ]
+    },
+    "kleb_blaKPC_9taxa": {
+      "label": "kleb_blaKPC_9taxa",
+      "path": "klebsiella_amr/amr_hgt/blaKPC_9taxa.fna",
+      "status": "ok",
+      "alphabet": "nucleotide",
+      "n_taxa": 9,
+      "seq_len": 882,
+      "runtime_sec": 0.0113,
+      "star_mdl_nats": 1255.58,
+      "tree_mdl_nats": 1260.8,
+      "network_mdl_nats": 1260.8,
+      "vertical_tree_savings_nats": 0.0,
+      "free_shunt_net_savings_nats": 0,
+      "ref_tree_mdl_nats": null,
+      "ref_network_mdl_nats": null,
+      "ref_shunt_net_savings_nats": 0,
+      "resolved_splits": 1,
+      "max_binary_splits": 6,
+      "ref_resolved_splits": null,
+      "n_free_shunts": 0,
+      "n_free_interval": 0,
+      "n_free_sparse": 0,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "n_ref_sparse": 0,
+      "free_shunts": [],
+      "ref_shunts": []
+    }
+  },
+  "top_klebsiella_hgt_genes": [
+    {
+      "gene": "core_168_ornithine_carbamoyltransferase",
+      "seq_len": 1020,
+      "n_ref_shunts": 1,
+      "n_ref_interval": 1,
+      "ref_shunt_net_savings_nats": 28.662,
+      "top_shunts": [
+        {
+          "mode": "INTERVAL",
+          "gain_nats": 28.66,
+          "shared_muts": 7,
+          "span": [
+            936,
+            1019
+          ],
+          "u": [
+            "CAV1016"
+          ],
+          "v": [
+            "BAA2146_ST11",
+            "CAV1392",
+            "CAV1453",
+            "CAV1596"
+          ]
+        }
+      ]
+    },
+    {
+      "gene": "core_092_DgaE_family_pyridoxal_phosphate_dependen",
+      "seq_len": 1119,
+      "n_ref_shunts": 1,
+      "n_ref_interval": 1,
+      "ref_shunt_net_savings_nats": 19.878,
+      "top_shunts": [
+        {
+          "mode": "INTERVAL",
+          "gain_nats": 19.88,
+          "shared_muts": 8,
+          "span": [
+            761,
+            920
+          ],
+          "u": [
+            "K_quasipneumoniae"
+          ],
+          "v": [
+            "BAA2146_ST11",
+            "CAV1392",
+            "CAV1453",
+            "CAV1596"
+          ]
+        }
+      ]
+    },
+    {
+      "gene": "core_169_orotate_phosphoribosyltransferase",
+      "seq_len": 702,
+      "n_ref_shunts": 2,
+      "n_ref_interval": 2,
+      "ref_shunt_net_savings_nats": 12.62,
+      "top_shunts": [
+        {
+          "mode": "INTERVAL",
+          "gain_nats": 6.51,
+          "shared_muts": 6,
+          "span": [
+            398,
+            639
+          ],
+          "u": [
+            "CAV1042"
+          ],
+          "v": [
+            "K_quasipneumoniae"
+          ]
+        },
+        {
+          "mode": "INTERVAL",
+          "gain_nats": 6.11,
+          "shared_muts": 6,
+          "span": [
+            544,
+            639
+          ],
+          "u": [
+            "MGH78578_ST38"
+          ],
+          "v": [
+            "PMK1_ST15"
+          ]
+        }
+      ]
+    },
+    {
+      "gene": "core_001_1_2_dihydroxy_3_keto_5_methylthiopentene",
+      "seq_len": 588,
+      "n_ref_shunts": 1,
+      "n_ref_interval": 1,
+      "ref_shunt_net_savings_nats": 2.215,
+      "top_shunts": [
+        {
+          "mode": "INTERVAL",
+          "gain_nats": 2.21,
+          "shared_muts": 3,
+          "span": [
+            73,
+            96
+          ],
+          "u": [
+            "CAV1042"
+          ],
+          "v": [
+            "CAV1016",
+            "MGH78578_ST38"
+          ]
+        }
+      ]
+    },
+    {
+      "gene": "core_002_1__5_phosphoribosyl__5___5_phosphoribosy",
+      "seq_len": 756,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_003_1_deoxy_D_xylulose_5_phosphate_synthase",
+      "seq_len": 1923,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_004_16S_rRNA__uracil_1498__N_3___methyltrans",
+      "seq_len": 771,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_005_2_C_methyl_D_erythritol_4_phosphate_cyti",
+      "seq_len": 723,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_006_2_amino_4_hydroxy_6_hydroxymethyldihydro",
+      "seq_len": 546,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_007_2_oxo_4_hydroxy_4_carboxy_5_ureidoimidaz",
+      "seq_len": 531,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_008_3_dehydroquinate_synthase",
+      "seq_len": 1104,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_009_3_isopropylmalate_dehydrogenase",
+      "seq_len": 1119,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_010_3_methyl_2_oxobutanoate_hydroxymethyltra",
+      "seq_len": 837,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_011_30S_ribosomal_protein_S1",
+      "seq_len": 1710,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_012_30S_ribosomal_protein_S10",
+      "seq_len": 309,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_013_30S_ribosomal_protein_S11",
+      "seq_len": 387,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_014_30S_ribosomal_protein_S12",
+      "seq_len": 420,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_015_30S_ribosomal_protein_S13",
+      "seq_len": 363,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_016_30S_ribosomal_protein_S15",
+      "seq_len": 267,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_017_30S_ribosomal_protein_S16",
+      "seq_len": 276,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_018_30S_ribosomal_protein_S17",
+      "seq_len": 261,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_019_30S_ribosomal_protein_S18",
+      "seq_len": 243,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_020_30S_ribosomal_protein_S19",
+      "seq_len": 276,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_021_30S_ribosomal_protein_S2",
+      "seq_len": 735,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    },
+    {
+      "gene": "core_022_30S_ribosomal_protein_S20",
+      "seq_len": 264,
+      "n_ref_shunts": 0,
+      "n_ref_interval": 0,
+      "ref_shunt_net_savings_nats": 0,
+      "top_shunts": []
+    }
+  ],
+  "gtdb_ar122_protein_summary": {
+    "n_loci": 122,
+    "loci_with_free_shunts": 3,
+    "loci_with_ref_shunts": 10,
+    "total_free_shunts": 4,
+    "total_free_interval": 3,
+    "total_free_sparse": 1,
+    "total_ref_shunts": 13,
+    "total_ref_interval": 5,
+    "total_ref_sparse": 8,
+    "total_vertical_tree_savings_nats": 30368151.48,
+    "total_free_shunt_savings_nats": 79.27,
+    "total_ref_shunt_savings_nats": 195.08,
+    "mean_resolved_split_frac": 0.3841,
+    "total_runtime_sec": 2534.71
+  },
+  "gtdb_ar122_hgt_and_complexity": {
+    "mode": "ref_or_free",
+    "complexity_hypothesis_by_category": {
+      "Operational": {
+        "loci": 102,
+        "loci_with_shunts": 12,
+        "total_shunts": 15,
+        "interval_shunts": 6,
+        "sparse_shunts": 9,
+        "inter_phylum_shunts": 3,
+        "inter_class_shunts": 3,
+        "total_shunt_nats": 249.584,
+        "total_tree_nats": 28947152.37
+      },
+      "Informational": {
+        "loci": 20,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "interval_shunts": 0,
+        "sparse_shunts": 0,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 0,
+        "total_shunt_nats": 0.0,
+        "total_tree_nats": 1420999.1099999999
+      }
+    },
+    "complexity_hypothesis_by_subcategory": {
+      "Operational_Metabolic": {
+        "loci": 101,
+        "loci_with_shunts": 12,
+        "total_shunts": 15,
+        "total_shunt_nats": 249.584
+      },
+      "Ribosomal_RNAP_Translation": {
+        "loci": 20,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "total_shunt_nats": 0.0
+      },
+      "Transcription_DNA_Replication": {
+        "loci": 1,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "total_shunt_nats": 0.0
+      }
+    },
+    "fisher_exact_tests": {
+      "informational_vs_operational": {
+        "table_2x2": [
+          [
+            0,
+            20
+          ],
+          [
+            12,
+            90
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 0.21255311409851904
+      }
+    },
+    "per_subcategory_fisher_vs_rest": {
+      "Operational_Metabolic": {
+        "table_2x2_vs_rest": [
+          [
+            12,
+            89
+          ],
+          [
+            0,
+            21
+          ]
+        ],
+        "odds_ratio": null,
+        "p_value_two_sided": 0.12487460467353911
+      },
+      "Ribosomal_RNAP_Translation": {
+        "table_2x2_vs_rest": [
+          [
+            0,
+            20
+          ],
+          [
+            12,
+            90
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 0.21255311409851904
+      },
+      "Transcription_DNA_Replication": {
+        "table_2x2_vs_rest": [
+          [
+            0,
+            1
+          ],
+          [
+            12,
+            109
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 1.0
+      }
+    },
+    "top_inter_phylum_highways": [
+      [
+        "Aenigmatarchaeota <-> Nanoarchaeota",
+        1
+      ],
+      [
+        "Micrarchaeota <-> Nanoarchaeota",
+        1
+      ],
+      [
+        "Methanobacteriota <-> Thermoplasmatota",
+        1
+      ]
+    ],
+    "top_inter_class_highways": [
+      [
+        "Lokiarchaeia <-> Thorarchaeia",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Nitrososphaeria",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Methanomethylicia",
+        1
+      ]
+    ],
+    "top_inter_phylum_shunts": [
+      {
+        "locus": "ar122_TIGR02236",
+        "marker_name": "TIGR02236",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 33.3,
+        "shared_mutations": 18,
+        "u_phyla": [
+          "Micrarchaeota"
+        ],
+        "v_phyla": [
+          "Nanoarchaeota"
+        ]
+      },
+      {
+        "locus": "ar122_TIGR00337",
+        "marker_name": "TIGR00337",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 8.85,
+        "shared_mutations": 11,
+        "u_phyla": [
+          "Nanoarchaeota"
+        ],
+        "v_phyla": [
+          "Aenigmatarchaeota"
+        ]
+      },
+      {
+        "locus": "ar122_TIGR02390",
+        "marker_name": "TIGR02390",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 1.6,
+        "shared_mutations": 11,
+        "u_phyla": [
+          "Thermoplasmatota"
+        ],
+        "v_phyla": [
+          "Methanobacteriota"
+        ]
+      }
+    ]
+  },
+  "gtdb_ar122_hgt_and_complexity_ref_only": {
+    "mode": "ref_only",
+    "complexity_hypothesis_by_category": {
+      "Operational": {
+        "loci": 102,
+        "loci_with_shunts": 10,
+        "total_shunts": 13,
+        "interval_shunts": 5,
+        "sparse_shunts": 8,
+        "inter_phylum_shunts": 3,
+        "inter_class_shunts": 3,
+        "total_shunt_nats": 195.08,
+        "total_tree_nats": 28947152.37
+      },
+      "Informational": {
+        "loci": 20,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "interval_shunts": 0,
+        "sparse_shunts": 0,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 0,
+        "total_shunt_nats": 0.0,
+        "total_tree_nats": 1420999.1099999999
+      }
+    },
+    "complexity_hypothesis_by_subcategory": {
+      "Operational_Metabolic": {
+        "loci": 101,
+        "loci_with_shunts": 10,
+        "total_shunts": 13,
+        "total_shunt_nats": 195.08
+      },
+      "Ribosomal_RNAP_Translation": {
+        "loci": 20,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "total_shunt_nats": 0.0
+      },
+      "Transcription_DNA_Replication": {
+        "loci": 1,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "total_shunt_nats": 0.0
+      }
+    },
+    "fisher_exact_tests": {
+      "informational_vs_operational": {
+        "table_2x2": [
+          [
+            0,
+            20
+          ],
+          [
+            10,
+            92
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 0.36530739956036773
+      }
+    },
+    "per_subcategory_fisher_vs_rest": {
+      "Operational_Metabolic": {
+        "table_2x2_vs_rest": [
+          [
+            10,
+            91
+          ],
+          [
+            0,
+            21
+          ]
+        ],
+        "odds_ratio": null,
+        "p_value_two_sided": 0.20788741114721504
+      },
+      "Ribosomal_RNAP_Translation": {
+        "table_2x2_vs_rest": [
+          [
+            0,
+            20
+          ],
+          [
+            10,
+            92
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 0.36530739956036773
+      },
+      "Transcription_DNA_Replication": {
+        "table_2x2_vs_rest": [
+          [
+            0,
+            1
+          ],
+          [
+            10,
+            111
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 1.0
+      }
+    },
+    "top_inter_phylum_highways": [
+      [
+        "Aenigmatarchaeota <-> Nanoarchaeota",
+        1
+      ],
+      [
+        "Micrarchaeota <-> Nanoarchaeota",
+        1
+      ],
+      [
+        "Methanobacteriota <-> Thermoplasmatota",
+        1
+      ]
+    ],
+    "top_inter_class_highways": [
+      [
+        "Lokiarchaeia <-> Thorarchaeia",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Nitrososphaeria",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Methanomethylicia",
+        1
+      ]
+    ],
+    "top_inter_phylum_shunts": [
+      {
+        "locus": "ar122_TIGR02236",
+        "marker_name": "TIGR02236",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 33.3,
+        "shared_mutations": 18,
+        "u_phyla": [
+          "Micrarchaeota"
+        ],
+        "v_phyla": [
+          "Nanoarchaeota"
+        ]
+      },
+      {
+        "locus": "ar122_TIGR00337",
+        "marker_name": "TIGR00337",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 8.85,
+        "shared_mutations": 11,
+        "u_phyla": [
+          "Nanoarchaeota"
+        ],
+        "v_phyla": [
+          "Aenigmatarchaeota"
+        ]
+      },
+      {
+        "locus": "ar122_TIGR02390",
+        "marker_name": "TIGR02390",
+        "category": "Operational",
+        "mode": "SPARSE",
+        "net_mdl_gain_nats": 1.6,
+        "shared_mutations": 11,
+        "u_phyla": [
+          "Thermoplasmatota"
+        ],
+        "v_phyla": [
+          "Methanobacteriota"
+        ]
+      }
+    ]
+  },
+  "gtdb_clade_nt_summary": {
+    "n_loci": 68,
+    "loci_with_free_shunts": 3,
+    "loci_with_ref_shunts": 0,
+    "total_free_shunts": 3,
+    "total_free_interval": 0,
+    "total_free_sparse": 3,
+    "total_ref_shunts": 0,
+    "total_ref_interval": 0,
+    "total_ref_sparse": 0,
+    "total_vertical_tree_savings_nats": 520930.51,
+    "total_free_shunt_savings_nats": 16.84,
+    "total_ref_shunt_savings_nats": 0,
+    "mean_resolved_split_frac": 0.565,
+    "total_runtime_sec": 30.66
+  },
+  "gtdb_clade_nt_hgt_and_complexity": {
+    "mode": "free_only",
+    "complexity_hypothesis_by_category": {
+      "Operational": {
+        "loci": 58,
+        "loci_with_shunts": 3,
+        "total_shunts": 3,
+        "interval_shunts": 0,
+        "sparse_shunts": 3,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 0,
+        "total_shunt_nats": 16.843,
+        "total_tree_nats": 492416.26
+      },
+      "Informational": {
+        "loci": 10,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "interval_shunts": 0,
+        "sparse_shunts": 0,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 0,
+        "total_shunt_nats": 0.0,
+        "total_tree_nats": 28514.249999999996
+      }
+    },
+    "complexity_hypothesis_by_subcategory": {
+      "Operational_Metabolic": {
+        "loci": 58,
+        "loci_with_shunts": 3,
+        "total_shunts": 3,
+        "total_shunt_nats": 16.843
+      },
+      "Ribosomal_RNAP_Translation": {
+        "loci": 10,
+        "loci_with_shunts": 0,
+        "total_shunts": 0,
+        "total_shunt_nats": 0.0
+      }
+    },
+    "fisher_exact_tests": {
+      "informational_vs_operational": {
+        "table_2x2": [
+          [
+            0,
+            10
+          ],
+          [
+            3,
+            55
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 1.0
+      }
+    },
+    "per_subcategory_fisher_vs_rest": {
+      "Operational_Metabolic": {
+        "table_2x2_vs_rest": [
+          [
+            3,
+            55
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "odds_ratio": null,
+        "p_value_two_sided": 1.0
+      },
+      "Ribosomal_RNAP_Translation": {
+        "table_2x2_vs_rest": [
+          [
+            0,
+            10
+          ],
+          [
+            3,
+            55
+          ]
+        ],
+        "odds_ratio": 0.0,
+        "p_value_two_sided": 1.0
+      }
+    },
+    "top_inter_phylum_highways": [],
+    "top_inter_class_highways": [],
+    "top_inter_phylum_shunts": []
+  },
+  "gtdb_clade_aa_summary": {
+    "n_loci": 68,
+    "loci_with_free_shunts": 46,
+    "loci_with_ref_shunts": 0,
+    "total_free_shunts": 170,
+    "total_free_interval": 5,
+    "total_free_sparse": 165,
+    "total_ref_shunts": 0,
+    "total_ref_interval": 0,
+    "total_ref_sparse": 0,
+    "total_vertical_tree_savings_nats": 608846.88,
+    "total_free_shunt_savings_nats": 1142.11,
+    "total_ref_shunt_savings_nats": 0,
+    "mean_resolved_split_frac": 0.8741,
+    "total_runtime_sec": 37.03
+  },
+  "gtdb_clade_aa_hgt_and_complexity": {
+    "mode": "free_only",
+    "complexity_hypothesis_by_category": {
+      "Operational": {
+        "loci": 58,
+        "loci_with_shunts": 43,
+        "total_shunts": 167,
+        "interval_shunts": 5,
+        "sparse_shunts": 162,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 18,
+        "total_shunt_nats": 1131.2619999999997,
+        "total_tree_nats": 574951.6900000001
+      },
+      "Informational": {
+        "loci": 10,
+        "loci_with_shunts": 3,
+        "total_shunts": 3,
+        "interval_shunts": 0,
+        "sparse_shunts": 3,
+        "inter_phylum_shunts": 0,
+        "inter_class_shunts": 0,
+        "total_shunt_nats": 10.852,
+        "total_tree_nats": 33895.19
+      }
+    },
+    "complexity_hypothesis_by_subcategory": {
+      "Operational_Metabolic": {
+        "loci": 58,
+        "loci_with_shunts": 43,
+        "total_shunts": 167,
+        "total_shunt_nats": 1131.2619999999997
+      },
+      "Ribosomal_RNAP_Translation": {
+        "loci": 10,
+        "loci_with_shunts": 3,
+        "total_shunts": 3,
+        "total_shunt_nats": 10.852
+      }
+    },
+    "fisher_exact_tests": {
+      "informational_vs_operational": {
+        "table_2x2": [
+          [
+            3,
+            7
+          ],
+          [
+            43,
+            15
+          ]
+        ],
+        "odds_ratio": 0.1495,
+        "p_value_two_sided": 0.010123211350502192
+      }
+    },
+    "per_subcategory_fisher_vs_rest": {
+      "Operational_Metabolic": {
+        "table_2x2_vs_rest": [
+          [
+            43,
+            15
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "odds_ratio": 6.6889,
+        "p_value_two_sided": 0.010123211350502193
+      },
+      "Ribosomal_RNAP_Translation": {
+        "table_2x2_vs_rest": [
+          [
+            3,
+            7
+          ],
+          [
+            43,
+            15
+          ]
+        ],
+        "odds_ratio": 0.1495,
+        "p_value_two_sided": 0.010123211350502192
+      }
+    },
+    "top_inter_phylum_highways": [],
+    "top_inter_class_highways": [
+      [
+        "Methanomicrobia <-> Methanosarcinia",
+        2
+      ],
+      [
+        "Halobacteria <-> Methanosarcinia",
+        2
+      ],
+      [
+        "Methanomethylicia <-> Thermoproteia",
+        2
+      ],
+      [
+        "Archaeoglobi <-> Methanonatronarchaeia",
+        1
+      ],
+      [
+        "Methanosarcinia <-> Syntropharchaeia",
+        1
+      ],
+      [
+        "Methanococci <-> Thermococci",
+        1
+      ],
+      [
+        "Methanobacteria <-> Methanococci",
+        1
+      ],
+      [
+        "Methanopyri <-> Thermococci",
+        1
+      ],
+      [
+        "Methanococci <-> Methanopyri",
+        1
+      ],
+      [
+        "E2 <-> Poseidoniia",
+        1
+      ],
+      [
+        "Poseidoniia <-> Thermoplasmata",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Thermoproteia",
+        1
+      ],
+      [
+        "Methanomethylicia <-> Nitrososphaeria",
+        1
+      ],
+      [
+        "Bathyarchaeia <-> Methanomethylicia",
+        1
+      ],
+      [
+        "Nitrososphaeria <-> Thermoproteia",
+        1
+      ]
+    ],
+    "top_inter_phylum_shunts": []
+  }
+}

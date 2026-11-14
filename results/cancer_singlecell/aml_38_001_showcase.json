@@ -1,0 +1,276 @@
+{
+  "patient": "AML-38-001",
+  "zero_leakage_verified": true,
+  "curated_morita_clones": {
+    "n_clones": 11,
+    "n_loci": 31,
+    "total_sequenced_cells_in_morita_clones": 106783,
+    "resolved_internal_splits": 2,
+    "max_binary_splits": 8,
+    "polytomy_hubs": 3,
+    "runtime_sec": 0.0038,
+    "specimen_runtime_sec": 0.0031,
+    "tree_MDL_nats": 89.03,
+    "internal_branches": [
+      {
+        "u": 11,
+        "v": 14,
+        "mutations": 1.0,
+        "branch_length": 0.032258,
+        "mdl_gain_nats": 5.605,
+        "mdl_support": 0.9963,
+        "num_synapomorphies": 1
+      },
+      {
+        "u": 14,
+        "v": 16,
+        "mutations": 1.0,
+        "branch_length": 0.032258,
+        "mdl_gain_nats": 5.94,
+        "mdl_support": 0.9974,
+        "num_synapomorphies": 1
+      }
+    ],
+    "specimen_internal_branches": [
+      {
+        "u": 11,
+        "v": 14,
+        "mutations": 1.0,
+        "branch_length": 0.032258,
+        "mdl_gain_nats": 5.605,
+        "mdl_support": 0.9963,
+        "num_synapomorphies": 1
+      },
+      {
+        "u": 14,
+        "v": 16,
+        "mutations": 1.0,
+        "branch_length": 0.032258,
+        "mdl_gain_nats": 5.94,
+        "mdl_support": 0.9974,
+        "num_synapomorphies": 1
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": 0,
+        "driver": "WT",
+        "genotype_genes": [],
+        "seq_cell_number": 100000,
+        "k_out": 1
+      },
+      {
+        "node_id": 1,
+        "driver": "NPM1",
+        "genotype_genes": [
+          "NPM1"
+        ],
+        "seq_cell_number": 117,
+        "k_out": 2
+      },
+      {
+        "node_id": 2,
+        "driver": "IDH1",
+        "genotype_genes": [
+          "NPM1",
+          "IDH1"
+        ],
+        "seq_cell_number": 395,
+        "k_out": 3
+      },
+      {
+        "node_id": 4,
+        "driver": "FLT3",
+        "genotype_genes": [
+          "FLT3",
+          "NPM1",
+          "IDH1"
+        ],
+        "seq_cell_number": 95,
+        "k_out": 0
+      },
+      {
+        "node_id": 5,
+        "driver": "KRAS",
+        "genotype_genes": [
+          "NPM1",
+          "KRAS",
+          "IDH1"
+        ],
+        "seq_cell_number": 2611,
+        "k_out": 0
+      },
+      {
+        "node_id": 6,
+        "driver": "PTPN11",
+        "genotype_genes": [
+          "NPM1",
+          "PTPN11",
+          "IDH1"
+        ],
+        "seq_cell_number": 547,
+        "k_out": 0
+      },
+      {
+        "node_id": 3,
+        "driver": "IDH2",
+        "genotype_genes": [
+          "IDH2",
+          "NPM1"
+        ],
+        "seq_cell_number": 360,
+        "k_out": 4
+      },
+      {
+        "node_id": 7,
+        "driver": "FLT3",
+        "genotype_genes": [
+          "IDH2",
+          "NPM1",
+          "FLT3"
+        ],
+        "seq_cell_number": 1476,
+        "k_out": 0
+      },
+      {
+        "node_id": 8,
+        "driver": "KRAS",
+        "genotype_genes": [
+          "IDH2",
+          "NPM1",
+          "KRAS"
+        ],
+        "seq_cell_number": 34,
+        "k_out": 0
+      },
+      {
+        "node_id": 9,
+        "driver": "NRAS",
+        "genotype_genes": [
+          "IDH2",
+          "NPM1",
+          "NRAS"
+        ],
+        "seq_cell_number": 1043,
+        "k_out": 0
+      },
+      {
+        "node_id": 10,
+        "driver": "PTPN11",
+        "genotype_genes": [
+          "IDH2",
+          "NPM1",
+          "PTPN11"
+        ],
+        "seq_cell_number": 105,
+        "k_out": 0
+      }
+    ]
+  },
+  "raw_compass_scdna": {
+    "input_file": "AML-38-001_variants.csv",
+    "n_sequenced_cells": 7016,
+    "n_complete_cells": 3832,
+    "n_somatic_coding_loci": 9,
+    "loci": [
+      "NRAS p.G13R",
+      "IDH1 p.R132H",
+      "NPM1 p.W288fs",
+      "KRAS p.G12A",
+      "PTPN11 p.D61H",
+      "FLT3 p.D835H",
+      "FLT3-ITD",
+      "FLT3-ITD",
+      "IDH2 p.R140Q"
+    ],
+    "n_unique_genotypes": 128,
+    "resolved_internal_splits": 32,
+    "max_binary_splits": 125,
+    "polytomy_hubs": 28,
+    "max_polytomy_degree": 12,
+    "certified_shunts": 0,
+    "runtime_sec": 0.0353,
+    "hub_k3plus_n": 16,
+    "hub_k3plus_mean_direct_cells": 49.62,
+    "leaf_k0_n": 95,
+    "leaf_k0_mean_direct_cells": 12.79,
+    "top_hubs": [
+      {
+        "anon_id": "T00107",
+        "k_out": 10,
+        "direct_cells": 275,
+        "muts": [
+          "NRAS:1",
+          "NPM1:1",
+          "IDH2:1"
+        ]
+      },
+      {
+        "anon_id": "T00015",
+        "k_out": 8,
+        "direct_cells": 215,
+        "muts": [
+          "NPM1:1",
+          "IDH2:1"
+        ]
+      },
+      {
+        "anon_id": "T00062",
+        "k_out": 8,
+        "direct_cells": 101,
+        "muts": [
+          "IDH1:1",
+          "NPM1:1"
+        ]
+      },
+      {
+        "anon_id": "T00016",
+        "k_out": 8,
+        "direct_cells": 15,
+        "muts": [
+          "NPM1:1",
+          "IDH2:2"
+        ]
+      },
+      {
+        "anon_id": "T00096",
+        "k_out": 8,
+        "direct_cells": 5,
+        "muts": [
+          "IDH1:2",
+          "NPM1:1"
+        ]
+      },
+      {
+        "anon_id": "T00024",
+        "k_out": 7,
+        "direct_cells": 10,
+        "muts": [
+          "NPM1:1",
+          "FLT3:1",
+          "IDH2:1"
+        ]
+      },
+      {
+        "anon_id": "T00039",
+        "k_out": 7,
+        "direct_cells": 9,
+        "muts": [
+          "NPM1:1",
+          "KRAS:1",
+          "IDH2:1"
+        ]
+      },
+      {
+        "anon_id": "T00032",
+        "k_out": 6,
+        "direct_cells": 46,
+        "muts": [
+          "NPM1:1",
+          "PTPN11:1",
+          "IDH2:1"
+        ]
+      }
+    ]
+  }
+}

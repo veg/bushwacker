@@ -1,0 +1,927 @@
+[
+  {
+    "gene": "AKR1C4",
+    "n_taxa": 150,
+    "seq_len": 1128,
+    "runtime_sec": 1.985,
+    "star_tree_MDL_nats": 63806.4,
+    "tree_MDL_nats": 17409.1,
+    "network_MDL_nats": 17385.5,
+    "sp_tree_MDL_nats": 17955.4,
+    "sp_net_MDL_nats": 17893.5,
+    "delta_mdl_gene_vs_sp_nats": 546.29,
+    "max_binary_splits": 147,
+    "sp_splits_count": 147,
+    "sp_supported_splits_count": 98,
+    "sp_supported_frac": 0.6667,
+    "sp_shunts_count": 5,
+    "bin_splits_count": 147,
+    "bin_sp_shared": 76,
+    "bin_sp_conflict": 71,
+    "bin_sp_conflict_rate": 0.483,
+    "mdl_splits_count": 104,
+    "polytomy_nodes": 24,
+    "mdl_polytomy_contracted_frac": 0.2925,
+    "mdl_sp_shared": 65,
+    "mdl_sp_conflict": 39,
+    "mdl_sp_conflict_rate": 0.375,
+    "false_conflict_eliminated_frac": 0.4507,
+    "n_shunts": 1,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 1,
+    "max_shunt_gain_nats": 23.56,
+    "top_shunts": [
+      {
+        "label_u": "HLvarVar1",
+        "label_v": "N188",
+        "u_tips_sample": [
+          "HLvarVar1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLeulCol1",
+          "HLeulCoro1",
+          "HLeulFla1",
+          "HLeulFul1",
+          "HLeulMon1"
+        ],
+        "v_clade_size": 8,
+        "mode": "SPARSE",
+        "shared_mutations": 24,
+        "net_mdl_gain_nats": 23.56,
+        "data_savings_nats": 112.03,
+        "interval_span": null,
+        "codons_1based": [
+          128,
+          167,
+          171,
+          174,
+          175,
+          178,
+          180,
+          185,
+          205,
+          273,
+          290,
+          297,
+          304,
+          337,
+          343,
+          356,
+          359,
+          360
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "APOBEC3A",
+    "n_taxa": 283,
+    "seq_len": 816,
+    "runtime_sec": 2.6038,
+    "star_tree_MDL_nats": 89832.6,
+    "tree_MDL_nats": 26988.7,
+    "network_MDL_nats": 26988.7,
+    "sp_tree_MDL_nats": 27223.5,
+    "sp_net_MDL_nats": 27223.5,
+    "delta_mdl_gene_vs_sp_nats": 234.79,
+    "max_binary_splits": 280,
+    "sp_splits_count": 280,
+    "sp_supported_splits_count": 183,
+    "sp_supported_frac": 0.6536,
+    "sp_shunts_count": 0,
+    "bin_splits_count": 280,
+    "bin_sp_shared": 138,
+    "bin_sp_conflict": 142,
+    "bin_sp_conflict_rate": 0.5071,
+    "mdl_splits_count": 211,
+    "polytomy_nodes": 42,
+    "mdl_polytomy_contracted_frac": 0.2464,
+    "mdl_sp_shared": 115,
+    "mdl_sp_conflict": 96,
+    "mdl_sp_conflict_rate": 0.455,
+    "false_conflict_eliminated_frac": 0.3239,
+    "n_shunts": 0,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 0,
+    "max_shunt_gain_nats": 0.0,
+    "top_shunts": [],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "CEACAM1",
+    "n_taxa": 84,
+    "seq_len": 1629,
+    "runtime_sec": 1.8817,
+    "star_tree_MDL_nats": 49635.6,
+    "tree_MDL_nats": 24450.4,
+    "network_MDL_nats": 24434.7,
+    "sp_tree_MDL_nats": 24567.0,
+    "sp_net_MDL_nats": 24547.1,
+    "delta_mdl_gene_vs_sp_nats": 116.64,
+    "max_binary_splits": 81,
+    "sp_splits_count": 81,
+    "sp_supported_splits_count": 52,
+    "sp_supported_frac": 0.642,
+    "sp_shunts_count": 3,
+    "bin_splits_count": 81,
+    "bin_sp_shared": 38,
+    "bin_sp_conflict": 43,
+    "bin_sp_conflict_rate": 0.5309,
+    "mdl_splits_count": 61,
+    "polytomy_nodes": 8,
+    "mdl_polytomy_contracted_frac": 0.2469,
+    "mdl_sp_shared": 33,
+    "mdl_sp_conflict": 28,
+    "mdl_sp_conflict_rate": 0.459,
+    "false_conflict_eliminated_frac": 0.3488,
+    "n_shunts": 2,
+    "n_interval_shunts": 1,
+    "n_sparse_shunts": 1,
+    "max_shunt_gain_nats": 10.01,
+    "top_shunts": [
+      {
+        "label_u": "HLoryCunCun4",
+        "label_v": "N96",
+        "u_tips_sample": [
+          "HLoryCunCun4"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLsylBac1",
+          "HLsylFlo1"
+        ],
+        "v_clade_size": 2,
+        "mode": "INTERVAL",
+        "shared_mutations": 8,
+        "net_mdl_gain_nats": 10.01,
+        "data_savings_nats": 55.43,
+        "interval_span": [
+          539,
+          708
+        ],
+        "codons_1based": [
+          182,
+          197,
+          197,
+          203,
+          206,
+          217,
+          223,
+          230
+        ]
+      },
+      {
+        "label_u": "HLoryCuni5",
+        "label_v": "N92",
+        "u_tips_sample": [
+          "HLoryCuni5"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLlepAme1",
+          "HLlepCap1",
+          "HLlepEur1",
+          "HLlepOio1",
+          "HLlepTim1"
+        ],
+        "v_clade_size": 8,
+        "mode": "SPARSE",
+        "shared_mutations": 13,
+        "net_mdl_gain_nats": 5.68,
+        "data_savings_nats": 69.99,
+        "interval_span": null,
+        "codons_1based": [
+          158,
+          158,
+          163,
+          181,
+          207,
+          209,
+          209,
+          212,
+          218,
+          222,
+          222,
+          236,
+          237
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "CEACAM3",
+    "n_taxa": 84,
+    "seq_len": 843,
+    "runtime_sec": 0.7032,
+    "star_tree_MDL_nats": 16141.6,
+    "tree_MDL_nats": 10133.9,
+    "network_MDL_nats": 10111.0,
+    "sp_tree_MDL_nats": 10300.0,
+    "sp_net_MDL_nats": 10300.0,
+    "delta_mdl_gene_vs_sp_nats": 166.12,
+    "max_binary_splits": 81,
+    "sp_splits_count": 81,
+    "sp_supported_splits_count": 36,
+    "sp_supported_frac": 0.4444,
+    "sp_shunts_count": 0,
+    "bin_splits_count": 81,
+    "bin_sp_shared": 16,
+    "bin_sp_conflict": 65,
+    "bin_sp_conflict_rate": 0.8025,
+    "mdl_splits_count": 45,
+    "polytomy_nodes": 15,
+    "mdl_polytomy_contracted_frac": 0.4444,
+    "mdl_sp_shared": 12,
+    "mdl_sp_conflict": 33,
+    "mdl_sp_conflict_rate": 0.7333,
+    "false_conflict_eliminated_frac": 0.4923,
+    "n_shunts": 2,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 2,
+    "max_shunt_gain_nats": 20.7,
+    "top_shunts": [
+      {
+        "label_u": "N116",
+        "label_v": "N166",
+        "u_tips_sample": [
+          "HLhypAmp2",
+          "HLmesBid1",
+          "HLmesBid2A",
+          "HLmesBid2B",
+          "HLmesDen2"
+        ],
+        "u_clade_size": 11,
+        "v_tips_sample": [
+          "HLeleMax2",
+          "HLeleMaxInd3A",
+          "HLhipLar3",
+          "HLlemCat1",
+          "HLloxAfr5B"
+        ],
+        "v_clade_size": 10,
+        "mode": "SPARSE",
+        "shared_mutations": 14,
+        "net_mdl_gain_nats": 20.7,
+        "data_savings_nats": 73.66,
+        "interval_span": null,
+        "codons_1based": [
+          178,
+          182,
+          187,
+          191,
+          192,
+          195,
+          196,
+          197,
+          209,
+          212,
+          212,
+          214,
+          217,
+          218
+        ]
+      },
+      {
+        "label_u": "HLcapMar3",
+        "label_v": "N129",
+        "u_tips_sample": [
+          "HLcapMar3"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLponBla1",
+          "HLzipCav1"
+        ],
+        "v_clade_size": 2,
+        "mode": "SPARSE",
+        "shared_mutations": 5,
+        "net_mdl_gain_nats": 2.23,
+        "data_savings_nats": 32.23,
+        "interval_span": null,
+        "codons_1based": [
+          107,
+          107,
+          108,
+          111,
+          159
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "CEACAM7",
+    "n_taxa": 92,
+    "seq_len": 837,
+    "runtime_sec": 1.1369,
+    "star_tree_MDL_nats": 35750.9,
+    "tree_MDL_nats": 15895.5,
+    "network_MDL_nats": 15870.3,
+    "sp_tree_MDL_nats": 16267.5,
+    "sp_net_MDL_nats": 16243.5,
+    "delta_mdl_gene_vs_sp_nats": 371.96,
+    "max_binary_splits": 89,
+    "sp_splits_count": 89,
+    "sp_supported_splits_count": 58,
+    "sp_supported_frac": 0.6517,
+    "sp_shunts_count": 3,
+    "bin_splits_count": 89,
+    "bin_sp_shared": 41,
+    "bin_sp_conflict": 48,
+    "bin_sp_conflict_rate": 0.5393,
+    "mdl_splits_count": 64,
+    "polytomy_nodes": 14,
+    "mdl_polytomy_contracted_frac": 0.2809,
+    "mdl_sp_shared": 38,
+    "mdl_sp_conflict": 26,
+    "mdl_sp_conflict_rate": 0.4062,
+    "false_conflict_eliminated_frac": 0.4583,
+    "n_shunts": 3,
+    "n_interval_shunts": 1,
+    "n_sparse_shunts": 2,
+    "max_shunt_gain_nats": 13.01,
+    "top_shunts": [
+      {
+        "label_u": "HLoryCunCun4",
+        "label_v": "N105",
+        "u_tips_sample": [
+          "HLoryCunCun4"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLsylBac1",
+          "HLsylFlo1"
+        ],
+        "v_clade_size": 2,
+        "mode": "INTERVAL",
+        "shared_mutations": 8,
+        "net_mdl_gain_nats": 13.01,
+        "data_savings_nats": 53.8,
+        "interval_span": [
+          563,
+          730
+        ],
+        "codons_1based": [
+          190,
+          205,
+          205,
+          211,
+          214,
+          225,
+          231,
+          238
+        ]
+      },
+      {
+        "label_u": "HLoryCuni5",
+        "label_v": "N97",
+        "u_tips_sample": [
+          "HLoryCuni5"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLlepAme1",
+          "HLlepCap1",
+          "HLlepEur1",
+          "HLlepOio1",
+          "HLlepTola1"
+        ],
+        "v_clade_size": 7,
+        "mode": "SPARSE",
+        "shared_mutations": 13,
+        "net_mdl_gain_nats": 8.6,
+        "data_savings_nats": 67.42,
+        "interval_span": null,
+        "codons_1based": [
+          166,
+          166,
+          171,
+          189,
+          215,
+          217,
+          217,
+          220,
+          226,
+          230,
+          230,
+          244,
+          245
+        ]
+      },
+      {
+        "label_u": "N118",
+        "label_v": "N126",
+        "u_tips_sample": [
+          "HLeliQue1B",
+          "HLlepAme1",
+          "HLlepCap1",
+          "HLlepEur1",
+          "HLlepOio1"
+        ],
+        "u_clade_size": 13,
+        "v_tips_sample": [
+          "HLallBul1",
+          "HLjacJac2",
+          "HLperLonPac2",
+          "HLthrSwi1",
+          "lipVex1"
+        ],
+        "v_clade_size": 5,
+        "mode": "SPARSE",
+        "shared_mutations": 8,
+        "net_mdl_gain_nats": 3.56,
+        "data_savings_nats": 47.28,
+        "interval_span": null,
+        "codons_1based": [
+          39,
+          93,
+          138,
+          144,
+          146,
+          172,
+          195,
+          201
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "H2AC18",
+    "n_taxa": 165,
+    "seq_len": 393,
+    "runtime_sec": 0.8434,
+    "star_tree_MDL_nats": 21849.1,
+    "tree_MDL_nats": 9084.9,
+    "network_MDL_nats": 9063.2,
+    "sp_tree_MDL_nats": 10280.6,
+    "sp_net_MDL_nats": 10250.1,
+    "delta_mdl_gene_vs_sp_nats": 1195.67,
+    "max_binary_splits": 162,
+    "sp_splits_count": 162,
+    "sp_supported_splits_count": 94,
+    "sp_supported_frac": 0.5802,
+    "sp_shunts_count": 3,
+    "bin_splits_count": 162,
+    "bin_sp_shared": 53,
+    "bin_sp_conflict": 109,
+    "bin_sp_conflict_rate": 0.6728,
+    "mdl_splits_count": 118,
+    "polytomy_nodes": 22,
+    "mdl_polytomy_contracted_frac": 0.2716,
+    "mdl_sp_shared": 45,
+    "mdl_sp_conflict": 73,
+    "mdl_sp_conflict_rate": 0.6186,
+    "false_conflict_eliminated_frac": 0.3303,
+    "n_shunts": 1,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 1,
+    "max_shunt_gain_nats": 21.7,
+    "top_shunts": [
+      {
+        "label_u": "N180",
+        "label_v": "N274",
+        "u_tips_sample": [
+          "HLateCha1",
+          "HLateMar1",
+          "HLatePan1",
+          "HLcatWag1",
+          "HLcheLug1"
+        ],
+        "u_clade_size": 16,
+        "v_tips_sample": [
+          "HLantMar1",
+          "HLdesMos1",
+          "HLpteBra2"
+        ],
+        "v_clade_size": 3,
+        "mode": "SPARSE",
+        "shared_mutations": 7,
+        "net_mdl_gain_nats": 21.7,
+        "data_savings_nats": 53.62,
+        "interval_span": null,
+        "codons_1based": [
+          31,
+          31,
+          44,
+          71,
+          100,
+          129,
+          130
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "HBA1",
+    "n_taxa": 149,
+    "seq_len": 522,
+    "runtime_sec": 0.9831,
+    "star_tree_MDL_nats": 24035.8,
+    "tree_MDL_nats": 12013.1,
+    "network_MDL_nats": 11988.4,
+    "sp_tree_MDL_nats": 13450.1,
+    "sp_net_MDL_nats": 13341.4,
+    "delta_mdl_gene_vs_sp_nats": 1436.93,
+    "max_binary_splits": 146,
+    "sp_splits_count": 146,
+    "sp_supported_splits_count": 85,
+    "sp_supported_frac": 0.5822,
+    "sp_shunts_count": 5,
+    "bin_splits_count": 146,
+    "bin_sp_shared": 53,
+    "bin_sp_conflict": 93,
+    "bin_sp_conflict_rate": 0.637,
+    "mdl_splits_count": 100,
+    "polytomy_nodes": 25,
+    "mdl_polytomy_contracted_frac": 0.3151,
+    "mdl_sp_shared": 46,
+    "mdl_sp_conflict": 54,
+    "mdl_sp_conflict_rate": 0.54,
+    "false_conflict_eliminated_frac": 0.4194,
+    "n_shunts": 2,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 2,
+    "max_shunt_gain_nats": 13.47,
+    "top_shunts": [
+      {
+        "label_u": "HLchrBra1",
+        "label_v": "HLspeVen1",
+        "u_tips_sample": [
+          "HLchrBra1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLspeVen1"
+        ],
+        "v_clade_size": 1,
+        "mode": "SPARSE",
+        "shared_mutations": 12,
+        "net_mdl_gain_nats": 13.47,
+        "data_savings_nats": 60.95,
+        "interval_span": null,
+        "codons_1based": [
+          11,
+          13,
+          14,
+          19,
+          25,
+          29,
+          31,
+          112,
+          112,
+          113,
+          113,
+          124
+        ]
+      },
+      {
+        "label_u": "N177",
+        "label_v": "N193",
+        "u_tips_sample": [
+          "HLcavPor4",
+          "HLcavTsc1",
+          "HLdolPat1",
+          "HLhydHyd1",
+          "HLhydHyd2"
+        ],
+        "u_clade_size": 5,
+        "v_tips_sample": [
+          "HLneoCar1",
+          "HLsciCar1"
+        ],
+        "v_clade_size": 2,
+        "mode": "SPARSE",
+        "shared_mutations": 9,
+        "net_mdl_gain_nats": 11.25,
+        "data_savings_nats": 52.11,
+        "interval_span": null,
+        "codons_1based": [
+          5,
+          31,
+          74,
+          84,
+          84,
+          85,
+          98,
+          141,
+          143
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "IDI2",
+    "n_taxa": 167,
+    "seq_len": 696,
+    "runtime_sec": 1.9341,
+    "star_tree_MDL_nats": 60486.6,
+    "tree_MDL_nats": 20980.3,
+    "network_MDL_nats": 20975.4,
+    "sp_tree_MDL_nats": 23550.0,
+    "sp_net_MDL_nats": 23508.6,
+    "delta_mdl_gene_vs_sp_nats": 2569.62,
+    "max_binary_splits": 164,
+    "sp_splits_count": 164,
+    "sp_supported_splits_count": 104,
+    "sp_supported_frac": 0.6341,
+    "sp_shunts_count": 4,
+    "bin_splits_count": 164,
+    "bin_sp_shared": 66,
+    "bin_sp_conflict": 98,
+    "bin_sp_conflict_rate": 0.5976,
+    "mdl_splits_count": 123,
+    "polytomy_nodes": 27,
+    "mdl_polytomy_contracted_frac": 0.25,
+    "mdl_sp_shared": 57,
+    "mdl_sp_conflict": 66,
+    "mdl_sp_conflict_rate": 0.5366,
+    "false_conflict_eliminated_frac": 0.3265,
+    "n_shunts": 2,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 2,
+    "max_shunt_gain_nats": 2.91,
+    "top_shunts": [
+      {
+        "label_u": "HLneoLep1",
+        "label_v": "N268",
+        "u_tips_sample": [
+          "HLneoLep1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLarvAmp1",
+          "HLcleRut1",
+          "HLcriGam1",
+          "HLdicTor1",
+          "HLgeoBur1"
+        ],
+        "v_clade_size": 16,
+        "mode": "SPARSE",
+        "shared_mutations": 9,
+        "net_mdl_gain_nats": 2.91,
+        "data_savings_nats": 49.05,
+        "interval_span": null,
+        "codons_1based": [
+          129,
+          132,
+          133,
+          150,
+          154,
+          158,
+          170,
+          172,
+          175
+        ]
+      },
+      {
+        "label_u": "HLxerIna1",
+        "label_v": "N256",
+        "u_tips_sample": [
+          "HLxerIna1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLcalLat1A",
+          "HLcalLat1B",
+          "HLcynGun1",
+          "HLmarFla1",
+          "HLmarFlav2A"
+        ],
+        "v_clade_size": 16,
+        "mode": "SPARSE",
+        "shared_mutations": 9,
+        "net_mdl_gain_nats": 2.01,
+        "data_savings_nats": 48.16,
+        "interval_span": null,
+        "codons_1based": [
+          10,
+          10,
+          27,
+          33,
+          33,
+          63,
+          67,
+          69,
+          160
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "IFITM3",
+    "n_taxa": 108,
+    "seq_len": 429,
+    "runtime_sec": 0.6104,
+    "star_tree_MDL_nats": 11932.6,
+    "tree_MDL_nats": 7603.4,
+    "network_MDL_nats": 7579.3,
+    "sp_tree_MDL_nats": 7772.7,
+    "sp_net_MDL_nats": 7762.4,
+    "delta_mdl_gene_vs_sp_nats": 169.3,
+    "max_binary_splits": 105,
+    "sp_splits_count": 105,
+    "sp_supported_splits_count": 51,
+    "sp_supported_frac": 0.4857,
+    "sp_shunts_count": 3,
+    "bin_splits_count": 105,
+    "bin_sp_shared": 26,
+    "bin_sp_conflict": 79,
+    "bin_sp_conflict_rate": 0.7524,
+    "mdl_splits_count": 67,
+    "polytomy_nodes": 19,
+    "mdl_polytomy_contracted_frac": 0.3619,
+    "mdl_sp_shared": 23,
+    "mdl_sp_conflict": 44,
+    "mdl_sp_conflict_rate": 0.6567,
+    "false_conflict_eliminated_frac": 0.443,
+    "n_shunts": 5,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 5,
+    "max_shunt_gain_nats": 10.89,
+    "top_shunts": [
+      {
+        "label_u": "N128",
+        "label_v": "N152",
+        "u_tips_sample": [
+          "HLaddNas1",
+          "HLeriBar1",
+          "neoSch1"
+        ],
+        "u_clade_size": 3,
+        "v_tips_sample": [
+          "HLhipLar3",
+          "HLlamGla1",
+          "HLmanTri1",
+          "HLmicHir1",
+          "HLnocLep1"
+        ],
+        "v_clade_size": 5,
+        "mode": "SPARSE",
+        "shared_mutations": 9,
+        "net_mdl_gain_nats": 10.89,
+        "data_savings_nats": 48.99,
+        "interval_span": null,
+        "codons_1based": [
+          16,
+          17,
+          49,
+          50,
+          59,
+          95,
+          113,
+          114,
+          115
+        ]
+      },
+      {
+        "label_u": "N130",
+        "label_v": "N215",
+        "u_tips_sample": [
+          "HLcteGun1",
+          "HLcteSoc1",
+          "HLpetTyp1"
+        ],
+        "u_clade_size": 3,
+        "v_tips_sample": [
+          "HLmarVan1",
+          "HLpseFum1"
+        ],
+        "v_clade_size": 2,
+        "mode": "SPARSE",
+        "shared_mutations": 8,
+        "net_mdl_gain_nats": 6.95,
+        "data_savings_nats": 42.87,
+        "interval_span": null,
+        "codons_1based": [
+          52,
+          77,
+          77,
+          110,
+          110,
+          116,
+          128,
+          134
+        ]
+      },
+      {
+        "label_u": "HLarcTow1",
+        "label_v": "N128",
+        "u_tips_sample": [
+          "HLarcTow1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLaddNas1",
+          "HLeriBar1",
+          "neoSch1"
+        ],
+        "v_clade_size": 3,
+        "mode": "SPARSE",
+        "shared_mutations": 5,
+        "net_mdl_gain_nats": 3.9,
+        "data_savings_nats": 32.42,
+        "interval_span": null,
+        "codons_1based": [
+          4,
+          8,
+          15,
+          56,
+          67
+        ]
+      },
+      {
+        "label_u": "HLpotFla1",
+        "label_v": "HLmusNig1",
+        "u_tips_sample": [
+          "HLpotFla1"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLmusNig1"
+        ],
+        "v_clade_size": 1,
+        "mode": "SPARSE",
+        "shared_mutations": 5,
+        "net_mdl_gain_nats": 1.56,
+        "data_savings_nats": 30.07,
+        "interval_span": null,
+        "codons_1based": [
+          13,
+          49,
+          49,
+          50,
+          54
+        ]
+      },
+      {
+        "label_u": "HLtolMata2",
+        "label_v": "HLchoDid2",
+        "u_tips_sample": [
+          "HLtolMata2"
+        ],
+        "u_clade_size": 1,
+        "v_tips_sample": [
+          "HLchoDid2"
+        ],
+        "v_clade_size": 1,
+        "mode": "SPARSE",
+        "shared_mutations": 8,
+        "net_mdl_gain_nats": 0.77,
+        "data_savings_nats": 36.69,
+        "interval_span": null,
+        "codons_1based": [
+          15,
+          21,
+          42,
+          66,
+          75,
+          77,
+          96,
+          128
+        ]
+      }
+    ],
+    "walrus_comparison": null
+  },
+  {
+    "gene": "IQCF5",
+    "n_taxa": 166,
+    "seq_len": 501,
+    "runtime_sec": 1.2316,
+    "star_tree_MDL_nats": 39143.0,
+    "tree_MDL_nats": 14811.9,
+    "network_MDL_nats": 14811.9,
+    "sp_tree_MDL_nats": 14905.6,
+    "sp_net_MDL_nats": 14905.6,
+    "delta_mdl_gene_vs_sp_nats": 93.77,
+    "max_binary_splits": 163,
+    "sp_splits_count": 163,
+    "sp_supported_splits_count": 100,
+    "sp_supported_frac": 0.6135,
+    "sp_shunts_count": 0,
+    "bin_splits_count": 163,
+    "bin_sp_shared": 87,
+    "bin_sp_conflict": 76,
+    "bin_sp_conflict_rate": 0.4663,
+    "mdl_splits_count": 107,
+    "polytomy_nodes": 24,
+    "mdl_polytomy_contracted_frac": 0.3436,
+    "mdl_sp_shared": 68,
+    "mdl_sp_conflict": 39,
+    "mdl_sp_conflict_rate": 0.3645,
+    "false_conflict_eliminated_frac": 0.4868,
+    "n_shunts": 0,
+    "n_interval_shunts": 0,
+    "n_sparse_shunts": 0,
+    "max_shunt_gain_nats": 0.0,
+    "top_shunts": [],
+    "walrus_comparison": null
+  }
+]

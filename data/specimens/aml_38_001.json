@@ -1,0 +1,26 @@
+{
+  "tool": "BUSHWHACKER",
+  "input": "data/specimens/aml_38_001_clones.fasta",
+  "alphabet": "discrete_ordered",
+  "n_taxa": 11,
+  "seq_len": 31,
+  "raw_Description_Length_nats": 236.36,
+  "star_tree_MDL_nats": 104.90,
+  "tree_MDL_nats": 89.03,
+  "network_MDL_nats": 89.03,
+  "compression_ratio_vs_star": 0.8487,
+  "resolved_internal_splits": 2,
+  "max_binary_splits": 8,
+  "polytomy_nodes": 3,
+  "certified_shunts": 0,
+  "runtime_sec": 0.0041,
+  "newick": "(Clone_10_IDH2_NPM1_PTPN11:0.032258,(Clone_0_WT:0.032258,Clone_1_NPM1:0.000000,(Clone_2_NPM1_IDH1:0.000000,Clone_4_FLT3_NPM1_IDH1:0.032258,Clone_5_NPM1_KRAS_IDH1:0.032258,Clone_6_NPM1_PTPN11_IDH1:0.032258)0.996:0.032258)0.997:0.032258,Clone_8_IDH2_NPM1_KRAS:0.032258,Clone_3_IDH2_NPM1:0.000000,Clone_9_IDH2_NPM1_NRAS:0.032258,Clone_7_IDH2_NPM1_FLT3:0.032258);",
+  "binary_newick": "(Clone_3_IDH2_NPM1:0.016129,Clone_9_IDH2_NPM1_NRAS:0.016129,(Clone_7_IDH2_NPM1_FLT3:0.016129,(Clone_8_IDH2_NPM1_KRAS:0.016129,(Clone_10_IDH2_NPM1_PTPN11:0.016129,((Clone_6_NPM1_PTPN11_IDH1:0.032258,(Clone_5_NPM1_KRAS_IDH1:0.016129,(Clone_2_NPM1_IDH1:0.016129,Clone_4_FLT3_NPM1_IDH1:0.016129):0.016129):0.016129):0.032258,(Clone_0_WT:0.016129,Clone_1_NPM1:0.016129):0.016129):0.016129):0.016129):0.016129):0.016129);",
+  "internal_branches": [
+    {"u": 11, "v": 14, "mutations": 1.00, "branch_length": 0.032258, "mdl_gain_nats": 5.605, "mdl_support": 0.9963, "num_synapomorphies": 1},
+    {"u": 14, "v": 16, "mutations": 1.00, "branch_length": 0.032258, "mdl_gain_nats": 5.940, "mdl_support": 0.9974, "num_synapomorphies": 1}
+  ],
+  "shunts": [
+
+  ]
+}

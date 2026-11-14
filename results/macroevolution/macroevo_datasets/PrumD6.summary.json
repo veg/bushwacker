@@ -1,0 +1,355 @@
+{
+  "dataset": "PrumD6",
+  "alphabet": "nucleotide",
+  "total_files": 259,
+  "ok_loci": 259,
+  "error_loci": 0,
+  "wall_sec": 51.8,
+  "sum_cpu_runtime_sec": 344.42,
+  "mean_taxa": 198.99,
+  "mean_seq_len": 1523.9,
+  "total_max_binary_splits": 50762,
+  "total_mdl_resolved_splits": 36623,
+  "polytomy_contracted_frac": 0.2785,
+  "sp_tree_total_splits": 50762,
+  "sp_tree_mdl_supported_splits": 31060,
+  "sp_tree_hard_polytomy_frac": 0.3881,
+  "forced_binary_sp_shared": 28517,
+  "forced_binary_sp_conflict": 22245,
+  "mdl_sp_shared": 25877,
+  "mdl_sp_conflict": 10746,
+  "spurious_discordance_eliminated_frac": 0.5169,
+  "loci_with_sp_shunts": 24,
+  "total_sp_shunts": 71,
+  "total_sp_interval": 16,
+  "total_sp_sparse": 55,
+  "total_free_shunts": 46,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "L120.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 86.77,
+      "m": 37,
+      "u": [
+        "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+      ],
+      "v": [
+        "I0219_1489_Trochilidae_Topaza_pella",
+        "I0220_1514_Trochilidae_Phaethornis_superciliosus",
+        "I0277_5465_Trochilidae_Archilochus_colubris"
+      ]
+    },
+    {
+      "locus": "L131.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 60.64,
+      "m": 35,
+      "u": [
+        "I0245_2800_Ardeidae_Ardea_herodias"
+      ],
+      "v": [
+        "I0429_3677_Grallariidae_Myrmothera_campanisona"
+      ]
+    },
+    {
+      "locus": "L58.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 42.7,
+      "m": 14,
+      "u": [
+        "I0267_3690_Bucconidae_Bucco_capensis"
+      ],
+      "v": [
+        "I0211_1232_Columbidae_Columba_livia",
+        "I0221_1526_Columbidae_Leptotila_rufaxilla",
+        "I0243_2275_Columbidae_Columbina_minuta"
+      ]
+    },
+    {
+      "locus": "L120.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 30.58,
+      "m": 16,
+      "u": [
+        "I0220_1514_Trochilidae_Phaethornis_superciliosus"
+      ],
+      "v": [
+        "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+      ]
+    },
+    {
+      "locus": "L306.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 29.45,
+      "m": 16,
+      "u": [
+        "I0212_1289_Charadriidae_Charadrius_hiaticula"
+      ],
+      "v": [
+        "I0363_345610_Mesitornithidae_Mesitornis_unicolor"
+      ]
+    },
+    {
+      "locus": "L50.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 28.59,
+      "m": 12,
+      "u": [
+        "I0204_1174_Threskiornithidae_Harpiprion_caerulescens"
+      ],
+      "v": [
+        "I0230_1770_Tinamidae_Crypturellus_tataupa"
+      ]
+    },
+    {
+      "locus": "L288.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 22.74,
+      "m": 11,
+      "u": [
+        "I0230_1770_Tinamidae_Crypturellus_tataupa"
+      ],
+      "v": [
+        "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae"
+      ]
+    },
+    {
+      "locus": "L202.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 21.74,
+      "m": 9,
+      "u": [
+        "I0185_86_Accipitridae_Buteo_jamaicensis",
+        "I0268_3790_Accipitridae_Accipiter_superciliosus",
+        "I0361_9545_Sagittariidae_Sagittarius_serpentarius",
+        "I0385_9309_Accipitridae_Elanus_leucurus"
+      ],
+      "v": [
+        "I0410_52764_Coliidae_Colius_colius",
+        "I0413_67124_Coliidae_Colius_indicus"
+      ]
+    },
+    {
+      "locus": "L337.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 20.28,
+      "m": 9,
+      "u": [
+        "I0223_1586_Furnariidae_Sclerurus_mexicanus"
+      ],
+      "v": [
+        "I0242_2273_Furnariidae_Lepidocolaptes_angustirostris"
+      ]
+    },
+    {
+      "locus": "L306.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 18.22,
+      "m": 13,
+      "u": [
+        "I0284_6031_Coraciidae_Coracias_cyanogaster"
+      ],
+      "v": [
+        "I0368_21_Recurvirostridae_Recurvirostra_americana"
+      ]
+    },
+    {
+      "locus": "L239.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 18.08,
+      "m": 12,
+      "u": [
+        "I0230_1770_Tinamidae_Crypturellus_tataupa",
+        "I0231_1774_Tinamidae_Tinamus_major"
+      ],
+      "v": [
+        "I0200_988_Furnariidae_Furnarius_rufus",
+        "I0242_2273_Furnariidae_Lepidocolaptes_angustirostris"
+      ]
+    },
+    {
+      "locus": "L131.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 14.02,
+      "m": 14,
+      "u": [
+        "I0278_5642_Phasianidae_Bonasa_umbellus"
+      ],
+      "v": [
+        "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae",
+        "I0378_3087_Heliornithidae_Heliornis_fulica"
+      ]
+    },
+    {
+      "locus": "L271.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 13.18,
+      "m": 7,
+      "u": [
+        "I0289_6295_Haematopodidae_Haematopus_palliatus"
+      ],
+      "v": [
+        "I0384_9129_Fregatidae_Fregata_magnificens"
+      ]
+    },
+    {
+      "locus": "L24.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 11.71,
+      "m": 19,
+      "u": [
+        "I0204_1174_Threskiornithidae_Harpiprion_caerulescens"
+      ],
+      "v": [
+        "I0230_1770_Tinamidae_Crypturellus_tataupa"
+      ]
+    },
+    {
+      "locus": "L131.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 11.61,
+      "m": 13,
+      "u": [
+        "I0256_3178_Megapodiidae_Leipoa_ocellata"
+      ],
+      "v": [
+        "I0425_2961_Rallidae_Micropygia_schomburgkii"
+      ]
+    },
+    {
+      "locus": "L178.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 11.0,
+      "m": 21,
+      "u": [
+        "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+      ],
+      "v": [
+        "I0219_1489_Trochilidae_Topaza_pella",
+        "I0220_1514_Trochilidae_Phaethornis_superciliosus",
+        "I0277_5465_Trochilidae_Archilochus_colubris"
+      ]
+    },
+    {
+      "locus": "L288.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 10.96,
+      "m": 11,
+      "u": [
+        "I0365_384805_Rallidae_Sarothrura_rufa_elizabethae"
+      ],
+      "v": [
+        "I0460_HERP_14722_Crocodylidae_Crocodylus_porosus",
+        "I0461_HERP_15451_Alligatoridae_Caiman_croccodilus"
+      ]
+    },
+    {
+      "locus": "L163.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 10.35,
+      "m": 8,
+      "u": [
+        "I0267_3690_Bucconidae_Bucco_capensis",
+        "I0273_5315_Galbulidae_Galbula_dea",
+        "I0274_5339_Bucconidae_Chelidoptera_tenebrosa"
+      ],
+      "v": [
+        "I0362_3175_Hydrobatidae_Oceanites_oceanicus",
+        "I0412_62853_Hydrobatidae_Pelagodroma_marina"
+      ]
+    },
+    {
+      "locus": "L131.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 10.32,
+      "m": 9,
+      "u": [
+        "I0289_6295_Haematopodidae_Haematopus_palliatus"
+      ],
+      "v": [
+        "I0425_2961_Rallidae_Micropygia_schomburgkii"
+      ]
+    },
+    {
+      "locus": "L94.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 10.15,
+      "m": 8,
+      "u": [
+        "I0252_3154_Anatidae_Anas_superciliosa",
+        "I0288_6097_Anatidae_Aythya_valisineria"
+      ],
+      "v": [
+        "I0226_1619_Odontophoridae_Odontophorus_gujanensis",
+        "I0250_2944_Odontophoridae_Colinus_cristatus",
+        "I0278_5642_Phasianidae_Bonasa_umbellus",
+        "I0371_1587_Phasianidae_Rollulus_rouloul"
+      ]
+    },
+    {
+      "locus": "L288.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 8.34,
+      "m": 7,
+      "u": [
+        "I0284_6031_Coraciidae_Coracias_cyanogaster"
+      ],
+      "v": [
+        "I0387_12368_Eurylaimidae_Eurylaimus_ochromalus",
+        "I0438_345711_Eurylaimidae_Neodrepanis_coruscans"
+      ]
+    },
+    {
+      "locus": "L271.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 8.25,
+      "m": 15,
+      "u": [
+        "I0409_25985_Turnicidae_Turnix_ocellata"
+      ],
+      "v": [
+        "I0224_1607_Cracidae_Crax_alector",
+        "I0226_1619_Odontophoridae_Odontophorus_gujanensis",
+        "I0250_2944_Odontophoridae_Colinus_cristatus",
+        "I0256_3178_Megapodiidae_Leipoa_ocellata"
+      ]
+    },
+    {
+      "locus": "L194.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 7.73,
+      "m": 7,
+      "u": [
+        "I0391_15014_Pelecanidae_Pelecanus_occidentalis"
+      ],
+      "v": [
+        "I0418_89784_Scopidae_Scopus_umbretta"
+      ]
+    },
+    {
+      "locus": "L108.fasta",
+      "mode": "INTERVAL",
+      "gain_nats": 7.0,
+      "m": 8,
+      "u": [
+        "I0220_1514_Trochilidae_Phaethornis_superciliosus"
+      ],
+      "v": [
+        "I0235_2065_Cuculidae_Coccyzus_melacoryphus"
+      ]
+    },
+    {
+      "locus": "L288.fasta",
+      "mode": "SPARSE",
+      "gain_nats": 6.57,
+      "m": 6,
+      "u": [
+        "I0233_1920_Upupidae_Upupa_epops"
+      ],
+      "v": [
+        "I0398_17932_Cuculidae_Centropus_bengalensis"
+      ]
+    }
+  ]
+}

@@ -24,3 +24,7 @@ dist/
 
 # OS files
 .DS_Store
+
+# Local Zenodo staging directory and archives (held off from upload)
+/zenodo_replication/
+/bushwhacker_science_zenodo_v*.tar.gz*

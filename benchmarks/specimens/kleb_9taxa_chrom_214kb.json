@@ -1,0 +1,50 @@
+{
+  "tool": "BUSHWHACKER",
+  "input": "data/specimens/kleb_9taxa_chrom_214kb.fna",
+  "alphabet": "nucleotide",
+  "n_taxa": 9,
+  "seq_len": 214038,
+  "raw_Description_Length_nats": 2526700.31,
+  "star_tree_MDL_nats": 316024.01,
+  "tree_MDL_nats": 306553.12,
+  "network_MDL_nats": 306525.44,
+  "compression_ratio_vs_star": 0.9699,
+  "resolved_internal_splits": 6,
+  "max_binary_splits": 6,
+  "polytomy_nodes": 0,
+  "certified_shunts": 1,
+  "runtime_sec": 0.0694,
+  "newick": "(((CAV1392:0.000222,((CAV1016:0.001837,CAV1042:0.001797)1.000:0.000800,(CAV1193:0.000000,CAV1344:0.000000)1.000:0.001170)1.000:0.001783)1.000:0.000084,HS11286_ST11:0.008266)1.000:0.000267,CAV1453:0.000020,(CAV1596:0.000005,NJST258_2:0.000020)1.000:0.000015);",
+  "binary_newick": "(((CAV1392:0.000119,((CAV1016:0.001362,CAV1042:0.001397):0.000581,(CAV1193:0.000001,CAV1344:0.000001):0.001138):0.001168):0.000040,HS11286_ST11:0.006687):0.000163,CAV1453:0.000030,(CAV1596:0.000030,NJST258_2:0.000030):0.000040);",
+  "internal_branches": [
+    {"u": 9, "v": 11, "mutations": 237.00, "branch_length": 0.001170, "mdl_gain_nats": 1621.174, "mdl_support": 1.0000, "num_synapomorphies": 237},
+    {"u": 10, "v": 11, "mutations": 162.00, "branch_length": 0.000800, "mdl_gain_nats": 818.193, "mdl_support": 1.0000, "num_synapomorphies": 156},
+    {"u": 11, "v": 12, "mutations": 361.00, "branch_length": 0.001783, "mdl_gain_nats": 1765.393, "mdl_support": 1.0000, "num_synapomorphies": 247},
+    {"u": 12, "v": 13, "mutations": 17.00, "branch_length": 0.000084, "mdl_gain_nats": 51.824, "mdl_support": 1.0000, "num_synapomorphies": 14},
+    {"u": 13, "v": 15, "mutations": 54.00, "branch_length": 0.000267, "mdl_gain_nats": 214.380, "mdl_support": 1.0000, "num_synapomorphies": 43},
+    {"u": 14, "v": 15, "mutations": 3.00, "branch_length": 0.000015, "mdl_gain_nats": 11.494, "mdl_support": 1.0000, "num_synapomorphies": 2}
+  ],
+  "shunts": [
+    {
+      "node_u": 0,
+      "node_v": 12,
+      "label_u": "CAV1016",
+      "label_v": "N12",
+      "clade_size_u": 1,
+      "clade_size_v": 1,
+      "leaves_u": ["CAV1016"],
+      "leaves_v": ["CAV1392"],
+      "mode": "INTERVAL",
+      "shared_mutations": 7,
+      "sites_0based": [153965, 153966, 153967, 153968, 153969, 153970, 153971],
+      "codons_1based": [51322, 51323, 51323, 51323, 51324, 51324, 51324],
+      "residues_1based": [51322, 51323, 51323, 51323, 51324, 51324, 51324],
+      "interval_span": [153888, 154365],
+      "data_savings_nats": 58.466,
+      "mask_cost_nats": 25.241,
+      "endpoint_cost_nats": 5.545,
+      "net_mdl_gain_nats": 27.680,
+      "posterior_prob": 1.0000
+    }
+  ]
+}

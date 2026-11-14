@@ -905,14 +905,45 @@
       position: absolute;
       right: 14px;
       bottom: 14px;
-      width: 170px;
-      height: 116px;
-      background: rgba(255, 255, 255, 0.92);
+      width: 196px;
+      height: 140px;
+      z-index: 18;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(22, 22, 21, 0.08);
+      border-radius: 9px;
+      box-shadow: 0 6px 18px rgba(22, 22, 21, 0.12);
       overflow: hidden;
       pointer-events: auto;
+      user-select: none;
+    }
+    .minimap-header {
+      height: 19px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(22, 22, 21, 0.07);
+      background: rgba(248, 247, 244, 0.9);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+    }
+    .minimap-box canvas#minimapCanvas {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      display: block;
+      cursor: grab;
+      touch-action: none;
+    }
+    .minimap-box.dragging canvas#minimapCanvas {
+      cursor: grabbing;
     }
     .canvas-hud-tooltip {
       position: absolute;
@@ -1469,13 +1500,13 @@
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 1 • MDL Tree &amp; Polytomies</div>
-            <div class="walkthrough-step-name">Combinadic Split Certification</div>
+            <div class="walkthrough-step-name">Combinadic Split Selection</div>
             <div class="walkthrough-step-text">Induces the maximum-compression tree via 64-site bit-plane SIMD, retaining only splits whose parsimony savings strictly beat their topological + combinadic header cost.</div>
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 2 • Reticulate Shunt Peeling</div>
             <div class="walkthrough-step-name">SPARSE Convergence &amp; HGT</div>
-            <div class="walkthrough-step-text">Peels residual non-tree homoplasies into certified <code>SPARSE</code> convergent coding shunts or contiguous <code>INTERVAL</code> recombination/HGT tracts with exact codon forensics.</div>
+            <div class="walkthrough-step-text">Peels residual non-tree homoplasies into supported <code>SPARSE</code> convergent coding shunts or contiguous <code>INTERVAL</code> recombination/HGT tracts with exact codon forensics.</div>
           </div>
           <div class="walkthrough-step-box">
             <div class="walkthrough-step-kicker">Stage 3 • Dossier &amp; Lossless .bwz</div>
@@ -1663,7 +1694,7 @@
           <div class="metric-block" onclick="scrollToElement('s1SplitsCard')">
             <div class="metric-caption">Resolved Binary Splits</div>
             <div id="s1MetricSplits" class="metric-num">—</div>
-            <div id="s1MetricSplitsSub" class="metric-sub">Certified internal stems</div>
+            <div id="s1MetricSplitsSub" class="metric-sub">Supported internal stems</div>
           </div>
           <div class="metric-block" onclick="scrollToElement('s1SplitsCard')">
             <div class="metric-caption">Calibrated Polytomy Hubs</div>
@@ -1690,7 +1721,7 @@
 
             <select id="selColorMode" class="clean-select" style="padding:5px 9px; font-size:12.5px;" onchange="renderCanvas()">
               <option value="clade">Color: Taxonomic / Clade Ribbons</option>
-              <option value="support">Color: MDL Split Posterior P(e|D)</option>
+              <option value="support">Color: Conditional Local Posterior P_local</option>
               <option value="regime">Color: Resolved Splits vs. Polytomy Hubs</option>
               <option value="mutations">Color: Branch Mutation Count (m_e)</option>
             </select>
@@ -1728,18 +1759,22 @@
             <button class="btn btn-sm" style="padding:2px 8px; font-size:11.5px;" onclick="exitFocusedSubtree()">← Return to Full Tree</button>
           </div>
           <canvas id="treeCanvas"></canvas>
-          <div class="minimap-box">
-            <canvas id="minimapCanvas" style="width:100%; height:100%; display:block;"></canvas>
+          <div class="minimap-box" id="minimapBox" title="Click or drag to pan • Scroll to zoom • Double-click to fit">
+            <div class="minimap-header">
+              <span>TREE MAP</span>
+              <span id="minimapRangeLabel">—</span>
+            </div>
+            <canvas id="minimapCanvas"></canvas>
           </div>
           <div id="canvasTooltip" class="canvas-hud-tooltip"></div>
         </div>
       </section>
 
-      <!-- STAGE 1 CERTIFIED SPLITS & POLYTOMY HUBS LEDGER -->
+      <!-- STAGE 1 SUPPORTED SPLITS & POLYTOMY HUBS LEDGER -->
       <section class="main-card" id="s1SplitsCard">
         <div class="card-toolbar">
           <div class="view-pills" id="s1LedgerTabPills">
-            <button class="pill active" data-s1t="splits" onclick="setStage1LedgerTab('splits')">Certified Internal Splits <span id="s1CntSplits" class="pill-count">0</span></button>
+            <button class="pill active" data-s1t="splits" onclick="setStage1LedgerTab('splits')">Supported Internal Splits <span id="s1CntSplits" class="pill-count">0</span></button>
             <button class="pill" data-s1t="polytomies" onclick="setStage1LedgerTab('polytomies')">Calibrated Polytomy Hubs (d ≥ 4) <span id="s1CntPolys" class="pill-count">0</span></button>
           </div>
           <span style="font-size:12px; font-family:var(--font-mono); color:var(--ink-muted);">
@@ -1785,7 +1820,7 @@
 
         <div class="hero-metrics">
           <div class="metric-block">
-            <div class="metric-caption">Certified Shunts</div>
+            <div class="metric-caption">Supported Shunts</div>
             <div id="s2MetricTotal" class="metric-num" style="color:var(--orange);">—</div>
             <div id="s2MetricTotalSub" class="metric-sub">Beat combinadic mask tax</div>
           </div>
@@ -1805,18 +1840,18 @@
             <div id="s2MetricGainSub" class="metric-sub">Nats saved beyond tree</div>
           </div>
           <div class="metric-block">
-            <div class="metric-caption">Top Shunt Posterior</div>
+            <div class="metric-caption">Top Shunt P_local</div>
             <div id="s2MetricPosterior" class="metric-num">—</div>
-            <div id="s2MetricPosteriorSub" class="metric-sub">P(shunt | D)</div>
+            <div id="s2MetricPosteriorSub" class="metric-sub">Conditional local P_local</div>
           </div>
         </div>
       </section>
 
-      <!-- LINKED DUAL-PANEL VIEW: GENOME BARCODE TRACK + CERTIFIED SHUNT CARDS -->
+      <!-- LINKED DUAL-PANEL VIEW: GENOME BARCODE TRACK + SUPPORTED SHUNT CARDS -->
       <section class="main-card">
         <div class="card-toolbar">
           <div>
-            <strong style="font-size:13.5px; color:var(--ink);">Genome-Wide Site Coherence &amp; Certified Shunt Coordinate Map (1 .. L)</strong>
+            <strong style="font-size:13.5px; color:var(--ink);">Genome-Wide Site Coherence &amp; Supported Shunt Coordinate Map (1 .. L)</strong>
             <span style="font-size:12px; font-family:var(--font-mono); color:var(--ink-muted); margin-left:8px;">
               ● Orange Lollipops = SPARSE Convergent Codons/Sites • ■ Blue Spans = INTERVAL HGT Blocks • Click any marker or card below to inspect
             </span>
@@ -1899,7 +1934,7 @@
       <div class="drawer-header">
         <div style="min-width:0; flex:1;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
-            <span id="s1DrawerBadge" class="badge admitted">Certified Split</span>
+            <span id="s1DrawerBadge" class="badge admitted">Supported Split</span>
             <span id="s1DrawerSub" style="font-family:var(--font-mono); font-size:12px; color:var(--ink-muted);"></span>
           </div>
           <h2 id="s1DrawerTitle" style="font-family:var(--font-mono); font-size:17px; font-weight:700;">Branch / Node</h2>
@@ -2053,7 +2088,7 @@
             <div class="help-card-body">
               Scans residual homoplasies across the induced tree for pairs of non-sister clades that share parallel derived states. Evaluates two competing prefix codes for the affected site mask: a contiguous <strong>INTERVAL</strong> block header (capturing horizontal gene transfer and recombination) and a <strong>SPARSE</strong> combinadic subset index (capturing site-specific adaptive convergence such as mammalian echolocation in Prestin).
             </div>
-            <div class="help-formula">Certifies Shunt iff Net MDL Gain ΔL_net = Data Savings − Endpoint Header (2 ln |V|) − min(L_interval, L_sparse) &gt; 0</div>
+            <div class="help-formula">Admits Shunt iff Net MDL Gain ΔL_net = Data Savings − Endpoint Header (2 ln |V|) − min(L_interval, L_sparse) &gt; 0</div>
           </div>
 
           <div class="help-card" data-help-item>
@@ -2094,13 +2129,13 @@
 
             <div class="help-card" data-help-item>
               <div class="help-card-header">
-                <span class="help-card-title">MDL Split &amp; Shunt Posterior P(e | D)</span>
-                <span class="help-card-tag">Bayesian Calibration</span>
+                <span class="help-card-title">Conditional Local Split &amp; Shunt Posterior P<sub>local</sub></span>
+                <span class="help-card-tag">Local Calibration</span>
               </div>
               <div class="help-card-body">
-                Because description lengths in nats are negative log-probabilities under the universal prefix prior, a net MDL compression gain of <strong>ΔL nats</strong> translates directly into an exact posterior odds ratio <code>exp(ΔL) : 1</code> against the contracted null hypothesis.
+                Because description lengths in nats represent negative log-probabilities under the universal prefix prior, a net MDL compression gain of <strong>ΔL<sub>e</sub> nats</strong> gives the conditional local two-hypothesis posterior <code>P_local = 1 / (1 + exp(−ΔL_e))</code> against contracting edge <strong>e</strong> (or omitting a shunt) conditioned on the fixed surrounding graph. High-confidence splits (<code>P_local ≥ 99%</code>) are well-calibrated, whereas intermediate values are optimistic because competing topologies are not marginalized.
               </div>
-              <div class="help-formula">P(e | D) = 1 / (1 + exp(−ΔL_e)) • ΔL = +4.6 nats ⇒ P = 99.0%</div>
+              <div class="help-formula">P_local = 1 / (1 + exp(−ΔL_e)) • ΔL_e = +4.6 nats ⇒ P_local = 99.0%</div>
             </div>
 
             <div class="help-card" data-help-item>
@@ -2109,9 +2144,9 @@
                 <span class="help-card-tag">Stage 2 Network Peeling</span>
               </div>
               <div class="help-card-body">
-                <strong>INTERVAL</strong> pays <code>2 ln L_eff + ln C(w, k)</code> to specify start/end coordinates of a recombinant block of width <strong>w</strong>. <strong>SPARSE</strong> pays <code>L_N(k) + ln C(L_eff, k)</code> to index <strong>k</strong> scattered convergent sites or codons anywhere in the gene.
+                <strong>INTERVAL</strong> pays <code>2 ln L_eff + ln C(w, k)</code> to specify start/end coordinates of a recombinant block of width <strong>w</strong>. <strong>SPARSE</strong> pays <code>L_N(k) + ln C(M_pool, k)</code> over the variable-site pool <strong>M_pool</strong> to index <strong>k</strong> scattered convergent sites or codons anywhere in the gene.
               </div>
-              <div class="help-formula">Prestin Delphinidae ↔ Rhinolophoidea: 5 convergent codons → ΔL_net = +7.80 nats (P = 99.96%)</div>
+              <div class="help-formula">P_local(shunt) = 1 / (1 + exp(−ΔL_net)) • net MDL gain after endpoint and mask costs</div>
             </div>
           </div>
         </div>
@@ -2494,7 +2529,7 @@
         badge: '116 taxa × 2,235 bp (DNA)',
         badgeClass: 'purple',
         desc: 'Outer hair cell motor protein coding DNA across 116 placental, marsupial, and monotreme mammals. Classic test case for functional molecular convergence between echolocating dolphins and bats.',
-        discovery: 'Expected Discovery: SPARSE Shunt N143 (Delphinidae) ↔ N192 (Rhinolophoidea) (+7.80 nats, P = 99.96%, 5 convergent codons: N7T, I384T, S392A, L497M, G601A)'
+        discovery: 'Expected Discovery: 81 mammal splits + 19 polytomy hubs + SPARSE Shunt N148 (Delphinidae) ↔ N169 (Rhinolophoidea) (+3.91 nats, P_local = 98.04%, 4 convergent codons: N7T, I384T, S392A, G601A)'
       },
       {
         id: 'prestin_aa',
@@ -2502,7 +2537,7 @@
         badge: '116 taxa × 745 AA (Protein)',
         badgeClass: 'purple',
         desc: 'Authentic 20-letter amino-acid alignment of mammalian Prestin scored directly under Dayhoff–Miyata 6-class & LG08+CAT8 exchangeability MDL with zero nucleotide codon input.',
-        discovery: 'Expected Discovery: 47 mammal splits + 13 polytomy hubs + SPARSE AA Shunt Delphinidae ↔ Rhinolophoidea (+4.42 nats, P = 98.8%, residues 7, 38, 384, 392, 497, 601)'
+        discovery: 'Expected Discovery: 50 mammal splits + 14 polytomy hubs (LG08+CAT8 AA MDL); SPARSE AA Shunt micMur3 ↔ N200 (+0.34 nats, P_local = 58.38%, residues 497, 595, 642) when Min Shunt Sites = 3'
       },
       {
         id: 'aml_binary',
@@ -2928,7 +2963,7 @@
         primaryBtn.textContent = `Run Stage 1: Induce MDL Tree (${admittedCount} Taxa) →`;
       } else if (activeView === 'stage1') {
         const nShunts = currentResult && currentResult.shunts ? currentResult.shunts.length : 0;
-        primaryBtn.textContent = `Inspect Stage 2: Reticulate Shunts (${nShunts} Certified) →`;
+        primaryBtn.textContent = `Inspect Stage 2: Reticulate Shunts (${nShunts} Supported) →`;
       } else if (activeView === 'stage2') {
         primaryBtn.textContent = 'Generate Stage 3: Standalone HTML Dossier →';
       } else if (activeView === 'stage3') {
@@ -4400,7 +4435,7 @@
 
       document.getElementById('s1VerdictSentence').textContent =
         r.star_tree_nats > 0
-          ? `Induced ${r.n_internal_branches} certified splits and ${r.polytomy_nodes} calibrated polytomy hubs — saving ${savings.toFixed(1)} nats (${pctSaved}%) vs. Star Null`
+          ? `Induced ${r.n_internal_branches} supported splits and ${r.polytomy_nodes} calibrated polytomy hubs — saving ${savings.toFixed(1)} nats (${pctSaved}%) vs. Star Null`
           : `Loaded topology with ${r.n_taxa.toLocaleString()} leaves, ${r.n_internal_branches.toLocaleString()} internal branches, and ${r.polytomy_nodes} polytomy hubs`;
 
       document.getElementById('s1MetricTreeMdl').textContent =
@@ -4463,7 +4498,7 @@
             <th>Mutations (m_e)</th>
             <th>Branch Length</th>
             <th>Net MDL Gain (ΔL_e)</th>
-            <th>Posterior P(e|D)</th>
+            <th>Local Post. P_local</th>
             <th>Clean Synapomorphies</th>
           </tr>`;
 
@@ -4584,7 +4619,7 @@
       const isPoly = !nd.isLeaf && nd.degree >= 4;
       const badgeEl = document.getElementById('s1DrawerBadge');
       badgeEl.className = isPoly ? 'badge amber' : 'badge admitted';
-      badgeEl.textContent = isPoly ? `Calibrated ${nd.degree}-Way Polytomy Hub` : (nd.isLeaf ? 'Terminal Branch' : 'Certified Internal Split');
+      badgeEl.textContent = isPoly ? `Calibrated ${nd.degree}-Way Polytomy Hub` : (nd.isLeaf ? 'Terminal Branch' : 'Supported Internal Split');
 
       document.getElementById('s1DrawerSub').textContent =
         pNode ? `Edge ${pNode.rawLabel} → ${nd.rawLabel} • ${nd.leafCount} descendant tips` : `Root Node ${nd.rawLabel}`;
@@ -4599,7 +4634,7 @@
           `Any binary resolution of a ${nd.degree}-way hub must pay at least L_topo(2, ${nd.degree - 2}) + ln 2 = +${minReq.toFixed(2)} nats in topological + presence header overhead. Because no candidate sub-split across these ${nd.degree} lineages yielded ≥ ${minReq.toFixed(2)} nats of parsimony compression, BUSHWHACKER deterministically contracted the unsupported zero-evidence stems.`;
       } else {
         document.getElementById('s1DrawerHeadline').textContent =
-          `Certified with Net MDL Gain ΔL = +${netGain.toFixed(2)} nats (Posterior Support P = ${(nd.mdlSupport * 100).toFixed(2)}%)`;
+          `Supported with Net MDL Gain ΔL = +${netGain.toFixed(2)} nats (Conditional Support P_local = ${(nd.mdlSupport * 100).toFixed(2)}%)`;
         document.getElementById('s1DrawerDesc').textContent =
           `Absorbing m_e = ${mE.toFixed(1)} shared mutations onto this stem saved ${grossSavings.toFixed(2)} nats of descendant code length, beating the topological bipartition penalty L_topo(${degU}, ${degV}) = ${lTopo.toFixed(2)} nats and combinadic branch header L_branch = ${lHeader.toFixed(2)} nats.`;
       }
@@ -4621,9 +4656,9 @@
           <div class="drawer-stat-sub">Parsimony compression</div>
         </div>
         <div class="drawer-stat-cell">
-          <div class="drawer-stat-lbl">Net MDL Gain / P</div>
+          <div class="drawer-stat-lbl">Net MDL Gain / P_local</div>
           <div class="drawer-stat-val" style="color:var(--orange);">+${netGain.toFixed(2)} nats</div>
-          <div class="drawer-stat-sub">P(e|D) = ${(nd.mdlSupport * 100).toFixed(2)}%</div>
+          <div class="drawer-stat-sub">P_local = ${(nd.mdlSupport * 100).toFixed(2)}%</div>
         </div>`;
 
       // Synapomorphy site pills
@@ -4852,7 +4887,7 @@
       const rect = canvas.getBoundingClientRect();
       const cx = centerX !== null ? centerX : rect.width * 0.5;
       const cy = centerY !== null ? centerY : rect.height * 0.5;
-      const newScale = Math.max(0.15, Math.min(45.0, cam.scale * factor));
+      const newScale = Math.max(0.08, Math.min(45.0, cam.scale * factor));
       const ratio = newScale / cam.scale;
       cam.x = cx - (cx - cam.x) * ratio;
       cam.y = cy - (cy - cam.y) * ratio;
@@ -5010,7 +5045,7 @@
       }
 
       // Polytomy Diamonds & Collapsed Wedges
-      const labelStep = Math.max(1, Math.ceil(13 / Math.max(0.5, rowH)));
+      const labelStep = Math.max(1, Math.ceil(13 / Math.max(0.05, rowH)));
       const qLower = searchQuery.toLowerCase();
 
       for (const nd of layout.visibleNodes) {
@@ -5038,16 +5073,17 @@
           continue;
         }
 
-        if (!nd.isLeaf && nd.degree >= 4 && opts.showPolyBadges) {
+        if (!nd.isLeaf && nd.degree >= 4 && opts.showPolyBadges && rowH >= 1.2) {
+          const dr = Math.min(5.5, Math.max(3.2, rowH * 2.0));
           ctx.save();
           ctx.fillStyle = '#FEF4E6';
           ctx.strokeStyle = '#B45309';
-          ctx.lineWidth = 1.8;
+          ctx.lineWidth = rowH >= 3 ? 1.8 : 1.3;
           ctx.beginPath();
-          ctx.moveTo(x, y - 5.5);
-          ctx.lineTo(x + 5.5, y);
-          ctx.lineTo(x, y + 5.5);
-          ctx.lineTo(x - 5.5, y);
+          ctx.moveTo(x, y - dr);
+          ctx.lineTo(x + dr, y);
+          ctx.lineTo(x, y + dr);
+          ctx.lineTo(x - dr, y);
           ctx.closePath();
           ctx.fill();
           ctx.stroke();
@@ -5164,41 +5200,340 @@
       }
     }
 
+    const minimapState = {
+      valid: false,
+      mode: 'phylogram',
+      mainW: 0,
+      mainH: 0,
+      miniW: 0,
+      miniH: 0,
+      worldMinX: 0,
+      worldMaxX: 1,
+      worldMinY: 0,
+      worldMaxY: 1,
+      offX: 0,
+      offY: 0,
+      scaleX: 1,
+      scaleY: 1,
+      lensX: 0,
+      lensY: 0,
+      lensW: 0,
+      lensH: 0,
+      rawLensCX: 0,
+      rawLensCY: 0
+    };
+
     function renderMinimap(layout) {
       const mini = document.getElementById('minimapCanvas');
-      if (!mini || !layout.visibleNodes || layout.visibleNodes.length === 0) return;
+      const mainCanvas = document.getElementById('treeCanvas');
+      const rangeLbl = document.getElementById('minimapRangeLabel');
+      if (!mini || !mainCanvas || !layout.visibleNodes || layout.visibleNodes.length === 0) {
+        minimapState.valid = false;
+        if (rangeLbl) rangeLbl.textContent = '—';
+        return;
+      }
+
       const dpr = window.devicePixelRatio || 1;
       const rect = mini.getBoundingClientRect();
-      if (rect.width < 10) return;
-      mini.width = Math.floor(rect.width * dpr);
-      mini.height = Math.floor(rect.height * dpr);
+      const mainRect = mainCanvas.getBoundingClientRect();
+      if (rect.width < 10 || rect.height < 10 || mainRect.width < 10 || mainRect.height < 10) {
+        minimapState.valid = false;
+        return;
+      }
+
+      const targetW = Math.floor(rect.width * dpr);
+      const targetH = Math.floor(rect.height * dpr);
+      if (mini.width !== targetW || mini.height !== targetH) {
+        mini.width = targetW;
+        mini.height = targetH;
+      }
+
       const ctx = mini.getContext('2d');
       ctx.save();
       ctx.scale(dpr, dpr);
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      const pad = 8;
-      const w = rect.width - pad * 2;
-      const h = rect.height - pad * 2;
       const nLeaves = layout.nVisibleLeaves;
+      const branchBatches = new Map();
+      const addBranch = (col, a, b, c, d, e) => {
+        let arr = branchBatches.get(col);
+        if (!arr) {
+          arr = [];
+          branchBatches.set(col, arr);
+        }
+        arr.push(a, b, c, d);
+        if (e !== undefined) arr.push(e);
+      };
 
-      ctx.strokeStyle = '#85837D';
-      ctx.lineWidth = 0.85;
-      ctx.beginPath();
-      for (const nd of layout.visibleNodes) {
-        if (nd === layout.root) continue;
-        const p = nodeById.get(nd.parentId);
-        if (!p) continue;
-        const x0 = pad + p._normX * w;
-        const y0 = pad + (p._y / nLeaves) * h;
-        const x1 = pad + nd._normX * w;
-        const y1 = pad + (nd._y / nLeaves) * h;
-        ctx.moveTo(x0, y0);
-        ctx.lineTo(x0, y1);
-        ctx.lineTo(x1, y1);
+      let worldMinX, worldMaxX, worldMinY, worldMaxY;
+      let offX, offY, scaleX, scaleY;
+      let baseRowH = 1, baseTreeW = 1;
+
+      if (layoutMode === 'circular') {
+        const baseMaxR = Math.min(mainRect.width, mainRect.height) * 0.36;
+        const worldR = Math.max(10, baseMaxR * 1.24);
+        worldMinX = -worldR;
+        worldMaxX = worldR;
+        worldMinY = -worldR;
+        worldMaxY = worldR;
+        const iso = Math.min((rect.width - 14) / (2 * worldR), (rect.height - 10) / (2 * worldR));
+        scaleX = iso;
+        scaleY = iso;
+        offX = (rect.width - 2 * worldR * iso) * 0.5;
+        offY = (rect.height - 2 * worldR * iso) * 0.5;
+        const cxMini = offX + worldR * iso;
+        const cyMini = offY + worldR * iso;
+        const rScale = baseMaxR * iso;
+
+        for (const nd of layout.visibleNodes) {
+          if (nd === layout.root) continue;
+          const p = nodeById.get(nd.parentId);
+          if (!p) continue;
+          const rp = (p._normX || 0) * rScale;
+          const r1 = (nd._normX || 0) * rScale;
+          addBranch(getBranchColor(nd), rp, p._theta || 0, nd._theta || 0, r1, nd._theta < p._theta ? 1 : 0);
+        }
+
+        ctx.lineWidth = nLeaves > 800 ? 0.55 : (nLeaves > 200 ? 0.75 : 0.95);
+        ctx.globalAlpha = nLeaves > 800 ? 0.65 : (nLeaves > 200 ? 0.78 : 0.9);
+        for (const [col, segs] of branchBatches) {
+          ctx.strokeStyle = col;
+          ctx.beginPath();
+          for (let i = 0; i < segs.length; i += 5) {
+            const rp = segs[i], t0 = segs[i + 1], t1 = segs[i + 2], r1 = segs[i + 3], ccw = segs[i + 4] === 1;
+            ctx.moveTo(cxMini + rp * Math.cos(t0), cyMini + rp * Math.sin(t0));
+            ctx.arc(cxMini, cyMini, rp, t0, t1, ccw);
+            ctx.lineTo(cxMini + r1 * Math.cos(t1), cyMini + r1 * Math.sin(t1));
+          }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1.0;
+
+        if (document.getElementById('chkShowShunts')?.checked && currentResult && currentResult.shunts) {
+          ctx.save();
+          for (const sh of currentResult.shunts) {
+            const nu = nodeById.get(sh.node_u);
+            const nv = nodeById.get(sh.node_v);
+            if (!nu || !nv || nu._theta === undefined || nv._theta === undefined) continue;
+            const x1 = cxMini + (nu._normX || 0) * rScale * Math.cos(nu._theta);
+            const y1 = cyMini + (nu._normX || 0) * rScale * Math.sin(nu._theta);
+            const x2 = cxMini + (nv._normX || 0) * rScale * Math.cos(nv._theta);
+            const y2 = cyMini + (nv._normX || 0) * rScale * Math.sin(nv._theta);
+            ctx.strokeStyle = sh.mode === 'SPARSE' ? '#E04F16' : '#1D4ED8';
+            ctx.lineWidth = 1.1;
+            ctx.setLineDash([3, 2]);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.quadraticCurveTo(cxMini, cyMini, x2, y2);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
+      } else {
+        baseRowH = cam._rowH || Math.max(2.2, Math.min(18, (mainRect.height - 56) / nLeaves));
+        baseTreeW = cam._treeW || Math.max(240, mainRect.width - 360);
+        const ribbonOffsetW = (document.getElementById('chkShowRibbons')?.checked && groupColorMap.size > 0) ? 230 : 120;
+        worldMinX = 0;
+        worldMaxX = baseTreeW + ribbonOffsetW;
+        if (nLeaves > 1) {
+          worldMinY = 0;
+          worldMaxY = (nLeaves - 1) * baseRowH;
+        } else {
+          worldMinY = -baseRowH * 0.5;
+          worldMaxY = baseRowH * 0.5;
+        }
+
+        const padL = 7, padR = 8, padT = 5, padB = 5;
+        const plotW = Math.max(20, rect.width - padL - padR);
+        const plotH = Math.max(20, rect.height - padT - padB);
+        scaleX = plotW / Math.max(1e-6, worldMaxX - worldMinX);
+        scaleY = plotH / Math.max(1e-6, worldMaxY - worldMinY);
+        offX = padL;
+        offY = padT;
+
+        const treeSpanMiniW = baseTreeW * scaleX;
+        const yDenom = Math.max(1, nLeaves - 1);
+
+        for (const nd of layout.visibleNodes) {
+          if (nd === layout.root) continue;
+          const p = nodeById.get(nd.parentId);
+          if (!p) continue;
+          const x0 = offX + p._normX * treeSpanMiniW;
+          const y0 = nLeaves > 1 ? offY + (p._y / yDenom) * plotH : offY + plotH * 0.5;
+          const x1 = offX + nd._normX * treeSpanMiniW;
+          const y1 = nLeaves > 1 ? offY + (nd._y / yDenom) * plotH : offY + plotH * 0.5;
+          addBranch(getBranchColor(nd), x0, y0, x1, y1);
+        }
+
+        ctx.lineWidth = nLeaves > 800 ? 0.55 : (nLeaves > 200 ? 0.75 : 0.95);
+        ctx.globalAlpha = nLeaves > 800 ? 0.62 : (nLeaves > 200 ? 0.78 : 0.9);
+        for (const [col, segs] of branchBatches) {
+          ctx.strokeStyle = col;
+          ctx.beginPath();
+          for (let i = 0; i < segs.length; i += 4) {
+            const x0 = segs[i], y0 = segs[i + 1], x1 = segs[i + 2], y1 = segs[i + 3];
+            ctx.moveTo(x0, y0);
+            ctx.lineTo(x0, y1);
+            ctx.lineTo(x1, y1);
+          }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1.0;
+
+        // Right-edge clade sector guide strip on the minimap
+        if (document.getElementById('chkShowRibbons')?.checked && groupColorMap.size > 0 && layout.visibleLeaves.length > 0) {
+          const stripX = Math.min(rect.width - 7, offX + (baseTreeW + 190 - worldMinX) * scaleX);
+          let runStart = 0;
+          const leaves = layout.visibleLeaves;
+          while (runStart < leaves.length) {
+            const grp = leaves[runStart].cladeGroup;
+            let runEnd = runStart;
+            while (runEnd + 1 < leaves.length && leaves[runEnd + 1].cladeGroup === grp) runEnd++;
+            if (grp && groupColorMap.has(grp)) {
+              const y0 = nLeaves > 1 ? offY + (leaves[runStart]._y / yDenom) * plotH : offY;
+              const y1 = nLeaves > 1 ? offY + (leaves[runEnd]._y / yDenom) * plotH : offY + plotH;
+              ctx.fillStyle = groupColorMap.get(grp);
+              ctx.fillRect(stripX, y0 - 0.5, 3.5, Math.max(1.5, y1 - y0 + 1));
+            }
+            runStart = runEnd + 1;
+          }
+        }
+
+        // Reticulate shunt arcs on minimap
+        if (document.getElementById('chkShowShunts')?.checked && currentResult && currentResult.shunts) {
+          ctx.save();
+          for (const sh of currentResult.shunts) {
+            const nu = nodeById.get(sh.node_u);
+            const nv = nodeById.get(sh.node_v);
+            if (!nu || !nv || nu._normX === undefined || nv._normX === undefined) continue;
+            const x1 = offX + nu._normX * treeSpanMiniW;
+            const y1 = nLeaves > 1 ? offY + (nu._y / yDenom) * plotH : offY + plotH * 0.5;
+            const x2 = offX + nv._normX * treeSpanMiniW;
+            const y2 = nLeaves > 1 ? offY + (nv._y / yDenom) * plotH : offY + plotH * 0.5;
+            const midX = Math.max(x1, x2) + Math.max(8, 0.14 * Math.abs(y2 - y1));
+            const midY = 0.5 * (y1 + y2);
+            ctx.strokeStyle = sh.mode === 'SPARSE' ? '#E04F16' : '#1D4ED8';
+            ctx.lineWidth = 1.1;
+            ctx.setLineDash([3, 2]);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.quadraticCurveTo(midX, midY, x2, y2);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
       }
-      ctx.stroke();
+
+      // Project visible main-canvas viewport into minimap coordinates
+      const vx0 = -cam.x / cam.scale;
+      const vx1 = (mainRect.width - cam.x) / cam.scale;
+      const vy0 = -cam.y / cam.scale;
+      const vy1 = (mainRect.height - cam.y) / cam.scale;
+
+      const rawLx0 = offX + (vx0 - worldMinX) * scaleX;
+      const rawLx1 = offX + (vx1 - worldMinX) * scaleX;
+      const rawLy0 = offY + (vy0 - worldMinY) * scaleY;
+      const rawLy1 = offY + (vy1 - worldMinY) * scaleY;
+
+      let lx0 = Math.max(1.5, Math.min(rect.width - 1.5, rawLx0));
+      let ly0 = Math.max(1.5, Math.min(rect.height - 1.5, rawLy0));
+      let lx1 = Math.max(1.5, Math.min(rect.width - 1.5, rawLx1));
+      let ly1 = Math.max(1.5, Math.min(rect.height - 1.5, rawLy1));
+      const lw = Math.max(10, lx1 - lx0);
+      const lh = Math.max(7, ly1 - ly0);
+      if (lx0 + lw > rect.width - 1.5) lx0 = Math.max(1.5, rect.width - 1.5 - lw);
+      if (ly0 + lh > rect.height - 1.5) ly0 = Math.max(1.5, rect.height - 1.5 - lh);
+
+      const treeLeftMini = offX;
+      const treeRightMini = offX + (worldMaxX - worldMinX) * scaleX;
+      const treeTopMini = offY;
+      const treeBottomMini = offY + (worldMaxY - worldMinY) * scaleY;
+      const coversFullW = rawLx0 <= treeLeftMini + 1 && rawLx1 >= treeRightMini - 1;
+      const coversFullH = rawLy0 <= treeTopMini + 1 && rawLy1 >= treeBottomMini - 1;
+
+      if (!coversFullW || !coversFullH) {
+        ctx.fillStyle = 'rgba(22, 22, 21, 0.11)';
+        if (ly0 > 0) ctx.fillRect(0, 0, rect.width, ly0);
+        if (ly0 + lh < rect.height) ctx.fillRect(0, ly0 + lh, rect.width, rect.height - (ly0 + lh));
+        if (lx0 > 0) ctx.fillRect(0, ly0, lx0, lh);
+        if (lx0 + lw < rect.width) ctx.fillRect(lx0 + lw, ly0, rect.width - (lx0 + lw), lh);
+      }
+
+      ctx.fillStyle = 'rgba(224, 79, 22, 0.12)';
+      ctx.fillRect(lx0, ly0, lw, lh);
+      ctx.strokeStyle = '#E04F16';
+      ctx.lineWidth = 1.6;
+      ctx.strokeRect(lx0 + 0.5, ly0 + 0.5, Math.max(1, lw - 1), Math.max(1, lh - 1));
       ctx.restore();
+
+      if (rangeLbl) {
+        if (layoutMode === 'circular') {
+          rangeLbl.textContent = `${cam.scale.toFixed(1)}×`;
+        } else {
+          const i0 = Math.max(1, Math.min(nLeaves, Math.floor(vy0 / Math.max(1e-6, baseRowH)) + 1));
+          const i1 = Math.max(i0, Math.min(nLeaves, Math.floor(vy1 / Math.max(1e-6, baseRowH)) + 1));
+          rangeLbl.textContent = (i0 === 1 && i1 === nLeaves)
+            ? `${nLeaves.toLocaleString()} tips`
+            : `${i0.toLocaleString()}–${i1.toLocaleString()} / ${nLeaves.toLocaleString()}`;
+        }
+      }
+
+      minimapState.valid = true;
+      minimapState.mode = layoutMode;
+      minimapState.mainW = mainRect.width;
+      minimapState.mainH = mainRect.height;
+      minimapState.miniW = rect.width;
+      minimapState.miniH = rect.height;
+      minimapState.worldMinX = worldMinX;
+      minimapState.worldMaxX = worldMaxX;
+      minimapState.worldMinY = worldMinY;
+      minimapState.worldMaxY = worldMaxY;
+      minimapState.offX = offX;
+      minimapState.offY = offY;
+      minimapState.scaleX = scaleX;
+      minimapState.scaleY = scaleY;
+      minimapState.lensX = lx0;
+      minimapState.lensY = ly0;
+      minimapState.lensW = lw;
+      minimapState.lensH = lh;
+      minimapState.rawLensCX = 0.5 * (rawLx0 + rawLx1);
+      minimapState.rawLensCY = 0.5 * (rawLy0 + rawLy1);
+    }
+
+    function panCameraFromMinimap(targetMiniX, targetMiniY) {
+      if (!minimapState.valid) return;
+      const s = minimapState;
+      const wxRaw = s.worldMinX + (targetMiniX - s.offX) / s.scaleX;
+      const wyRaw = s.worldMinY + (targetMiniY - s.offY) / s.scaleY;
+      const viewW = s.mainW / cam.scale;
+      const viewH = s.mainH / cam.scale;
+      const spanX = s.worldMaxX - s.worldMinX;
+      const spanY = s.worldMaxY - s.worldMinY;
+
+      if (s.mode === 'circular') {
+        const wx = Math.max(s.worldMinX, Math.min(s.worldMaxX, wxRaw));
+        const wy = Math.max(s.worldMinY, Math.min(s.worldMaxY, wyRaw));
+        cam.x = s.mainW * 0.5 - wx * cam.scale;
+        cam.y = s.mainH * 0.5 - wy * cam.scale;
+      } else {
+        const padWorldX = 36 / Math.max(0.25, cam.scale);
+        const padWorldY = 26 / Math.max(0.25, cam.scale);
+        if (spanX + padWorldX * 2 > viewW) {
+          const minWX = s.worldMinX - padWorldX + viewW * 0.5;
+          const maxWX = s.worldMaxX + padWorldX - viewW * 0.5;
+          const wx = Math.max(minWX, Math.min(maxWX, wxRaw));
+          cam.x = s.mainW * 0.5 - wx * cam.scale;
+        }
+        if (spanY + padWorldY * 2 > viewH) {
+          const minWY = s.worldMinY - padWorldY + viewH * 0.5;
+          const maxWY = s.worldMaxY + padWorldY - viewH * 0.5;
+          const wy = Math.max(minWY, Math.min(maxWY, wyRaw));
+          cam.y = s.mainH * 0.5 - wy * cam.scale;
+        } else {
+          cam.y = (s.mainH - spanY * cam.scale) * 0.5;
+        }
+      }
+      renderCanvas();
     }
 
     function hitTestCanvas(mx, my) {
@@ -5256,6 +5591,14 @@
           renderCanvas();
           return;
         }
+        if (e.target && e.target.closest && e.target.closest('.minimap-box')) {
+          document.getElementById('canvasTooltip').style.display = 'none';
+          if (hoveredElement) {
+            hoveredElement = null;
+            renderCanvas();
+          }
+          return;
+        }
         if (mx < 0 || my < 0 || mx > rect.width || my > rect.height) {
           document.getElementById('canvasTooltip').style.display = 'none';
           return;
@@ -5269,11 +5612,11 @@
           tt.style.top = `${Math.max(12, my - 12)}px`;
           if (hit.type === 'shunt') {
             const sh = hit.data;
-            tt.innerHTML = `<strong>${escapeHtml(sh.mode)} Shunt: ${escapeHtml(sh.label_u)} ↔ ${escapeHtml(sh.label_v)}</strong><br/>Net MDL Gain: +${sh.net_mdl_gain_nats.toFixed(2)} nats (P = ${(sh.posterior_prob * 100).toFixed(2)}%)<br/><em>Click to open Shunt Forensic Drawer</em>`;
+            tt.innerHTML = `<strong>${escapeHtml(sh.mode)} Shunt: ${escapeHtml(sh.label_u)} ↔ ${escapeHtml(sh.label_v)}</strong><br/>Net MDL Gain: +${sh.net_mdl_gain_nats.toFixed(2)} nats (P_local = ${(sh.posterior_prob * 100).toFixed(2)}%)<br/><em>Click to open Shunt Forensic Drawer</em>`;
           } else {
             const nd = hit.data;
             const degTxt = !nd.isLeaf && nd.degree >= 4 ? ` • <span style="color:#FBBF24;">${nd.degree}-way Polytomy Hub</span>` : '';
-            tt.innerHTML = `<strong>${escapeHtml(formatDisplayName(nd.rawLabel))}</strong>${degTxt}<br/>Mutations m_e = ${(nd.mutationCount || 0).toFixed(1)} • ΔL = +${(nd.mdlGain || 0).toFixed(2)} nats (P = ${((nd.mdlSupport ?? 1) * 100).toFixed(1)}%)<br/><em>Click to open Split Forensic Drawer</em>`;
+            tt.innerHTML = `<strong>${escapeHtml(formatDisplayName(nd.rawLabel))}</strong>${degTxt}<br/>Mutations m_e = ${(nd.mutationCount || 0).toFixed(1)} • ΔL = +${(nd.mdlGain || 0).toFixed(2)} nats (P_local = ${((nd.mdlSupport ?? 1) * 100).toFixed(1)}%)<br/><em>Click to open Split Forensic Drawer</em>`;
           }
         } else {
           tt.style.display = 'none';
@@ -5305,6 +5648,70 @@
         const my = e.clientY - rect.top;
         zoomBy(e.deltaY < 0 ? 1.14 : 0.88, mx, my);
       }, { passive: false });
+
+      const mini = document.getElementById('minimapCanvas');
+      const miniBox = document.getElementById('minimapBox');
+      if (mini) {
+        let miniDragging = false, grabDX = 0, grabDY = 0;
+
+        mini.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0 || !minimapState.valid) return;
+          e.preventDefault();
+          e.stopPropagation();
+          const r = mini.getBoundingClientRect();
+          const mx = e.clientX - r.left;
+          const my = e.clientY - r.top;
+          const insideLens = (
+            mx >= minimapState.lensX - 2 &&
+            mx <= minimapState.lensX + minimapState.lensW + 2 &&
+            my >= minimapState.lensY - 2 &&
+            my <= minimapState.lensY + minimapState.lensH + 2
+          );
+          if (insideLens) {
+            grabDX = minimapState.rawLensCX - mx;
+            grabDY = minimapState.rawLensCY - my;
+          } else {
+            grabDX = 0;
+            grabDY = 0;
+            panCameraFromMinimap(mx, my);
+          }
+          miniDragging = true;
+          if (miniBox) miniBox.classList.add('dragging');
+          if (mini.setPointerCapture) mini.setPointerCapture(e.pointerId);
+        });
+
+        mini.addEventListener('pointermove', (e) => {
+          if (!miniDragging || !minimapState.valid) return;
+          e.preventDefault();
+          const r = mini.getBoundingClientRect();
+          const mx = e.clientX - r.left;
+          const my = e.clientY - r.top;
+          panCameraFromMinimap(mx + grabDX, my + grabDY);
+        });
+
+        const endMiniDrag = (e) => {
+          if (!miniDragging) return;
+          miniDragging = false;
+          if (miniBox) miniBox.classList.remove('dragging');
+          if (mini.releasePointerCapture && e.pointerId !== undefined) {
+            try { mini.releasePointerCapture(e.pointerId); } catch (_) {}
+          }
+        };
+        mini.addEventListener('pointerup', endMiniDrag);
+        mini.addEventListener('pointercancel', endMiniDrag);
+
+        mini.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          zoomBy(e.deltaY < 0 ? 1.14 : 0.88);
+        }, { passive: false });
+
+        mini.addEventListener('dblclick', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          fitTreeToScreen();
+        });
+      }
     }
 
     // =========================================================================
@@ -5320,7 +5727,7 @@
 
       document.getElementById('s2VerdictSentence').textContent =
         shunts.length > 0
-          ? `Certified ${shunts.length} reticulate shunt${shunts.length === 1 ? '' : 's'} (${nSp} SPARSE convergent, ${nInt} INTERVAL mosaic) saving +${totGain.toFixed(2)} nats beyond the backbone tree`
+          ? `Detected ${shunts.length} reticulate shunt${shunts.length === 1 ? '' : 's'} (${nSp} SPARSE convergent, ${nInt} INTERVAL mosaic) saving +${totGain.toFixed(2)} nats beyond the backbone tree`
           : `0 reticulate shunts exceeded the combinadic mask threshold — evolution is strictly tree-like across all ${currentResult.n_sites.toLocaleString()} columns`;
 
       document.getElementById('s2MetricTotal').textContent = String(shunts.length);
@@ -5413,7 +5820,7 @@
       if (shunts.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align:center; padding:28px; color:var(--ink-secondary); background:var(--bg-subtle); border-radius:8px; border:1px solid var(--border);">
-            <strong style="color:var(--ink); display:block; margin-bottom:4px;">Zero Reticulate Shunts Certified (Strictly Clonal Tree)</strong>
+            <strong style="color:var(--ink); display:block; margin-bottom:4px;">Zero Reticulate Shunts Admitted (Strictly Clonal Tree)</strong>
             No pair of non-sister clades shared enough parallel derived sites to overcome the <code>2 ln |V| + min(L_interval, L_sparse)</code> MDL header tax.
           </div>`;
         return;
@@ -5449,7 +5856,7 @@
           <div class="shunt-card" onclick="openStage2Drawer(${idx})">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
               <span class="badge ${sh.mode === 'SPARSE' ? 'purple' : 'blue'}">${escapeHtml(sh.mode)} SHUNT #${idx + 1}</span>
-              <span class="badge admitted">Net MDL Gain +${sh.net_mdl_gain_nats.toFixed(2)} nats • P = ${(sh.posterior_prob * 100).toFixed(2)}%</span>
+              <span class="badge admitted">Net MDL Gain +${sh.net_mdl_gain_nats.toFixed(2)} nats • P_local = ${(sh.posterior_prob * 100).toFixed(2)}%</span>
             </div>
             <div>
               <div class="mono" style="font-size:15px; font-weight:700; color:var(--ink);">
@@ -5490,13 +5897,13 @@
       const badge = document.getElementById('s2DrawerBadge');
       badge.className = sh.mode === 'SPARSE' ? 'badge purple' : 'badge blue';
       badge.textContent = `${sh.mode} Shunt #${shuntIdx + 1}`;
-      document.getElementById('s2DrawerSub').textContent = `Posterior Probability P = ${(sh.posterior_prob * 100).toFixed(2)}%`;
+      document.getElementById('s2DrawerSub').textContent = `Conditional Local Posterior P_local = ${(sh.posterior_prob * 100).toFixed(2)}%`;
       document.getElementById('s2DrawerTitle').textContent = `${sh.label_u} ↔ ${sh.label_v}`;
 
       document.getElementById('s2DrawerHeadline').textContent =
         sh.mode === 'SPARSE'
-          ? `Certified SPARSE Molecular Convergence (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`
-          : `Certified INTERVAL Horizontal Transfer / Segmental Tract (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`;
+          ? `Supported SPARSE Molecular Convergence (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`
+          : `Supported INTERVAL Horizontal Transfer / Segmental Tract (+${sh.net_mdl_gain_nats.toFixed(2)} nats net compression)`;
 
       document.getElementById('s2DrawerDesc').textContent =
         `Transmitting these ${sh.shared_mutations} parallel derived substitutions via a reticulate shunt between ${sh.label_u} and ${sh.label_v} saves +${sh.data_savings_nats.toFixed(2)} nats of parsimony description length, exceeding the ${sh.endpoint_cost_nats.toFixed(2)}-nat node-pair pointer tax and the ${sh.mask_cost_nats.toFixed(2)}-nat ${sh.mode} site-mask header.`;
@@ -5518,9 +5925,9 @@
           <div class="drawer-stat-sub">2 ln |V| node header</div>
         </div>
         <div class="drawer-stat-cell">
-          <div class="drawer-stat-lbl">Net MDL Gain / P</div>
+          <div class="drawer-stat-lbl">Net MDL Gain / P_local</div>
           <div class="drawer-stat-val" style="color:var(--orange);">+${sh.net_mdl_gain_nats.toFixed(2)} nats</div>
-          <div class="drawer-stat-sub">P = ${(sh.posterior_prob * 100).toFixed(2)}%</div>
+          <div class="drawer-stat-sub">P_local = ${(sh.posterior_prob * 100).toFixed(2)}%</div>
         </div>`;
 
       // Mode selection proof
@@ -5771,7 +6178,7 @@
       const intBranches = (r.branches || []).filter(b => b.is_internal).sort((a, b) => b.mdl_gain_nats - a.mdl_gain_nats);
 
       const shuntRows = shunts.length === 0
-        ? `<tr><td colspan="6" style="text-align:center; color:#52514E;">No reticulate shunts certified (strictly clonal tree).</td></tr>`
+        ? `<tr><td colspan="6" style="text-align:center; color:#52514E;">No reticulate shunts admitted (strictly clonal tree).</td></tr>`
         : shunts.map((sh, i) => `
             <tr>
               <td>#${i + 1} (${escapeHtml(sh.mode)})</td>
@@ -5829,9 +6236,9 @@
       </div>
     </div>
     <div class="card">
-      <h2>1. Certified Reticulate Shunts (SPARSE Convergence &amp; INTERVAL HGT)</h2>
+      <h2>1. Supported Reticulate Shunts (SPARSE Convergence &amp; INTERVAL HGT)</h2>
       <table>
-        <thead><tr><th>Shunt</th><th>Endpoints (u &harr; v)</th><th>Shared Mutations</th><th>Gross Savings</th><th>Net MDL Gain</th><th>Posterior P</th></tr></thead>
+        <thead><tr><th>Shunt</th><th>Endpoints (u &harr; v)</th><th>Shared Mutations</th><th>Gross Savings</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${shuntRows}</tbody>
       </table>
     </div>
@@ -5840,9 +6247,9 @@
       ${svgMarkup}
     </div>
     <div class="card">
-      <h2>3. Top Certified Internal Bipartitions (Ordered by Net MDL Gain)</h2>
+      <h2>3. Top Supported Internal Bipartitions (Ordered by Net MDL Gain)</h2>
       <table>
-        <thead><tr><th>Edge (u &ndash; v)</th><th>Mutations (m_e)</th><th>Branch Length</th><th>Net MDL Gain</th><th>Posterior P(e|D)</th></tr></thead>
+        <thead><tr><th>Edge (u &ndash; v)</th><th>Mutations (m_e)</th><th>Branch Length</th><th>Net MDL Gain</th><th>Local Post. P_local</th></tr></thead>
         <tbody>${splitRows}</tbody>
       </table>
     </div>
@@ -5891,7 +6298,7 @@
       if (!currentResult) return;
       const base = (currentDatasetLabel || 'bushwhacker').replace(/\.[^.]+$/, '');
       const shuntsComment = (currentResult.shunts || []).map((sh, i) =>
-        `  [Shunt #${i + 1}: ${sh.mode} ${sh.label_u} <-> ${sh.label_v}, Net_MDL_Gain=+${sh.net_mdl_gain_nats.toFixed(2)}_nats, P=${(sh.posterior_prob * 100).toFixed(2)}%]`
+        `  [Shunt #${i + 1}: ${sh.mode} ${sh.label_u} <-> ${sh.label_v}, Net_MDL_Gain=+${sh.net_mdl_gain_nats.toFixed(2)}_nats, P_local=${(sh.posterior_prob * 100).toFixed(2)}%]`
       ).join('\n');
       const nex = `#NEXUS\nBEGIN TREES;\n${shuntsComment ? shuntsComment + '\n' : ''}  TREE bushwhacker_mdl = ${currentResult.newick}\nEND;\n`;
       downloadBlob(`${base}.bushwhacker.nex`, nex, 'text/plain');
@@ -6418,15 +6825,15 @@
           },
           stage1: {
             title: 'Stage 1: Calibrated MDL Backbone Phylogeny & Polytomy Hubs',
-            body: 'BUSHWHACKER compressed the Star-Tree null (16,580 nats) down to <strong>9,135 nats</strong> across 97 certified binary splits while contracting 10 ambiguous short internal radiations into explicit multi-way polytomy hubs. Notice that dolphins (Cetacea) group inside Cetartiodactyla and bats group inside Chiroptera — the true species phylogeny is preserved!',
+            body: 'BUSHWHACKER compressed the Star-Tree null (80,343 nats) down to <strong>46,306 nats</strong> across 81 binary splits while contracting 19 ambiguous short internal radiations into explicit multi-way polytomy hubs. Notice that dolphins (Cetacea) group inside Cetartiodactyla and bats group inside Chiroptera — the true species phylogeny is preserved!',
             chips: [
-              { label: '🔬 Inspect a Certified Split Drawer', action: () => { const b = currentResult?.branches?.find(x => x.is_internal); if (b) openStage1Drawer(b.v); } },
+              { label: '🔬 Inspect a Split Drawer', action: () => { const b = currentResult?.branches?.find(x => x.is_internal); if (b) openStage1Drawer(b.v); } },
               { label: '▶ Advance to Stage 2: Reticulate Shunts →', action: () => switchView('stage2') }
             ]
           },
           stage2: {
             title: 'Stage 2: Peeling the Delphinidae ↔ Rhinolophoidea Echolocation Shunt',
-            body: 'Rather than distorting the species tree, Stage 2 peeled the parallel amino-acid substitutions shared between echolocating dolphins (<code>N143</code>) and echolocating bats (<code>N192</code>) into a certified <strong>SPARSE Shunt (+7.80 nats net MDL gain, P = 99.96%)</strong> across 5 canonical echolocation codons: <strong>N7T, I384T, S392A, L497M, G601A</strong>.',
+            body: 'Rather than distorting the species tree, Stage 2 peeled the parallel amino-acid substitutions shared between echolocating dolphins (<code>N148</code>) and echolocating bats (<code>N169</code>) into a <strong>SPARSE Shunt (+3.91 nats net MDL gain, P_local = 98.04%)</strong> across 4 canonical echolocation codons: <strong>N7T, I384T, S392A, G601A</strong>.',
             chips: [
               { label: '🧬 Open Echolocation Shunt Codon Table', action: () => openStage2Drawer(0) },
               { label: '▶ Open Stage 3 Publication Dossier →', action: () => openOrRunStage(3) }
@@ -6462,7 +6869,7 @@
           },
           stage2: {
             title: 'Stage 2: Specificity Under Clonal Evolution (0 False-Positive Shunts)',
-            body: 'Because no non-sister lineages share excess parallel mutations beyond the combinadic mask threshold, Stage 2 certifies exactly <strong>0 reticulate shunts</strong>.',
+            body: 'Because no non-sister lineages share excess parallel mutations beyond the combinadic mask threshold, Stage 2 admits exactly <strong>0 reticulate shunts</strong>.',
             chips: [
               { label: '▶ Generate Stage 3 Dossier →', action: () => openOrRunStage(3) }
             ]
@@ -6494,7 +6901,7 @@
             ]
           },
           stage2: {
-            title: 'Stage 2: Contiguous INTERVAL Shunt Certification',
+            title: 'Stage 2: Contiguous INTERVAL Shunt Selection',
             body: 'Notice how the <strong>INTERVAL</strong> prefix code (<code>2 ln L_eff + ln C(w, k)</code>) decisively beat the scattered SPARSE combinadic code because the transferred synapomorphies cluster tightly inside sites 321..560.',
             chips: [
               { label: '🧬 Open HGT Shunt Forensic Drawer', action: () => openStage2Drawer(0) },

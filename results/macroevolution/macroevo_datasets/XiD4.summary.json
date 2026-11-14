@@ -1,0 +1,371 @@
+{
+  "dataset": "XiD4",
+  "alphabet": "nucleotide",
+  "total_files": 310,
+  "ok_loci": 310,
+  "error_loci": 0,
+  "wall_sec": 22.81,
+  "sum_cpu_runtime_sec": 153.74,
+  "mean_taxa": 33.18,
+  "mean_seq_len": 773.4,
+  "total_max_binary_splits": 9357,
+  "total_mdl_resolved_splits": 5253,
+  "polytomy_contracted_frac": 0.4386,
+  "sp_tree_total_splits": 9357,
+  "sp_tree_mdl_supported_splits": 4940,
+  "sp_tree_hard_polytomy_frac": 0.4721,
+  "forced_binary_sp_shared": 3574,
+  "forced_binary_sp_conflict": 5783,
+  "mdl_sp_shared": 2932,
+  "mdl_sp_conflict": 2321,
+  "spurious_discordance_eliminated_frac": 0.5987,
+  "loci_with_sp_shunts": 46,
+  "total_sp_shunts": 65,
+  "total_sp_interval": 2,
+  "total_sp_sparse": 63,
+  "total_free_shunts": 107,
+  "focal_hypotheses": {},
+  "top_sp_shunts": [
+    {
+      "locus": "Cluster3618.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 7.97,
+      "m": 9,
+      "u": [
+        "Solanum"
+      ],
+      "v": [
+        "Gossypium",
+        "Theobroma"
+      ]
+    },
+    {
+      "locus": "Cluster5461.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 6.89,
+      "m": 7,
+      "u": [
+        "Lactuca"
+      ],
+      "v": [
+        "Populus"
+      ]
+    },
+    {
+      "locus": "Cluster5461.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 6.83,
+      "m": 8,
+      "u": [
+        "Medicago"
+      ],
+      "v": [
+        "Arabidopsis",
+        "Brassica"
+      ]
+    },
+    {
+      "locus": "Cluster3282.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 5.98,
+      "m": 9,
+      "u": [
+        "Dioscorea",
+        "Musa",
+        "Sorghum"
+      ],
+      "v": [
+        "Mimulus",
+        "Sesamum",
+        "Striga"
+      ]
+    },
+    {
+      "locus": "Cluster2803.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 5.35,
+      "m": 6,
+      "u": [
+        "Solanum"
+      ],
+      "v": [
+        "Liriodendron",
+        "Persea"
+      ]
+    },
+    {
+      "locus": "Cluster4791.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 4.51,
+      "m": 5,
+      "u": [
+        "Oryza"
+      ],
+      "v": [
+        "Amborella",
+        "Picea",
+        "Pinus",
+        "Selaginella"
+      ]
+    },
+    {
+      "locus": "Cluster1808.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 4.28,
+      "m": 6,
+      "u": [
+        "Fragaria"
+      ],
+      "v": [
+        "Selaginella"
+      ]
+    },
+    {
+      "locus": "Cluster5309.nt.aln",
+      "mode": "INTERVAL",
+      "gain_nats": 3.75,
+      "m": 9,
+      "u": [
+        "Picea"
+      ],
+      "v": [
+        "Pinus"
+      ]
+    },
+    {
+      "locus": "Cluster2703.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.45,
+      "m": 7,
+      "u": [
+        "Mimulus"
+      ],
+      "v": [
+        "Ipomoea",
+        "Solanum"
+      ]
+    },
+    {
+      "locus": "Cluster3371.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.11,
+      "m": 5,
+      "u": [
+        "Liriodendron",
+        "Persea"
+      ],
+      "v": [
+        "Citrus",
+        "Gossypium",
+        "Theobroma"
+      ]
+    },
+    {
+      "locus": "Cluster2900.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 3.02,
+      "m": 9,
+      "u": [
+        "Vitis"
+      ],
+      "v": [
+        "Arabidopsis",
+        "Brassica"
+      ]
+    },
+    {
+      "locus": "Cluster8101.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.42,
+      "m": 7,
+      "u": [
+        "Fragaria"
+      ],
+      "v": [
+        "Mimulus",
+        "Sesamum"
+      ]
+    },
+    {
+      "locus": "Cluster3361.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.37,
+      "m": 6,
+      "u": [
+        "Glycine"
+      ],
+      "v": [
+        "Lactuca"
+      ]
+    },
+    {
+      "locus": "Cluster2803.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.28,
+      "m": 7,
+      "u": [
+        "Oryza",
+        "Sorghum"
+      ],
+      "v": [
+        "Citrus",
+        "Gossypium",
+        "Manihot",
+        "Populus"
+      ]
+    },
+    {
+      "locus": "Cluster4276.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.25,
+      "m": 8,
+      "u": [
+        "Camellia"
+      ],
+      "v": [
+        "Coffea"
+      ]
+    },
+    {
+      "locus": "Cluster7458.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.22,
+      "m": 7,
+      "u": [
+        "Nuphar"
+      ],
+      "v": [
+        "Fragaria",
+        "Malus"
+      ]
+    },
+    {
+      "locus": "Cluster2421.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.16,
+      "m": 7,
+      "u": [
+        "Picea",
+        "Pinus",
+        "Selaginella",
+        "Zamia"
+      ],
+      "v": [
+        "Arabidopsis",
+        "Brassica"
+      ]
+    },
+    {
+      "locus": "Cluster1883.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 2.06,
+      "m": 5,
+      "u": [
+        "Glycine",
+        "Medicago"
+      ],
+      "v": [
+        "Coffea",
+        "Helianthus",
+        "Ipomoea",
+        "Lactuca"
+      ]
+    },
+    {
+      "locus": "Cluster3368.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.99,
+      "m": 6,
+      "u": [
+        "Fragaria"
+      ],
+      "v": [
+        "Helianthus",
+        "Lactuca"
+      ]
+    },
+    {
+      "locus": "Cluster3339.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.95,
+      "m": 9,
+      "u": [
+        "Eucalyptus"
+      ],
+      "v": [
+        "Solanum"
+      ]
+    },
+    {
+      "locus": "Cluster5751.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.73,
+      "m": 7,
+      "u": [
+        "Manihot"
+      ],
+      "v": [
+        "Amborella",
+        "Aquilegia",
+        "Liriodendron",
+        "Musa"
+      ]
+    },
+    {
+      "locus": "Cluster5461.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.64,
+      "m": 5,
+      "u": [
+        "Glycine"
+      ],
+      "v": [
+        "Liriodendron"
+      ]
+    },
+    {
+      "locus": "Cluster4828.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.52,
+      "m": 5,
+      "u": [
+        "Medicago"
+      ],
+      "v": [
+        "Persea"
+      ]
+    },
+    {
+      "locus": "Cluster5378.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.51,
+      "m": 3,
+      "u": [
+        "Picea",
+        "Pinus",
+        "Selaginella",
+        "Zamia"
+      ],
+      "v": [
+        "Mimulus",
+        "Sesamum"
+      ]
+    },
+    {
+      "locus": "Cluster5564.nt.aln",
+      "mode": "SPARSE",
+      "gain_nats": 1.45,
+      "m": 9,
+      "u": [
+        "Arabidopsis",
+        "Brassica"
+      ],
+      "v": [
+        "Coffea",
+        "Ipomoea",
+        "Mimulus",
+        "Solanum"
+      ]
+    }
+  ]
+}

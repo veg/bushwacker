@@ -1,6 +1,6 @@
 {
   "benchmark": "TOGA2 882-Species Placental Mammalian Tree of Life (Coding NT & 20-State AA Supermatrix)",
-  "generated_at": "2026-11-11T17:58:18Z",
+  "generated_at": "2026-11-13T03:57:32Z",
   "threads_per_method": 32,
   "dataset": {
     "n_taxa": 882,
@@ -52,20 +52,20 @@
     "Bushwhacker_NT_MDL": {
       "method": "Bushwhacker_NT_MDL",
       "modality": "NT",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/bushwhacker/bw_nt_mdl.nwk",
-      "wall_sec": 31.09,
+      "tree_path": "bw_nt_mdl.nwk",
+      "wall_sec": 48.59,
       "vs_species_tree": {
         "n_shared": 882,
         "pred_splits": 878,
         "ref_splits": 879,
-        "tp": 809,
-        "fp": 69,
-        "fn": 70,
-        "rf": 139,
-        "nrf": 0.07907,
-        "false_positive_rate_pct": 7.86,
-        "precision_pct": 92.14,
-        "recall_pct": 92.04
+        "tp": 807,
+        "fp": 71,
+        "fn": 72,
+        "rf": 143,
+        "nrf": 0.08134,
+        "false_positive_rate_pct": 8.09,
+        "precision_pct": 91.91,
+        "recall_pct": 91.81
       },
       "taxonomy_4ranks": {
         "superorder": {
@@ -94,14 +94,14 @@
         },
         "genus": {
           "n_groups": 183,
-          "strict_monophyletic": 173,
-          "strict_pct": 94.54,
-          "compatible_uncontradicted": 173,
-          "compatible_pct": 94.54,
-          "mean_contradicting_splits": 0.104
+          "strict_monophyletic": 172,
+          "strict_pct": 93.99,
+          "compatible_uncontradicted": 172,
+          "compatible_pct": 93.99,
+          "mean_contradicting_splits": 0.109
         }
       },
-      "engine_sec": 29.15,
+      "engine_sec": 45.35,
       "resolved_splits": 878,
       "max_binary_splits": 879,
       "resolved_pct": 99.89,
@@ -110,20 +110,20 @@
     "Bushwhacker_NT_Binary": {
       "method": "Bushwhacker_NT_Binary",
       "modality": "NT",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/bushwhacker/bw_nt_binary.nwk",
-      "wall_sec": 31.09,
+      "tree_path": "bw_nt_binary.nwk",
+      "wall_sec": 48.59,
       "vs_species_tree": {
         "n_shared": 882,
         "pred_splits": 879,
         "ref_splits": 879,
-        "tp": 810,
-        "fp": 69,
-        "fn": 69,
-        "rf": 138,
-        "nrf": 0.0785,
-        "false_positive_rate_pct": 7.85,
-        "precision_pct": 92.15,
-        "recall_pct": 92.15
+        "tp": 808,
+        "fp": 71,
+        "fn": 71,
+        "rf": 142,
+        "nrf": 0.08077,
+        "false_positive_rate_pct": 8.08,
+        "precision_pct": 91.92,
+        "recall_pct": 91.92
       },
       "taxonomy_4ranks": {
         "superorder": {
@@ -152,20 +152,20 @@
         },
         "genus": {
           "n_groups": 183,
-          "strict_monophyletic": 173,
-          "strict_pct": 94.54,
-          "compatible_uncontradicted": 173,
-          "compatible_pct": 94.54,
-          "mean_contradicting_splits": 0.104
+          "strict_monophyletic": 172,
+          "strict_pct": 93.99,
+          "compatible_uncontradicted": 172,
+          "compatible_pct": 93.99,
+          "mean_contradicting_splits": 0.109
         }
       },
-      "engine_sec": 29.15,
+      "engine_sec": 45.35,
       "speedup_of_bushwhacker_same_modality_x": 1.0
     },
     "FastTreeMP_GTR_NT": {
       "method": "FastTreeMP_GTR_NT",
       "modality": "NT",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/fasttree_nt/fasttree_gtr_nt.nwk",
+      "tree_path": "fasttree_gtr_nt.nwk",
       "wall_sec": 13990.59,
       "vs_species_tree": {
         "n_shared": 882,
@@ -214,12 +214,12 @@
           "mean_contradicting_splits": 0.104
         }
       },
-      "speedup_of_bushwhacker_same_modality_x": 450.0
+      "speedup_of_bushwhacker_same_modality_x": 287.93
     },
     "IQTREE2_GTR_G4_fast_NT": {
       "method": "IQTREE2_GTR_G4_fast_NT",
       "modality": "NT",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/iqtree_fast_nt/iqtree_gtr_g4_fast_nt.treefile",
+      "tree_path": "iqtree_gtr_g4_fast_nt.treefile",
       "wall_sec": 1166.56,
       "vs_species_tree": {
         "n_shared": 882,
@@ -268,25 +268,25 @@
           "mean_contradicting_splits": 0.104
         }
       },
-      "speedup_of_bushwhacker_same_modality_x": 37.52
+      "speedup_of_bushwhacker_same_modality_x": 24.01
     },
     "Bushwhacker_AA_LG08_CAT8_MDL": {
       "method": "Bushwhacker_AA_LG08_CAT8_MDL",
       "modality": "AA",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/bushwhacker/bw_aa_mdl.nwk",
-      "wall_sec": 49.21,
+      "tree_path": "bw_aa_mdl.nwk",
+      "wall_sec": 65.78,
       "vs_species_tree": {
         "n_shared": 882,
-        "pred_splits": 760,
+        "pred_splits": 767,
         "ref_splits": 879,
-        "tp": 731,
-        "fp": 29,
-        "fn": 148,
-        "rf": 177,
-        "nrf": 0.10068,
-        "false_positive_rate_pct": 3.82,
-        "precision_pct": 96.18,
-        "recall_pct": 83.16
+        "tp": 735,
+        "fp": 32,
+        "fn": 144,
+        "rf": 176,
+        "nrf": 0.10011,
+        "false_positive_rate_pct": 4.17,
+        "precision_pct": 95.83,
+        "recall_pct": 83.62
       },
       "taxonomy_4ranks": {
         "superorder": {
@@ -317,34 +317,34 @@
           "n_groups": 183,
           "strict_monophyletic": 169,
           "strict_pct": 92.35,
-          "compatible_uncontradicted": 176,
-          "compatible_pct": 96.17,
-          "mean_contradicting_splits": 0.066
+          "compatible_uncontradicted": 177,
+          "compatible_pct": 96.72,
+          "mean_contradicting_splits": 0.06
         }
       },
-      "engine_sec": 48.51,
-      "resolved_splits": 760,
+      "engine_sec": 64.54,
+      "resolved_splits": 767,
       "max_binary_splits": 879,
-      "resolved_pct": 86.46,
+      "resolved_pct": 87.26,
       "speedup_of_bushwhacker_same_modality_x": 1.0
     },
     "Bushwhacker_AA_LG08_CAT8_Binary": {
       "method": "Bushwhacker_AA_LG08_CAT8_Binary",
       "modality": "AA",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/bushwhacker/bw_aa_binary.nwk",
-      "wall_sec": 49.21,
+      "tree_path": "bw_aa_binary.nwk",
+      "wall_sec": 65.78,
       "vs_species_tree": {
         "n_shared": 882,
         "pred_splits": 879,
         "ref_splits": 879,
-        "tp": 754,
-        "fp": 125,
-        "fn": 125,
-        "rf": 250,
-        "nrf": 0.14221,
-        "false_positive_rate_pct": 14.22,
-        "precision_pct": 85.78,
-        "recall_pct": 85.78
+        "tp": 756,
+        "fp": 123,
+        "fn": 123,
+        "rf": 246,
+        "nrf": 0.13993,
+        "false_positive_rate_pct": 13.99,
+        "precision_pct": 86.01,
+        "recall_pct": 86.01
       },
       "taxonomy_4ranks": {
         "superorder": {
@@ -373,20 +373,20 @@
         },
         "genus": {
           "n_groups": 183,
-          "strict_monophyletic": 170,
-          "strict_pct": 92.9,
-          "compatible_uncontradicted": 170,
-          "compatible_pct": 92.9,
-          "mean_contradicting_splits": 0.158
+          "strict_monophyletic": 171,
+          "strict_pct": 93.44,
+          "compatible_uncontradicted": 171,
+          "compatible_pct": 93.44,
+          "mean_contradicting_splits": 0.137
         }
       },
-      "engine_sec": 48.51,
+      "engine_sec": 64.54,
       "speedup_of_bushwhacker_same_modality_x": 1.0
     },
     "FastTreeMP_LG_AA": {
       "method": "FastTreeMP_LG_AA",
       "modality": "AA",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/fasttree_aa/fasttree_lg_aa.nwk",
+      "tree_path": "fasttree_lg_aa.nwk",
       "wall_sec": 12711.41,
       "vs_species_tree": {
         "n_shared": 882,
@@ -435,12 +435,12 @@
           "mean_contradicting_splits": 0.115
         }
       },
-      "speedup_of_bushwhacker_same_modality_x": 258.31
+      "speedup_of_bushwhacker_same_modality_x": 193.24
     },
     "IQTREE2_LG_G4_fast_AA": {
       "method": "IQTREE2_LG_G4_fast_AA",
       "modality": "AA",
-      "tree_path": "/home/sergei/tree_pillars_2026/work_pillar2/toga2_mammal882/runs/iqtree_fast_aa/iqtree_lg_g4_fast_aa.treefile",
+      "tree_path": "iqtree_lg_g4_fast_aa.treefile",
       "wall_sec": 2434.49,
       "vs_species_tree": {
         "n_shared": 882,
@@ -489,37 +489,37 @@
           "mean_contradicting_splits": 0.115
         }
       },
-      "speedup_of_bushwhacker_same_modality_x": 49.47
+      "speedup_of_bushwhacker_same_modality_x": 37.01
     }
   },
   "pairwise_nrf": {
     "Bushwhacker_NT_MDL__vs__Bushwhacker_NT_Binary": 0.00057,
-    "Bushwhacker_NT_MDL__vs__FastTreeMP_GTR_NT": 0.01991,
-    "Bushwhacker_NT_MDL__vs__IQTREE2_GTR_G4_fast_NT": 0.01763,
-    "Bushwhacker_NT_MDL__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.08532,
-    "Bushwhacker_NT_MDL__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.12912,
-    "Bushwhacker_NT_MDL__vs__FastTreeMP_LG_AA": 0.0529,
-    "Bushwhacker_NT_MDL__vs__IQTREE2_LG_G4_fast_AA": 0.04721,
-    "Bushwhacker_NT_Binary__vs__FastTreeMP_GTR_NT": 0.01934,
-    "Bushwhacker_NT_Binary__vs__IQTREE2_GTR_G4_fast_NT": 0.01706,
-    "Bushwhacker_NT_Binary__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.08589,
-    "Bushwhacker_NT_Binary__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.12856,
-    "Bushwhacker_NT_Binary__vs__FastTreeMP_LG_AA": 0.05233,
-    "Bushwhacker_NT_Binary__vs__IQTREE2_LG_G4_fast_AA": 0.04664,
+    "Bushwhacker_NT_MDL__vs__FastTreeMP_GTR_NT": 0.02105,
+    "Bushwhacker_NT_MDL__vs__IQTREE2_GTR_G4_fast_NT": 0.01877,
+    "Bushwhacker_NT_MDL__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.07907,
+    "Bushwhacker_NT_MDL__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.11547,
+    "Bushwhacker_NT_MDL__vs__FastTreeMP_LG_AA": 0.05404,
+    "Bushwhacker_NT_MDL__vs__IQTREE2_LG_G4_fast_AA": 0.04835,
+    "Bushwhacker_NT_Binary__vs__FastTreeMP_GTR_NT": 0.02048,
+    "Bushwhacker_NT_Binary__vs__IQTREE2_GTR_G4_fast_NT": 0.0182,
+    "Bushwhacker_NT_Binary__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.07964,
+    "Bushwhacker_NT_Binary__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.1149,
+    "Bushwhacker_NT_Binary__vs__FastTreeMP_LG_AA": 0.05347,
+    "Bushwhacker_NT_Binary__vs__IQTREE2_LG_G4_fast_AA": 0.04778,
     "FastTreeMP_GTR_NT__vs__IQTREE2_GTR_G4_fast_NT": 0.00228,
-    "FastTreeMP_GTR_NT__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.08134,
-    "FastTreeMP_GTR_NT__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.124,
+    "FastTreeMP_GTR_NT__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.07509,
+    "FastTreeMP_GTR_NT__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.11377,
     "FastTreeMP_GTR_NT__vs__FastTreeMP_LG_AA": 0.04551,
     "FastTreeMP_GTR_NT__vs__IQTREE2_LG_G4_fast_AA": 0.03982,
-    "IQTREE2_GTR_G4_fast_NT__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.07907,
-    "IQTREE2_GTR_G4_fast_NT__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.12173,
+    "IQTREE2_GTR_G4_fast_NT__vs__Bushwhacker_AA_LG08_CAT8_MDL": 0.07281,
+    "IQTREE2_GTR_G4_fast_NT__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.11149,
     "IQTREE2_GTR_G4_fast_NT__vs__FastTreeMP_LG_AA": 0.04323,
     "IQTREE2_GTR_G4_fast_NT__vs__IQTREE2_LG_G4_fast_AA": 0.03754,
-    "Bushwhacker_AA_LG08_CAT8_MDL__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.06769,
-    "Bushwhacker_AA_LG08_CAT8_MDL__vs__FastTreeMP_LG_AA": 0.07452,
-    "Bushwhacker_AA_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast_AA": 0.07338,
-    "Bushwhacker_AA_LG08_CAT8_Binary__vs__FastTreeMP_LG_AA": 0.1149,
-    "Bushwhacker_AA_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast_AA": 0.11263,
+    "Bushwhacker_AA_LG08_CAT8_MDL__vs__Bushwhacker_AA_LG08_CAT8_Binary": 0.06371,
+    "Bushwhacker_AA_LG08_CAT8_MDL__vs__FastTreeMP_LG_AA": 0.06826,
+    "Bushwhacker_AA_LG08_CAT8_MDL__vs__IQTREE2_LG_G4_fast_AA": 0.06712,
+    "Bushwhacker_AA_LG08_CAT8_Binary__vs__FastTreeMP_LG_AA": 0.11035,
+    "Bushwhacker_AA_LG08_CAT8_Binary__vs__IQTREE2_LG_G4_fast_AA": 0.10922,
     "FastTreeMP_LG_AA__vs__IQTREE2_LG_G4_fast_AA": 0.00683
   }
 }

@@ -1,0 +1,731 @@
+{
+  "count": 124,
+  "files": [
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N1024.fa.xz",
+      "bytes": 85060,
+      "sha256": "5f91d628699b9835cc3aa70cc854480be1d7f8840dc24b7eaf1135796e53c0b7"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N16384.fa.xz",
+      "bytes": 1206352,
+      "sha256": "51ba18b5a57c8df49c5f7f8b215adce65da269a4aaa1bccc21c5418506e01a12"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N2048.fa.xz",
+      "bytes": 159440,
+      "sha256": "c00fdcc9201ae03a65c3ec131eb8f7b145535978a0003ca46927e284f366cb8b"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N256.fa.xz",
+      "bytes": 26976,
+      "sha256": "dd17bb2ade025647f1b3696646c5aab92d76459b5172a1e5a38a9fdd2598ff45"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N32768.fa.xz",
+      "bytes": 2284260,
+      "sha256": "8047d3e221509712a1c3518f1d65e1524acff5a74a539fca78ac161d68d31fa4"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N4096.fa.xz",
+      "bytes": 320164,
+      "sha256": "079d3514dd600cd6aea1d76011a106b82c8afb5b17e3946165bfb35aecb551b9"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N512.fa.xz",
+      "bytes": 46744,
+      "sha256": "b674102c2bffd7d1bb2b14a6f1b275c1d6fe122b88e24689ff877ca48264ea2a"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/16S_N8192.fa.xz",
+      "bytes": 622860,
+      "sha256": "93c684c6bad89b80e985f2954ae7b7292463fcf807436afd73e4308eed55281e"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/16s_nested_tiers/97_otu_taxonomy.txt.xz",
+      "bytes": 754932,
+      "sha256": "01211a5a3778535eac833bd0dba6f957bdcda276ab929716cbf1260a7c17199d"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/klebsiella_222_core_benchmark.csv",
+      "bytes": 53028,
+      "sha256": "169d431dada920fffdb2531a550682a500ce8b4f9d3db8dfb601e67794c2c156"
+    },
+    {
+      "path": "data/alignments/microbial_and_16s/klebsiella_222_core_loci.tar.xz",
+      "bytes": 2437216,
+      "sha256": "191a90afae47bcd52eed0d981d1cef08b2b2f00bfce8126351f5fab96124978d"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.aa.fasta",
+      "bytes": 49576,
+      "sha256": "d3981a50cefdab60d881333dadb64ddb01e14245b8b41a8b54d0c4b5f1d7765d",
+      "n_taxa": 92,
+      "seq_len": 659
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.aa_aln.fasta",
+      "bytes": 72729,
+      "sha256": "9440d9896fdc4b7e55cac08703503a7450376d1b613139948cfb996eda6be577",
+      "n_taxa": 92,
+      "seq_len": 745
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.bw.json",
+      "bytes": 23939,
+      "sha256": "95d414e52efaa35611e1015d47a41e190880f201372201bf74c7d62e39ea2f87"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.bw.nwk",
+      "bytes": 4852,
+      "sha256": "423100dc77fd7f383b981b2e061604cf6f87052cdce09ab20f196298224e1d40"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PCK_HGT.codon_aln.fasta",
+      "bytes": 208705,
+      "sha256": "f375d93a641436cb21399feca3f473d2d0a531f1113f488a6aac0e9b3d2ce41d",
+      "n_taxa": 92,
+      "seq_len": 2235
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PEPC_HGT.aa.fasta",
+      "bytes": 129192,
+      "sha256": "06c3830f527d5754c9dbed235409cebc96496381d45ce4cbe1494048843184e3",
+      "n_taxa": 229,
+      "seq_len": 959
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PEPC_HGT.aa_aln.fasta",
+      "bytes": 237154,
+      "sha256": "c03341a09d23d213cae62d150a043b043e5f7a826adbd95e3c7071863358aa5a",
+      "n_taxa": 229,
+      "seq_len": 985
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PEPC_HGT.bw.json",
+      "bytes": 57490,
+      "sha256": "f5d59001c8ac5708789d8f34f5acef1986d1b87110f6ff582ee7662085fdf21b"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PEPC_HGT.bw.nwk",
+      "bytes": 12651,
+      "sha256": "f84e8c3d2d82b1190790ef9dcf1956c9ed2d65092bfdcddb91595889afb7c254"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_PEPC_HGT.codon_aln.fasta",
+      "bytes": 684620,
+      "sha256": "def131cd71c0d8a28762f1356c62c9c1b9a0783a788b12fa142eaf3b7de59050",
+      "n_taxa": 229,
+      "seq_len": 2955
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_rbcL_C4.aa.fasta",
+      "bytes": 118785,
+      "sha256": "93430c2143ce97c70ba4e40bfbe6cdb6b7f3f0879c5ff9e1de964f4c9647ddca",
+      "n_taxa": 248,
+      "seq_len": 451
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_rbcL_C4.aa_aln.fasta",
+      "bytes": 126354,
+      "sha256": "5c3cad0e791319f464a1ff9a66be92a16eec56f448e93246b55ed549fc341bf9",
+      "n_taxa": 248,
+      "seq_len": 471
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_rbcL_C4.bw.json",
+      "bytes": 50785,
+      "sha256": "931715be78b6eeb6f64e26ff495a215f671dcbaf86246f65d43afe9c8a2ab3fd"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_rbcL_C4.bw.nwk",
+      "bytes": 11821,
+      "sha256": "ed97fdbd979f9e6e031f2c0eb5aad9d8d3f2deb86da01109e7bd87f1738501eb"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/Poaceae_rbcL_C4.codon_aln.fasta",
+      "bytes": 358234,
+      "sha256": "bbf92ee85c5f5d394770157bade10f75511a04e42afbe13e8a96aa474370efa9",
+      "n_taxa": 248,
+      "seq_len": 1413
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/avian_shultz2019_50loci.tar.xz",
+      "bytes": 139860,
+      "sha256": "ab5b6c8daf2d00b7155e2db31e560d1afc30c2c739d3fe933356ef862a2db635"
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/rbcL_483.fasta",
+      "bytes": 683161,
+      "sha256": "634fb85bdaebfa8a3bc45f3f22ac828025d3ba5a34cfbb89c9ee07edede26f53",
+      "n_taxa": 483,
+      "seq_len": 1398
+    },
+    {
+      "path": "data/alignments/plant_c4_and_avian/rbcL_483.nwk",
+      "bytes": 30073,
+      "sha256": "5c04836e03499d3bf26630fd4dc0ad29864a98cc40507df978eaffa9f7a677d2"
+    },
+    {
+      "path": "data/alignments/supermatrices/ar122_supermatrix.faa.xz",
+      "bytes": 9174632,
+      "sha256": "6074e4d161f7180b22a1403c5556b6eb34690ca3a32bdb8ab0019c88d2481948"
+    },
+    {
+      "path": "data/alignments/supermatrices/bac120_supermatrix_1000.faa.xz",
+      "bytes": 11577272,
+      "sha256": "ee4db83c66a46d79ac447919ccc7da1340f26cb2523b65231576c2036a4d11af"
+    },
+    {
+      "path": "data/alignments/supermatrices/toga2_assemblies_and_species.tsv",
+      "bytes": 920003,
+      "sha256": "a12522e288fda8937c61ba5f2503fbf4439bec78d5cfbc0d703e87679bc558e3"
+    },
+    {
+      "path": "data/alignments/supermatrices/toga2_mammal882_aa.faa.xz",
+      "bytes": 2888216,
+      "sha256": "d7d5d8e6ace2e56813a85205989138c6abca8e7d36f11adb25d23f49fda75f91"
+    },
+    {
+      "path": "data/alignments/supermatrices/toga2_mammal882_nt.fna.xz",
+      "bytes": 9746344,
+      "sha256": "6a355b1844a37e1bfe42d1447dc78791674ed74e015f3c20208763f013009ea9"
+    },
+    {
+      "path": "data/alignments/supermatrices/toga2_speciesTree.nh",
+      "bytes": 33389,
+      "sha256": "40c1e93d360d978445680c14576863259fa2377c3640519e11b0d6b97f3b9b4f"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/83sarbeco_wgal.fas.xz",
+      "bytes": 81388,
+      "sha256": "ffba6bb09693795599c5310e107033ed36efd47f2aa1772c7ffda4c073f7517a"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/Example2_kal153_rdp_9953nt.fas",
+      "bytes": 89631,
+      "sha256": "2c8e7107bcb5f9a5c25f4296d76ad57870dfe8becf0ed96b3a057e63d10de147",
+      "n_taxa": 9,
+      "seq_len": 9953
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv1_cds_nodups.fasta.xz",
+      "bytes": 89952,
+      "sha256": "7edfdf8ef1ac0c886b08616ca99b30e12d91c24fe10097540e1227918c6770e4"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv1_metadata.tsv",
+      "bytes": 92394,
+      "sha256": "4d552cab15168bba70bf51de151e0b9f1d31840689c9dfca8e1230ce6bd0d8a5"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv2_cds_nodups.fasta.xz",
+      "bytes": 197464,
+      "sha256": "3528e7458592f86cd9abe8ac1e83eefb4314df3a1065409a526da9d1248aa6e0"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv2_metadata.tsv",
+      "bytes": 160588,
+      "sha256": "59aa8a278da81e8390918eaa17aa329e63d238dd354bd5016f5698a3591dbebd"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv3_cds_nodups.fasta.xz",
+      "bytes": 68376,
+      "sha256": "9d3b12871a37deff5887621636409a4040da5166f3c8d496742a5df04c90ce92"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv3_metadata.tsv",
+      "bytes": 51310,
+      "sha256": "f34f39560a5ed4ac0eaabf96a04246d732126c2686f133ebd38dd6e3ce2294b5"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv4_cds_nodups.fasta.xz",
+      "bytes": 60112,
+      "sha256": "75649861fa0ff5b69fbd1faa2f70fae257fc61aae2f0768ba5cb3218ed77db55"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/denv4_metadata.tsv",
+      "bytes": 33166,
+      "sha256": "b778bed25e95f435ae6618c7d81a3851db5b41849a49534d841d226c0cc5c96c"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/AMELX.fasta",
+      "bytes": 29832,
+      "sha256": "82c3d2699cc74a2346846f5a944f34cf55cc4f55cf510438a5b8e4c47e14aa74",
+      "n_taxa": 44,
+      "seq_len": 657
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/Bacterial_PTS_trehalose_transporter_suIII.fasta",
+      "bytes": 31019,
+      "sha256": "7a1641a92803b30f558eaabb8349003c9285a550acfe3866322121ab7ec06c7b",
+      "n_taxa": 16,
+      "seq_len": 1917
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/COL1A1.fasta",
+      "bytes": 254499,
+      "sha256": "b578052e1c6a6f03f450e3b5e6c406ac16c4ba712ba8cf12557d71fa5ce485cf",
+      "n_taxa": 58,
+      "seq_len": 4377
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/COX.fasta",
+      "bytes": 32399,
+      "sha256": "1429e87675a9a9675b3fb4af018764030c6496fa6df240b801a9eb5908406484",
+      "n_taxa": 21,
+      "seq_len": 1530
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/ENCenv.fasta",
+      "bytes": 34710,
+      "sha256": "16a51701bacef520dfab7e7aab53b04f36368c263c2196086493f17939873823",
+      "n_taxa": 23,
+      "seq_len": 1500
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/Fig4E.fasta",
+      "bytes": 29812,
+      "sha256": "7c95ec136acfc7f3ed45a86637b982d4d70e9769e21bd41fe389f4feb6945a9c",
+      "n_taxa": 33,
+      "seq_len": 858
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/HIV_RT.fasta",
+      "bytes": 484075,
+      "sha256": "185c992b6ab3974d1b73de618b5261802b77aad7c6fdfd4f38bc251a082c518f",
+      "n_taxa": 476,
+      "seq_len": 1005
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/HIVvif.fasta",
+      "bytes": 16968,
+      "sha256": "173a4f855f02f5051e02daa9a4ae738e4455d569fbd6882206bebca6604e9cb6",
+      "n_taxa": 29,
+      "seq_len": 576
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/HepatitisD.fasta",
+      "bytes": 19833,
+      "sha256": "a383705defa615e42a6c6b9ab4a5170efff3dd145da6bb92eaeabe867ee9f327",
+      "n_taxa": 33,
+      "seq_len": 588
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/IAV-human-H1N1-HA.fasta",
+      "bytes": 828532,
+      "sha256": "7a97d9a53e54e9db41dd40e8b4fc7481285529351321645345e581cca4f20506",
+      "n_taxa": 466,
+      "seq_len": 1767
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/InfluenzaA.fasta",
+      "bytes": 348411,
+      "sha256": "c64a49570c62721ced1c3f91e4debf3b998d9c8eded49df981c79c224d51bf00",
+      "n_taxa": 349,
+      "seq_len": 987
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/REDIC1.fasta",
+      "bytes": 75783,
+      "sha256": "b4464a344c7f2338a6f403be618683ff8fb8f1c677d4958800a0db289f41ab4a",
+      "n_taxa": 39,
+      "seq_len": 1959
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/SARS-CoV-2-spike.fasta",
+      "bytes": 700321,
+      "sha256": "035b79b3cf598cd4452a2f86f42ec5db43d1fcc0f186497353f4d65d004c4a8b",
+      "n_taxa": 180,
+      "seq_len": 3852
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/adh.fasta",
+      "bytes": 17662,
+      "sha256": "1bd2112560da0c034cdf4f838cd8308f61a39c7205fb8578dc9351ba2115904c",
+      "n_taxa": 23,
+      "seq_len": 762
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/adora3.fasta",
+      "bytes": 22252,
+      "sha256": "3ca079bc42cf7cc52237a1832481c28855b339037f038ca303cbc356b943aefb",
+      "n_taxa": 67,
+      "seq_len": 321
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/bglobin.fasta",
+      "bytes": 7494,
+      "sha256": "efc46ca5d613169bd294849bc5979fc6d5a0298a5925335fd4e090ba4f93b293",
+      "n_taxa": 17,
+      "seq_len": 432
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/camelid.fasta",
+      "bytes": 63709,
+      "sha256": "6db7d45a33f472170e3d6ee3fefe805b3727b8901d253587820f6b2ac40d24fa",
+      "n_taxa": 212,
+      "seq_len": 288
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/felsenstein_test.fasta",
+      "bytes": 2452,
+      "sha256": "fe3ccf6e09d0edb4101b84367b04713356052252ccd27dcdb2e41caa2a956f11",
+      "n_taxa": 4,
+      "seq_len": 600
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/flavNS5.fasta",
+      "bytes": 18640,
+      "sha256": "281dbf2a1d543d877f12d7cc11496cb9b01154c38a6828e9fb339324deab9372",
+      "n_taxa": 18,
+      "seq_len": 1026
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/lysin.fasta",
+      "bytes": 10338,
+      "sha256": "e62180ef9e4117e0965604972a931a187671976b7b7731527674cb9d998284df",
+      "n_taxa": 25,
+      "seq_len": 402
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/lysozyme.fasta",
+      "bytes": 7691,
+      "sha256": "1b58ee31e3524af2b698d7b0f2d368139feb195a6830c02ac243603515658105",
+      "n_taxa": 19,
+      "seq_len": 390
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/prestin.fasta",
+      "bytes": 260491,
+      "sha256": "9da614cc503c3682cf42ca2fe4dad2ce61892a1745fd9c2e3eba59141b5b481f",
+      "n_taxa": 116,
+      "seq_len": 2235
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/rbcL.fasta",
+      "bytes": 683161,
+      "sha256": "634fb85bdaebfa8a3bc45f3f22ac828025d3ba5a34cfbb89c9ee07edede26f53",
+      "n_taxa": 483,
+      "seq_len": 1398
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/rbp3.fasta",
+      "bytes": 67329,
+      "sha256": "5a85094cbd9d6280e93eb7eed481a032c648114578680d36b4bcdbc7ffc61ec7",
+      "n_taxa": 54,
+      "seq_len": 1236
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/vwf.fasta",
+      "bytes": 73596,
+      "sha256": "eb2fcf63359de8b9f5e7adb74560eb46dec53bf477c6636977a249782b091118",
+      "n_taxa": 62,
+      "seq_len": 1176
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/yokoyama.fasta",
+      "bytes": 37992,
+      "sha256": "6a47593e668a522ecaf715a18e6c1014bdd07c6fb6f3397456e4c239ead5317a",
+      "n_taxa": 38,
+      "seq_len": 990
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/empirical_genes/yokoyama.rh1.cds.mod.1-990.fasta",
+      "bytes": 37992,
+      "sha256": "6a47593e668a522ecaf715a18e6c1014bdd07c6fb6f3397456e4c239ead5317a",
+      "n_taxa": 38,
+      "seq_len": 990
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/heliconius_optix_island.fasta",
+      "bytes": 44324,
+      "sha256": "1b6695c9341602ccec83f41a2c3fbfc4096edf880eadd71513e396ecdf5e4022",
+      "n_taxa": 12,
+      "seq_len": 3677
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/hiv1_kal153_aligned.fasta",
+      "bytes": 139140,
+      "sha256": "af5ce768c60347072bea6890ced59c5e5d7362fdb25e7772401e46cfb6ec10c5",
+      "n_taxa": 9,
+      "seq_len": 15203
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/hiv1_kal153_crf02_ag.fasta",
+      "bytes": 89631,
+      "sha256": "2c8e7107bcb5f9a5c25f4296d76ad57870dfe8becf0ed96b3a057e63d10de147",
+      "n_taxa": 9,
+      "seq_len": 9953
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/hominoidea_mhc_class1_379.fasta",
+      "bytes": 441604,
+      "sha256": "ea4bce6332dd511f07663cd106180e65c3dd82eb0943f704b6464afd359ff37c",
+      "n_taxa": 379,
+      "seq_len": 1128
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/human_mtdna_78.fasta.xz",
+      "bytes": 10712,
+      "sha256": "42ff49abd20bc29e1755cc0b26db8298d42d0370058802486cc0cdeafadcf6a0"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/kal153_rdp_gard.GARD.json",
+      "bytes": 189986,
+      "sha256": "cbfea8a23c16c48200a37e4c3340ea3d7e03c745de5a3cd0f3ad9ea5b0d5d803"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sars_cov_2_10062_world_union.fasta.xz",
+      "bytes": 1001356,
+      "sha256": "2ea1cacf40ecaa2d8403620af1d338764f991a6cdf260c4095fc7ad2a0a83219"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sars_cov_2_5097_global.fasta.xz",
+      "bytes": 518864,
+      "sha256": "f59b5e591a05bb317a2e7593537ce6a1f9fd1103ee368c6d15b7930898bd594b"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_africa.aligned.fasta.xz",
+      "bytes": 134168,
+      "sha256": "0e5ed1fec465919f90e37d04c4e295563dda95508a351e7d96ad78b4bb9f8ef0"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_africa.metadata.tsv.xz",
+      "bytes": 167516,
+      "sha256": "2252856bcd749895a713a4c751db17b05c12d7e8b5810f279c6fd8149e850640"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_asia.aligned.fasta.xz",
+      "bytes": 154116,
+      "sha256": "a4679c95ab3a6725a19362f44e950eb908a15d1ead0fd8c7e1184fd6f129b7ed"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_asia.metadata.tsv.xz",
+      "bytes": 201092,
+      "sha256": "422d3672b0cb406d7edf46444e4845c0b9c98811e928ce9cca8ae83e4069470f"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_europe.aligned.fasta.xz",
+      "bytes": 207352,
+      "sha256": "29ab4265a181483c5b619197637d92b9b00ebc137bcb120c128879789c7689c5"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_europe.metadata.tsv.xz",
+      "bytes": 268504,
+      "sha256": "bed8ba2ec505d6b2ef25455770686254af5222b5a11cd5e85d0e3414aedf4822"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_global.aligned.fasta.xz",
+      "bytes": 456240,
+      "sha256": "de98ed37670bc5b3cac1c967c07c174be53d735057bf3c067838c4d0f0437d29"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_global.metadata.tsv.xz",
+      "bytes": 539904,
+      "sha256": "508972250f09b9eeaa0e271ef817aca6abf0b551e5f31c1fef93631854bc5353"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_north-america.aligned.fasta.xz",
+      "bytes": 355568,
+      "sha256": "9870cc61b6942c05ac1e870c24b86b582660266796c513f52a23885ab46e126e"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_north-america.metadata.tsv.xz",
+      "bytes": 453060,
+      "sha256": "3515646e9cd729daf2d935501c156a78f1a9aeba20222f23004a20bf58bb9c32"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_oceania.aligned.fasta.xz",
+      "bytes": 100440,
+      "sha256": "e896fb50777914617760a4b61cacd6b90426266c8575fb0afb7eb66627674149"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_oceania.metadata.tsv.xz",
+      "bytes": 141148,
+      "sha256": "318f9213c472118271ecf5d8d8842e84ff20bcad853a616ea88fe39c86522c83"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_south-america.aligned.fasta.xz",
+      "bytes": 136120,
+      "sha256": "4f2fe81da601db0f04810de64233a27ab21db10e4d2be3a704a8fdbac5c237c7"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_south-america.metadata.tsv.xz",
+      "bytes": 176100,
+      "sha256": "0eb53d293c9146f7335fed06f79b16c50cd8daef635cec7c9ba1ba3397afcb50"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/sc2_voc_and_x_recombinants_panel.fasta",
+      "bytes": 2512524,
+      "sha256": "5ca437f630417ce0fb9748d337ed9fb333cb799f4673999b6447d1484eb610ef",
+      "n_taxa": 84,
+      "seq_len": 29903
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/spneumoniae_PMEN1_11chrom.aln.xz",
+      "bytes": 601180,
+      "sha256": "58594c6dcb0f2a48c0c9c7e77313ba53f801c27cbf5ceaffa431d614058a8e3f"
+    },
+    {
+      "path": "data/alignments/viral_and_bwz_codec/spneumoniae_pbp2x_20kb.fasta",
+      "bytes": 251391,
+      "sha256": "1b5b4708f849019292af6212c11a3558ccc8be01c6b370b2aca9640863a11564",
+      "n_taxa": 12,
+      "seq_len": 20683
+    },
+    {
+      "path": "data/single_cell/AML_cohort_Morita_2020.json",
+      "bytes": 132916,
+      "sha256": "07ac0b6094e9e50b9d790cf12c3ad74b87025e1775b57d1875aaa4af1cf8878e"
+    },
+    {
+      "path": "data/single_cell/bcr_gcreplay/CGGnaive_sites.csv",
+      "bytes": 5127,
+      "sha256": "0273836f2495f13c51a29fe97b1a5fea90a3d92303ceb976a50937b7b1fe20a0"
+    },
+    {
+      "path": "data/single_cell/bcr_gcreplay/MK_RS5NF_mutability.csv",
+      "bytes": 62294,
+      "sha256": "8df198803b1691195eee330a770c45b5ed4ecdbd0f62f23cf4138e5eeacd5199"
+    },
+    {
+      "path": "data/single_cell/bcr_gcreplay/MK_RS5NF_substitution.csv",
+      "bytes": 152031,
+      "sha256": "ed41ad0ce9b8d39c7dd663a853919de31bc0a244738f0a0ac2b8b0bd66caec7e"
+    },
+    {
+      "path": "data/single_cell/bcr_gcreplay/final_variant_scores.csv",
+      "bytes": 422393,
+      "sha256": "52c1725d4312a27075495a4a9f85e03cb76ebd6df987a19d093867729f97dc9b"
+    },
+    {
+      "path": "data/single_cell/bcr_gcreplay/observed-seqs.csv.xz",
+      "bytes": 1011288,
+      "sha256": "a2cef6359eb4d91ab260cbea23418cf4b6c8f5aea5827cac7af7d897cfe1933e"
+    },
+    {
+      "path": "data/single_cell/dlp_cna_sitka.tar.xz",
+      "bytes": 1407320,
+      "sha256": "0bb4cc9dfc6b23839240133a3bbc7673d7692521a764a1aca344d2a81a88e35b"
+    },
+    {
+      "path": "data/specimens/150228_Clone_3-8.fasta",
+      "bytes": 18540,
+      "sha256": "f3790ec76475a11297038cb4c367c6900e451b343eb63a25e02ff46b81deb927",
+      "n_taxa": 66,
+      "seq_len": 264
+    },
+    {
+      "path": "data/specimens/CHST13_ENSG00000180767_22mammals.fasta",
+      "bytes": 26190,
+      "sha256": "08ac4f63fbf3c545119d25305c76dd4a56e145d50d9fe836d8394e994a4788be",
+      "n_taxa": 22,
+      "seq_len": 1176
+    },
+    {
+      "path": "data/specimens/aml_38_001.json",
+      "bytes": 1599,
+      "sha256": "234a302746cf48ed0bbe4a76322d0ffd13f78ecac4a0dbe857b438613d4eaac9"
+    },
+    {
+      "path": "data/specimens/aml_38_001.nwk",
+      "bytes": 360,
+      "sha256": "2c719634de7ddd6ab53537e01677f80e2d3b1717a7369b9ecf935b592b9c0c48"
+    },
+    {
+      "path": "data/specimens/aml_38_001_clones.fasta",
+      "bytes": 589,
+      "sha256": "7d2235694d51d2eac1fa18bbc6909a2918a523fec1df324c4b713665a4fed4e0",
+      "n_taxa": 11,
+      "seq_len": 31
+    },
+    {
+      "path": "data/specimens/aml_clones_binary.csv",
+      "bytes": 20452,
+      "sha256": "7fbbdb0f5377698adf11721b0f9f1a5d2767678560231177e6f99e901f118a36"
+    },
+    {
+      "path": "data/specimens/blaKPC_9taxa.fna",
+      "bytes": 8035,
+      "sha256": "2fde96f8343835cd7677d5e8dc557788b477c5483fac2c670af67582f97315db",
+      "n_taxa": 9,
+      "seq_len": 882
+    },
+    {
+      "path": "data/specimens/blaKPC_9taxa.json",
+      "bytes": 1082,
+      "sha256": "cdea5a69db0499cd65b834bebb45c45fbb29926365275469fe3208ca261dcd19"
+    },
+    {
+      "path": "data/specimens/blaKPC_9taxa.nwk",
+      "bytes": 179,
+      "sha256": "67cca3ddc32121987879d24ad12eb401caa02f7b66c744a40a445ce87d1bf3f9"
+    },
+    {
+      "path": "data/specimens/kleb_16taxa_super_fasttree.nwk",
+      "bytes": 591,
+      "sha256": "318098bbbb58e2f31cd87e213afbb4e62eacf92f9b03eb3523e3b7abb1838a2b"
+    },
+    {
+      "path": "data/specimens/kleb_9taxa_chrom_214kb.fna",
+      "bytes": 1958542,
+      "sha256": "f307129ea601aff40ab2788effb5eb9405e0504efda17b562ebda26a2a1b2014",
+      "n_taxa": 9,
+      "seq_len": 214038
+    },
+    {
+      "path": "data/specimens/kleb_9taxa_chrom_214kb.json",
+      "bytes": 3269,
+      "sha256": "5d3764b9ee73c218800a3a1f986697bd429326aa83c35a1a3605cd30d481e092"
+    },
+    {
+      "path": "data/specimens/kleb_9taxa_chrom_214kb.nwk",
+      "bytes": 259,
+      "sha256": "a3c6e106e640249f1dfab72ffa242795e9e9ad1fbddd9825fc39957884e7c099"
+    },
+    {
+      "path": "data/specimens/klebsiella_core_plus_blaKPC_composite.fna",
+      "bytes": 88117,
+      "sha256": "a0d7d6b970205d8e0148c803da714a657261b58aaafee4742d40e692117ff863",
+      "n_taxa": 9,
+      "seq_len": 9780
+    },
+    {
+      "path": "data/specimens/klebsiella_core_super_matrix_214kb.fna",
+      "bytes": 3424810,
+      "sha256": "657640d22f503e6fe35147cd87b0b0f1bc883bff8a7296431a530778ebb9df80",
+      "n_taxa": 16,
+      "seq_len": 214038
+    },
+    {
+      "path": "data/specimens/prestin.fasta",
+      "bytes": 260491,
+      "sha256": "9da614cc503c3682cf42ca2fe4dad2ce61892a1745fd9c2e3eba59141b5b481f",
+      "n_taxa": 116,
+      "seq_len": 2235
+    },
+    {
+      "path": "data/specimens/prestin.json",
+      "bytes": 19682,
+      "sha256": "837e62f4d4e41a18bb166ed8f29f38680548a2af6bc1a503cea182967df15084"
+    },
+    {
+      "path": "data/specimens/prestin.nwk",
+      "bytes": 3342,
+      "sha256": "bffd2091c3f8d1a6a0738d145bcab67c2932e9b2b759e4372455f116326b98e3"
+    },
+    {
+      "path": "data/specimens/prestin_protein.faa",
+      "bytes": 87651,
+      "sha256": "0d4742379db2222538bf80a593d22a0390beb3e73a2d61b6efb2264e71558fc5",
+      "n_taxa": 116,
+      "seq_len": 745
+    },
+    {
+      "path": "data/specimens/prestin_species.nwk",
+      "bytes": 4616,
+      "sha256": "b1c71e05b054e36ab3da5156340f3bd73aa0d28d6a2f3a6feedda8eaaa95ebe3"
+    }
+  ]
+}

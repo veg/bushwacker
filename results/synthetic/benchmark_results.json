@@ -1,0 +1,376 @@
+{
+  "test1_polytomy_calibration": {
+    "MDL": {
+      "inferred": 12.6,
+      "fp": 0.0,
+      "fpr_pct": 0.0,
+      "precision_pct": 100.0,
+      "recall_pct": 96.92307692307693,
+      "rf_error": 0.4,
+      "time_sec": 1.064737580666667
+    },
+    "FastTree2": {
+      "inferred": 29.0,
+      "fp": 16.0,
+      "fpr_pct": 100.0,
+      "precision_pct": 44.82758620689654,
+      "recall_pct": 100.0,
+      "rf_error": 16.0,
+      "time_sec": 0.2916477083333318
+    },
+    "IQTREE2": {
+      "inferred": 29.0,
+      "fp": 16.0,
+      "fpr_pct": 100.0,
+      "precision_pct": 44.82758620689654,
+      "recall_pct": 100.0,
+      "rf_error": 16.0,
+      "time_sec": 3.0132526027333317
+    }
+  },
+  "test2_felsenstein_zone": {
+    "MP_true_pct": 0.0,
+    "MP_lba_pct": 100.0,
+    "NJ_true_pct": 0.0,
+    "NJ_lba_pct": 100.0,
+    "MDL_true_pct": 96.0,
+    "MDL_lba_pct": 0.0,
+    "MDL_polytomy_pct": 2.0
+  },
+  "test3_two_site_hijack": {
+    "m=0": {
+      "MDL_pair_recall_pct": 99.21875,
+      "FastTree2_pair_recall_pct": 100.0,
+      "IQTREE2_pair_recall_pct": 99.21875,
+      "MDL_shunt_accuracy_pct": 100.0
+    },
+    "m=2": {
+      "MDL_pair_recall_pct": 99.21875,
+      "FastTree2_pair_recall_pct": 93.75,
+      "IQTREE2_pair_recall_pct": 93.75,
+      "MDL_shunt_accuracy_pct": 100.0
+    },
+    "m=3": {
+      "MDL_pair_recall_pct": 99.21875,
+      "FastTree2_pair_recall_pct": 17.1875,
+      "IQTREE2_pair_recall_pct": 23.4375,
+      "MDL_shunt_accuracy_pct": 100.0
+    },
+    "m=5": {
+      "MDL_pair_recall_pct": 99.21875,
+      "FastTree2_pair_recall_pct": 0.0,
+      "IQTREE2_pair_recall_pct": 0.0,
+      "MDL_shunt_accuracy_pct": 100.0
+    }
+  },
+  "test4_shunt_mode": {
+    "recomb_interval_mode_pct": 100.0,
+    "recomb_breakpoint_iou_pct": 91.25580238494798
+  },
+  "test5_empirical": {
+    "bglobin.fasta": {
+      "description": "Mammalian Beta-Globin",
+      "n_taxa": 17,
+      "n_sites": 432,
+      "resolved_internal_branches": 8,
+      "max_binary_branches": 14,
+      "resolution_pct": 57.14285714285714,
+      "polytomy_nodes": 4,
+      "max_polytomy_degree": 6,
+      "interval_shunts": 0,
+      "sparse_shunts": 0,
+      "compression_ratio": 2.3535869282517887,
+      "raw_nats": 10180.945788064477,
+      "star_nats": 4875.046047570659,
+      "backbone_nats": 4325.714791264048,
+      "full_graph_nats": 4325.714791264048,
+      "runtime_sec": 0.3167938330000055,
+      "top_shunts": []
+    },
+    "camelid.fasta": {
+      "description": "Camelid VHH Nanobodies (Recombining)",
+      "n_taxa": 212,
+      "n_sites": 288,
+      "resolved_internal_branches": 37,
+      "max_binary_branches": 209,
+      "resolution_pct": 17.703349282296653,
+      "polytomy_nodes": 23,
+      "max_polytomy_degree": 52,
+      "interval_shunts": 5,
+      "sparse_shunts": 0,
+      "compression_ratio": 4.192975011284684,
+      "raw_nats": 82320.93175202134,
+      "star_nats": 28738.850134245877,
+      "backbone_nats": 19701.49040842609,
+      "full_graph_nats": 19633.060423796578,
+      "runtime_sec": 3.8235822919999976,
+      "top_shunts": [
+        {
+          "u": "cvhhp42vcod",
+          "v": "N425",
+          "mode": "INTERVAL",
+          "n_sites": 7,
+          "span": [
+            69,
+            117
+          ],
+          "sites_preview": [
+            79,
+            83,
+            85,
+            96,
+            97,
+            102,
+            108
+          ],
+          "net_mdl_gain_nats": 18.36
+        },
+        {
+          "u": "cvhhp09vcod",
+          "v": "N214",
+          "mode": "INTERVAL",
+          "n_sites": 8,
+          "span": [
+            150,
+            244
+          ],
+          "sites_preview": [
+            153,
+            157,
+            212,
+            231,
+            232,
+            234,
+            242,
+            243
+          ],
+          "net_mdl_gain_nats": 18.16
+        },
+        {
+          "u": "cvhhp25vcod",
+          "v": "cvhhp12vcod",
+          "mode": "INTERVAL",
+          "n_sites": 6,
+          "span": [
+            197,
+            247
+          ],
+          "sites_preview": [
+            213,
+            214,
+            221,
+            224,
+            232,
+            234
+          ],
+          "net_mdl_gain_nats": 14.58
+        },
+        {
+          "u": "cvhhp15vcod",
+          "v": "cvhhp31vcod",
+          "mode": "INTERVAL",
+          "n_sites": 6,
+          "span": [
+            0,
+            126
+          ],
+          "sites_preview": [
+            0,
+            55,
+            82,
+            85,
+            96,
+            98
+          ],
+          "net_mdl_gain_nats": 13.25
+        },
+        {
+          "u": "cvhhp24vcod",
+          "v": "cvhp28vcod",
+          "mode": "INTERVAL",
+          "n_sites": 4,
+          "span": [
+            167,
+            242
+          ],
+          "sites_preview": [
+            174,
+            189,
+            231,
+            232
+          ],
+          "net_mdl_gain_nats": 4.08
+        }
+      ]
+    },
+    "prestin.fasta": {
+      "description": "Mammalian Prestin (Echolocation Convergence)",
+      "n_taxa": 116,
+      "n_sites": 2235,
+      "resolved_internal_branches": 95,
+      "max_binary_branches": 113,
+      "resolution_pct": 84.070796460177,
+      "polytomy_nodes": 12,
+      "max_polytomy_degree": 6,
+      "interval_shunts": 0,
+      "sparse_shunts": 0,
+      "compression_ratio": 7.952487663138063,
+      "raw_nats": 351367.39618072525,
+      "star_nats": 80342.73980219869,
+      "backbone_nats": 44183.33118697039,
+      "full_graph_nats": 44183.33118697039,
+      "runtime_sec": 2.9074722080000015,
+      "top_shunts": []
+    },
+    "HIV_RT.fasta": {
+      "description": "HIV-1 Reverse Transcriptase (Drug Resistance)",
+      "n_taxa": 476,
+      "n_sites": 1005,
+      "resolved_internal_branches": 309,
+      "max_binary_branches": 473,
+      "resolution_pct": 65.3276955602537,
+      "polytomy_nodes": 25,
+      "max_polytomy_degree": 125,
+      "interval_shunts": 1,
+      "sparse_shunts": 0,
+      "compression_ratio": 13.448533007314934,
+      "raw_nats": 473619.1507104439,
+      "star_nats": 59561.71436418999,
+      "backbone_nats": 35221.94219903911,
+      "full_graph_nats": 35217.16089426503,
+      "runtime_sec": 21.03997129200002,
+      "top_shunts": [
+        {
+          "u": "N36199901",
+          "v": "T36199905",
+          "mode": "INTERVAL",
+          "n_sites": 5,
+          "span": [
+            393,
+            743
+          ],
+          "sites_preview": [
+            403,
+            424,
+            536,
+            683,
+            733
+          ],
+          "net_mdl_gain_nats": 4.78
+        }
+      ]
+    },
+    "SARS-CoV-2-spike.fasta": {
+      "description": "SARS-CoV-2 Spike (Low-Divergence Pandemic)",
+      "n_taxa": 180,
+      "n_sites": 3852,
+      "resolved_internal_branches": 20,
+      "max_binary_branches": 177,
+      "resolution_pct": 11.299435028248588,
+      "polytomy_nodes": 17,
+      "max_polytomy_degree": 73,
+      "interval_shunts": 7,
+      "sparse_shunts": 7,
+      "compression_ratio": 86.8889017527458,
+      "raw_nats": 951265.486539941,
+      "star_nats": 23756.94516691104,
+      "backbone_nats": 11261.792828021884,
+      "full_graph_nats": 10948.06663855525,
+      "runtime_sec": 8.414307457999996,
+      "top_shunts": [
+        {
+          "u": "N225",
+          "v": "N358",
+          "mode": "INTERVAL",
+          "n_sites": 15,
+          "span": [
+            836,
+            1596
+          ],
+          "sites_preview": [
+            1036,
+            1131,
+            1132,
+            1137,
+            1144,
+            1271,
+            1340,
+            1375
+          ],
+          "net_mdl_gain_nats": 135.6
+        },
+        {
+          "u": "Mu_B_1_621_EPI_ISL_10080356",
+          "v": "B_1_621_baseline_EPI_ISL_10080356",
+          "mode": "INTERVAL",
+          "n_sites": 8,
+          "span": [
+            273,
+            2890
+          ],
+          "sites_preview": [
+            283,
+            433,
+            435,
+            1057,
+            1470,
+            1521,
+            2074,
+            2880
+          ],
+          "net_mdl_gain_nats": 56.43
+        },
+        {
+          "u": "BA_1_N211_L212_214_V213G_T376A_D405N_R408S_T376A_D405N_R408S_K417_N440_EPI_ISL_10121312",
+          "v": "N181",
+          "mode": "INTERVAL",
+          "n_sites": 5,
+          "span": [
+            530,
+            1247
+          ],
+          "sites_preview": [
+            636,
+            649,
+            1146,
+            1233,
+            1244
+          ],
+          "net_mdl_gain_nats": 31.5
+        },
+        {
+          "u": "B_1_526_EPI_ISL_1009654",
+          "v": "B_1_526_baseline_EPI_ISL_1009654",
+          "mode": "INTERVAL",
+          "n_sites": 5,
+          "span": [
+            6,
+            2144
+          ],
+          "sites_preview": [
+            12,
+            283,
+            778,
+            1470,
+            2134
+          ],
+          "net_mdl_gain_nats": 27.58
+        },
+        {
+          "u": "B_1_617_2_T95_G142_H69_V70_Y144_E156_F157_R158_EPI_ISL_2192796",
+          "v": "B_1_617_2_T95_G142_E156_F157_R158_EPI_ISL_10182825",
+          "mode": "SPARSE",
+          "n_sites": 4,
+          "span": null,
+          "sites_preview": [
+            55,
+            1375,
+            1453,
+            2880
+          ],
+          "net_mdl_gain_nats": 14.16
+        }
+      ]
+    }
+  }
+}
